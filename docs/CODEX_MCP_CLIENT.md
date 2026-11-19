@@ -4,7 +4,24 @@
 
 모델·개발 데이터·추론 정책이 준비된 workspace와 프로젝트를 설치한 Python 환경이 필요하다. 준비 항목은 [STANDALONE_MCP.md](STANDALONE_MCP.md)에 설명되어 있다. 독립 test는 이 workspace 밖에 보관한다.
 
-Codex MCP 설정 예시:
+## CLI로 등록하기
+
+[소스 설치](../README.ko.md#설치)를 완료한 뒤, 사용할 환경과 workspace의 실제 절대 경로를 지정한다. workspace 디렉터리는 먼저 만든다.
+
+```bash
+codex mcp add forwardedit --env OMP_NUM_THREADS=1 --env MKL_NUM_THREADS=1 -- \
+  /absolute/path/to/ForwardEdit/.venv/bin/forwardedit-mcp \
+  --workspace /absolute/path/to/experiment
+codex mcp get forwardedit
+```
+
+`mcp get`은 등록 정보만 확인한다. 새 Codex 세션에서 `edit_api_schema`, `read_guidance(path="skills/weight-space-mcp-only/SKILL.md")`를 실제 호출해 연결과 지침 읽기를 확인한다. 이 두 도구는 모델 추론 없이 빈 workspace에서도 실행할 수 있다. 실제 실험의 `experiment_info`는 모델·개발 데이터·`research.json`을 준비한 뒤 호출한다.
+
+현재 저장소는 로컬 stdio MCP 서버와 스킬을 제공하며, 별도 Codex 마켓플레이스 플러그인 묶음은 포함하지 않는다. MCP로 스킬을 읽는 경우 로컬 스킬 디렉터리에 따로 복사할 필요가 없다.
+
+## 파일로 설정하기
+
+직접 설정 파일을 편집하는 경우의 예시다. 위 CLI 등록과 같은 서버 이름을 중복으로 추가하지 않는다.
 
 ```toml
 [mcp_servers.forwardedit]

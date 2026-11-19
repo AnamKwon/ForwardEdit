@@ -2,6 +2,32 @@
 
 이 경로는 loop-engineering 또는 다른 MCP에 의존하지 않는다. 준비된 모델·개발 데이터가 있는 workspace를 ForwardEdit MCP에 연결하고, 새 Codex/Claude 세션이 가중치 분석·수정값 결정·후보 저장·추론·피드백 재수정을 진행한다. gradient/optimizer 학습은 제공하지 않는다. 성능 개선은 실제 독립 평가로 따로 확인해야 한다.
 
+## 설치와 클라이언트 등록
+
+현재 배포 단위는 소스에 포함된 Python MCP 서버와 스킬이다. 마켓플레이스 플러그인 설치 명령은 제공하지 않는다. [README 설치 절차](../README.ko.md#설치)대로 GitHub에서 소스를 받고, 사용할 추론 환경에 editable 설치한다.
+
+```bash
+git clone https://github.com/AnamKwon/ForwardEdit.git
+cd ForwardEdit
+python3 -m venv .venv
+.venv/bin/python -m pip install -e '.[lm,mcp]'
+```
+
+위 조합은 Transformers 4.x 기본 경로다. Qwen 연구 환경은 별도로 만들고 `.[qwen]`을 선택한다. 둘을 같은 환경에 함께 설치하지 않는다. 아래 등록에서 `command`는 선택한 환경의 실행 파일을 가리켜야 한다.
+
+Claude Code는 다음처럼 등록한다. 실제 절대 경로로 바꾸고 workspace 디렉터리를 먼저 만든다.
+
+```bash
+claude mcp add --transport stdio --scope user forwardedit -- \
+  /absolute/path/to/ForwardEdit/.venv/bin/forwardedit-mcp \
+  --workspace /absolute/path/to/experiment
+claude mcp get forwardedit
+```
+
+Codex 등록 명령은 [Codex 연결 안내](CODEX_MCP_CLIENT.md)에 있다. 파일 설정을 사용하는 앱은 아래 JSON 예제를 사용한다. 등록 후 새 세션에서 `edit_api_schema`와 `read_guidance(path="skills/weight-space-mcp-only/SKILL.md")`를 호출해 연결을 확인한다. 이 두 도구는 빈 workspace에서도 모델 추론 없이 확인할 수 있다. `experiment_info`와 실제 모델 도구는 아래의 모델·데이터·설정을 준비한 뒤 사용한다.
+
+## 서버 실행과 workspace
+
 프로젝트의 MCP 실행 명령은 다음과 같다. 환경에 패키지를 설치한 경우 `forwardedit-mcp --workspace /absolute/workspace`도 같은 진입점을 사용한다. 기존 `weight-space-mcp` 명령은 호환 별칭이다.
 
 ```

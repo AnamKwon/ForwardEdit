@@ -41,16 +41,22 @@ python3 scripts/verify_public_evidence.py
 
 This checks artifact integrity and JSON parseability. It does not reproduce inference, authenticate unavailable originals or certify performance.
 
-## Install from this checkout
+## Install
+
+ForwardEdit is currently distributed as a **local stdio MCP server and repository skills**. This repository does not include an installable Codex/Claude marketplace plugin or a hosted MCP URL. Install the Python source, then register the server with your client. The skills are available through its `read_guidance` tool; separate skill installation is optional.
 
 Python 3.11 or newer is required. Use an editable source install: MCP guidance reads the repository's `skills/` and contract documents.
 
 ```bash
+git clone https://github.com/AnamKwon/ForwardEdit.git
+cd ForwardEdit
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[lm,mcp,test]'
 .venv/bin/forwardedit --help
 .venv/bin/forwardedit-mcp --help
 ```
+
+If you already have a checkout, start with the virtual-environment command in that directory. These instructions install from GitHub and do not require a PyPI release.
 
 This installs the Transformers 4.x small-model path. The separate Qwen/research environment uses `pip install -e '.[qwen]'`; choose a PyTorch build compatible with the inference hardware. Optional vLLM generation requires its own compatible, explicitly pinned executable. Do not combine the `lm` and `qwen` Transformers constraints in one environment. See [runtime setup](docs/STANDALONE_MCP.md).
 
@@ -58,13 +64,35 @@ The distribution is `forwardedit`; the Python import/module path remains `weight
 
 ## Connect an LLM client
 
-Prepare a workspace containing your own local model, development inputs and the appropriate configuration. No checkpoint or dataset is downloaded automatically.
+From the cloned `ForwardEdit` directory, set the source and workspace paths. Replace the workspace placeholder with your own writable directory:
 
 ```bash
-.venv/bin/forwardedit-mcp --workspace /absolute/path/to/experiment
+FORWARDEDIT_ROOT="$(pwd)"
+FORWARDEDIT_WORKSPACE="/absolute/path/to/experiment"
+mkdir -p "$FORWARDEDIT_WORKSPACE"
 ```
 
-Portable configuration templates are provided for [Claude-style MCP clients](examples/mcp/claude.json) and [Codex](examples/mcp/codex.toml). Replace all absolute-path placeholders. For setup details, see [standalone MCP](docs/STANDALONE_MCP.md) and [Codex client notes](docs/CODEX_MCP_CLIENT.md).
+**Codex CLI:**
+
+```bash
+codex mcp add forwardedit --env OMP_NUM_THREADS=1 --env MKL_NUM_THREADS=1 -- \
+  "$FORWARDEDIT_ROOT/.venv/bin/forwardedit-mcp" --workspace "$FORWARDEDIT_WORKSPACE"
+codex mcp get forwardedit
+```
+
+**Claude Code:**
+
+```bash
+claude mcp add --transport stdio --scope user forwardedit -- \
+  "$FORWARDEDIT_ROOT/.venv/bin/forwardedit-mcp" --workspace "$FORWARDEDIT_WORKSPACE"
+claude mcp get forwardedit
+```
+
+Choose the command for your client. `mcp get` checks the saved registration. Start a new client session and ask it to call `edit_api_schema` and `read_guidance` with `path="skills/weight-space-mcp-only/SKILL.md"` to check the connection and load the shipped workflow. Those two calls require no model inference.
+
+An empty writable directory is enough for this connection check. Actual model experiments require your local `model/`, development inputs and the configuration described in [workspace setup](docs/STANDALONE_MCP.md). No checkpoint or dataset is downloaded automatically. `experiment_info` requires a configured research workspace.
+
+For clients configured through files, use the [Claude-style JSON](examples/mcp/claude.json) or [Codex TOML](examples/mcp/codex.toml) template and replace all absolute paths. For details, see [standalone MCP](docs/STANDALONE_MCP.md) and [Codex client notes](docs/CODEX_MCP_CLIENT.md). Server startup on stdio waits for a client; it does not display a web interface.
 
 The editor starts by reading `skills/weight-space-mcp-only/SKILL.md` through `read_guidance`, then inspects `edit_api_schema` and `experiment_info`. Choose targets and coefficients from actual observations, record predictions before intervention, and freeze selection before independent evaluation. Historical cases are for human review; supplying their recipes to an editor changes a blind experiment into a source-informed one.
 

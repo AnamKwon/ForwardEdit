@@ -43,14 +43,20 @@ python3 scripts/verify_public_evidence.py
 
 ## 설치
 
+현재 제공 형태는 **로컬 stdio MCP 서버와 저장소에 포함된 스킬**입니다. 이 저장소에는 Codex·Claude 마켓플레이스에서 설치할 플러그인 묶음이나 호스팅된 MCP URL이 없습니다. Python 소스를 설치한 뒤 사용 중인 클라이언트에 서버를 등록합니다. 스킬은 MCP의 `read_guidance`로 읽을 수 있어 별도 설치가 필수는 아닙니다.
+
 Python 3.11 이상과 소스 checkout이 필요합니다. MCP가 저장소의 스킬과 계약 문서를 읽으므로 editable 설치를 사용합니다.
 
 ```bash
+git clone https://github.com/AnamKwon/ForwardEdit.git
+cd ForwardEdit
 python3 -m venv .venv
 .venv/bin/python -m pip install -e '.[lm,mcp,test]'
 .venv/bin/forwardedit --help
 .venv/bin/forwardedit-mcp --help
 ```
+
+이미 소스를 받은 경우 해당 디렉터리에서 가상환경 생성부터 진행합니다. 위 명령은 GitHub 소스 설치이며 PyPI 배포를 전제로 하지 않습니다.
 
 이 명령은 Transformers 4.x 소형 모델 경로를 설치합니다. Qwen/research 경로는 별도 환경에서 `pip install -e '.[qwen]'`을 사용하고, 추론 장치에 맞는 PyTorch를 선택합니다. `lm`과 `qwen`은 Transformers 버전 제약이 달라 같은 환경에 함께 설치하지 않습니다. 선택적 vLLM은 별도의 호환 실행 환경을 명시합니다. [환경과 workspace 준비](docs/STANDALONE_MCP.md)를 참고하세요.
 
@@ -58,13 +64,35 @@ python3 -m venv .venv
 
 ## LLM 연결과 실행
 
-직접 준비한 로컬 모델과 개발 데이터·설정이 있는 workspace를 지정합니다. 모델과 데이터는 자동 다운로드하지 않습니다.
+받은 `ForwardEdit` 디렉터리에서 소스 경로와 workspace를 지정합니다. workspace 예시 경로는 실제로 쓸 수 있는 경로로 바꿉니다.
 
 ```bash
-.venv/bin/forwardedit-mcp --workspace /absolute/path/to/experiment
+FORWARDEDIT_ROOT="$(pwd)"
+FORWARDEDIT_WORKSPACE="/absolute/path/to/experiment"
+mkdir -p "$FORWARDEDIT_WORKSPACE"
 ```
 
-[Claude 형식 설정](examples/mcp/claude.json)과 [Codex 설정](examples/mcp/codex.toml)의 경로를 실제 환경에 맞게 바꿉니다. [MCP 실행 안내](docs/STANDALONE_MCP.md), [Codex 연결 안내](docs/CODEX_MCP_CLIENT.md)에 상세 조건이 있습니다.
+**Codex CLI 등록:**
+
+```bash
+codex mcp add forwardedit --env OMP_NUM_THREADS=1 --env MKL_NUM_THREADS=1 -- \
+  "$FORWARDEDIT_ROOT/.venv/bin/forwardedit-mcp" --workspace "$FORWARDEDIT_WORKSPACE"
+codex mcp get forwardedit
+```
+
+**Claude Code 등록:**
+
+```bash
+claude mcp add --transport stdio --scope user forwardedit -- \
+  "$FORWARDEDIT_ROOT/.venv/bin/forwardedit-mcp" --workspace "$FORWARDEDIT_WORKSPACE"
+claude mcp get forwardedit
+```
+
+사용하는 클라이언트의 명령을 선택합니다. `mcp get`은 저장된 등록 정보를 확인합니다. 새 클라이언트 세션에서 `edit_api_schema`와 `read_guidance(path="skills/weight-space-mcp-only/SKILL.md")`를 호출하도록 요청하면 실제 연결과 스킬 읽기를 확인할 수 있습니다. 이 두 호출은 모델 추론을 하지 않습니다.
+
+연결 확인에는 비어 있는 쓰기 가능한 디렉터리로 충분합니다. 실제 모델 실험은 로컬 `model/`, 개발 데이터와 [workspace 설정](docs/STANDALONE_MCP.md)이 필요합니다. 모델과 데이터는 자동 다운로드하지 않습니다. `experiment_info`는 research workspace 설정까지 준비한 뒤 호출합니다.
+
+파일로 설정하는 클라이언트는 [Claude 형식 JSON](examples/mcp/claude.json)과 [Codex TOML](examples/mcp/codex.toml)의 경로를 실제 환경에 맞게 바꿉니다. [MCP 실행 안내](docs/STANDALONE_MCP.md), [Codex 연결 안내](docs/CODEX_MCP_CLIENT.md)에 상세 조건이 있습니다. stdio 서버를 터미널에서 직접 실행하면 클라이언트 요청을 기다리며, 웹 화면은 표시하지 않습니다.
 
 편집기는 `read_guidance`로 `skills/weight-space-mcp-only/SKILL.md`를 읽고 `edit_api_schema`, `experiment_info`부터 확인합니다. 실제 관측으로 수정값을 판단하고 개입 전에 예측을 적습니다. 독립 데이터는 후보 고정 후에만 사용합니다. 사례집의 해법을 편집기에게 제공했다면 원문 참고 실험으로 표시해야 합니다.
 
