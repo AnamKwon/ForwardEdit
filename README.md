@@ -8,6 +8,8 @@ ForwardEdit lets an external LLM inspect real weights and forward observations, 
 
 It is inspired by [Weight-Space Programming (WSP)](https://rikiyat.github.io/blog/weight-space-programming/). The contribution here is a reusable tool interface, editing workflow and inspectable evidence. A new editing algorithm or superiority over WSP has not been established.
 
+For a visual walkthrough, preview the [104-second English workflow explainer](videos/forwardedit-explainer/README.md). A [Korean edition](videos/forwardedit-explainer/README.ko.md) is also available. Both are editable Remotion compositions with matching captions; the examples are illustrative, not a recorded model experiment.
+
 ## What is included
 
 - Actual parameter values, module ownership/axes, loaded forward source and selected token activations.

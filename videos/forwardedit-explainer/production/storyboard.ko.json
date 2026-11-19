@@ -1,0 +1,219 @@
+{
+  "locale": "ko",
+  "primaryPublicVersion": false,
+  "fps": 30,
+  "durationInFrames": 3120,
+  "durationSeconds": 104,
+  "audio": "Captions only; no recorded narration or music.",
+  "disclosure": "Conceptual explanation with illustrative values and abbreviated mock calls; no model was run or edited.",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "a5a9cb8b99fd6af7c3ac9210cd37bf6d8b31b2663d465fa28fc5e8285b233609"
+    },
+    {
+      "path": "README.ko.md",
+      "sha256": "32a641b1648a5ccd12212015a40d7ae5eedee21af6cffafc782de4e625359325"
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "64b525f56d01ab772d2084521eda84f9b190605dbc6c9eb1fcfbf2c37e29508f"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "a55392d20c2d86dd7a9c78d12a1e2e0175aff4ae0cf145b4c624b88056c6012b"
+    },
+    {
+      "path": "docs/INFERENCE_ONLY_CONTRACT.md",
+      "sha256": "c088917c94d64909f79778c49208a94db7b592e33621ff17d22b4645b24f3153"
+    },
+    {
+      "path": "docs/REVIEW_GUIDE.md",
+      "sha256": "27c7c78c48b03f9f8e43be4bb387b5f6d78ca18471fa97ce29e816dc8e9066c0"
+    },
+    {
+      "path": "weight_space_lab/server.py",
+      "sha256": "7160a779b9398b6f5411064390a94f6bdf6d474eb35c4b49669f7e5436e9ddb5"
+    },
+    {
+      "path": "weight_space_lab/standalone.py",
+      "sha256": "42cd71b1370d96656011cd54f840679bcaf7e8c56a1781412b9e4a8a9f5a0073"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "IntroScene",
+      "title": "00 프로젝트 소개",
+      "startFrame": 0,
+      "durationInFrames": 300,
+      "captions": [
+        {
+          "startFrame": 30,
+          "endFrame": 150,
+          "text": "LLM은 모델 안의 숫자와 실제 추론 결과를 읽습니다."
+        },
+        {
+          "startFrame": 150,
+          "endFrame": 300,
+          "text": "ForwardEdit는 그 판단을 명시적인 수정과 검증으로 연결합니다."
+        }
+      ]
+    },
+    {
+      "id": "RolesScene",
+      "title": "01 LLM과 도구의 역할",
+      "startFrame": 300,
+      "durationInFrames": 420,
+      "captions": [
+        {
+          "startFrame": 300,
+          "endFrame": 450,
+          "text": "외부 LLM이 무엇을 왜 바꿀지 결정하고, MCP로 도구를 호출합니다."
+        },
+        {
+          "startFrame": 450,
+          "endFrame": 600,
+          "text": "도구는 지정된 연산을 계산합니다. GPU는 모델의 추론에만 사용합니다."
+        },
+        {
+          "startFrame": 600,
+          "endFrame": 720,
+          "text": "도구 안의 자동 최적화기가 수정값을 선택하는 구조가 아닙니다."
+        }
+      ]
+    },
+    {
+      "id": "ObserveScene",
+      "title": "02 실제 값과 추론 관측",
+      "startFrame": 720,
+      "durationInFrames": 480,
+      "captions": [
+        {
+          "startFrame": 720,
+          "endFrame": 870,
+          "text": "처음에는 계약, API 형식, 모델과 개발 데이터의 설정을 확인합니다."
+        },
+        {
+          "startFrame": 870,
+          "endFrame": 1020,
+          "text": "그다음 실제 모듈과 가중치 값, 토큰 위치별 추론 관측을 읽습니다."
+        },
+        {
+          "startFrame": 1020,
+          "endFrame": 1200,
+          "text": "실패 문맥과 정상 문맥의 부호 있는 기여를 비교해 수정 근거를 찾습니다."
+        }
+      ]
+    },
+    {
+      "id": "HypothesisScene",
+      "title": "03 가설과 수정 근거",
+      "startFrame": 1200,
+      "durationInFrames": 420,
+      "captions": [
+        {
+          "startFrame": 1200,
+          "endFrame": 1350,
+          "text": "LLM은 좌표와 변경량을 고른 이유, 대안 설명, 반증 조건을 명시합니다."
+        },
+        {
+          "startFrame": 1350,
+          "endFrame": 1500,
+          "text": "근거가 부족하면 defer. 준비가 되면 제한된 개입으로 확인합니다."
+        },
+        {
+          "startFrame": 1500,
+          "endFrame": 1620,
+          "text": "ready_for_causal_probe는 개입 준비 상태이며, 인과나 성능의 합격 판정은 아닙니다."
+        }
+      ]
+    },
+    {
+      "id": "WriteScene",
+      "title": "04 명시적인 CPU 수정",
+      "startFrame": 1620,
+      "durationInFrames": 480,
+      "captions": [
+        {
+          "startFrame": 1620,
+          "endFrame": 1770,
+          "text": "예를 들어 LLM이 좌표 [0, 1]의 값을 0.120에서 0.110으로 지정합니다."
+        },
+        {
+          "startFrame": 1770,
+          "endFrame": 1920,
+          "text": "도구는 원본 해시와 현재 값, 변경 예산을 검사한 뒤 후보를 저장합니다."
+        },
+        {
+          "startFrame": 1920,
+          "endFrame": 2100,
+          "text": "화면의 호출은 일부 인자를 생략한 설명 예시입니다. 실제 가중치를 수정하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "FeedbackScene",
+      "title": "05 피드백과 후보 재수정",
+      "startFrame": 2100,
+      "durationInFrames": 360,
+      "captions": [
+        {
+          "startFrame": 2100,
+          "endFrame": 2220,
+          "text": "개발 데이터에서 원본과 후보의 추론 결과, 정상 사례 손상을 확인합니다."
+        },
+        {
+          "startFrame": 2220,
+          "endFrame": 2340,
+          "text": "LLM이 실제 부모 후보의 피드백을 읽고, 근거를 붙여 재수정하거나 복원합니다."
+        },
+        {
+          "startFrame": 2340,
+          "endFrame": 2460,
+          "text": "이력과 old/new 값을 보존합니다. 손실 자동 피팅이나 좌표·세기 탐색은 하지 않습니다."
+        }
+      ]
+    },
+    {
+      "id": "ConfirmationScene",
+      "title": "06 후보 고정과 독립 확인",
+      "startFrame": 2460,
+      "durationInFrames": 360,
+      "captions": [
+        {
+          "startFrame": 2460,
+          "endFrame": 2580,
+          "text": "개발·검증 데이터에서 선택을 끝낸 뒤 후보와 평가 조건을 고정합니다."
+        },
+        {
+          "startFrame": 2580,
+          "endFrame": 2700,
+          "text": "그다음 독립 데이터에서 효과와 보존 기준, 불확실성을 확인합니다."
+        },
+        {
+          "startFrame": 2700,
+          "endFrame": 2820,
+          "text": "값을 정확히 썼다는 사실과 독립 성능이 개선됐다는 결론은 다릅니다."
+        }
+      ]
+    },
+    {
+      "id": "RecapScene",
+      "title": "07 판정과 한계",
+      "startFrame": 2820,
+      "durationInFrames": 300,
+      "captions": [
+        {
+          "startFrame": 2820,
+          "endFrame": 2970,
+          "text": "ForwardEdit는 판단, 실행, 검증을 구분하고 그 근거를 남기는 도구입니다."
+        },
+        {
+          "startFrame": 2970,
+          "endFrame": 3120,
+          "text": "공개된 사례는 모두 하나 이상의 채택 기준을 통과하지 못했습니다."
+        }
+      ]
+    }
+  ]
+}

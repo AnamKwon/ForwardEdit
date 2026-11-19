@@ -1,0 +1,219 @@
+{
+  "locale": "en",
+  "primaryPublicVersion": true,
+  "fps": 30,
+  "durationInFrames": 3120,
+  "durationSeconds": 104,
+  "audio": "Captions only; no recorded narration or music.",
+  "disclosure": "Conceptual explanation with illustrative values and abbreviated mock calls; no model was run or edited.",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "a5a9cb8b99fd6af7c3ac9210cd37bf6d8b31b2663d465fa28fc5e8285b233609"
+    },
+    {
+      "path": "README.ko.md",
+      "sha256": "32a641b1648a5ccd12212015a40d7ae5eedee21af6cffafc782de4e625359325"
+    },
+    {
+      "path": "DESIGN.md",
+      "sha256": "64b525f56d01ab772d2084521eda84f9b190605dbc6c9eb1fcfbf2c37e29508f"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "a55392d20c2d86dd7a9c78d12a1e2e0175aff4ae0cf145b4c624b88056c6012b"
+    },
+    {
+      "path": "docs/INFERENCE_ONLY_CONTRACT.md",
+      "sha256": "c088917c94d64909f79778c49208a94db7b592e33621ff17d22b4645b24f3153"
+    },
+    {
+      "path": "docs/REVIEW_GUIDE.md",
+      "sha256": "27c7c78c48b03f9f8e43be4bb387b5f6d78ca18471fa97ce29e816dc8e9066c0"
+    },
+    {
+      "path": "weight_space_lab/server.py",
+      "sha256": "7160a779b9398b6f5411064390a94f6bdf6d474eb35c4b49669f7e5436e9ddb5"
+    },
+    {
+      "path": "weight_space_lab/standalone.py",
+      "sha256": "42cd71b1370d96656011cd54f840679bcaf7e8c56a1781412b9e4a8a9f5a0073"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "IntroScene",
+      "title": "00 Introduction",
+      "startFrame": 0,
+      "durationInFrames": 300,
+      "captions": [
+        {
+          "startFrame": 30,
+          "endFrame": 150,
+          "text": "The editor LLM reads real model weights and forward observations."
+        },
+        {
+          "startFrame": 150,
+          "endFrame": 300,
+          "text": "ForwardEdit turns its explicit choices into local edits and inspectable evidence."
+        }
+      ]
+    },
+    {
+      "id": "RolesScene",
+      "title": "01 Roles",
+      "startFrame": 300,
+      "durationInFrames": 420,
+      "captions": [
+        {
+          "startFrame": 300,
+          "endFrame": 450,
+          "text": "An external LLM chooses what to change and why, then calls tools through MCP."
+        },
+        {
+          "startFrame": 450,
+          "endFrame": 600,
+          "text": "Tools execute the specified arithmetic on CPU. GPU use is inference only."
+        },
+        {
+          "startFrame": 600,
+          "endFrame": 720,
+          "text": "No optimizer inside the tools selects or fits the new weights."
+        }
+      ]
+    },
+    {
+      "id": "ObserveScene",
+      "title": "02 Read and observe",
+      "startFrame": 720,
+      "durationInFrames": 480,
+      "captions": [
+        {
+          "startFrame": 720,
+          "endFrame": 870,
+          "text": "Start with the execution contract, API schema, model and development-data settings."
+        },
+        {
+          "startFrame": 870,
+          "endFrame": 1020,
+          "text": "Inspect actual modules, weight values and token-position observations."
+        },
+        {
+          "startFrame": 1020,
+          "endFrame": 1200,
+          "text": "Compare signed contributions in failure and reference contexts before proposing a change."
+        }
+      ]
+    },
+    {
+      "id": "HypothesisScene",
+      "title": "03 Form a hypothesis",
+      "startFrame": 1200,
+      "durationInFrames": 420,
+      "captions": [
+        {
+          "startFrame": 1200,
+          "endFrame": 1350,
+          "text": "State the numerical derivation, alternative explanations and a falsification condition."
+        },
+        {
+          "startFrame": 1350,
+          "endFrame": 1500,
+          "text": "Missing evidence means defer. A prepared hypothesis permits a bounded causal probe."
+        },
+        {
+          "startFrame": 1500,
+          "endFrame": 1620,
+          "text": "ready_for_causal_probe certifies neither causality nor performance."
+        }
+      ]
+    },
+    {
+      "id": "WriteScene",
+      "title": "04 Explicit CPU edit",
+      "startFrame": 1620,
+      "durationInFrames": 480,
+      "captions": [
+        {
+          "startFrame": 1620,
+          "endFrame": 1770,
+          "text": "Here, the LLM explicitly chooses 0.120 → 0.110 at coordinate [0, 1]."
+        },
+        {
+          "startFrame": 1770,
+          "endFrame": 1920,
+          "text": "The tool checks the source hash, current value and change budget before saving a candidate."
+        },
+        {
+          "startFrame": 1920,
+          "endFrame": 2100,
+          "text": "This abbreviated call and these numbers are illustrative. No real model is edited."
+        }
+      ]
+    },
+    {
+      "id": "FeedbackScene",
+      "title": "05 Feedback and revision",
+      "startFrame": 2100,
+      "durationInFrames": 360,
+      "captions": [
+        {
+          "startFrame": 2100,
+          "endFrame": 2220,
+          "text": "Use development data to check the intended effect and damage to normal cases."
+        },
+        {
+          "startFrame": 2220,
+          "endFrame": 2340,
+          "text": "Read actual parent-candidate feedback before revising or restoring values."
+        },
+        {
+          "startFrame": 2340,
+          "endFrame": 2460,
+          "text": "Preserve lineage and old/new values. No loss fitting or coordinate/strength sweeps."
+        }
+      ]
+    },
+    {
+      "id": "ConfirmationScene",
+      "title": "06 Freeze and confirm",
+      "startFrame": 2460,
+      "durationInFrames": 360,
+      "captions": [
+        {
+          "startFrame": 2460,
+          "endFrame": 2580,
+          "text": "Finish development selection, then freeze the candidate and evaluation settings."
+        },
+        {
+          "startFrame": 2580,
+          "endFrame": 2700,
+          "text": "Check effect, preservation and uncertainty on independent data."
+        },
+        {
+          "startFrame": 2700,
+          "endFrame": 2820,
+          "text": "A correct weight write does not establish an independent task improvement."
+        }
+      ]
+    },
+    {
+      "id": "RecapScene",
+      "title": "07 Claims and limitations",
+      "startFrame": 2820,
+      "durationInFrames": 300,
+      "captions": [
+        {
+          "startFrame": 2820,
+          "endFrame": 2970,
+          "text": "ForwardEdit separates judgment, execution and verification, and retains the evidence."
+        },
+        {
+          "startFrame": 2970,
+          "endFrame": 3120,
+          "text": "Every published study failed at least one declared acceptance criterion."
+        }
+      ]
+    }
+  ]
+}

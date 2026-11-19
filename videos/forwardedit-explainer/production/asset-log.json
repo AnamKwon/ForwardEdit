@@ -1,0 +1,26 @@
+[
+  {
+    "path": "public/generated/weight-sculpture.png",
+    "mode": "Codex built-in image_gen.imagegen",
+    "transparent_background": false,
+    "prompt": "Create a refined editorial 3D illustration for a Korean educational motion graphic explaining neural-network weight editing. Landscape 16:9 composition, no text anywhere. On the RIGHT 58% of the frame, a beautiful exploded sculpture of five thin stacked matrix plates, each a precise lattice of small ivory ceramic squares with translucent pale cobalt and teal glass accents. Exactly one tiny warm coral-orange tile gently displaced outside one plate, suggesting a carefully selected local change. Sophisticated tactile materials, soft gallery lighting, subtle contact shadows, quiet premium science-publication art direction, orthographic three-quarter camera. Background solid warm ivory #F4F2ED with very subtle paper grain, continuous uncluttered surface. LEFT 42% intentionally clean negative space for large titles added later. Palette warm ivory, deep navy, cobalt #3158D5, muted teal #3D9B92, restrained coral #E77751. No brain, no robot, no hands, no magic energy, no wires, no symbols, no diagrams, no numbers, no letters, no logo, no watermark. Keep the object crisp, dimensional, elegant and immediately readable; generous margins around sculpture.",
+    "sha256": "60272b2bd6ffd9dd1781eca76ef2891af6e7c6898857dd2efdd9d8905a62d8c3",
+    "used_in": [
+      "English",
+      "Korean"
+    ],
+    "role": "Conceptual illustration; not experimental evidence."
+  },
+  {
+    "path": "public/generated/inspection-cutout.png",
+    "mode": "Codex built-in image_gen.imagegen",
+    "transparent_background": true,
+    "prompt": "A single isolated premium 3D editorial illustration asset for an educational motion-graphics video. A magnifying glass with a deep-navy slender handle and softly reflective cobalt-blue rim hovering diagonally over a small square 6-by-6 ivory ceramic tile lattice, with ONE warm coral-orange tile near the center and a few muted teal translucent tiles. The lens subtly enlarges the orange tile. Three-quarter orthographic product photography, refined tactile ceramic and frosted glass, gentle studio lighting, crisp clean edges. Palette ivory #F4F2ED, navy #182638, cobalt #3158D5, teal #3D9B92, restrained coral #E77751. Genuine fully transparent background with alpha, no ground plane, no background rectangle, no baked checkerboard, minimal soft object shadow only. Centered whole subject entirely inside canvas with 12% clear margin for animation. No text, no numbers, no letters, no logo, no watermark, no extra objects, no human hands. Match a sophisticated modern science magazine cover illustration.",
+    "sha256": "31c969af6060c890942c3d62138ef7e90bdb201d2cbd8f5fa7888f533c0f174b",
+    "used_in": [
+      "English",
+      "Korean"
+    ],
+    "role": "Conceptual illustration; not experimental evidence."
+  }
+]

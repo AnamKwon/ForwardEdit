@@ -1,0 +1,37 @@
+00 Introduction (0–10s)
+The editor LLM reads real model weights and forward observations.
+ForwardEdit turns its explicit choices into local edits and inspectable evidence.
+
+01 Roles (10–24s)
+An external LLM chooses what to change and why, then calls tools through MCP.
+Tools execute the specified arithmetic on CPU. GPU use is inference only.
+No optimizer inside the tools selects or fits the new weights.
+
+02 Read and observe (24–40s)
+Start with the execution contract, API schema, model and development-data settings.
+Inspect actual modules, weight values and token-position observations.
+Compare signed contributions in failure and reference contexts before proposing a change.
+
+03 Form a hypothesis (40–54s)
+State the numerical derivation, alternative explanations and a falsification condition.
+Missing evidence means defer. A prepared hypothesis permits a bounded causal probe.
+ready_for_causal_probe certifies neither causality nor performance.
+
+04 Explicit CPU edit (54–70s)
+Here, the LLM explicitly chooses 0.120 → 0.110 at coordinate [0, 1].
+The tool checks the source hash, current value and change budget before saving a candidate.
+This abbreviated call and these numbers are illustrative. No real model is edited.
+
+05 Feedback and revision (70–82s)
+Use development data to check the intended effect and damage to normal cases.
+Read actual parent-candidate feedback before revising or restoring values.
+Preserve lineage and old/new values. No loss fitting or coordinate/strength sweeps.
+
+06 Freeze and confirm (82–94s)
+Finish development selection, then freeze the candidate and evaluation settings.
+Check effect, preservation and uncertainty on independent data.
+A correct weight write does not establish an independent task improvement.
+
+07 Claims and limitations (94–104s)
+ForwardEdit separates judgment, execution and verification, and retains the evidence.
+Every published study failed at least one declared acceptance criterion.

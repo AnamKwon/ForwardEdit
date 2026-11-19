@@ -1,12 +1,14 @@
-# 일반 Codex 사용자의 MCP 실행 경로
+# Using ForwardEdit MCP with Codex
 
-`ForwardEdit`는 loop-engineering 없이 실행하는 stdio MCP 서버다. 새 Codex 세션이 프로젝트 스킬을 읽고 직접 수정값을 결정한다. 서버는 명시된 연산을 실행하고 실제 추론 결과를 반환한다. 가중치 변경 자체가 성능 개선을 보장하지는 않는다.
+English · [한국어](CODEX_MCP_CLIENT.ko.md)
 
-모델·개발 데이터·추론 정책이 준비된 workspace와 프로젝트를 설치한 Python 환경이 필요하다. 준비 항목은 [STANDALONE_MCP.md](STANDALONE_MCP.md)에 설명되어 있다. 독립 test는 이 workspace 밖에 보관한다.
+ForwardEdit provides a stdio MCP server that runs without loop-engineering. A fresh Codex session reads the project skills and chooses explicit edit values. The server executes the specified arithmetic and returns actual inference results. A weight change alone does not establish a performance improvement.
 
-## CLI로 등록하기
+You need a workspace with a prepared model, development data and inference policy, plus a Python environment containing this project. See [workspace preparation](STANDALONE_MCP.md). Keep the independent test outside this workspace.
 
-[소스 설치](../README.ko.md#설치)를 완료한 뒤, 사용할 환경과 workspace의 실제 절대 경로를 지정한다. workspace 디렉터리는 먼저 만든다.
+## Register through the CLI
+
+Complete the [source installation](../README.md#install), create the workspace directory and replace both paths with actual absolute paths for your environment:
 
 ```bash
 codex mcp add forwardedit --env OMP_NUM_THREADS=1 --env MKL_NUM_THREADS=1 -- \
@@ -15,13 +17,13 @@ codex mcp add forwardedit --env OMP_NUM_THREADS=1 --env MKL_NUM_THREADS=1 -- \
 codex mcp get forwardedit
 ```
 
-`mcp get`은 등록 정보만 확인한다. 새 Codex 세션에서 `edit_api_schema`, `read_guidance(path="skills/weight-space-mcp-only/SKILL.md")`를 실제 호출해 연결과 지침 읽기를 확인한다. 이 두 도구는 모델 추론 없이 빈 workspace에서도 실행할 수 있다. 실제 실험의 `experiment_info`는 모델·개발 데이터·`research.json`을 준비한 뒤 호출한다.
+`mcp get` checks saved registration only. In a new Codex session, actually call `edit_api_schema` and `read_guidance(path="skills/weight-space-mcp-only/SKILL.md")` to verify the connection and read the instructions. Both work in an empty workspace without model inference. Call `experiment_info` after preparing the model, development data and `research.json`.
 
-현재 저장소는 로컬 stdio MCP 서버와 스킬을 제공하며, 별도 Codex 마켓플레이스 플러그인 묶음은 포함하지 않는다. MCP로 스킬을 읽는 경우 로컬 스킬 디렉터리에 따로 복사할 필요가 없다.
+This repository supplies a local stdio MCP server and skills, without a separate Codex marketplace plugin bundle. Reading skills through MCP does not require copying them into a local skills directory.
 
-## 파일로 설정하기
+## Configure through a file
 
-직접 설정 파일을 편집하는 경우의 예시다. 위 CLI 등록과 같은 서버 이름을 중복으로 추가하지 않는다.
+Use the following example if editing the configuration directly. Do not also add a duplicate server entry through the CLI.
 
 ```toml
 [mcp_servers.forwardedit]
@@ -32,8 +34,8 @@ tool_timeout_sec = 7200
 required = true
 tool_input_schema_max_bytes = 50000
 
-# 사용자가 이 workspace의 읽기·직접 편집·추론을 허용한 경우,
-# 이 서버에 한해서 사전에 승인한다. 다른 MCP의 정책은 변경하지 않는다.
+# Use only if the user has already authorized reads, direct edits and
+# inference in this workspace. This setting applies to this server only.
 default_tools_approval_mode = "approve"
 
 [mcp_servers.forwardedit.env]
@@ -43,20 +45,20 @@ MKL_NUM_THREADS = "1"
 PYTHONDONTWRITEBYTECODE = "1"
 ```
 
-위 설정의 Python에 프로젝트가 설치되어 있어야 한다. 소스 설치 대신 모듈 검색 경로를 지정한다면 같은 `env`에 `PYTHONPATH = "/absolute/forwardedit"`을 넣는다. vLLM 사용 시 해당 환경·드라이버·샘플러 설정도 workspace의 고정 정책과 일치시킨다.
+Install this project into the Python environment above. If using a module search path instead of source installation, add `PYTHONPATH = "/absolute/forwardedit"` to the same `env` table. When using vLLM, match its environment, driver and sampler settings to the workspace's frozen policy.
 
-비대화형 `approval_policy = "never"`에서는 서버의 기본 승인 정책에 따라 읽기 도구도 거절될 수 있다. 이미 사용자가 승인한 이 MCP의 범위는 위 `default_tools_approval_mode`로 지정한다. 전역 sandbox/인증/관리자 정책을 해제할 필요는 없다. [공식 Codex MCP 설정](https://developers.openai.com/codex/mcp)에서 서버별 승인 항목을 확인할 수 있다.
+With noninteractive `approval_policy = "never"`, even read tools can be denied depending on the server's default approval policy. The server-specific `default_tools_approval_mode` above scopes an authorization the user has already given. There is no need to disable global sandbox, authentication or administrator policies. See the [official Codex MCP configuration](https://developers.openai.com/codex/mcp) for per-server approval settings.
 
-다른 MCP와 과거 대화가 없는 새 세션에 다음처럼 요청한다.
+Example request for a fresh session without other MCP servers or prior conversation:
 
-> forwardedit MCP와 프로젝트 스킬만 사용해 이 모델의 수학 개선을 실험하세요. `read_guidance`로 `skills/weight-space-mcp-only/SKILL.md`를 읽고 `edit_api_schema`, `experiment_info`, `workspace_status`를 확인하세요. 실제 파라미터·계산 구조·forward 관측을 근거로 대상과 수정량을 직접 판단하세요. GPU는 추론에만 사용하고 gradient, optimizer, finite differences, 자동 fitting, 무작위·좌표·세기 sweep은 금지합니다. 수정 전 제안과 반증 조건을 기록하고, 실제 GPU 변경과 같은 입력의 정답률·기존 정답 손실·정답 참조 NLL을 검사하세요. 피드백에 근거한 후속 수정 후 후보 하나를 고정하세요. 독립 test는 고정 이후에만 평가합니다. 셸·파일 편집·다른 MCP는 사용하지 마세요.
+> Use only forwardedit MCP and the project skills to experiment with this model's mathematics performance. Read `skills/weight-space-mcp-only/SKILL.md` with `read_guidance`, then check `edit_api_schema`, `experiment_info` and `workspace_status`. Choose targets and changes from actual parameters, computation structure and forward observations. Use GPU only for inference. Do not use gradients, optimizers, finite differences, automatic fitting, or random/coordinate/strength sweeps. Record a proposal and falsification conditions before editing. Verify actual values loaded on GPU, accuracy on the same inputs, losses of originally correct answers and reference NLL. After any feedback-based revision, freeze one candidate. Evaluate the independent test only after freezing. Do not use shell tools, file editing or another MCP server.
 
-Codex가 `functions.exec`를 도구 호출 래퍼로 제공하면 `ALL_TOOLS`에서 `forwardedit` 도구를 찾고 그 MCP만 호출한다. 이 클라이언트에서는 code-mode host를 끄면 등록된 MCP 호출도 불가능할 수 있다. 래퍼 사용 자체와 래퍼 안에서 호출한 실제 MCP를 구분하여 감사한다.
+If Codex exposes `functions.exec` as a tool-call wrapper, locate `forwardedit` tools in `ALL_TOOLS` and call only that MCP. Disabling the code-mode host can also disable registered MCP calls in this client. Audit use of the wrapper separately from the actual MCP tools invoked inside it.
 
-독립 실행 확인에는 클라이언트의 실제 MCP 호출 이벤트와 workspace `mcp-audit`의 요청·응답을 대조한다. 등록 서버가 하나인지, 다른 MCP·셸·파일 편집을 실제로 호출하지 않았는지, 편집값이 LLM이 제출한 계획과 일치하는지 확인한다. 이는 새 세션과 MCP 사용 경로의 검증이며 별도 OS 컨테이너 격리를 뜻하지 않는다.
+To verify independent execution, compare actual client MCP events against requests/responses in the workspace's `mcp-audit`. Check that only one server was registered, no other MCP/shell/file-editing tools were invoked, and actual edits match the LLM-submitted plan. This verifies the fresh session and tool path; it does not establish OS-container isolation.
 
-사용량은 실제 provider `response_id`, 입력·캐시·출력 토큰, 사용자 턴, 도구 호출, 추론 배치를 각각 집계한다. Codex의 저장된 세션에 있는 `token_usage_record`는 실제 응답별 토큰을 제공한다. 출력 토큰에 포함된 reasoning 토큰을 비용에 다시 더하지 않는다. API 상당 금액 계산과 구독 계정의 실제 청구액은 구분한다.
+Count provider `response_id` values, input/cached/output tokens, user turns, tool calls and inference batches separately. Codex's saved-session `token_usage_record` provides tokens per actual response. Do not add reasoning tokens again when they are already included in output tokens. Distinguish an API-equivalent cost estimate from the subscription account's actual bill.
 
-## 검증 시간 관리
+## Manage evaluation time
 
-소수의 실패·정상 사례에서 먼저 진단하고, 유망한 후보만 고정 validation 전체 예산으로 평가한다. 기존 정답 보존에 실패하면 분석·재수정을 진행하거나 실패로 종료한다. 큰 독립 test는 개발의 정확도·보존 기준을 통과한 후보를 고정한 뒤 실행하는 것이 기본이다. `diagnostic_only` 고정은 큰 평가를 자동 승인하는 뜻이 아니다. 짧은 생성 진단으로 최종 성능을 입증했다고 보고하지 않는다. 최대 토큰 수, 문항 수×모델 수, 실제 생성 토큰과 예상 소요 시간을 평가 전에 명시한다.
+Diagnose a small number of failed and normal cases first. Evaluate promising candidates within the full fixed validation budget. If originally correct answers are lost beyond the preservation limit, analyze and revise or end the run as a failure. Normally, run a large independent test only after a candidate has passed development accuracy and preservation criteria and has been frozen. A `diagnostic_only` freeze does not automatically authorize a large evaluation. A short generation diagnostic does not establish final performance. Before evaluation, state the token limit, item count × model count, actual generated-token count when available, and estimated runtime.
