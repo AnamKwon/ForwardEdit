@@ -1,0 +1,103 @@
+{
+ "basis": {
+  "failure_description": "Baseline greedy discovery generations loop on repeated phrases (tsval-08537 .281, 08570 .289, 09488 .207, 13123 .281 repeated 8gram fraction). In reference stories of the same ids, flow-01 traced all 16 per-head attention outputs (out_proj inputs) at 16 induction-eligible copy positions (current bigram seen before and next token equals the earlier continuation) vs 16 nearby fresh-token positions. Layer7 head15 (out_proj input cols 60-63) had mean norm .152 copy vs .091 fresh with a consistent shift (copy median ~.138 vs fresh ~.088).",
+  "structural_role": "transformer.h.7.attn.attention.out_proj is Linear W[out=64,in=64], y=x@W.T+b; columns 60..63 receive head15 merged-head output of the last (local) attention layer and write it into the final residual stream before ln_f/lm_head. These 4 columns carry 40% of the tensor Frobenius norm.",
+  "mechanism_hypothesis": "Hypothesis (unverified): L7H15 behaves like a copy/induction-style head that writes the continuation of an earlier matching context into the final residual; under greedy decoding this self-reinforces phrase loops. Attenuating its write should reduce loop lock-in.",
+  "pairing_justification": "Each pair uses the same story (same prefix source) with copy positions as failure and nearby fresh positions as reference, controlling for story content and partly for position; labels are caller-defined by a token-level bigram rule, not verified failure. Prefix lengths differ so contexts are not identical.",
+  "evidence_pairs": [
+   "pair-08537",
+   "pair-08570",
+   "pair-09488",
+   "pair-13123"
+  ],
+  "value_derivation": "Attenuate all 64x4 head15 column weights by fraction 0.3 (new=0.7*old). 0.5 would give relative L2 0.20 (> declared .15 budget) because the head holds 40% of the tensor norm; 0.3 gives ~0.12, the largest round coefficient leaving margin. Not fitted to loss.",
+  "value_rule": {
+   "kind": "attenuate",
+   "fraction": 0.3
+  },
+  "alternative_explanation": "The head may instead carry generic next-token/positional or name-copy signal that is correct in natural text (copy positions have high target logprob, median ~-0.05); repetition may come from MLPs or other heads (L5H5 also shifted; L4H14 effect driven by 2 outliers). Attenuation may then raise reference NLL without reducing loops, or just shorten/alter text.",
+  "expected_behavior": "Local: head write at copy positions shrinks ~2-3x more along -mean-copy-write direction than at fresh positions. Downstream: validation repeat fraction decreases by >=.02 with reference NLL increase <=.02.",
+  "disconfirming_result": "Repeat fraction unchanged or increased, or reference NLL rise >.02 / accuracy drop >.01, or short outputs; or edited trace shows no larger change at copy positions.",
+  "controls": [
+   {
+    "kind": "identity",
+    "purpose": "source baseline already measured with identical decoding"
+   },
+   {
+    "kind": "opposing_edit",
+    "purpose": "amplifying the same columns should increase repetition if the hypothesis holds; run if budget/time allows"
+   }
+  ],
+  "target_output_direction": [
+   0.10417581944054427,
+   0.29946446861615944,
+   0.17697338196366388,
+   0.10686735694485822,
+   -0.06935162352236865,
+   -0.02734748100441706,
+   -0.18274796034290644,
+   0.005497950798388143,
+   -0.014383361210807551,
+   -0.024393624892119967,
+   -0.18543360726647506,
+   -0.34400349463436897,
+   0.0001084318577144197,
+   0.12620030601460477,
+   0.13682172796493322,
+   -0.052954993810977215,
+   -0.18422332775482855,
+   -0.005521080228859889,
+   0.007289722917726958,
+   -0.07765104341745162,
+   0.023570876459251634,
+   0.019399991532419482,
+   0.009199015747098816,
+   -0.026293947800111624,
+   -0.005992153666613842,
+   -0.032391098163692685,
+   -0.15776049553360588,
+   0.18172220248142182,
+   0.4065711093589285,
+   0.1072350909734921,
+   -0.20837578591463307,
+   0.07768527113301767,
+   -0.028340566711442406,
+   -0.13887752894466826,
+   -0.16180473935035747,
+   -0.09246400636035784,
+   0.07863759095244971,
+   0.022186275095400977,
+   0.01917573907778119,
+   0.00390726270555185,
+   -0.04996273767821452,
+   0.12248598477621904,
+   0.13705152346453436,
+   -0.10862148852118828,
+   -0.1660306791931836,
+   -0.08673954767083741,
+   -0.05569698815004139,
+   0.03449199844064655,
+   0.12913525857192157,
+   0.04139166054354058,
+   -0.04619565906909985,
+   -0.1864369683454207,
+   -0.10329235777661809,
+   0.11464478478441972,
+   -0.06620235182917693,
+   -0.007063814182689757,
+   0.05212896371233088,
+   0.0955331648677063,
+   -0.212084498211614,
+   -0.049655495637727136,
+   -0.031281807937103126,
+   0.03446347981278557,
+   -0.02528166797820071,
+   0.06921989941598865
+  ],
+  "max_reference_output_delta": 0.02
+ },
+ "limits": {
+  "max_changed_fraction": 0.02,
+  "max_relative_l2": 0.15
+ }
+}

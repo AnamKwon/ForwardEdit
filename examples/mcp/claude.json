@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "forwardedit": {
+      "command": "/absolute/path/to/forwardedit/.venv/bin/forwardedit-mcp",
+      "args": ["--workspace", "/absolute/path/to/experiment"],
+      "env": {"CUDA_VISIBLE_DEVICES": "0", "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1"}
+    }
+  }
+}

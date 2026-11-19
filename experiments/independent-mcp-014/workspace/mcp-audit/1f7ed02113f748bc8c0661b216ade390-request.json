@@ -1,0 +1,11 @@
+{
+  "name": "inspect_module_computation",
+  "arguments": {
+    "model_dir": "model",
+    "modules": [
+      "model.layers.23.mlp",
+      "model.layers.23"
+    ]
+  },
+  "utc": 1793852891.4691188
+}

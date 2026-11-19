@@ -1,0 +1,47 @@
+{
+  "spec": {
+    "type": "teacher_forced",
+    "model": "original",
+    "dataset_path": "analysis/ctx_base_A.json",
+    "split": "validation",
+    "ids": [
+      "gsm8k_train_7251",
+      "gsm8k_train_3643",
+      "gsm8k_train_2558"
+    ],
+    "observations": {
+      "layers": [
+        23
+      ],
+      "mlp_layers": [
+        23
+      ],
+      "positions": {
+        "gsm8k_train_7251": [
+          1562,
+          1574,
+          1582
+        ],
+        "gsm8k_train_3643": [
+          2949,
+          2953,
+          2963,
+          2972
+        ],
+        "gsm8k_train_2558": [
+          4031,
+          4086,
+          4092
+        ]
+      }
+    }
+  },
+  "submission": {
+    "job_id": "9539a018ae434f6fa1a0204179846f2e",
+    "status": "pending",
+    "successful_completed": 2,
+    "attempt_number": 3,
+    "budget": 50,
+    "job_path": "research_jobs/9539a018ae434f6fa1a0204179846f2e"
+  }
+}

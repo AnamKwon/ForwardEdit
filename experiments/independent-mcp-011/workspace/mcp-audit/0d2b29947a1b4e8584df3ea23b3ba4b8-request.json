@@ -1,0 +1,27 @@
+{
+  "name": "research_read_array",
+  "arguments": {
+    "path": "research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/3c3c1c1a555241ae8eaa1629319d2f4b.npy",
+    "indices": [
+      [
+        2949
+      ],
+      [
+        2953
+      ],
+      [
+        2963
+      ],
+      [
+        2964
+      ],
+      [
+        2972
+      ],
+      [
+        2973
+      ]
+    ]
+  },
+  "utc": 1793850963.5906925
+}

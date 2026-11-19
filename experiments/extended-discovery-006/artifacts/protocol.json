@@ -1,0 +1,103 @@
+{
+  "version": 6,
+  "status": "frozen_before_first_scientific_forward",
+  "user_goal": "Prove mathematical accuracy improvement from LLM-authored direct parameter edits in Qwen3.5-0.8B, with a research budget comparable to the source50successfulforward experiment.",
+  "model_repo": "Qwen/Qwen3.5-0.8B",
+  "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "text_source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+  "decoding": {
+    "temperature": 0.6,
+    "top_p": 0.95,
+    "top_k": 20,
+    "presence_penalty": 1.5,
+    "max_new_tokens": 32768,
+    "seed": 4217,
+    "enable_thinking": true,
+    "prompt_suffix": "\nPlease reason step by step, and put your final answer within \\boxed{}.",
+    "paired_item_random_streams": true,
+    "inference_dtype": "bfloat16"
+  },
+  "budgets": {
+    "successful_development_forward_target": 50,
+    "forward_attempt_cap": 75,
+    "cpu_analysis_action_cap": 150,
+    "native_analysis_invocations_cap": 6,
+    "native_turn_cap_per_invocation": 25,
+    "primary_and_control_candidates_cap": 24,
+    "max_changed_fraction": 0.005,
+    "max_tensor_relative_l2": 0.25
+  },
+  "counting": {
+    "forward": "One successful logical generation/teacherforced batch, as in source. Both models may share a generation batch; retain actual sequence, token, model-forward and walltime counts separately.",
+    "failure": "Retain attempted/failed requests, do not count failure as50successes. Never pad with redundant calls merely to hit counts.",
+    "analysis": "Actual CPU evidence read/algebra/hypothesis executions; status polling and ordinary tool integration are separate.150is a capacity, not fabricated epochs/edits.",
+    "final_confirmation": "Separate host-only frozen independent evaluation; does not consume/replace the50developmentpasses."
+  },
+  "forbidden": [
+    "training/backward/autograd/optimizers/numericalgradients/automaticlossfitting",
+    "blind coordinate/strength/angle sweeps",
+    "model execution outside MCP inference worker",
+    "embedding/outputhead/finalnorm edits",
+    "whole-tensor scalar edits",
+    "global distribution temperature changes throughweights",
+    "unconditional premature thinking closure",
+    "test-based reselection"
+  ],
+  "validation": {
+    "fixed_items": 64,
+    "source_counts": {
+      "gsm8k_train": 32,
+      "math_train": 32
+    },
+    "accuracy_gain_minimum": 0.1,
+    "paired_ci_lower_positive": true,
+    "max_reference_nll_increase": 0.03,
+    "max_reference_token_accuracy_drop": 0.01,
+    "max_previously_correct_to_wrong_fraction": 0.05
+  },
+  "independent_test": {
+    "items": 192,
+    "source_counts": {
+      "gsm8k_test": 128,
+      "math500_test": 64
+    },
+    "not_full_benchmark_scores": true,
+    "accuracy_gain_minimum": 0.1,
+    "both_source_point_gains_nonnegative": true,
+    "first_final_alpha": 0.025,
+    "paired_bootstrap_confidence": 0.975,
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 17,
+    "mcnemar_one_sided_p_maximum": 0.025,
+    "max_previously_correct_to_wrong_fraction": 0.05,
+    "freeze_before_access": true,
+    "no_reselection": true
+  },
+  "future_confirmations": "If another separately frozen development cycle is needed after a negative test, all exposed items become development-only and the k-th final test uses alpha=0.05/(2**k), k starts1. Do not repeatedlytest/favor outcomes at nominal.05.",
+  "completion": "Actual source-bound parameter changes applied at inference AND predeclared validation/independent mathaccuracy/preservation criteria pass. Test/tool completion alone is not model improvement.",
+  "generation_backend": "vllm-0.17.1; BF16 native kernels; exact source-bound runtime key mapping; source/identity/effective-overlay engineering controls required",
+  "observation_backend": "Transformers5.22.1; BF16 compute; originalFP32params/buffers preserved; inference-only teacher observation",
+  "development_dataset_sha256": "377121734233e0651f245c54371c75cb2f1776e441c06220c8d05953c22d42a2",
+  "fixed_validation_ids_sha256": "171413f9e0838eb4ab54dccf6abe355c27902a9df6e5372b49d4d94216ce6d14",
+  "sealed_test_sha256": "bf493aa21e4f37f74f008adbf0647d31c4c921bc498ffe92fe633e557a73eebe",
+  "code_sha256": {
+    "/path/to/forwardedit/weight_space_lab/experiment.py": "e8b8528c9d71f78ba8bcfa41aa0e59b2414d347699e22836f7b79ee69d2c9fce",
+    "/path/to/forwardedit/weight_space_lab/evaluation.py": "da561fafcaafa3f2c74f77b5d44565214871f2abbfb1d730757bdf689c621d01",
+    "/path/to/forwardedit/weight_space_lab/research_analysis.py": "9db7e3697e37830e5c50fa94a6852c11d37d4ecddebe2779c84588743130d058",
+    "/path/to/forwardedit/weight_space_lab/analysis.py": "cc55fb09eb1732106fbe2022580d41cc5d4af40dbc280d19f3c73b4f5466eae1",
+    "/path/to/forwardedit/weight_space_lab/__init__.py": "6574d04466e9f86b26c05149687d833a400940ba9951a49d0cbda0b864859606",
+    "/path/to/forwardedit/weight_space_lab/inference.py": "13d244a29b8eeff742a9b9bc326921be889141b0cc79ff74b49642d2e3203f65",
+    "/path/to/forwardedit/weight_space_lab/computation.py": "1f69b39efec6c155890b253c89e673a9239837f370961af934255d10ce197f2e",
+    "/path/to/forwardedit/weight_space_lab/benchmarks.py": "69d3fea4ac5d2e7562f55e6233237e3084aa20e2910991d9651a1b02eaf82330",
+    "/path/to/forwardedit/weight_space_lab/diagnostics.py": "9c62c70be02b68938299bdbb2f9e3202e28d7470e6b4c18412d58f38c5a2562e",
+    "/path/to/forwardedit/weight_space_lab/contexts.py": "194be5764b53aafbb575cbefa6a61db45ecb28edb3f37ac42e3e52390d0302cb",
+    "/path/to/forwardedit/weight_space_lab/lineage.py": "14ee272b643ced6e7af52577704bd2d7a9f8386126b0b01c6c47067b8e77e6d7",
+    "/path/to/forwardedit/weight_space_lab/core.py": "03ba9e0d43eab6315cfd7c6b08566c793c5db414f348a56c23bdaf577e644b9d",
+    "/path/to/forwardedit/weight_space_lab/cli.py": "8d656fe775f4c7db39a6912d8bd1aa3c94e0ce7a909f04076e0197d4cd643268",
+    "/path/to/forwardedit/weight_space_lab/confirmation.py": "e33fc34fb6b162fd519934d29473d311ebffe004ca9b9102f16403844db8d469",
+    "/path/to/forwardedit/weight_space_lab/vllm_generation.py": "d06cc9a09c1c174ed34a256c2079d49d1728beac3992c0a556a1dc164d48eccd",
+    "/path/to/forwardedit/weight_space_lab/research_worker.py": "858de0508928cfe11c2e43717d6079f78dc92fa863f8dd59ff5de03f618d8351",
+    "/path/to/forwardedit/weight_space_lab/server.py": "6dfe4098063b528d8a311c433a187da0883dd0726f7da948b65e5d66ebe2c147",
+    "/path/to/forwardedit/weight_space_lab/research.py": "d28333662f401d7fe356d16aaa4c19530ba6e70edff7009ad08e206ba5d1cc80"
+  }
+}

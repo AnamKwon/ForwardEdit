@@ -1,0 +1,21 @@
+{
+  "mode": "gradient_assisted_edit",
+  "selected_index": 2,
+  "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+  "min_nll_gain": 0.0001,
+  "max_accuracy_drop": 0.01,
+  "controls": [
+    "control-identity",
+    "control-reversed",
+    "control-random"
+  ],
+  "patches": {
+    "candidate-selected": "d6d45c22d8076f819b83a1d85f248cd33abe58b132aa3a5e261ba08d1b34bfa4",
+    "control-identity": "ec26ba05c678d23b874821f7ce5fe3b1212c6cc47c2bf954185288ad69609390",
+    "control-reversed": "8a254dfef392a72af49512e92b2d849b5154c722f5ce9cdb6589dd71f10ba1f2",
+    "control-random": "373c918dd8b09df36cb47a6f6a9a5ba9f74a448746d070deccb716a58ab81841"
+  },
+  "development_sha256": "bd573c305bbaf74886024d2f7b29fa47769b32841879bf4a5e4496bf6eda2b39",
+  "heldout_file_sha256": "fcfec9894cbd2de5c1cd46615147d642a13e2fb51f1771951665b8119ef65332",
+  "core_sha256": "4ecbe8737f795bf4a126d46872bc0908caabcb8741f85a37f4d401184f37c865"
+}

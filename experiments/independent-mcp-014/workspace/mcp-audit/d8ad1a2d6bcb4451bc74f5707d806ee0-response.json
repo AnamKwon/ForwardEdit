@@ -1,0 +1,17 @@
+{
+  "name": "generation_window",
+  "ok": true,
+  "elapsed_seconds": 0.45498983561992645,
+  "utc": 1793852922.271811,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"id\": \"math_train_algebra_943\",\n  \"job_id\": \"b12c075924474a0787943091bad977bb\",\n  \"which\": \"edited\",\n  \"artifact_sha256\": \"49931a98167b2e643323cd535d1b9afc6b7e89b554cefd2c47404bfa405df410\",\n  \"grade\": null,\n  \"generated_tokens\": 32768,\n  \"finish_reason\": \"max_new_tokens\",\n  \"extracted_answer\": null,\n  \"characters\": 74317,\n  \"start\": 72517,\n  \"text\": \"let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is $9^4+9^4+9^4$?\\n    *   Wait, let me check if the question is\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

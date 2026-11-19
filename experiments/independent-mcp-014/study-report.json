@@ -1,0 +1,1269 @@
+{
+  "scope": "Qwen same-study009–014; all editor attempts retained, no usage/budget reset. Earlier different-model/loop-driven study008 excluded and not evidence for this claim.",
+  "created_utc": 1793860274.6108181,
+  "MCP_direct_parameter_updates_verified": true,
+  "independent_math_gain_demonstrated": false,
+  "independent_statistically_positive_gain": false,
+  "independent_accuracy_and_conditional_preservation_passed": false,
+  "independent_gain_and_all_preservation_gates_passed": false,
+  "all_predeclared_acceptance_gates_passed": false,
+  "selected_development_gates": {
+    "accuracy_gain": false,
+    "conditional_old_correct_preservation": false
+  },
+  "acceptance_scope": "Overall acceptance also requires the existing development accuracy/preservation gates and fixed64 gold-reference gates. Independent mathematical gain is reported separately.",
+  "sessions": [
+    {
+      "study": "009",
+      "model": "claude-opus-5-5",
+      "actual_response_ids": 6,
+      "claude_sdk_turns": 14,
+      "codex_user_turns": null,
+      "tokens": {
+        "input_including_cache": 138235,
+        "uncached_input": 12,
+        "cache_read": 96229,
+        "cache_write": 41994,
+        "output": 2158,
+        "reasoning_included_in_output": 440
+      },
+      "api_equivalent_list_usd": 0.39840580000000003,
+      "editor_elapsed_seconds": 1468.2715468779206,
+      "start_utc": 1793844199.0725029,
+      "end_utc": 1793845667.3440473,
+      "editor_energy_board_kWh": 0.0718291729045674,
+      "exit_code": 0,
+      "provider_is_error": null,
+      "api_error_status": null,
+      "api_error": null
+    },
+    {
+      "study": "010",
+      "model": "claude-opus-5-5",
+      "actual_response_ids": 84,
+      "claude_sdk_turns": 103,
+      "codex_user_turns": null,
+      "tokens": {
+        "input_including_cache": 8651940,
+        "uncached_input": 168,
+        "cache_read": 8474554,
+        "cache_write": 177218,
+        "output": 53529,
+        "reasoning_included_in_output": 32456
+      },
+      "api_equivalent_list_usd": 4.183906800000002,
+      "editor_elapsed_seconds": 1688.9611705839634,
+      "start_utc": 1793848013.0781717,
+      "end_utc": 1793849702.0393395,
+      "editor_energy_board_kWh": 0.09092984706678216,
+      "exit_code": 0,
+      "provider_is_error": null,
+      "api_error_status": null,
+      "api_error": null
+    },
+    {
+      "study": "011",
+      "model": "claude-opus-5-5",
+      "actual_response_ids": 22,
+      "claude_sdk_turns": 45,
+      "codex_user_turns": null,
+      "tokens": {
+        "input_including_cache": 1738464,
+        "uncached_input": 42,
+        "cache_read": 1616005,
+        "cache_write": 122417,
+        "output": 30141,
+        "reasoning_included_in_output": 8551
+      },
+      "api_equivalent_list_usd": 1.9055249999999997,
+      "editor_elapsed_seconds": 1517.323832474649,
+      "start_utc": 1793850578.2603707,
+      "end_utc": 1793852095.5842009,
+      "editor_energy_board_kWh": 0.09023878673824108,
+      "exit_code": 1,
+      "provider_is_error": true,
+      "api_error_status": 429,
+      "api_error": "usage_limit_reached"
+    },
+    {
+      "study": "012",
+      "model": [
+        "gpt-6.1-sol"
+      ],
+      "actual_response_ids": 2,
+      "claude_sdk_turns": null,
+      "codex_user_turns": 1,
+      "tokens": {
+        "input_including_cache": 20639,
+        "uncached_input": 3231,
+        "cache_read": 17408,
+        "cache_write": 0,
+        "output": 569,
+        "reasoning_included_in_output": 320
+      },
+      "api_equivalent_list_usd": 0.0138928,
+      "editor_elapsed_seconds": 24.12733643501997,
+      "start_utc": 1793852733.4471674,
+      "end_utc": 1793852757.5745015,
+      "editor_energy_board_kWh": 0.00013215159662461115,
+      "exit_code": 0,
+      "provider_is_error": null,
+      "api_error_status": null,
+      "api_error": null
+    },
+    {
+      "study": "013",
+      "model": [
+        "gpt-6.1-sol"
+      ],
+      "actual_response_ids": 3,
+      "claude_sdk_turns": null,
+      "codex_user_turns": 1,
+      "tokens": {
+        "input_including_cache": 38992,
+        "uncached_input": 7504,
+        "cache_read": 31488,
+        "cache_write": 0,
+        "output": 626,
+        "reasoning_included_in_output": 264
+      },
+      "api_equivalent_list_usd": 0.0244168,
+      "editor_elapsed_seconds": 27.16995206475258,
+      "start_utc": 1793852787.2627258,
+      "end_utc": 1793852814.4326754,
+      "editor_energy_board_kWh": 0.00016569803631853104,
+      "exit_code": 0,
+      "provider_is_error": null,
+      "api_error_status": null,
+      "api_error": null
+    },
+    {
+      "study": "014",
+      "model": [
+        "gpt-6.1-sol"
+      ],
+      "actual_response_ids": 25,
+      "claude_sdk_turns": null,
+      "codex_user_turns": 1,
+      "tokens": {
+        "input_including_cache": 1816160,
+        "uncached_input": 98144,
+        "cache_read": 1718016,
+        "cache_write": 0,
+        "output": 11310,
+        "reasoning_included_in_output": 3077
+      },
+      "api_equivalent_list_usd": 0.48118960000000005,
+      "editor_elapsed_seconds": 1467.5867746025324,
+      "start_utc": 1793852842.311111,
+      "end_utc": 1793854309.8978822,
+      "editor_energy_board_kWh": 0.09034785440412747,
+      "exit_code": 0,
+      "provider_is_error": null,
+      "api_error_status": null,
+      "api_error": null
+    }
+  ],
+  "usage_totals": {
+    "actual_model_responses": 142,
+    "claude_sdk_turns_separate": 162,
+    "codex_user_turns_separate": 3,
+    "tokens": {
+      "input_including_cache": 12404430,
+      "uncached_input": 109101,
+      "cache_read": 11953700,
+      "cache_write": 341629,
+      "output": 98333,
+      "reasoning_included_in_output": 45108
+    },
+    "api_equivalent_list_usd": 7.007336800000002,
+    "editor_elapsed_seconds": 6193.440613038838,
+    "editor_sampled_board_kWh": 0.3436435107466613,
+    "confirmation_sampled_board_kWh": 0.48596032366434105,
+    "all_sampled_board_kWh": 0.8296038344110024,
+    "confirmation_elapsed_seconds": 5800.5798889398575,
+    "confirmation_failed_setup_elapsed_seconds": 17.169658958911896,
+    "end_to_end_seconds_including_engineering_gaps": 16035.992888212204,
+    "first_editor_start_KST": "2026-11-05T11:03:19.072503+09:00",
+    "latest_measurement_end_KST": "2026-11-05T15:30:35.065391+09:00"
+  },
+  "candidates": [
+    {
+      "path": "candidates/c1_L23_gate_u054",
+      "report": {
+        "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+        "total_parameters": 752393024,
+        "changed_parameters": 3072,
+        "changed_fraction": 4.082972465199252e-06,
+        "tensors": [
+          {
+            "tensor": "model.layers.23.mlp.down_proj.weight",
+            "changed_parameters": 3072,
+            "relative_l2": 0.032908723260495945,
+            "max_absolute_delta": 0.12447892129421234
+          }
+        ],
+        "status": "unevaluated",
+        "patch_sha256": "995192953439681c835e11f40715d7f432607eeaacc27b5b683db2e72a32f143"
+      },
+      "parent": null,
+      "hypothesis": "Layer-23 down_proj columns 20/25/43 gate (high at concluded line breaks) writes alpha*s*u along the observed decision-minus-control direction, raising P(</think>) at conclusion-like states so looping generations terminate.",
+      "manifest_sha256": "35814f6f6761fccaa2d729dee4bc0196072edfb15384470d5cd6649a593ed8fb"
+    },
+    {
+      "path": "candidates/c2_restore_row0",
+      "report": {
+        "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+        "total_parameters": 752393024,
+        "changed_parameters": 3069,
+        "changed_fraction": 4.078985187401206e-06,
+        "tensors": [
+          {
+            "tensor": "model.layers.23.mlp.down_proj.weight",
+            "changed_parameters": 3069,
+            "relative_l2": 0.030735275099729908,
+            "max_absolute_delta": 0.037388723343610764
+          }
+        ],
+        "status": "unevaluated",
+        "patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd"
+      },
+      "parent": "candidates/c1_L23_gate_u054",
+      "hypothesis": "Single feedback-dependent causal control: restore dominant residual coordinate0 of C1, retaining remaining decision-direction write.",
+      "manifest_sha256": "15b312dde18162bdedb0fbbeab3972b0b363ab3953f0a0ec3d1f9058b238026a"
+    }
+  ],
+  "parameter_flow_examples_from_actual_MCP_comparisons": [
+    {
+      "parent": "candidates/c1_L23_gate_u054",
+      "child": "candidates/c2_restore_row0",
+      "net_changed": 3069,
+      "incremental_changed": 3,
+      "restored_to_original": 3,
+      "examples": {
+        "model.layers.23.mlp.down_proj.weight": [
+          {
+            "row": 0,
+            "column": 20,
+            "original": 0.006988525390625,
+            "parent": -0.11749039590358734,
+            "child": 0.006988525390625
+          },
+          {
+            "row": 0,
+            "column": 25,
+            "original": -0.003692626953125,
+            "parent": -0.11620613187551498,
+            "child": -0.003692626953125
+          },
+          {
+            "row": 0,
+            "column": 43,
+            "original": -0.052978515625,
+            "parent": -0.14850884675979614,
+            "child": -0.052978515625
+          }
+        ]
+      }
+    }
+  ],
+  "actual_candidate_writes": 2,
+  "feedback_revision_count": 1,
+  "validation": [
+    {
+      "candidate": "candidates/c1_L23_gate_u054",
+      "original_correct": 5,
+      "edited_correct": 7,
+      "items": 64,
+      "gain": 0.03125,
+      "wrong_to_right": 5,
+      "right_to_wrong": 3,
+      "conditional_old_correct_loss": 0.6,
+      "original_job": "fd481604f2834219944cb87aeeb8989f",
+      "edited_job": "b12c075924474a0787943091bad977bb",
+      "actual_changed_GPU": 3070
+    },
+    {
+      "candidate": "candidates/c2_restore_row0",
+      "original_correct": 5,
+      "edited_correct": 10,
+      "items": 64,
+      "gain": 0.078125,
+      "wrong_to_right": 8,
+      "right_to_wrong": 3,
+      "conditional_old_correct_loss": 0.6,
+      "original_job": "fd481604f2834219944cb87aeeb8989f",
+      "edited_job": "188c7e2ab488476a87d16329987ce153",
+      "actual_changed_GPU": 3067
+    }
+  ],
+  "reference_preservation": {
+    "status": "measured",
+    "interpretation": "Full fixed-validation reference-text token prediction, separate from clean-question math accuracy and conditional loss of originally correct answers.",
+    "original_job_id": "6612ecc780f44d1196dd2f94028d8a27",
+    "edited_job_id": "29312dd5233849638b275340a7afb9e2",
+    "original_metrics": {
+      "nll": 1.2388549153483155,
+      "accuracy": 0.7149743668222511,
+      "target_tokens": 13069,
+      "input_tokens": 13133,
+      "generated_tokens": 0,
+      "samples": 64,
+      "execution": {
+        "causal_lm_forward": 0,
+        "backbone_forward": 64,
+        "output_head_forward": 623,
+        "largest_head_chunk_tokens": 22
+      }
+    },
+    "edited_metrics": {
+      "nll": 1.251021493848549,
+      "accuracy": 0.7097712143239727,
+      "target_tokens": 13069,
+      "input_tokens": 13133,
+      "generated_tokens": 0,
+      "samples": 64,
+      "execution": {
+        "causal_lm_forward": 0,
+        "backbone_forward": 64,
+        "output_head_forward": 623,
+        "largest_head_chunk_tokens": 22
+      }
+    },
+    "nll_increase": 0.012166578500233616,
+    "token_accuracy_drop": 0.005203152498278407,
+    "gates": {
+      "nll_preserved": true,
+      "token_accuracy_preserved": true
+    },
+    "passed": true
+  },
+  "parent_feedback_behavior": {
+    "parent_c1_to_child_c2": {
+      "wrong_to_right": 5,
+      "right_to_wrong": 2,
+      "retained_correct": 5
+    },
+    "same_lost_original_correct_IDs": {
+      "c1": [
+        "gsm8k_train_7251",
+        "math_train_algebra_164",
+        "math_train_algebra_943"
+      ],
+      "c2": [
+        "gsm8k_train_7251",
+        "math_train_algebra_164",
+        "math_train_algebra_943"
+      ]
+    }
+  },
+  "feedback_flow_audit": {
+    "revisions": [
+      {
+        "parent": "candidates/c1_L23_gate_u054",
+        "child": "candidates/c2_restore_row0",
+        "write_request_utc": 1793853110.8633668,
+        "parent_result_reads_before_write": [
+          {
+            "name": "generation_window",
+            "arguments": {
+              "job_id": "b12c075924474a0787943091bad977bb",
+              "identifier": "math_train_algebra_943",
+              "which": "edited",
+              "from_end": true,
+              "max_chars": 1800
+            },
+            "request_utc": 1793852921.8168428,
+            "response_utc": 1793852922.271811,
+            "parent_job_ids": [
+              "b12c075924474a0787943091bad977bb"
+            ]
+          },
+          {
+            "name": "research_result",
+            "arguments": {
+              "job_id": "b12c075924474a0787943091bad977bb"
+            },
+            "request_utc": 1793852869.2893505,
+            "response_utc": 1793852878.7088528,
+            "parent_job_ids": [
+              "b12c075924474a0787943091bad977bb"
+            ]
+          },
+          {
+            "name": "generation_window",
+            "arguments": {
+              "job_id": "b12c075924474a0787943091bad977bb",
+              "identifier": "gsm8k_train_7251",
+              "which": "edited",
+              "offset": 5400,
+              "max_chars": 2200
+            },
+            "request_utc": 1793852922.3452265,
+            "response_utc": 1793852922.7886467,
+            "parent_job_ids": [
+              "b12c075924474a0787943091bad977bb"
+            ]
+          },
+          {
+            "name": "research_read_generations",
+            "arguments": {
+              "job_id": "b12c075924474a0787943091bad977bb",
+              "ids": [
+                "gsm8k_train_7251",
+                "gsm8k_train_3643",
+                "gsm8k_train_5859",
+                "math_train_algebra_943",
+                "math_train_algebra_164"
+              ],
+              "which": "edited",
+              "max_chars": 650
+            },
+            "request_utc": 1793852890.7671719,
+            "response_utc": 1793852891.2117083,
+            "parent_job_ids": [
+              "b12c075924474a0787943091bad977bb"
+            ]
+          }
+        ],
+        "parent_generation_feedback_actually_read_before_revision": true
+      }
+    ],
+    "verified_feedback_dependent_revisions": 1,
+    "criterion": "Successful MCP result/generation reads completed before the actual edit request; mere availability of a completed parent job is insufficient."
+  },
+  "independent_confirmation_status": "measured",
+  "frozen_selection": {
+    "candidate_dir": "candidates/c2_restore_row0",
+    "manifest_sha256": "15b312dde18162bdedb0fbbeab3972b0b363ab3953f0a0ec3d1f9058b238026a",
+    "patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd",
+    "evidence_job_ids": [
+      "fd481604f2834219944cb87aeeb8989f",
+      "b12c075924474a0787943091bad977bb",
+      "fb9e7e24181e4fe1bfd2eba2160a69a9",
+      "9539a018ae434f6fa1a0204179846f2e",
+      "6612ecc780f44d1196dd2f94028d8a27",
+      "29312dd5233849638b275340a7afb9e2",
+      "188c7e2ab488476a87d16329987ce153"
+    ],
+    "decision": "diagnostic_only",
+    "explanation": "No qualified gain. Exactly one feedback-dependent followup revision restores original W[0,20/25/43] of final MLP down_proj while retaining other C1 writes. Verified 3069 net stored changes,3067 actual GPU BF16 changes. Full64 accuracy source5/64,parent7/64,child10/64; paired child wrong-to-right8,right-to-wrong3,retained2. Old-correct loss3/5=.60 violates .05; net5/64 gain below .10. Full64 gold-reference NLL1.2388549153483155->1.251021493848549 and token accuracy.7149743668222511->.7097712143239727 satisfy aggregate reference gates but cannot replace answer preservation. The row0-only cause explanation is insufficient: identical three old-correct failures persist as cutoffs. Freeze C2 only as diagnostic artifact, no improvement certification. No independent test seen; no editing or reselection after freeze.",
+    "utc": 1793854299.487345,
+    "performance_certified": false
+  },
+  "independent_confirmation": {
+    "items": 192,
+    "original_correct": 25,
+    "edited_correct": 22,
+    "original_accuracy": 0.13020833333333334,
+    "edited_accuracy": 0.11458333333333333,
+    "gain": -0.015625,
+    "paired_bootstrap_interval": [
+      -0.078125,
+      0.046875
+    ],
+    "confidence": 0.975,
+    "wrong_to_right": 13,
+    "right_to_wrong": 16,
+    "conditional_old_correct_loss": 0.64,
+    "old_correct_loss_denominator": 25,
+    "exact_one_sided_mcnemar_p": 0.77087084017694,
+    "source_results": {
+      "math": {
+        "items": 64,
+        "original_correct": 2,
+        "edited_correct": 3,
+        "gain": 0.015625
+      },
+      "gsm8k": {
+        "items": 128,
+        "original_correct": 23,
+        "edited_correct": 19,
+        "gain": -0.03125
+      }
+    },
+    "original_unparsed": 165,
+    "edited_unparsed": 169,
+    "gates": {
+      "accuracy_gain": false,
+      "paired_interval_positive": false,
+      "mcnemar": false,
+      "conditional_old_correct_preservation": false,
+      "both_sources_nonnegative": false
+    },
+    "mathematical_gain_demonstrated": false,
+    "accuracy_and_conditional_preservation_demonstrated": false,
+    "candidate": {
+      "candidate_dir": "candidates/c2_restore_row0",
+      "manifest_sha256": "15b312dde18162bdedb0fbbeab3972b0b363ab3953f0a0ec3d1f9058b238026a",
+      "patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd",
+      "evidence_job_ids": [
+        "fd481604f2834219944cb87aeeb8989f",
+        "b12c075924474a0787943091bad977bb",
+        "fb9e7e24181e4fe1bfd2eba2160a69a9",
+        "9539a018ae434f6fa1a0204179846f2e",
+        "6612ecc780f44d1196dd2f94028d8a27",
+        "29312dd5233849638b275340a7afb9e2",
+        "188c7e2ab488476a87d16329987ce153"
+      ],
+      "decision": "diagnostic_only",
+      "explanation": "No qualified gain. Exactly one feedback-dependent followup revision restores original W[0,20/25/43] of final MLP down_proj while retaining other C1 writes. Verified 3069 net stored changes,3067 actual GPU BF16 changes. Full64 accuracy source5/64,parent7/64,child10/64; paired child wrong-to-right8,right-to-wrong3,retained2. Old-correct loss3/5=.60 violates .05; net5/64 gain below .10. Full64 gold-reference NLL1.2388549153483155->1.251021493848549 and token accuracy.7149743668222511->.7097712143239727 satisfy aggregate reference gates but cannot replace answer preservation. The row0-only cause explanation is insufficient: identical three old-correct failures persist as cutoffs. Freeze C2 only as diagnostic artifact, no improvement certification. No independent test seen; no editing or reselection after freeze.",
+      "utc": 1793854299.487345,
+      "performance_certified": false
+    },
+    "elapsed_seconds": 5580.2274182364345,
+    "successful_logical_batches": 2,
+    "engine_submissions": 4,
+    "requires_grad": false,
+    "optimizer_steps": 0,
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd"
+  },
+  "development_successful_batches": 8,
+  "development_accepted_attempts": 8,
+  "earlier009_aborted_attempts": 1,
+  "independent_successful_paired_batches": 2,
+  "development_jobs": {
+    "fd481604f2834219944cb87aeeb8989f": {
+      "spec": {
+        "type": "generate",
+        "model": "original",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558",
+          "gsm8k_train_6518",
+          "gsm8k_train_1685",
+          "gsm8k_train_3401",
+          "gsm8k_train_1584",
+          "gsm8k_train_2844",
+          "gsm8k_train_1790",
+          "gsm8k_train_7309",
+          "gsm8k_train_187",
+          "gsm8k_train_3526",
+          "gsm8k_train_1139",
+          "gsm8k_train_3329",
+          "gsm8k_train_2789",
+          "gsm8k_train_7140",
+          "gsm8k_train_4751",
+          "gsm8k_train_6144",
+          "gsm8k_train_7251",
+          "gsm8k_train_3796",
+          "gsm8k_train_6416",
+          "gsm8k_train_5754",
+          "gsm8k_train_164",
+          "gsm8k_train_3701",
+          "gsm8k_train_5625",
+          "gsm8k_train_4548",
+          "gsm8k_train_402",
+          "gsm8k_train_1562",
+          "gsm8k_train_3643",
+          "gsm8k_train_3242",
+          "gsm8k_train_5859",
+          "math_train_counting_and_probability_280",
+          "math_train_counting_and_probability_319",
+          "math_train_precalculus_248",
+          "math_train_number_theory_574",
+          "math_train_algebra_943",
+          "math_train_algebra_387",
+          "math_train_geometry_443",
+          "math_train_counting_and_probability_65",
+          "math_train_prealgebra_1129",
+          "math_train_geometry_135",
+          "math_train_intermediate_algebra_258",
+          "math_train_counting_and_probability_504",
+          "math_train_geometry_180",
+          "math_train_geometry_318",
+          "math_train_intermediate_algebra_768",
+          "math_train_precalculus_402",
+          "math_train_prealgebra_712",
+          "math_train_precalculus_222",
+          "math_train_intermediate_algebra_555",
+          "math_train_prealgebra_300",
+          "math_train_prealgebra_384",
+          "math_train_algebra_163",
+          "math_train_geometry_297",
+          "math_train_precalculus_148",
+          "math_train_intermediate_algebra_823",
+          "math_train_counting_and_probability_270",
+          "math_train_algebra_499",
+          "math_train_number_theory_612",
+          "math_train_prealgebra_598",
+          "math_train_intermediate_algebra_124",
+          "math_train_algebra_1008",
+          "math_train_algebra_164"
+        ],
+        "n": 1,
+        "max_new_tokens": 32768
+      },
+      "status": "succeeded",
+      "metrics": {
+        "original": {
+          "accuracy": 0.078125,
+          "parse_failure": 59,
+          "cutoff": 60,
+          "samples": 64,
+          "input_tokens": 6825,
+          "generated_tokens": 1985399,
+          "mean_length": 31021.859375,
+          "engine_seconds": 963.6587346494198,
+          "backend": "vllm-0.32.0+cu129",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        }
+      },
+      "actual_changed": {
+        "original": 0
+      },
+      "wall_seconds": 976.2102649584413,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": 1,
+      "model_forward_invocations": null,
+      "successful_samples": 64,
+      "logical_passes": 1
+    },
+    "57a63774f7104b839326b573fca8d356": {
+      "spec": {
+        "type": "teacher_forced",
+        "model": "original",
+        "dataset_path": "analysis/ctx_base_A.json",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_7251",
+          "gsm8k_train_3643",
+          "math_train_algebra_164",
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558"
+        ],
+        "observations": {
+          "layers": [
+            23
+          ],
+          "mlp_layers": [
+            23
+          ]
+        },
+        "n": 1
+      },
+      "status": "succeeded",
+      "metrics": {
+        "original": {
+          "nll": 0.4219659525634101,
+          "accuracy": 0.8683829003565691,
+          "target_tokens": 25521,
+          "input_tokens": 25528,
+          "generated_tokens": 0,
+          "samples": 7,
+          "execution": {
+            "causal_lm_forward": 0,
+            "backbone_forward": 7,
+            "output_head_forward": 1165,
+            "largest_head_chunk_tokens": 22
+          }
+        }
+      },
+      "actual_changed": {
+        "original": 0
+      },
+      "wall_seconds": 66.16802357137203,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": null,
+      "model_forward_invocations": 1172,
+      "successful_samples": 7,
+      "logical_passes": 1
+    },
+    "9539a018ae434f6fa1a0204179846f2e": {
+      "spec": {
+        "type": "teacher_forced",
+        "model": "original",
+        "dataset_path": "analysis/ctx_base_A.json",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_7251",
+          "gsm8k_train_3643",
+          "gsm8k_train_2558"
+        ],
+        "observations": {
+          "layers": [
+            23
+          ],
+          "mlp_layers": [
+            23
+          ],
+          "positions": {
+            "gsm8k_train_7251": [
+              1562,
+              1574,
+              1582
+            ],
+            "gsm8k_train_3643": [
+              2949,
+              2953,
+              2963,
+              2972
+            ],
+            "gsm8k_train_2558": [
+              4031,
+              4086,
+              4092
+            ]
+          }
+        },
+        "n": 1
+      },
+      "status": "succeeded",
+      "metrics": {
+        "original": {
+          "nll": 0.4560457203949245,
+          "accuracy": 0.8562520511978996,
+          "target_tokens": 9141,
+          "input_tokens": 9144,
+          "generated_tokens": 0,
+          "samples": 3,
+          "execution": {
+            "causal_lm_forward": 0,
+            "backbone_forward": 3,
+            "output_head_forward": 417,
+            "largest_head_chunk_tokens": 22
+          }
+        }
+      },
+      "actual_changed": {
+        "original": 0
+      },
+      "wall_seconds": 21.913940154016018,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": null,
+      "model_forward_invocations": 420,
+      "successful_samples": 3,
+      "logical_passes": 1
+    },
+    "fb9e7e24181e4fe1bfd2eba2160a69a9": {
+      "spec": {
+        "type": "teacher_forced",
+        "model": "edited",
+        "candidate_dir": "candidates/c1_L23_gate_u054",
+        "dataset_path": "analysis/ctx_base_A.json",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_7251",
+          "gsm8k_train_3643",
+          "math_train_algebra_164",
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558"
+        ],
+        "observations": {
+          "layers": [
+            23
+          ],
+          "mlp_layers": [
+            23
+          ],
+          "positions": {
+            "gsm8k_train_7251": [
+              1562,
+              1574,
+              1582
+            ],
+            "gsm8k_train_3643": [
+              2949,
+              2953,
+              2963,
+              2972
+            ],
+            "gsm8k_train_2558": [
+              4031,
+              4086,
+              4092
+            ]
+          }
+        },
+        "n": 1
+      },
+      "status": "succeeded",
+      "metrics": {
+        "edited": {
+          "nll": 0.434247539576017,
+          "accuracy": 0.8627404882253831,
+          "target_tokens": 25521,
+          "input_tokens": 25528,
+          "generated_tokens": 0,
+          "samples": 7,
+          "execution": {
+            "causal_lm_forward": 0,
+            "backbone_forward": 7,
+            "output_head_forward": 1165,
+            "largest_head_chunk_tokens": 22
+          }
+        }
+      },
+      "actual_changed": {
+        "edited": 3070
+      },
+      "wall_seconds": 71.670700147748,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": null,
+      "model_forward_invocations": 1172,
+      "successful_samples": 7,
+      "logical_passes": 1
+    },
+    "b12c075924474a0787943091bad977bb": {
+      "spec": {
+        "type": "generate",
+        "model": "edited",
+        "candidate_dir": "candidates/c1_L23_gate_u054",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558",
+          "gsm8k_train_6518",
+          "gsm8k_train_1685",
+          "gsm8k_train_3401",
+          "gsm8k_train_1584",
+          "gsm8k_train_2844",
+          "gsm8k_train_1790",
+          "gsm8k_train_7309",
+          "gsm8k_train_187",
+          "gsm8k_train_3526",
+          "gsm8k_train_1139",
+          "gsm8k_train_3329",
+          "gsm8k_train_2789",
+          "gsm8k_train_7140",
+          "gsm8k_train_4751",
+          "gsm8k_train_6144",
+          "gsm8k_train_7251",
+          "gsm8k_train_3796",
+          "gsm8k_train_6416",
+          "gsm8k_train_5754",
+          "gsm8k_train_164",
+          "gsm8k_train_3701",
+          "gsm8k_train_5625",
+          "gsm8k_train_4548",
+          "gsm8k_train_402",
+          "gsm8k_train_1562",
+          "gsm8k_train_3643",
+          "gsm8k_train_3242",
+          "gsm8k_train_5859",
+          "math_train_counting_and_probability_280",
+          "math_train_counting_and_probability_319",
+          "math_train_precalculus_248",
+          "math_train_number_theory_574",
+          "math_train_algebra_943",
+          "math_train_algebra_387",
+          "math_train_geometry_443",
+          "math_train_counting_and_probability_65",
+          "math_train_prealgebra_1129",
+          "math_train_geometry_135",
+          "math_train_intermediate_algebra_258",
+          "math_train_counting_and_probability_504",
+          "math_train_geometry_180",
+          "math_train_geometry_318",
+          "math_train_intermediate_algebra_768",
+          "math_train_precalculus_402",
+          "math_train_prealgebra_712",
+          "math_train_precalculus_222",
+          "math_train_intermediate_algebra_555",
+          "math_train_prealgebra_300",
+          "math_train_prealgebra_384",
+          "math_train_algebra_163",
+          "math_train_geometry_297",
+          "math_train_precalculus_148",
+          "math_train_intermediate_algebra_823",
+          "math_train_counting_and_probability_270",
+          "math_train_algebra_499",
+          "math_train_number_theory_612",
+          "math_train_prealgebra_598",
+          "math_train_intermediate_algebra_124",
+          "math_train_algebra_1008",
+          "math_train_algebra_164"
+        ],
+        "n": 1,
+        "max_new_tokens": 32768
+      },
+      "status": "succeeded",
+      "metrics": {
+        "edited": {
+          "accuracy": 0.109375,
+          "parse_failure": 56,
+          "cutoff": 55,
+          "samples": 64,
+          "input_tokens": 6825,
+          "generated_tokens": 1827670,
+          "mean_length": 28557.34375,
+          "engine_seconds": 1070.062806673348,
+          "backend": "vllm-0.32.0+cu129",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        }
+      },
+      "actual_changed": {
+        "edited": 3070
+      },
+      "wall_seconds": 1091.792568989098,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": 1,
+      "model_forward_invocations": null,
+      "successful_samples": 64,
+      "logical_passes": 1
+    },
+    "6612ecc780f44d1196dd2f94028d8a27": {
+      "spec": {
+        "type": "teacher_forced",
+        "model": "original",
+        "split": "validation",
+        "n": 1,
+        "ids": [
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558",
+          "gsm8k_train_6518",
+          "gsm8k_train_1685",
+          "gsm8k_train_3401",
+          "gsm8k_train_1584",
+          "gsm8k_train_2844",
+          "gsm8k_train_1790",
+          "gsm8k_train_7309",
+          "gsm8k_train_187",
+          "gsm8k_train_3526",
+          "gsm8k_train_1139",
+          "gsm8k_train_3329",
+          "gsm8k_train_2789",
+          "gsm8k_train_7140",
+          "gsm8k_train_4751",
+          "gsm8k_train_6144",
+          "gsm8k_train_7251",
+          "gsm8k_train_3796",
+          "gsm8k_train_6416",
+          "gsm8k_train_5754",
+          "gsm8k_train_164",
+          "gsm8k_train_3701",
+          "gsm8k_train_5625",
+          "gsm8k_train_4548",
+          "gsm8k_train_402",
+          "gsm8k_train_1562",
+          "gsm8k_train_3643",
+          "gsm8k_train_3242",
+          "gsm8k_train_5859",
+          "math_train_counting_and_probability_280",
+          "math_train_counting_and_probability_319",
+          "math_train_precalculus_248",
+          "math_train_number_theory_574",
+          "math_train_algebra_943",
+          "math_train_algebra_387",
+          "math_train_geometry_443",
+          "math_train_counting_and_probability_65",
+          "math_train_prealgebra_1129",
+          "math_train_geometry_135",
+          "math_train_intermediate_algebra_258",
+          "math_train_counting_and_probability_504",
+          "math_train_geometry_180",
+          "math_train_geometry_318",
+          "math_train_intermediate_algebra_768",
+          "math_train_precalculus_402",
+          "math_train_prealgebra_712",
+          "math_train_precalculus_222",
+          "math_train_intermediate_algebra_555",
+          "math_train_prealgebra_300",
+          "math_train_prealgebra_384",
+          "math_train_algebra_163",
+          "math_train_geometry_297",
+          "math_train_precalculus_148",
+          "math_train_intermediate_algebra_823",
+          "math_train_counting_and_probability_270",
+          "math_train_algebra_499",
+          "math_train_number_theory_612",
+          "math_train_prealgebra_598",
+          "math_train_intermediate_algebra_124",
+          "math_train_algebra_1008",
+          "math_train_algebra_164"
+        ]
+      },
+      "status": "succeeded",
+      "metrics": {
+        "original": {
+          "nll": 1.2388549153483155,
+          "accuracy": 0.7149743668222511,
+          "target_tokens": 13069,
+          "input_tokens": 13133,
+          "generated_tokens": 0,
+          "samples": 64,
+          "execution": {
+            "causal_lm_forward": 0,
+            "backbone_forward": 64,
+            "output_head_forward": 623,
+            "largest_head_chunk_tokens": 22
+          }
+        }
+      },
+      "actual_changed": {
+        "original": 0
+      },
+      "wall_seconds": 68.4652091935277,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": null,
+      "model_forward_invocations": 687,
+      "successful_samples": 64,
+      "logical_passes": 1
+    },
+    "29312dd5233849638b275340a7afb9e2": {
+      "spec": {
+        "type": "teacher_forced",
+        "model": "edited",
+        "candidate_dir": "candidates/c2_restore_row0",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558",
+          "gsm8k_train_6518",
+          "gsm8k_train_1685",
+          "gsm8k_train_3401",
+          "gsm8k_train_1584",
+          "gsm8k_train_2844",
+          "gsm8k_train_1790",
+          "gsm8k_train_7309",
+          "gsm8k_train_187",
+          "gsm8k_train_3526",
+          "gsm8k_train_1139",
+          "gsm8k_train_3329",
+          "gsm8k_train_2789",
+          "gsm8k_train_7140",
+          "gsm8k_train_4751",
+          "gsm8k_train_6144",
+          "gsm8k_train_7251",
+          "gsm8k_train_3796",
+          "gsm8k_train_6416",
+          "gsm8k_train_5754",
+          "gsm8k_train_164",
+          "gsm8k_train_3701",
+          "gsm8k_train_5625",
+          "gsm8k_train_4548",
+          "gsm8k_train_402",
+          "gsm8k_train_1562",
+          "gsm8k_train_3643",
+          "gsm8k_train_3242",
+          "gsm8k_train_5859",
+          "math_train_counting_and_probability_280",
+          "math_train_counting_and_probability_319",
+          "math_train_precalculus_248",
+          "math_train_number_theory_574",
+          "math_train_algebra_943",
+          "math_train_algebra_387",
+          "math_train_geometry_443",
+          "math_train_counting_and_probability_65",
+          "math_train_prealgebra_1129",
+          "math_train_geometry_135",
+          "math_train_intermediate_algebra_258",
+          "math_train_counting_and_probability_504",
+          "math_train_geometry_180",
+          "math_train_geometry_318",
+          "math_train_intermediate_algebra_768",
+          "math_train_precalculus_402",
+          "math_train_prealgebra_712",
+          "math_train_precalculus_222",
+          "math_train_intermediate_algebra_555",
+          "math_train_prealgebra_300",
+          "math_train_prealgebra_384",
+          "math_train_algebra_163",
+          "math_train_geometry_297",
+          "math_train_precalculus_148",
+          "math_train_intermediate_algebra_823",
+          "math_train_counting_and_probability_270",
+          "math_train_algebra_499",
+          "math_train_number_theory_612",
+          "math_train_prealgebra_598",
+          "math_train_intermediate_algebra_124",
+          "math_train_algebra_1008",
+          "math_train_algebra_164"
+        ],
+        "n": 1
+      },
+      "status": "succeeded",
+      "metrics": {
+        "edited": {
+          "nll": 1.251021493848549,
+          "accuracy": 0.7097712143239727,
+          "target_tokens": 13069,
+          "input_tokens": 13133,
+          "generated_tokens": 0,
+          "samples": 64,
+          "execution": {
+            "causal_lm_forward": 0,
+            "backbone_forward": 64,
+            "output_head_forward": 623,
+            "largest_head_chunk_tokens": 22
+          }
+        }
+      },
+      "actual_changed": {
+        "edited": 3067
+      },
+      "wall_seconds": 25.366990983486176,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": null,
+      "model_forward_invocations": 687,
+      "successful_samples": 64,
+      "logical_passes": 1
+    },
+    "188c7e2ab488476a87d16329987ce153": {
+      "spec": {
+        "type": "generate",
+        "model": "edited",
+        "candidate_dir": "candidates/c2_restore_row0",
+        "split": "validation",
+        "ids": [
+          "gsm8k_train_1506",
+          "gsm8k_train_2767",
+          "gsm8k_train_6911",
+          "gsm8k_train_2558",
+          "gsm8k_train_6518",
+          "gsm8k_train_1685",
+          "gsm8k_train_3401",
+          "gsm8k_train_1584",
+          "gsm8k_train_2844",
+          "gsm8k_train_1790",
+          "gsm8k_train_7309",
+          "gsm8k_train_187",
+          "gsm8k_train_3526",
+          "gsm8k_train_1139",
+          "gsm8k_train_3329",
+          "gsm8k_train_2789",
+          "gsm8k_train_7140",
+          "gsm8k_train_4751",
+          "gsm8k_train_6144",
+          "gsm8k_train_7251",
+          "gsm8k_train_3796",
+          "gsm8k_train_6416",
+          "gsm8k_train_5754",
+          "gsm8k_train_164",
+          "gsm8k_train_3701",
+          "gsm8k_train_5625",
+          "gsm8k_train_4548",
+          "gsm8k_train_402",
+          "gsm8k_train_1562",
+          "gsm8k_train_3643",
+          "gsm8k_train_3242",
+          "gsm8k_train_5859",
+          "math_train_counting_and_probability_280",
+          "math_train_counting_and_probability_319",
+          "math_train_precalculus_248",
+          "math_train_number_theory_574",
+          "math_train_algebra_943",
+          "math_train_algebra_387",
+          "math_train_geometry_443",
+          "math_train_counting_and_probability_65",
+          "math_train_prealgebra_1129",
+          "math_train_geometry_135",
+          "math_train_intermediate_algebra_258",
+          "math_train_counting_and_probability_504",
+          "math_train_geometry_180",
+          "math_train_geometry_318",
+          "math_train_intermediate_algebra_768",
+          "math_train_precalculus_402",
+          "math_train_prealgebra_712",
+          "math_train_precalculus_222",
+          "math_train_intermediate_algebra_555",
+          "math_train_prealgebra_300",
+          "math_train_prealgebra_384",
+          "math_train_algebra_163",
+          "math_train_geometry_297",
+          "math_train_precalculus_148",
+          "math_train_intermediate_algebra_823",
+          "math_train_counting_and_probability_270",
+          "math_train_algebra_499",
+          "math_train_number_theory_612",
+          "math_train_prealgebra_598",
+          "math_train_intermediate_algebra_124",
+          "math_train_algebra_1008",
+          "math_train_algebra_164"
+        ],
+        "n": 1,
+        "max_new_tokens": 32768
+      },
+      "status": "succeeded",
+      "metrics": {
+        "edited": {
+          "accuracy": 0.15625,
+          "parse_failure": 54,
+          "cutoff": 54,
+          "samples": 64,
+          "input_tokens": 6825,
+          "generated_tokens": 1821552,
+          "mean_length": 28461.75,
+          "engine_seconds": 1054.3060160055757,
+          "backend": "vllm-0.32.0+cu129",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        }
+      },
+      "actual_changed": {
+        "edited": 3067
+      },
+      "wall_seconds": 1066.761153653264,
+      "gradients_enabled": false,
+      "optimizer_steps": 0,
+      "engine_generation_calls": 1,
+      "model_forward_invocations": null,
+      "successful_samples": 64,
+      "logical_passes": 1
+    }
+  },
+  "limits": {
+    "model_response_budget": 150,
+    "editor_api_equivalent_ceiling_usd": 20,
+    "development_successful_batch_budget": 50,
+    "accepted_attempt_budget_including009": 75
+  },
+  "money_scope": "Actual tokens/time measured. Claude provider-reported list estimates + Codex calculated Standard API equivalents; not subscription invoices or host conversation billing. No GPU/electricity unit price supplied.",
+  "GPU_cost_formula": "(sum editor elapsed seconds + confirmation elapsed seconds)/3600 * hourly rate",
+  "GPU_full_reservation_cost_formula_if_billed_through_engineering": "end_to_end_seconds_including_engineering_gaps/3600 * hourly rate",
+  "electricity_formula": "all_sampled_board_kWh * rate per kWh",
+  "energy_scope": "GPU3 board power, includes idle/waiting; excludes engineering gaps and whole-server/wall-plug energy; not process-exclusive attribution.",
+  "independence_scope": "Fresh normal client sessions, project MCP and shipped skills, no loop-engineering calls. Codex continues Claude same-study artifacts; not separate from-scratch editor-quality trials or OS-container isolation.",
+  "training": "Inference only; reported gradients false, optimizer_steps0, guarded APIs. CPU explicit arithmetic; editor selects coordinates/directions/coefficients.",
+  "model_revision": "2fc06364715b967f1860aea9cf38778875588b17",
+  "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+  "development_sha256": "9a3be23df867d145a3b1454ebb05b82152fe5e69b24af6d7e92f7ef9779ab51d",
+  "sealed_test_sha256": "604c4ac60e7be9ebecca0b73df3c460758012bc59c4508a51ea1bc15fb9867c0",
+  "runtime": {
+    "backend": "vllm",
+    "dtype": "bfloat16",
+    "max_new_tokens": 32768,
+    "sampling": {
+      "temperature": 0.6,
+      "top_p": 0.95,
+      "top_k": 20,
+      "presence_penalty": 1.5,
+      "seed": 4217
+    },
+    "prompt_suffix": "\nPlease reason step by step, and put your final answer within \\boxed{}.",
+    "engine": "vllm-0.32.0+cu129",
+    "mcp_sdk": "2.3.0",
+    "host_driver": "570.195.03",
+    "latest_vllm_not_usable": "0.33.0 provides CUDA13 only; host driver570 is below required580. Latest official CUDA12.9 release is0.32.0; validate actual GPU execution before editor launch.",
+    "sampler_implementation": "vLLM0.32 native PyTorch sampler, VLLM_USE_FLASHINFER_SAMPLER=0, fixed for all original/edited generations before any scientific outcome"
+  },
+  "execution_counts": {
+    "independent_original_generated_tokens": 5690604,
+    "independent_edited_generated_tokens": 5599016,
+    "independent_total_generated_tokens": 11289620,
+    "independent_model_generation_samples": 384,
+    "successful_scientific_batches": 10,
+    "actual_feedback_dependent_revisions": 1
+  },
+  "latency_assessment": "Development preservation already failed. Running full192 paired long-generation confirmation on a diagnostic-only candidate was excessive for an acceptance decision. The independent result is retained without reselection. Future default workflow should reject or revise preservation failures before large withheld evaluation."
+}

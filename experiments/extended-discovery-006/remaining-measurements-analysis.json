@@ -1,0 +1,806 @@
+{
+  "scope": "Development diagnostics only; no model choice, fitting, or independent data access.",
+  "generation": {
+    "language-identity-multisample": {
+      "job_id": "d484d063f8564262bbb5be72b1eadc35",
+      "problems": 8,
+      "completions_each_model": 32,
+      "metrics": {
+        "original": {
+          "accuracy": 0.40625,
+          "parse_failure": 19,
+          "cutoff": 23,
+          "samples": 32,
+          "input_tokens": 1788,
+          "generated_tokens": 54070,
+          "mean_length": 1689.6875,
+          "engine_seconds": 85.35911827534437,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.5,
+          "parse_failure": 14,
+          "cutoff": 17,
+          "samples": 32,
+          "input_tokens": 1788,
+          "generated_tokens": 42812,
+          "mean_length": 1337.875,
+          "engine_seconds": 94.09926696121693,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 7,
+          "right_to_wrong": 4,
+          "unparsed_to_correct": 7,
+          "correct_to_unparsed": 3
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 0
+      },
+      "per_problem": [
+        {
+          "id": "math_train_geometry_176",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "gsm8k_train_4593",
+          "completions_each": 4,
+          "original_correct": 4,
+          "edited_correct": 3,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_1758",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 3,
+          "original_cutoff": 2,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_algebra_552",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 2,
+          "original_cutoff": 4,
+          "edited_cutoff": 2
+        },
+        {
+          "id": "math_train_number_theory_35",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 3,
+          "original_cutoff": 2,
+          "edited_cutoff": 2
+        },
+        {
+          "id": "gsm8k_train_52",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 4,
+          "edited_cutoff": 3
+        },
+        {
+          "id": "gsm8k_train_5903",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 2,
+          "original_cutoff": 3,
+          "edited_cutoff": 3
+        },
+        {
+          "id": "gsm8k_train_3251",
+          "completions_each": 4,
+          "original_correct": 1,
+          "edited_correct": 2,
+          "original_cutoff": 3,
+          "edited_cutoff": 2
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "language-source-multisample": {
+      "job_id": "8359d7f544824604bdc18516184ebb87",
+      "problems": 8,
+      "completions_each_model": 32,
+      "metrics": {
+        "original": {
+          "accuracy": 0.46875,
+          "parse_failure": 15,
+          "cutoff": 18,
+          "samples": 32,
+          "input_tokens": 1788,
+          "generated_tokens": 44294,
+          "mean_length": 1384.1875,
+          "engine_seconds": 84.7064101472497,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.5625,
+          "parse_failure": 14,
+          "cutoff": 16,
+          "samples": 32,
+          "input_tokens": 1788,
+          "generated_tokens": 46661,
+          "mean_length": 1458.15625,
+          "engine_seconds": 94.73374197632074,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 9,
+          "right_to_wrong": 6,
+          "unparsed_to_correct": 7,
+          "correct_to_unparsed": 6
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "per_problem": [
+        {
+          "id": "math_train_geometry_176",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "gsm8k_train_4593",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 3,
+          "original_cutoff": 0,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_1758",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 3,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_algebra_552",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 4,
+          "original_cutoff": 2,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_number_theory_35",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 2,
+          "original_cutoff": 2,
+          "edited_cutoff": 2
+        },
+        {
+          "id": "gsm8k_train_52",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "gsm8k_train_5903",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 3,
+          "original_cutoff": 3,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_3251",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 2,
+          "original_cutoff": 2,
+          "edited_cutoff": 2
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "normal-identity-multisample": {
+      "job_id": "22b3112e878645d2a63b96aacefe5ccf",
+      "problems": 5,
+      "completions_each_model": 20,
+      "metrics": {
+        "original": {
+          "accuracy": 0.5,
+          "parse_failure": 10,
+          "cutoff": 12,
+          "samples": 20,
+          "input_tokens": 1336,
+          "generated_tokens": 439079,
+          "mean_length": 21953.95,
+          "engine_seconds": 638.7725524827838,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.45,
+          "parse_failure": 11,
+          "cutoff": 13,
+          "samples": 20,
+          "input_tokens": 1336,
+          "generated_tokens": 463427,
+          "mean_length": 23171.35,
+          "engine_seconds": 710.5707613229752,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 1,
+          "right_to_wrong": 2,
+          "unparsed_to_correct": 1,
+          "correct_to_unparsed": 2
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 0
+      },
+      "per_problem": [
+        {
+          "id": "gsm8k_train_2649",
+          "completions_each": 4,
+          "original_correct": 1,
+          "edited_correct": 1,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "gsm8k_train_4086",
+          "completions_each": 4,
+          "original_correct": 2,
+          "edited_correct": 1,
+          "original_cutoff": 2,
+          "edited_cutoff": 3
+        },
+        {
+          "id": "gsm8k_train_5896",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "math_train_algebra_117",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 4,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_precalculus_190",
+          "completions_each": 4,
+          "original_correct": 4,
+          "edited_correct": 3,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "normal-source-multisample": {
+      "job_id": "a9fdd60224274044b83d4c5af578fe15",
+      "problems": 5,
+      "completions_each_model": 20,
+      "metrics": {
+        "original": {
+          "accuracy": 0.45,
+          "parse_failure": 11,
+          "cutoff": 13,
+          "samples": 20,
+          "input_tokens": 1336,
+          "generated_tokens": 463427,
+          "mean_length": 23171.35,
+          "engine_seconds": 689.5332579836249,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.9,
+          "parse_failure": 1,
+          "cutoff": 1,
+          "samples": 20,
+          "input_tokens": 1336,
+          "generated_tokens": 169106,
+          "mean_length": 8455.3,
+          "engine_seconds": 262.2086264491081,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 9,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 9,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "per_problem": [
+        {
+          "id": "gsm8k_train_2649",
+          "completions_each": 4,
+          "original_correct": 1,
+          "edited_correct": 4,
+          "original_cutoff": 4,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_4086",
+          "completions_each": 4,
+          "original_correct": 1,
+          "edited_correct": 4,
+          "original_cutoff": 3,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_5896",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 2,
+          "original_cutoff": 4,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_algebra_117",
+          "completions_each": 4,
+          "original_correct": 4,
+          "edited_correct": 4,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "math_train_precalculus_190",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 4,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "source-fresh16-transfer": {
+      "job_id": "d8ad93e4c1374f0f91d97a27a3710f32",
+      "problems": 16,
+      "completions_each_model": 16,
+      "metrics": {
+        "original": {
+          "accuracy": 0.0625,
+          "parse_failure": 15,
+          "cutoff": 15,
+          "samples": 16,
+          "input_tokens": 2379,
+          "generated_tokens": 498427,
+          "mean_length": 31151.6875,
+          "engine_seconds": 748.002408452332,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.4375,
+          "parse_failure": 8,
+          "cutoff": 8,
+          "samples": 16,
+          "input_tokens": 2379,
+          "generated_tokens": 316248,
+          "mean_length": 19765.5,
+          "engine_seconds": 490.9288831874728,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 6,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 6,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "per_problem": [
+        {
+          "id": "gsm8k_train_78",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_2124",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_2578",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_6769",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_2925",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_521",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_1857",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_7116",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_geometry_811",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_counting_and_probability_385",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_algebra_1336",
+          "completions_each": 1,
+          "original_correct": 1,
+          "edited_correct": 1,
+          "original_cutoff": 0,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "math_train_algebra_985",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_algebra_1227",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "math_train_prealgebra_320",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_geometry_60",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_intermediate_algebra_88",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "source-general-language": {
+      "job_id": "b3367c6481854ef0acca206b722261e2",
+      "problems": 8,
+      "completions_each_model": 8,
+      "metrics": {
+        "original": {
+          "accuracy": 0.25,
+          "parse_failure": 6,
+          "cutoff": 7,
+          "samples": 8,
+          "input_tokens": 447,
+          "generated_tokens": 14871,
+          "mean_length": 1858.875,
+          "engine_seconds": 79.88160695135593,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.375,
+          "parse_failure": 5,
+          "cutoff": 5,
+          "samples": 8,
+          "input_tokens": 447,
+          "generated_tokens": 11543,
+          "mean_length": 1442.875,
+          "engine_seconds": 89.95434680581093,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 2,
+          "right_to_wrong": 1,
+          "unparsed_to_correct": 2,
+          "correct_to_unparsed": 1
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "per_problem": [
+        {
+          "id": "math_train_geometry_176",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_4593",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "gsm8k_train_1758",
+          "completions_each": 1,
+          "original_correct": 1,
+          "edited_correct": 1,
+          "original_cutoff": 0,
+          "edited_cutoff": 0
+        },
+        {
+          "id": "math_train_algebra_552",
+          "completions_each": 1,
+          "original_correct": 1,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "math_train_number_theory_35",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_52",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_5903",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 1,
+          "edited_cutoff": 1
+        },
+        {
+          "id": "gsm8k_train_3251",
+          "completions_each": 1,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    },
+    "source-six-multisample": {
+      "job_id": "8645d94c101e454f98b2491f0e7ab9f6",
+      "problems": 6,
+      "completions_each_model": 24,
+      "metrics": {
+        "original": {
+          "accuracy": 0.125,
+          "parse_failure": 21,
+          "cutoff": 21,
+          "samples": 24,
+          "input_tokens": 3748,
+          "generated_tokens": 183735,
+          "mean_length": 7655.625,
+          "engine_seconds": 151.5209525898099,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.3333333333333333,
+          "parse_failure": 16,
+          "cutoff": 16,
+          "samples": 24,
+          "input_tokens": 3748,
+          "generated_tokens": 165519,
+          "mean_length": 6896.625,
+          "engine_seconds": 153.73032426834106,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 5,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 5,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "per_problem": [
+        {
+          "id": "math_train_number_theory_129",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 0,
+          "original_cutoff": 4,
+          "edited_cutoff": 4
+        },
+        {
+          "id": "gsm8k_train_85",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 2,
+          "original_cutoff": 4,
+          "edited_cutoff": 2
+        },
+        {
+          "id": "gsm8k_train_673",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 4,
+          "edited_cutoff": 3
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "completions_each": 4,
+          "original_correct": 0,
+          "edited_correct": 1,
+          "original_cutoff": 4,
+          "edited_cutoff": 3
+        },
+        {
+          "id": "math_train_algebra_117",
+          "completions_each": 4,
+          "original_correct": 3,
+          "edited_correct": 4,
+          "original_cutoff": 1,
+          "edited_cutoff": 0
+        }
+      ],
+      "exact_same_input_tokens": true,
+      "interpretation": "Descriptive paired samples; repeated completions are clustered by problem, not independent new problems."
+    }
+  },
+  "semantic_step_preferences": [],
+  "correct_step_likelihoods": [
+    {
+      "id": "gsm8k_train_673",
+      "original_correct_suffix_log_likelihood": -0.022861480712890625,
+      "edited_correct_suffix_log_likelihood": -0.020801544189453125,
+      "change": 0.0020599365234375,
+      "interpretation": "Supplied correct suffix only; no incorrect-counterfactual preference claim."
+    },
+    {
+      "id": "gsm8k_train_85",
+      "original_correct_suffix_log_likelihood": -0.025335311889648438,
+      "edited_correct_suffix_log_likelihood": -0.02423858642578125,
+      "change": 0.0010967254638671875,
+      "interpretation": "Supplied correct suffix only; no incorrect-counterfactual preference claim."
+    },
+    {
+      "id": "math_train_number_theory_129",
+      "original_correct_suffix_log_likelihood": -0.8959846496582031,
+      "edited_correct_suffix_log_likelihood": -0.9019775390625,
+      "change": -0.005992889404296875,
+      "interpretation": "Supplied correct suffix only; no incorrect-counterfactual preference claim."
+    },
+    {
+      "id": "math_train_prealgebra_316",
+      "original_correct_suffix_log_likelihood": -2.03985595703125,
+      "edited_correct_suffix_log_likelihood": -1.7080078125,
+      "change": 0.33184814453125,
+      "interpretation": "Supplied correct suffix only; no incorrect-counterfactual preference claim."
+    }
+  ],
+  "limitations": [
+    "Five normal problems remain five, even with n=4.",
+    "Same-weight null variability limits per-sample causal attribution.",
+    "Eight illustrative language items do not establish broad capability preservation.",
+    "Correct/incorrect supplied-step likelihood is not clean generated math accuracy.",
+    "No result here proves that correction feedback caused the primary gain."
+  ]
+}

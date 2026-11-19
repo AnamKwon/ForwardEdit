@@ -1,0 +1,166 @@
+{
+  "utc": "2026-11-04T22:01:51.156909+00:00",
+  "overall_status": "mathematical_accuracy_gain_confirmed_but_preservation_gate_failed",
+  "study_complete": false,
+  "summary_ko": "역전파·옵티마이저 없이 실제 가중치를 직접 편집한 Qwen의 독립 수학 정답률 개선은 확인됐다. 다만 기존 정답 손실1/18=5.56%가 사전5%기준을 넘었으므로 전체 성공은 승인하지 않았다.",
+  "model": "Qwen3.5-0.8B exact official normalized text weights",
+  "candidate_dir": "candidates/source-informed-l15l19-001",
+  "frozen_manifest_sha256": "7f4a69e733a696ee42362d46b9b4c3c0903533e9e57626dae14e7473dd019a43",
+  "independent": {
+    "official_subset_only": true,
+    "items": 192,
+    "original_correct": 18,
+    "edited_correct": 103,
+    "statistics": {
+      "items": 192,
+      "original_accuracy": 0.09375,
+      "edited_accuracy": 0.5364583333333334,
+      "gain": 0.4427083333333333,
+      "paired_bootstrap_interval": [
+        0.359375,
+        0.5260416666666666
+      ],
+      "confidence": 0.975,
+      "wrong_to_right": 86,
+      "right_to_wrong": 1,
+      "previously_correct_to_wrong_fraction": 0.005208333333333333,
+      "originally_correct_count": 18,
+      "fraction_of_originally_correct_lost": 0.05555555555555555,
+      "exact_one_sided_mcnemar_p": 5.686866711302065e-25,
+      "source_results": {
+        "gsm8k_test": {
+          "items": 128,
+          "original_accuracy": 0.1015625,
+          "edited_accuracy": 0.59375,
+          "gain": 0.4921875
+        },
+        "math500_test": {
+          "items": 64,
+          "original_accuracy": 0.078125,
+          "edited_accuracy": 0.421875,
+          "gain": 0.34375
+        }
+      },
+      "original_unparsed": 174,
+      "edited_unparsed": 73,
+      "gates": {
+        "gain": true,
+        "paired_interval_positive": true,
+        "mcnemar": true,
+        "normal_preservation": true,
+        "conditional_normal_preservation": false,
+        "both_sources_nonnegative": true
+      },
+      "demonstrated": false
+    },
+    "by_source_correct": {
+      "gsm8k_test": {
+        "items": 128,
+        "original": 13,
+        "edited": 76
+      },
+      "math500_test": {
+        "items": 64,
+        "original": 5,
+        "edited": 27
+      }
+    },
+    "rescued_unparsed": 86,
+    "rescued_parsed_wrong": 0,
+    "old_correct_lost": 1,
+    "all_inputs_order_and_tokens_matched": true,
+    "all_model_runs_inference_only": true,
+    "optimizer_steps": 0
+  },
+  "parameter_changes": {
+    "stored_changed_values": 124928,
+    "actual_gpu_bf16_changed_values": 123452,
+    "original_gpu_changed_values": 0,
+    "total_text_parameters": 752393024,
+    "stored_changed_fraction": 0.00016604088025143625,
+    "layers": [
+      15,
+      19
+    ],
+    "tensor_role": "MLP down projection",
+    "selected_columns": [
+      76,
+      46
+    ],
+    "llm_chosen_strengths": [
+      2.9,
+      4.5
+    ],
+    "source_informed_host_branch": true,
+    "published_learned_vectors_imported": false,
+    "no_gradient_or_optimizer_training": true
+  },
+  "accounting": {
+    "development_successful_logical_batches": 50,
+    "development_accepted_attempts": 51,
+    "development_environment_failures": 1,
+    "independent_successful_logical_batches": 2,
+    "independent_accepted_attempts": 2,
+    "native_claude_calls": 6,
+    "native_public_tool_actions": 122,
+    "native_turn_capacity": 150,
+    "scientific_cpu_analysis_conservative_upper_bound_with_final_audit": 146,
+    "learning_proposals": 4,
+    "causal_controls": 6,
+    "null_controls": 1,
+    "not_epochs_or_internal_network_forwards": true,
+    "not_a_strict_paper_budget_matched_comparison": true
+  },
+  "normal_case_scope": {
+    "development64_originally_correct_losses": "0/5",
+    "development_normal5_problems_n4": "9->18/20 completions;0originally-correct losses",
+    "independent_originally_correct_losses": "1/18=5.5556%;failsfrozen5%limit",
+    "illustrative_language8_problems_n4": "15->18/32completions;6originally-correct losses;zero-editnull4losses",
+    "universal_preservation_demonstrated": false
+  },
+  "regression": {
+    "id": "gsm8k_test_548",
+    "official_answer": "100",
+    "original": "Correct boxed100but32768cutoff",
+    "edited": "100/40oscillation,no parseable box,32768cutoff",
+    "observed_error": "Positive loss magnitude and signed change are conflated in an early displayed plus relation. Unique parameter-level cause is not established.",
+    "preservation_threshold_not_relaxed": true
+  },
+  "rsi_scope": {
+    "current": "ExternalClaude/Codex choose explicit weight edits for Qwen, guided by observations and feedback.",
+    "qwen_self_authored_weight_editing_improvement_tested": false,
+    "correction_feedback_specific_causal_gain_demonstrated": false,
+    "new_math_knowledge_learning_demonstrated": false,
+    "supported_claim": "Fixed direct parameter changes improve clean-question mathematical answer accuracy in this frozen environment."
+  },
+  "verification": {
+    "all4native_development_checks_passed": true,
+    "native_host_final_review_approved": false,
+    "open_finding": "independent-conditional-normal-preservation",
+    "all57frozen_files_unchanged_after_test": true,
+    "software_tests": "144passed,1skipped; software tests are not model-improvement proof.",
+    "paired_confidence": 0.975
+  },
+  "next_action": {
+    "status": "Concrete proposal prepared, not executed; separate authorization required after frozen/gradedrun.",
+    "proposed_successful_batches": 10,
+    "development": 8,
+    "fresh_independent": 2,
+    "fresh_confirmation_examples": 192,
+    "second_confirmation_alpha": 0.0125,
+    "no_reselection_on_exposed192": true
+  },
+  "evidence": {
+    "independent_receipt": "independent-confirmation-receipt.json",
+    "full_independent_report": "host-confirmation/confirmation-report.json",
+    "host_audit": "independent-final-host-audit.json",
+    "native_host_review": "final-review-response.json",
+    "parameter_and_forward_trace": "research-fifty-trace.json",
+    "data_timing_clarification": "data-amendment-timing-clarification.json",
+    "correction_feedback": "post-test-correction-feedback.json",
+    "next_contract_proposal": "proposed-next-correction-study.json",
+    "post_test_frozen_integrity": "post-test-freeze-integrity.json",
+    "fixed_selection_snapshot": "final-freeze.json",
+    "generic_feedback_skill": "../../skills/weight-space-engineer/references/corrective-feedback.md"
+  }
+}

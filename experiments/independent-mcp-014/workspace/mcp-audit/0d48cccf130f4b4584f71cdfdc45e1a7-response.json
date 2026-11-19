@@ -1,0 +1,17 @@
+{
+  "name": "list_workspace_artifacts",
+  "ok": true,
+  "elapsed_seconds": 0.06102289259433746,
+  "utc": 1793852898.7294044,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 0,\n  \"offset\": 0,\n  \"files\": [],\n  \"next_offset\": null\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

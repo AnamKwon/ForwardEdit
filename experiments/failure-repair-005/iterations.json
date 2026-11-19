@@ -1,0 +1,36 @@
+[
+ {
+  "iteration": 1,
+  "candidate": "candidate-01",
+  "parent": null,
+  "target": "transformer.h.7.mlp.c_proj.weight rows0-63 cols113,157",
+  "operation": "attenuate 0.5",
+  "basis": "basis-01.json",
+  "written_before_edit": true
+ },
+ {
+  "iteration": 2,
+  "candidate": "candidate-02",
+  "parent": "candidate-01",
+  "operation": "restore col113 to original, keep col157*0.5",
+  "written_before_edit": true
+ },
+ {
+  "iteration": 3,
+  "candidate": "candidate-03",
+  "parent": "candidate-02",
+  "operation": "col157 0.5*old -> 0.75*old (damage reduction)",
+  "written_before_edit": true
+ },
+ {
+  "iteration": 4,
+  "candidate": "candidate-04",
+  "parent": null,
+  "role": "opposing_norm_matched_control (not a primary iteration)",
+  "target": "transformer.h.7.mlp.c_proj.weight rows0-63 col157",
+  "operation": "set_values new=1.25*source (delta +0.25*old, opposite sign and same L2 as candidate-03's -0.25*old)",
+  "written_before_edit": true,
+  "predictions_in": "notes.md Iteration 4",
+  "result": "gate_failed: gain +0.0231, CI [-0.0080,0.0651], LOO +0.0081, NLL +0.0015; same-sign per-prompt gains vs candidate-03 on 20 prompts, opposite on 6 -> nonspecific"
+ }
+]

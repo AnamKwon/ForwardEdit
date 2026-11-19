@@ -1,0 +1,108 @@
+{
+ "confirmation_candidate": "candidate-03",
+ "validation_eligible": false,
+ "decision": "no_gain_diagnostic",
+ "candidates": {
+  "candidate-01": {
+   "mean_repeat_gain": 0.0006934633441221232,
+   "gain_ci95": [
+    -0.02836384050682857,
+    0.029438933186240406
+   ],
+   "gain_without_largest_prompt": -0.004149261427668673,
+   "reference_nll_increase": 0.020525127447545977,
+   "reference_accuracy_change": -0.004456180887935257,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": false,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": false
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 28
+  },
+  "candidate-02": {
+   "mean_repeat_gain": -0.004810590490199015,
+   "gain_ci95": [
+    -0.0370416901861127,
+    0.02528193340332679
+   ],
+   "gain_without_largest_prompt": -0.009949893787525655,
+   "reference_nll_increase": 0.00801184554676393,
+   "reference_accuracy_change": -0.0011553061561313527,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": true,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": false
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 23
+  },
+  "candidate-03": {
+   "mean_repeat_gain": 0.014476808396739552,
+   "gain_ci95": [
+    -0.006005769103556354,
+    0.035012149990433
+   ],
+   "gain_without_largest_prompt": 0.009984048829115978,
+   "reference_nll_increase": 0.0022001336031847174,
+   "reference_accuracy_change": -0.0006601749463607809,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": true,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": true
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 13
+  },
+  "candidate-04": {
+   "role": "opposing_norm_matched_control",
+   "mean_repeat_gain": 0.02305574240900862,
+   "gain_ci95": [
+    -0.007985273800456985,
+    0.06512507001589732
+   ],
+   "gain_without_largest_prompt": 0.008073418498670175,
+   "reference_nll_increase": 0.0015431814576305491,
+   "reference_accuracy_change": 0.0003300874731804182,
+   "checks": {
+    "mean_repeat_gain": true,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": true,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": true
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 16
+  }
+ },
+ "chain": "candidate-01 (create, cols113+157 *0.5) -> candidate-02 (restore col113) -> candidate-03 (col157 0.5->0.75*old) ; control: candidate-04 (source branch, col157 1.25*old = opposite sign, norm-matched to candidate-03)",
+ "reasons": [
+  "No candidate (including control candidate-04) passed all frozen validation gates; candidate-03 kept as DIAGNOSTIC_ONLY per the predeclared rule (a control is not reselected as a repair). candidate-03 has the fewest regressed prompts (13) and the larger leave-largest-out gain; it does not repair repetition.",
+  "candidate-03 repeat gain +0.0145 < 0.02 minimum, CI95 lower -0.006 <= 0.",
+  "Dose order is not monotonic (0.5 both cols: +0.0007; 0.5 col157: -0.0048; 0.75 col157: +0.0145): consistent with greedy-trajectory noise, not a supported loop mechanism.",
+  "h7 units 113/157 were selected on 2 pairs (selection bias); held-out pair tsval-05900 had negative activations; the selective-loop-writer hypothesis is disconfirmed at generation level.",
+  "Opposing control: the opposite-sign, norm-matched col157 edit ALSO gave a positive mean gain (+0.0231, CI [-0.008,0.065], LOO +0.008, largely from tsval-02052) and ALSO raised reference NLL (+0.0015). Per-prompt gains share a sign with candidate-03 on 20 prompts vs 6 opposite. The local teacher-forced logprob effects mirror exactly, but the generation-level effect is not sign-specific: best explained as a nonspecific greedy-trajectory perturbation, not a loop-writer or wrong-sign mechanism.",
+  "Qualitative check (3 predeclared continuations per candidate, notes.md): gains come from trajectory divergence. Regressions show a loop arriving earlier (c03 tsval-17667) or a new loop forming (c04 tsval-00009, 'climbed up the tree' x3). Loops move rather than disappear."
+ ],
+ "limits": [
+  "Opposing norm-matched control (candidate-04) WAS run in the second invocation. It tested only sign at one magnitude for col157, not a matched random-direction control; specificity relative to other writers is untested.",
+  "Validation was used adaptively for 3 revisions; it is not independent.",
+  "Generated texts were inspected only for 3 predeclared prompts per candidate (03 and 04); no coherence or quality claim.",
+  "Adoption requires validation eligibility AND host heldout; this is diagnostic only.",
+  "Validation has now been used for 3 primary candidates and 1 control; it is development evidence, not independent."
+ ]
+}

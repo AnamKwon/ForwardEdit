@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.2545974552631378,
+  "utc": 1793850951.8570523,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/e598788c50a94fa58d78d5293c37f22f.json\",\n  \"sha256\": \"368a53986c6f16379fc00369bc1986b0d9cdbdf0a34cae37c5abfcd8acadba13\",\n  \"characters\": 1387,\n  \"offset\": 0,\n  \"text\": \"[{\\\"id\\\":\\\"gsm8k_train_7251\\\",\\\"tokens\\\":1839,\\\"nll\\\":0.37276806605776214,\\\"accuracy\\\":0.8852637302882002,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/bc8bdeebd15d4980b598482d48e9f132.npy\\\"},{\\\"id\\\":\\\"gsm8k_train_3643\\\",\\\"tokens\\\":3207,\\\"nll\\\":0.42656134577752053,\\\"accuracy\\\":0.8609292173370752,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/3c3c1c1a555241ae8eaa1629319d2f4b.npy\\\"},{\\\"id\\\":\\\"math_train_algebra_164\\\",\\\"tokens\\\":4095,\\\"nll\\\":0.3216231442778684,\\\"accuracy\\\":0.8881562881562881,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/9e8d0f5382c94fdeb2bf2a6ffb625085.npy\\\"},{\\\"id\\\":\\\"gsm8k_train_1506\\\",\\\"tokens\\\":4095,\\\"nll\\\":0.5270644866794312,\\\"accuracy\\\":0.8341880341880342,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/b889332b01544667b4d9d74e2ad52560.npy\\\"},{\\\"id\\\":\\\"gsm8k_train_2767\\\",\\\"tokens\\\":4095,\\\"nll\\\":0.461053958189502,\\\"accuracy\\\":0.8578754578754578,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/bb9aa0e64c30495b8128b2aaf16a0e61.npy\\\"},{\\\"id\\\":\\\"gsm8k_train_6911\\\",\\\"tokens\\\":4095,\\\"nll\\\":0.3464535914643489,\\\"accuracy\\\":0.9001221001221001,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/5a1df0144a334187b25a44a3de245adb.npy\\\"},{\\\"id\\\":\\\"gsm8k_train_2558\\\",\\\"tokens\\\":4095,\\\"nll\\\":0.5486714245489956,\\\"accuracy\\\":0.8246642246642246,\\\"logprobs_path\\\":\\\"research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/225b7c488fee4d539b2d9595b9104ecd.npy\\\"}]\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "list_workspace_artifacts",
+  "ok": true,
+  "elapsed_seconds": 0.04608362168073654,
+  "utc": 1793852862.6718946,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 2,\n  \"offset\": 0,\n  \"files\": [\n    {\n      \"path\": \"candidates/c1_L23_gate_u054/manifest.json\",\n      \"bytes\": 34376\n    },\n    {\n      \"path\": \"candidates/c1_L23_gate_u054/replacements.safetensors\",\n      \"bytes\": 14680176\n    }\n  ],\n  \"next_offset\": null\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

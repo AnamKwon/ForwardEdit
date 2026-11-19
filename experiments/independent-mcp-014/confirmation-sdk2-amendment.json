@@ -1,0 +1,25 @@
+{
+  "utc": 1793854368.725882,
+  "cause": "MCP2 ClientSession timeout expects seconds as float, not MCP1 timedelta. Initialize failed before any tool or target forward.",
+  "original_script_sha256": "22015ef2f33f82e7b47b249cf9e5d38bd896943902d615e597a146caa6df58fb",
+  "fixed_script_sha256": "a738aec4fca9a0bbb0b38c696e472b5b83a7cec1028b67304e6cd180a14de69e",
+  "exact_diff": [
+    "--- \n",
+    "+++ \n",
+    "@@ -49,3 +49,3 @@\n",
+    "  async with stdio_client(params) as streams:",
+    "-  async with ClientSession(*streams,read_timeout_seconds=timedelta(hours=6)) as session:",
+    "+  async with ClientSession(*streams,read_timeout_seconds=6*60*60) as session:",
+    "    await session.initialize()"
+  ],
+  "test_jobs_before_fix": 0,
+  "test_outcomes_seen": 0,
+  "frozen_patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd",
+  "scientific_threshold_data_parameter_changes": false,
+  "retained_failure_logs": [
+    "confirmation.stderr",
+    "confirmation.stdout",
+    "confirmation-driver-exit.json",
+    "confirmation/attempt-0-driver-end.json"
+  ]
+}

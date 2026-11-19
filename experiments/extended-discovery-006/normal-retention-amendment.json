@@ -1,0 +1,13 @@
+{
+  "type": "pre_outcome_normal_preservation_metric_correction",
+  "utc": "2026-11-04T10:45:24.292566+00:00",
+  "reason": "Overall loss fraction can hide loss of every previously correct answer when baseline accuracy is low.",
+  "unchanged": "All original frozen source/decoder/50successbudgets/validationandfinalgains/overall5%lossgates remain required.",
+  "additional_gate": "At most5%of originally correct answers may become wrong/unparsed; require nonempty original-correct population. Apply to fixed64developmentvalidation and192independenttest.",
+  "no_parameter_or_data_changes": true,
+  "before_any_completed_baseline_or_candidate": true,
+  "counterexample": "normal-retention-counterexample.json",
+  "checker": "retention-regression-check.json",
+  "control_stdout": "Conditional retention: valid preservation accepted; all-original-correct loss, excess loss, unparsed regression and empty normal population rejected.",
+  "control_exit_code": 0
+}

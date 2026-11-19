@@ -1,0 +1,17 @@
+{
+  "name": "describe_parameter",
+  "ok": true,
+  "elapsed_seconds": 0.26236627250909805,
+  "utc": 1793852919.7156525,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tensor\": \"model.layers.23.mlp.down_proj.weight\",\n  \"owner\": \"model.layers.23.mlp.down_proj\",\n  \"module_class\": \"Linear\",\n  \"shape\": [\n    1024,\n    3584\n  ],\n  \"layout\": \"out,in\",\n  \"forward_equation\": \"y = x @ W.T + bias\",\n  \"input_feature_axis\": 1,\n  \"output_feature_axis\": 0,\n  \"structural_role\": \"MLP hidden features -> residual stream; each input-feature slice writes a residual direction\",\n  \"semantic_role_status\": \"hypothesis_required\",\n  \"rows\": [\n    0,\n    1,\n    2\n  ],\n  \"columns\": [\n    20,\n    25,\n    43\n  ],\n  \"values\": [\n    [\n      0.006988525390625,\n      -0.003692626953125,\n      -0.052978515625\n    ],\n    [\n      0.005157470703125,\n      0.005828857421875,\n      0.01513671875\n    ],\n    [\n      -0.01055908203125,\n      0.004119873046875,\n      -0.000530242919921875\n    ]\n  ],\n  \"source_sha256\": \"45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5\",\n  \"candidate_dir\": null,\n  \"requires_grad\": false,\n  \"update_rule\": \"LLM supplies explicit new values; no gradients or optimizer\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

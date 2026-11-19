@@ -1,0 +1,16 @@
+{
+  "utc": 1793857404.0768292,
+  "frozen_source_and_protocol_mismatches": 0,
+  "confirmation_exactly_original_plus_three_SDK2_compatibility_replacements": true,
+  "same_original_and_frozen_candidate_hashes": true,
+  "note": "Editor ended after its final public report. No candidate write or reselection after freeze; target model inference continues through MCP.",
+  "completed_independent_batches": 2,
+  "candidate_writes_after_freeze": 0,
+  "original_checkpoint_hash_verified_now": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+  "final_confirmation_completed": true,
+  "final_confirmation_requires_grad": false,
+  "final_confirmation_optimizer_steps": 0,
+  "source_hash_matches_final_verified_checkpoint_digest": true,
+  "checker_source_mismatches": 0,
+  "final_check_utc": 1793860319.9444482
+}

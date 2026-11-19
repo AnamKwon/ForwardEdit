@@ -1,0 +1,36 @@
+{
+  "actual_models_from_turn_context": [
+    "gpt-6.1-sol"
+  ],
+  "observed_distinct_provider_response_ids": 25,
+  "user_turn_ids": 1,
+  "tokens": {
+    "input_tokens": 1816160,
+    "cached_input_tokens": 1718016,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 11310,
+    "reasoning_output_tokens": 3077,
+    "total_tokens": 1827470
+  },
+  "actual_mcp_calls": 60,
+  "api_equivalent_list_cost_usd": 0.48118960000000005,
+  "provider_reported_dollar_cost": null,
+  "cost_scope": "Calculated from actual provider response usage and published gpt-6.1-sol Standard rates; includes reasoning in output once. OAuth invoice and host conversation billing are not exposed.",
+  "pricing_source": "https://developers.openai.com/api/docs/models/gpt-6.1-sol",
+  "standard_usd_per_million": {
+    "uncached_input": 2,
+    "cached_input": 0.1,
+    "cache_write": 2.5,
+    "output": 10
+  },
+  "end": {
+    "thread_id": "01a1a9f6-231b-75d0-8fc2-965badeb0124",
+    "exit_code": 0,
+    "reason": "process_exit",
+    "utc": 1793854309.8978822,
+    "elapsed_seconds": 1467.5867746025324
+  },
+  "errors": [
+    "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in /path/to/home/.codex/config.toml."
+  ]
+}

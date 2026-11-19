@@ -1,0 +1,182 @@
+[
+  {
+    "model": "original",
+    "layer": 15,
+    "receipt": {
+      "tool": "read_tensor_slice",
+      "arguments": {
+        "checkpoint": "model/model.safetensors",
+        "tensor": "model.layers.15.mlp.down_proj.weight",
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          294,
+          1222
+        ]
+      },
+      "isError": false,
+      "result": {
+        "tensor": "model.layers.15.mlp.down_proj.weight",
+        "shape": [
+          1024,
+          3584
+        ],
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          294,
+          1222
+        ],
+        "values": [
+          [
+            -0.004058837890625,
+            0.02978515625
+          ],
+          [
+            -0.0029449462890625,
+            0.002838134765625
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "model": "edited",
+    "layer": 15,
+    "receipt": {
+      "tool": "read_tensor_slice",
+      "arguments": {
+        "checkpoint": "candidates/source-informed-l15l19-001/replacements.safetensors",
+        "tensor": "model.layers.15.mlp.down_proj.weight",
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          294,
+          1222
+        ]
+      },
+      "isError": false,
+      "result": {
+        "tensor": "model.layers.15.mlp.down_proj.weight",
+        "shape": [
+          1024,
+          3584
+        ],
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          294,
+          1222
+        ],
+        "values": [
+          [
+            -0.04525437206029892,
+            0.012674749828875065
+          ],
+          [
+            -0.0031891539692878723,
+            0.002736703958362341
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "model": "original",
+    "layer": 19,
+    "receipt": {
+      "tool": "read_tensor_slice",
+      "arguments": {
+        "checkpoint": "model/model.safetensors",
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          11,
+          585
+        ]
+      },
+      "isError": false,
+      "result": {
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "shape": [
+          1024,
+          3584
+        ],
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          11,
+          585
+        ],
+        "values": [
+          [
+            0.09326171875,
+            0.0115966796875
+          ],
+          [
+            0.005859375,
+            -0.0018463134765625
+          ]
+        ]
+      }
+    }
+  },
+  {
+    "model": "edited",
+    "layer": 19,
+    "receipt": {
+      "tool": "read_tensor_slice",
+      "arguments": {
+        "checkpoint": "candidates/source-informed-l15l19-001/replacements.safetensors",
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          11,
+          585
+        ]
+      },
+      "isError": false,
+      "result": {
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "shape": [
+          1024,
+          3584
+        ],
+        "rows": [
+          0,
+          1023
+        ],
+        "columns": [
+          11,
+          585
+        ],
+        "values": [
+          [
+            -0.07208582013845444,
+            -0.004286022391170263
+          ],
+          [
+            0.009534960612654686,
+            -0.0014932496706023812
+          ]
+        ]
+      }
+    }
+  }
+]

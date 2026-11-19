@@ -1,0 +1,100 @@
+{
+  "prior_run": "skill-edit-experiment-004; now retrospective development evidence, never independent regrading",
+  "development_repeat_gain": 0.022823836990902496,
+  "development_gain_ci95": [
+    -0.012705441437372404,
+    0.06961686455819956
+  ],
+  "largest_contributor": {
+    "id": "tsval-00888",
+    "gain": 0.5619834710743802
+  },
+  "largest_share_of_net_gain": 0.7694579784316954,
+  "gain_without_largest_prompt": 0.0054315907301451475,
+  "initial_analysis_dataset": "references-development.json",
+  "initial_mechanism_positions": [
+    {
+      "id": "tsval-08537",
+      "position": 76,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08537",
+      "position": 129,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08537",
+      "position": 167,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08537",
+      "position": 181,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08570",
+      "position": 88,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08570",
+      "position": 142,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08570",
+      "position": 160,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-08570",
+      "position": 182,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-09488",
+      "position": 41,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-09488",
+      "position": 89,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-09488",
+      "position": 114,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-09488",
+      "position": 118,
+      "completed_8gram_occurrences": 2
+    },
+    {
+      "id": "tsval-13123",
+      "position": 42,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-13123",
+      "position": 106,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-13123",
+      "position": 138,
+      "completed_8gram_occurrences": 1
+    },
+    {
+      "id": "tsval-13123",
+      "position": 161,
+      "completed_8gram_occurrences": 1
+    }
+  ],
+  "positions_with_8gram_occurrences_at_least3": 0,
+  "positions_total": 16,
+  "interpretation": "Initial semantic contrast sampled reference-text copy/fresh positions, not actual generated recurrent loops. This demonstrates target/proxy mismatch, not that the chosen head has no role. Whole-head removal and small adaptive validation left nonspecific effects and selection uncertainty."
+}

@@ -1,0 +1,809 @@
+{
+  "actual_model": "claude-opus-5-5",
+  "artifact_ref": "job-6cf6c9b78d6e21a18ed8c67722a3995e",
+  "changed_paths": [
+    "analysis-01.json",
+    "basis-01.json",
+    "candidate-01/manifest.json",
+    "candidate-01/replacements.safetensors",
+    "candidate-02/manifest.json",
+    "candidate-02/replacements.safetensors",
+    "candidate-03/manifest.json",
+    "candidate-03/replacements.safetensors",
+    "candidate-04/manifest.json",
+    "candidate-04/replacements.safetensors",
+    "decision.json",
+    "events.json",
+    "flow-01.json",
+    "flow-02.json",
+    "flow-03.json",
+    "flow-04.json",
+    "flow-05.json",
+    "iterations.json",
+    "notes.md",
+    "proposal-01.json",
+    "receipts.jsonl"
+  ],
+  "checks": [
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv/bin/python",
+        "-B",
+        "verify.py",
+        "rules"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 2,
+        "requirement_id": "rules",
+        "total": 2
+      },
+      "check_id": "check-0",
+      "check_spec_sha256": "8cfb4bfd9c8e574ce6760fd6d433dc138d63c9b3fec174221dd4e4e0593b6961",
+      "criterion": "rules",
+      "cwd": "/path/to/tmp/wsl-skill-edit-experiment-004",
+      "evidence_id": "68cdc028d3b373be57e3549edaa382c2893858b34f60ff8554f23f2ed4502200",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "12f3cc4831fe831aa09593f09e5013af8f8c5eca1f1791452d4200672d4038eb",
+      "passed": true,
+      "verification_context_sha256": "db1a2dabaa4c9908e94be7a9778422faaa6ba30d9a90909667fcee19e82dd24a"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv/bin/python",
+        "-B",
+        "verify.py",
+        "updates"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 2,
+        "requirement_id": "updates",
+        "total": 2
+      },
+      "check_id": "check-1",
+      "check_spec_sha256": "c854c378cd920c59c3455c29fa6500a4c7372aa31e5b2f4f2e555f53b8c2d02c",
+      "criterion": "updates",
+      "cwd": "/path/to/tmp/wsl-skill-edit-experiment-004",
+      "evidence_id": "a75ccf75c45c5e4bdc6ead312d8131333666722f8457df5a9d09bbf765dfff17",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "16094cbcb95d5e81a0d71cdd560bdafa056a2d9bd6a85c9450f615749f26163e",
+      "passed": true,
+      "verification_context_sha256": "db1a2dabaa4c9908e94be7a9778422faaa6ba30d9a90909667fcee19e82dd24a"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv/bin/python",
+        "-B",
+        "verify.py",
+        "method"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 2,
+        "requirement_id": "method",
+        "total": 2
+      },
+      "check_id": "check-2",
+      "check_spec_sha256": "61390282b5cefd222b32de4521eb968a4e32dbf5bcdde0748ef7178fcf85b9e3",
+      "criterion": "method",
+      "cwd": "/path/to/tmp/wsl-skill-edit-experiment-004",
+      "evidence_id": "05a788fd491dbc70835ec9699070fe490663331f8735bfe82b60a80ea00d548e",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "9c2dda5477491935c134e66cdbe51266dcfe8daee75bfa114eba7e9b414597e0",
+      "passed": true,
+      "verification_context_sha256": "db1a2dabaa4c9908e94be7a9778422faaa6ba30d9a90909667fcee19e82dd24a"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv/bin/python",
+        "-B",
+        "verify.py",
+        "evaluation"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 2,
+        "requirement_id": "evaluation",
+        "total": 2
+      },
+      "check_id": "check-3",
+      "check_spec_sha256": "f13c1569eb18490e4054a988398f11cca610d1fd4819712ec06c609f432b4cfe",
+      "criterion": "evaluation",
+      "cwd": "/path/to/tmp/wsl-skill-edit-experiment-004",
+      "evidence_id": "3d48c7cb8d79a5dd5d0d243dde39a0950d5f464132f9bba7e7f0331d7a0d5cca",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "eb6a08b7df82a65449e2ef8b13cff27e9edf1cbfb5c1eb324dab03be7f14f647",
+      "passed": true,
+      "verification_context_sha256": "db1a2dabaa4c9908e94be7a9778422faaa6ba30d9a90909667fcee19e82dd24a"
+    }
+  ],
+  "elapsed_seconds": 890.0029273033142,
+  "execution_budget": {
+    "clock_command_argv": [
+      "/path/to/home/.local/share/loop-engineering/loop-engineering",
+      "clock",
+      "--deadline-unix",
+      "1793773682.4937263"
+    ],
+    "deadline_scope": "current attempt including service verification; monotonic service timer is authoritative",
+    "deadline_unix_seconds": 1793773682.4937263,
+    "deadline_utc": "2026-11-04T06:28:02.493726208Z",
+    "includes_service_verification": true,
+    "max_budget_usd": 12,
+    "max_rounds": 2,
+    "max_rounds_scope": "host-managed worker/model invocations across this loop, including any reserved consultation; not tool calls inside one invocation",
+    "max_turns": 50,
+    "native_limit_sources": {
+      "max_budget_usd": "request_ceiling",
+      "max_turns": "request_ceiling"
+    },
+    "provider_output_accounting": "cumulative provider JSON stdout, including tool output, inline base64 images and repeated protocol representations; not model tokens or just the final answer",
+    "provider_output_limit_bytes": 2097152,
+    "started_at_unix_seconds": 1793772182.4937263,
+    "tool_call_budget": "No separate native count cap; existing wall, provider turn/dollar and individual tool limits still apply. Explicit task limits also remain binding.",
+    "wall_time_seconds": 1500
+  },
+  "final_workspace_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+  "host_review": {
+    "execution_coverage": [
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-0",
+            "declared_requirement_id": "rules"
+          }
+        ],
+        "requirement_id": "rules",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-1",
+            "declared_requirement_id": "updates"
+          }
+        ],
+        "requirement_id": "updates",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-2",
+            "declared_requirement_id": "method"
+          }
+        ],
+        "requirement_id": "method",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-3",
+            "declared_requirement_id": "evaluation"
+          }
+        ],
+        "requirement_id": "evaluation",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      }
+    ],
+    "findings": [],
+    "passed": true,
+    "reason": "Accept complete inference-only experiment and honest negative independent result, not a model-improvement certificate. All8 current native cases pass with direct requirement-bound receipts; host froze candidate03, tested64withheld stories once and rejected adoption because repetition gain/CI fail. No parameter tuning after test.",
+    "requirement_verdicts": [
+      {
+        "assessment": {
+          "method": "executed_cases",
+          "reason": "Inspected the protected assertions, actual current receipt and source artifacts, plus independent host audit. Bounded numeric/workflow evidence does not certify semantic roles or general learning.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Contract permits a negative empirical outcome; the final test failed and is reported as no_gain, while the software/parameter application assertions passed."
+        },
+        "evidence": "Native check-0 passed both original/protocol/data/implementation hash and bounded frozen-inference receipt assertions. Source unchanged; only declared direct edits, no optimizer/gradient training. Host independent64story confirmation uses same frozen source/patch/config/decoding.",
+        "execution_refs": [
+          {
+            "check_id": "check-0",
+            "evidence_id": "68cdc028d3b373be57e3549edaa382c2893858b34f60ff8554f23f2ed4502200",
+            "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e"
+          }
+        ],
+        "requirement_id": "rules",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "method": "executed_cases",
+          "reason": "Inspected the protected assertions, actual current receipt and source artifacts, plus independent host audit. Bounded numeric/workflow evidence does not certify semantic roles or general learning.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Contract permits a negative empirical outcome; the final test failed and is reported as no_gain, while the software/parameter application assertions passed."
+        },
+        "evidence": "Native check-1 passed real observed-parent cumulative revision chain and FRESH loaded-model parameter values vs saved patch. Candidate01->02->03 records actual parent hashes; final03 restores L7H15 and changes256 L5H5 out-projection values to50%source.",
+        "execution_refs": [
+          {
+            "check_id": "check-1",
+            "evidence_id": "a75ccf75c45c5e4bdc6ead312d8131333666722f8457df5a9d09bbf765dfff17",
+            "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e"
+          }
+        ],
+        "requirement_id": "updates",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "method": "executed_cases",
+          "reason": "Inspected the protected assertions, actual current receipt and source artifacts, plus independent host audit. Bounded numeric/workflow evidence does not certify semantic roles or general learning.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Contract permits a negative empirical outcome; the final test failed and is reported as no_gain, while the software/parameter application assertions passed."
+        },
+        "evidence": "Native check-2 passed ready proposal before initial write and actual post-edit internal-output observations for every candidate01..04. Initial L7H15 hypothesis was contradicted and revised. Copy/fresh contrasts and head roles remain hypotheses, not semantic circuit proof.",
+        "execution_refs": [
+          {
+            "check_id": "check-2",
+            "evidence_id": "05a788fd491dbc70835ec9699070fe490663331f8735bfe82b60a80ea00d548e",
+            "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e"
+          }
+        ],
+        "requirement_id": "method",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "method": "executed_cases",
+          "reason": "Inspected the protected assertions, actual current receipt and source artifacts, plus independent host audit. Bounded numeric/workflow evidence does not certify semantic roles or general learning.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Contract permits a negative empirical outcome; the final test failed and is reported as no_gain, while the software/parameter application assertions passed."
+        },
+        "evidence": "Native check-3 independently recomputed all4 full-validation gates and FRESH CPU reference score. Candidate03 frozen before withheld data. Host64story result repetition.0727913->.0708120,gain.001979,CI[-.029104,.032062],NLL+.006389,accuracy-.001182; adoptionfalse,no reselection. Native tests validat",
+        "execution_refs": [
+          {
+            "check_id": "check-3",
+            "evidence_id": "3d48c7cb8d79a5dd5d0d243dde39a0950d5f464132f9bba7e7f0331d7a0d5cca",
+            "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e"
+          }
+        ],
+        "requirement_id": "evaluation",
+        "status": "pass"
+      }
+    ],
+    "workspace_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b"
+  },
+  "instruction_delivery": {
+    "basis": "Composed packet identities only;exported files and hook suggestions do not automatically load skill bodies.",
+    "context": [
+      {
+        "bytes": 2705,
+        "path": "AGENTS.md",
+        "sha256": "00cfac48ed5e45159d0d4bea92342f95119582b776ff97f116536c35020e3120"
+      },
+      {
+        "bytes": 1002,
+        "path": "baseline-reference.json",
+        "sha256": "eff1d0f2a30cc24adabca3f6359ffc726ca1259b8a4b1daac3c94088e9930110"
+      },
+      {
+        "bytes": 20141,
+        "path": "baseline-summary.json",
+        "sha256": "17815fbac940d117da72fe8259ccc5191e9b5729de2490f328e1d365a481a8e7"
+      },
+      {
+        "bytes": 9249,
+        "path": "docs/PARAMETER_ANALYSIS.md",
+        "sha256": "f146445c525fff606840af619de6bf0295ef918f01cf077c268a1c75a2956baa"
+      },
+      {
+        "bytes": 2958,
+        "path": "experiment_client.py",
+        "sha256": "1a20b759f802d39fbcde7802a3e772e7f523f9f0821074a5de412ea1d7f8d6e0"
+      },
+      {
+        "bytes": 5936,
+        "path": "protocol.json",
+        "sha256": "8874c43ae66333c3176c445d3634b645f0afd8c5265f868bbd11321bc6281586"
+      },
+      {
+        "bytes": 1659,
+        "path": "request.md",
+        "sha256": "843b9dbbbee8adbae308045fe6460ca354327076bd05846db46abdfe6f2c718d"
+      },
+      {
+        "bytes": 3727,
+        "path": "skills/weight-evaluate/SKILL.md",
+        "sha256": "9a55b0e01847b0ad048ca9da261aa05472b9e785b2d53f983d4ae7b2592a0001"
+      },
+      {
+        "bytes": 4480,
+        "path": "skills/weight-space-engineer/SKILL.md",
+        "sha256": "a60fc8aea8236e9cca16fe8270993b13d7c8b3b9e05e2d8d35281038c72faf04"
+      },
+      {
+        "bytes": 6222,
+        "path": "skills/weight-space-engineer/references/analysis-playbook.md",
+        "sha256": "368ab46bf61708febd92c0f534ebee65ae5588353de6184dd4864776a0295ec8"
+      },
+      {
+        "bytes": 12181,
+        "path": "verify.py",
+        "sha256": "afea61c48658813d1477c538f0ef7399e3f41c04e447b3df998bba98c7ba0a26"
+      },
+      {
+        "bytes": 10266,
+        "path": "weight_space_lab/server.py",
+        "sha256": "ee6e3adbcaa0bbb9d091ac679191e4b02cb191a9462ed9d3b7936f4335bbf60b"
+      }
+    ],
+    "external_tool_contracts": [],
+    "guidance_modules": [],
+    "host_skills_inherited": false,
+    "packet_sha256": "02acd3d9c9ec5a766c2b0aca2ab4aac8d1210d42e66b3a78043e3ed97d8c0156",
+    "prompt_scope": "Prepared input;consultation may append context. Inspect effective_worker_prompt_sha256 when present.",
+    "prompt_sha256": "dc7f96e713baa5dd48e6f3ffc91004ec0cbb2b9215ade2f1671d3b956a706e72",
+    "semantic_application_verified": false,
+    "stage": "retained_worker_input_not_semantic_application"
+  },
+  "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e",
+  "lifecycle_hooks": {
+    "limitations": "Observational records only: no command or model was run by hooks; acceptance, scope and budgets are unchanged. Candidates are unconfirmed observations with unknown causal status, not authored lessons or global policy. Skills are host guidance, not automatically invoked.",
+    "record_count": 3,
+    "records": [
+      {
+        "declared_checks": 4,
+        "declared_uncertainties": {
+          "count": 0,
+          "ids": [],
+          "truncated": false
+        },
+        "declared_verifier_controls": 0,
+        "host_review_requirements": {
+          "count": 0,
+          "ids": [],
+          "truncated": false
+        },
+        "machine_verification_gaps": {
+          "count": 0,
+          "ids": [],
+          "truncated": false
+        },
+        "requirements": 4,
+        "sequence": 1,
+        "skills": [],
+        "source": "native_accepted_job_preflight",
+        "stage": "plan_preflight",
+        "unmapped_requirements": {
+          "count": 0,
+          "ids": [],
+          "truncated": false
+        },
+        "verification_basis": "Plan declarations, not executed coverage or semantic proof. A host-review requirement intentionally has no machine mapping; uncertainty does not remove existing checks."
+      },
+      {
+        "candidate_counts": {
+          "count": 0,
+          "retained": 0,
+          "truncated": false
+        },
+        "candidates": [],
+        "checks": {
+          "declared": 4,
+          "failed": 0,
+          "failed_ids": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          },
+          "malformed": 0,
+          "pass_basis": "bound_to_current_artifact_only",
+          "passed": 4,
+          "reported": 4,
+          "unbound": 0,
+          "unbound_reported_pass_unverified": 0
+        },
+        "execution_observation": {
+          "candidate_verification_complete": true,
+          "last_started_stage": "complete",
+          "scope_audit_error": false,
+          "scope_violation": false,
+          "source": "native_control_flow"
+        },
+        "quality": {
+          "affects_correctness_acceptance": false,
+          "status": "not_requested"
+        },
+        "sequence": 2,
+        "skills": [],
+        "source": "native_run_completion",
+        "stage": "run_completion",
+        "state": "awaiting_review",
+        "successful_control_summary": {
+          "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+          "causal_credit": "not_established",
+          "passed_checks": 4,
+          "quality_status": "not_requested",
+          "scope": "functional_checks_only"
+        }
+      },
+      {
+        "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+        "candidate_counts": {
+          "count": 0,
+          "retained": 0,
+          "truncated": false
+        },
+        "candidates": [],
+        "passed": true,
+        "sequence": 3,
+        "skills": [],
+        "source": "accepted_host_review_assertion",
+        "stage": "host_review",
+        "verdicts": {
+          "fail": 0,
+          "partial_pass": 0,
+          "pass": 4,
+          "unknown": 0
+        }
+      }
+    ],
+    "suggested_skills": []
+  },
+  "loop_id": "wsl-skill-edit-004-20261104",
+  "model_capacity_error": false,
+  "parent_job_id": "",
+  "plan": {
+    "assumptions": [
+      "New explicit user authorization follows prior closed loops",
+      "Fresh official validation split is editing-heldout, not proof of pretrained decontamination",
+      "Performance improvement is empirical, not guaranteed by changed weights"
+    ],
+    "decision_status": "ready",
+    "goal": "Empirically verify new skills/MCP on pretrained TinyStories via actual inference-only cumulative edits and one frozen independent performance test; honest negative outcome allowed.",
+    "model_evidence": "Ready metadata plus prior actual Opus MCP completions; no task-comparable heldout gain or provider superiority known.",
+    "requirements": [
+      {
+        "counterexample": "Runs optimizer or changes decoding/source/data after results",
+        "criterion": "rules",
+        "description": "Keep original/config/protocol/data and inference-only bounded MCP execution intact; no training/gradients/optimizers/numerical fitting.",
+        "id": "rules",
+        "verification": {
+          "case_ids": [
+            "source_protocol_data_intact",
+            "bounded_frozen_inference_receipts"
+          ],
+          "inputs": [
+            "protected protocol/data",
+            "actual MCP receipts"
+          ],
+          "invariant": "Keep original/config/protocol/data and inference-only bounded MCP execution intact; no training/gradients/optimizers/numerical fitting.",
+          "method": "machine",
+          "outputs": [
+            "auditable current-artifact evidence"
+          ],
+          "sources": [
+            {
+              "claim": "User explicitly forbids training and requires direct weight reasoning; GPU inference only.",
+              "path": "request.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Current authorized experiment freezes data/decoding/limits, one final diagnostic choice and criteria before any model inference.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ]
+        }
+      },
+      {
+        "counterexample": "Reports sibling edits or fake/no-op revisions as a cumulative chain",
+        "criterion": "updates",
+        "description": "Use actual direct weight edits and at least2 feedback-dependent revise_candidate children in a genuine parent chain; fresh loaded model values match saved patches.",
+        "id": "updates",
+        "verification": {
+          "case_ids": [
+            "real_parent_revision_chain",
+            "fresh_model_parameter_overlay_matches"
+          ],
+          "inputs": [
+            "source checkpoint",
+            "actual parent candidate",
+            "LLM-authored operations and feedback"
+          ],
+          "invariant": "Use actual direct weight edits and at least2 feedback-dependent revise_candidate children in a genuine parent chain; fresh loaded model values match saved patches.",
+          "method": "machine",
+          "outputs": [
+            "auditable current-artifact evidence"
+          ],
+          "sources": [
+            {
+              "claim": "User asks to verify real parameter updates and repeated correction, implemented through the new skill and revision tool.",
+              "path": "request.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Current authorized experiment freezes data/decoding/limits, one final diagnostic choice and criteria before any model inference.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ]
+        }
+      },
+      {
+        "counterexample": "Edits from weight norm alone with no proposal or post-edit forward observations",
+        "criterion": "method",
+        "description": "Ground initial edit with actual pre-analysis/proposal and re-observe internal outputs for every candidate; semantic interpretations remain hypotheses.",
+        "id": "method",
+        "verification": {
+          "case_ids": [
+            "proposal_before_initial_edit",
+            "actual_post_edit_flow_every_candidate"
+          ],
+          "inputs": [
+            "protected protocol/data",
+            "actual MCP receipts"
+          ],
+          "invariant": "Ground initial edit with actual pre-analysis/proposal and re-observe internal outputs for every candidate; semantic interpretations remain hypotheses.",
+          "method": "machine",
+          "outputs": [
+            "auditable current-artifact evidence"
+          ],
+          "sources": [
+            {
+              "claim": "User asks to read actual parameters/computation/flow and reason before editing.",
+              "path": "request.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Current authorized experiment freezes data/decoding/limits, one final diagnostic choice and criteria before any model inference.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ]
+        }
+      },
+      {
+        "counterexample": "Selects from hidden test or ignores NLL/short-output damage when reporting repetition gains",
+        "criterion": "evaluation",
+        "description": "All candidates measured on fixed full validation; metrics/gate recomputed and fresh reference measurement matches; freeze one eligible or diagnostic candidate for host-only independent confirmation.",
+        "id": "evaluation",
+        "verification": {
+          "case_ids": [
+            "all_candidate_metrics_and_gate_recomputed",
+            "fresh_reference_score_matches"
+          ],
+          "inputs": [
+            "protected protocol/data",
+            "actual MCP receipts"
+          ],
+          "invariant": "All candidates measured on fixed full validation; metrics/gate recomputed and fresh reference measurement matches; freeze one eligible or diagnostic candidate for host-only independent confirmation.",
+          "method": "machine",
+          "outputs": [
+            "full validation metrics",
+            "frozen diagnostic choice, not adoption"
+          ],
+          "sources": [
+            {
+              "claim": "User asks to verify actual improvement, not merely changed files; protocol freezes independent measurement and honest negative reporting.",
+              "path": "request.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Current authorized experiment freezes data/decoding/limits, one final diagnostic choice and criteria before any model inference.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ]
+        }
+      }
+    ],
+    "risks": [
+      "Repeat reduction can damage normal predictions/length",
+      "Local affine consistency and source inspection do not prove semantic circuits",
+      "Adaptive validation can overfit",
+      "Formal check success does not mean model improvement"
+    ],
+    "routing": {
+      "candidates": [
+        {
+          "effort": "high",
+          "evidence": "Prior actual same-model analysis and signed direct edits completed; final native failure was missing execution receipts, not access. No established independent improvement.",
+          "fit": "Provisional coupled mechanism and feedback reasoning fit",
+          "model": "opus",
+          "provider": "claude",
+          "tradeoff": "Previous experiments failed improvement gates; not a model quality ranking"
+        },
+        {
+          "effort": "high",
+          "evidence": "Prior short literal-value MCP trials completed but validation failed",
+          "fit": "Efficient bounded direct-update experiment execution",
+          "model": "sonnet",
+          "provider": "claude",
+          "tradeoff": "Less same-task multi-step evidence; no measured comparable superiority"
+        },
+        {
+          "effort": "high",
+          "evidence": "Host authored/tests tools and independent verifiers; available provider catalog",
+          "fit": "Strong integration/audit fit; genuine worker alternative",
+          "model": "gpt-6.1-sol",
+          "provider": "codex",
+          "tradeoff": "Host already performs Codex verification; keep Claude provisional analysis continuity rather than extra duplicate worker"
+        }
+      ],
+      "capabilities": [
+        "Transformer computation and signed activation analysis",
+        "Mechanistic parameter intervention",
+        "Cumulative parent/child edits",
+        "Statistical preservation and controls"
+      ],
+      "confidence": "medium",
+      "constraints": [
+        "No gradients/optimizers/numerical fitting/sweeps",
+        "MCP-only inference and updates",
+        "55workerforward,6candidates,4primary",
+        "No heldout access"
+      ],
+      "core_challenge": "Use new model computation/flow/revision skills to reason about a real pretrained model, execute genuine cumulative direct edits and preserve honest independent performance evidence",
+      "failure_impact": "False learning claim, forbidden training, or changed files not applied to inference",
+      "reconsider_when": "Unsupported hypothesis, actual tool/environment failure or fixed budget exhaustion; retain negative empirical outcome instead of forcing gain",
+      "required_tools": [
+        "read",
+        "edit",
+        "command"
+      ],
+      "verification": "Protected requirement-specific case-report checks plus host one-choice independent heldout after freeze"
+    },
+    "routing_reason": "Compare ready Claude/Codex candidates; continue Opus provisionally for mechanism reasoning while Codex host performs independent verifiers/final assessment. Prior failure largely experimental and native coverage gaps, now addressed before submission.",
+    "steps": [
+      "Read current failure evidence and actual module source/token flow",
+      "Prepare initial source-bound rationale then perform observed-parent cumulative revisions through MCP",
+      "Measure all candidates and controls on fixed validation, verify actual patches/internal outputs",
+      "Native checks bind numeric/source evidence; host freezes once and confirms one candidate on64withheld stories"
+    ],
+    "user_request": "실험을 해보고 제대로 동작하는지 제대로 파라미터 업데이트가 이루어지고 성능개선 즉 파인튜닝이 되는지도 확인해줘. Existing no-training direct-edit condition persists."
+  },
+  "progress": {
+    "artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+    "case_deltas": [],
+    "complete_requirement_review": true,
+    "guidance": "Inspect supplied checks and independent evidence; iteration count and token use do not establish reasoning quality.",
+    "iteration": null,
+    "iteration_source": "host_reported_not_independently_verified",
+    "newly_unmet_requirements": [],
+    "preservation": {
+      "at_risk_checks": 0,
+      "checks": [],
+      "checks_truncated": false,
+      "failed": 0,
+      "initial_baseline_status": "not_requested",
+      "passed": 8,
+      "source": "cumulative_executed_case_witnesses_not_semantic_proof",
+      "status": "preserved",
+      "unknown": 0,
+      "unmeasured_behavior": "unknown"
+    },
+    "provider_counters": {
+      "actual_model": "claude-opus-5-5",
+      "cache_creation_input_tokens": 103908,
+      "cache_read_input_tokens": 2715621,
+      "cost_estimate_usd": 2.1035202,
+      "effort": "high",
+      "input_tokens": 68,
+      "output_tokens": 36443,
+      "provider": "claude",
+      "reasoning_field": "usage.output_tokens_details.thinking_tokens",
+      "reasoning_tokens": 9519,
+      "reasoning_tokens_available": true,
+      "source": "provider_reported_not_reasoning_quality"
+    },
+    "requirements_source": "host_review_not_semantic_proof",
+    "resolved_requirements": [],
+    "semantic_plateau": false,
+    "tracking_enabled": true,
+    "unresolved_requirements": [],
+    "verified_partial_progress": false
+  },
+  "provider_elapsed_seconds": 862.433121891,
+  "provider_error": {},
+  "provider_ok": true,
+  "provider_status": "success",
+  "provider_wall_time_limit_reached": false,
+  "quality": {
+    "affects_correctness_acceptance": false,
+    "assessment_artifact_sha256": "119f536b64bb70d7b9cc531af0cc798b616f6c19572fbc6dffd07cea5ba0dd9b",
+    "assessment_source": "host_review_not_independent_proof",
+    "assessments": [
+      {
+        "dimension": "verification",
+        "status": "pass",
+        "summary": "8native current cases passed; separate host64story paired confirmation fails improvement gate. Valid/invalid local verifier controls and exact parent/source/patch audit retained."
+      },
+      {
+        "dimension": "performance",
+        "status": "concern",
+        "summary": "Development repetition gain2.28pp shrank to heldout0.20pp with95%CI spanning0; normal NLL+.00639 and26/64 stories had more repetition. No adoption or fine-tuning-success claim."
+      }
+    ],
+    "checks": [],
+    "source": null,
+    "status": "not_requested"
+  },
+  "reason": "host review: Accept complete inference-only experiment and honest negative independent result, not a model-improvement certificate. All8 current native cases pass with direct requirement-bound receipts; host froze candidate03, tested64withheld stories once and rejected adoption because repetition gain/CI fail. No parameter tuning after test.",
+  "requested_model": "opus",
+  "requirements_transport_usage": {
+    "accounting": "Requirement-section JSON bytes, not model tokens or cost",
+    "compacted": true,
+    "description_references": 4,
+    "full_section_bytes": 4429,
+    "requirements_count": 4,
+    "saved_bytes": 469,
+    "shared_fields": [
+      "method"
+    ],
+    "worker_section_bytes": 3960
+  },
+  "runtime_version": "0.6.76",
+  "scope_violations": [],
+  "state": "succeeded",
+  "summary": "I froze candidate-03 for the host's one-time test, and it is eligible: it passed all the fixed development gates on full validation, but only by a small margin. Whether it really improves anything is still unknown until that independent test runs. All four declared self-checks pass (8/8 cases, exit 0), but they are my own checks, not acceptance.\n\n**What I did**\n1. **Finding a target.** On the original model, I compared 16 \"copy\" positions (where the story repeats an earlier word pair and its continuation) with 16 nearby fresh positions, in four discovery stories whose baseline generations loop. Two attention heads had consistently larger output at copy positions: layer 5 head 5 and layer 7 head 15. A third looked strong too, but only because of two outliers.\n2. **Before the first edit.** The context analysis and edit proposal came back `ready_for_causal_probe`. The proposal's limit on how much the edit may change normal positions (0.02) was declared after I had seen the local numbers. It is reasoned as about 20% of the module's typical output size, but it wasn't fixed in advance.\n3. **Edits.** These form a genuine chain of revisions, each based on the previous result:\n\n| Candidate ",
+  "text_truncated": true,
+  "timing_source": "execution_finished",
+  "tool_execution": {
+    "claims_certified": false,
+    "completed_actions": 34,
+    "dropped_observations": 0,
+    "failed_actions": 0,
+    "limitation": "No arguments, outputs or model reasoning included. Missing events leave claims unconfirmed; counts are not quality or progress. Sandbox metadata is provider-reported, not a connectivity probe.",
+    "pending_actions": 0,
+    "recent_failures": [],
+    "recorded_actions": 34,
+    "reported_network_access": null,
+    "reported_sandbox_type": "",
+    "semantic_acceptance": false,
+    "source": "retained_public_provider_events"
+  },
+  "verification_index_usage": {
+    "accounting": "JSON bytes for the verification index only; not model tokens or total prompt/cost savings",
+    "declared_commands": 4,
+    "encoded_bytes": 1467,
+    "included_commands": 4,
+    "limit_bytes": 4096,
+    "omitted_commands": 0
+  },
+  "verified": false
+}

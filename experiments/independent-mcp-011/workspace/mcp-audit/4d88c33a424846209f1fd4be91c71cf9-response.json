@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.6043610721826553,
+  "utc": 1793850697.5520015,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/ctx_base_A.json\",\n  \"sha256\": \"0bd59e80de37bc8e73108ef926c84e0d62d5bcc0dfd460754bc43c1aa2880337\",\n  \"characters\": 390073,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"name\\\": \\\"actual-generated-prefix-contexts\\\",\\n  \\\"version\\\": \\\"1\\\",\\n  \\\"splits\\\": {\\n    \\\"validation\\\": [\\n      {\\n        \\\"id\\\": \\\"gsm8k_train_7251\\\",\\n        \\\"tokens\\\": [\\n          248045,\\n          846,\\n          198,\\n          37853,\\n          20772,\\n          29772,\\n          264,\\n          84493,\\n          364,\\n          393,\\n          18,\\n          15,\\n          11,\\n          15,\\n          15,\\n          15,\\n          321,\\n          449,\\n          37391,\\n          364,\\n          10598,\\n          430,\\n          1691,\\n          13,\\n          1368,\\n          1024,\\n          11779,\\n          369,\\n     \"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

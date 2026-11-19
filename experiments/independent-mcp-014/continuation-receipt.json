@@ -1,0 +1,9 @@
+{
+  "utc": 1793852837.2928412,
+  "cloned_workspace": "/path/to/runs/independent-mcp-013",
+  "same_5_completed_jobs": true,
+  "neural_values_selected_by_host": false,
+  "setup_fix": "Apply existing explicit user authorization to this registered MCP server through its documented per-server policy; no global permission widening",
+  "remaining_responses": 34,
+  "remaining_api_equivalent_usd": 13.4798408
+}

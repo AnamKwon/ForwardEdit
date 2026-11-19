@@ -1,0 +1,246 @@
+{
+  "mode": "gradient_assisted_edit",
+  "min_nll_gain": 0.0001,
+  "max_accuracy_drop": 0.01,
+  "baseline": {
+    "discovery": {
+      "examples": 12,
+      "tokens": 319,
+      "nll": 2.4548630489040355,
+      "accuracy": 0.4169278996865204
+    },
+    "validation": {
+      "examples": 12,
+      "tokens": 306,
+      "nll": 2.9254278648124963,
+      "accuracy": 0.38562091503267976
+    }
+  },
+  "rows": [
+    {
+      "index": 0,
+      "gains": {
+        "discovery": 0.021741998529071882,
+        "validation": 0.01577485458837602
+      },
+      "validation_accuracy_change": 0.01307189542483661,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16376,
+        "changed_fraction": 0.004371615041601887,
+        "tensors": [
+          {
+            "tensor": "transformer.h.6.mlp.c_proj.weight",
+            "changed_parameters": 16376,
+            "relative_l2": 0.0009999999841811638,
+            "max_absolute_delta": 0.00011022761464118958
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.4331210503749636,
+          "accuracy": 0.4231974921630094
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.9096530102241203,
+          "accuracy": 0.39869281045751637
+        }
+      }
+    },
+    {
+      "index": 1,
+      "gains": {
+        "discovery": 0.057603571149067445,
+        "validation": 0.040299864956164555
+      },
+      "validation_accuracy_change": 0.01307189542483661,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16379,
+        "changed_fraction": 0.004372415899267055,
+        "tensors": [
+          {
+            "tensor": "transformer.h.6.mlp.c_proj.weight",
+            "changed_parameters": 16379,
+            "relative_l2": 0.0030000001998000724,
+            "max_absolute_delta": 0.0003306828439235687
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.397259477754968,
+          "accuracy": 0.44200626959247646
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.8851279998563317,
+          "accuracy": 0.39869281045751637
+        }
+      }
+    },
+    {
+      "index": 2,
+      "gains": {
+        "discovery": 0.11178645544748322,
+        "validation": 0.058974520069717595
+      },
+      "validation_accuracy_change": -0.0032679738562091942,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16383,
+        "changed_fraction": 0.004373483709487281,
+        "tensors": [
+          {
+            "tensor": "transformer.h.6.mlp.c_proj.weight",
+            "changed_parameters": 16383,
+            "relative_l2": 0.010000000081733379,
+            "max_absolute_delta": 0.0011022761464118958
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.3430765934565523,
+          "accuracy": 0.4702194357366771
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.8664533447427787,
+          "accuracy": 0.38235294117647056
+        }
+      }
+    },
+    {
+      "index": 3,
+      "gains": {
+        "discovery": 0.02067480894840834,
+        "validation": 0.016927590656964142
+      },
+      "validation_accuracy_change": 0.009803921568627416,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16384,
+        "changed_fraction": 0.004373750662042337,
+        "tensors": [
+          {
+            "tensor": "transformer.h.7.mlp.c_proj.weight",
+            "changed_parameters": 16384,
+            "relative_l2": 0.001000000159622461,
+            "max_absolute_delta": 0.0001851338893175125
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.434188239955627,
+          "accuracy": 0.438871473354232
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.908500274155532,
+          "accuracy": 0.3954248366013072
+        }
+      }
+    },
+    {
+      "index": 4,
+      "gains": {
+        "discovery": 0.05266843017487233,
+        "validation": 0.042048670234652974
+      },
+      "validation_accuracy_change": 0.0,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16384,
+        "changed_fraction": 0.004373750662042337,
+        "tensors": [
+          {
+            "tensor": "transformer.h.7.mlp.c_proj.weight",
+            "changed_parameters": 16384,
+            "relative_l2": 0.003000000233029094,
+            "max_absolute_delta": 0.0005553998053073883
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.402194618729163,
+          "accuracy": 0.45454545454545453
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.8833791945778433,
+          "accuracy": 0.38562091503267976
+        }
+      }
+    },
+    {
+      "index": 5,
+      "gains": {
+        "discovery": 0.08622810035620132,
+        "validation": 0.05397138984984373
+      },
+      "validation_accuracy_change": 0.01633986928104575,
+      "edit": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "total_parameters": 3745984,
+        "changed_parameters": 16384,
+        "changed_fraction": 0.004373750662042337,
+        "tensors": [
+          {
+            "tensor": "transformer.h.7.mlp.c_proj.weight",
+            "changed_parameters": 16384,
+            "relative_l2": 0.010000000087325099,
+            "max_absolute_delta": 0.0018513333052396774
+          }
+        ],
+        "status": "unevaluated"
+      },
+      "metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.368634948547834,
+          "accuracy": 0.4482758620689655
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.8714564749626525,
+          "accuracy": 0.4019607843137255
+        }
+      }
+    }
+  ],
+  "selected_index": 2,
+  "heldout_evaluated": false,
+  "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1"
+}

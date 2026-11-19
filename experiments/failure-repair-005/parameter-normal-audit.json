@@ -1,0 +1,465 @@
+{
+  "method": "Offline source-bound patch recomputation and per-prompt normal-NLL audit; no inference or update.",
+  "candidates": {
+    "candidate-01": {
+      "parent": null,
+      "changed_parameters": 128,
+      "lineage_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": null,
+        "parent_patch_sha256": null,
+        "candidate_dir": "candidate-01",
+        "patch_sha256": "4fee55bb77cdf46aac64af8c5ac7f7d4e6b569f349fbf6d7f6baf5fb980fc54f",
+        "incremental_changed": 128,
+        "net_changed": 128,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 0,
+        "new_changes": 128,
+        "tensors": {
+          "transformer.h.7.mlp.c_proj.weight": {
+            "incremental_changed": 128,
+            "net_changed": 128,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 0,
+            "restored_to_original": 0,
+            "new_changes": 128,
+            "incremental_l2": 0.11046371623210535,
+            "incremental_max_abs": 0.0278460755944252,
+            "examples": [
+              {
+                "row": 0,
+                "column": 113,
+                "original": 0.023803943768143654,
+                "parent": 0.023803943768143654,
+                "child": 0.011901971884071827
+              },
+              {
+                "row": 0,
+                "column": 157,
+                "original": 0.033855754882097244,
+                "parent": 0.033855754882097244,
+                "child": 0.016927877441048622
+              },
+              {
+                "row": 1,
+                "column": 113,
+                "original": -0.005765032488852739,
+                "parent": -0.005765032488852739,
+                "child": -0.0028825162444263697
+              },
+              {
+                "row": 1,
+                "column": 157,
+                "original": -0.035840485244989395,
+                "parent": -0.035840485244989395,
+                "child": -0.017920242622494698
+              },
+              {
+                "row": 2,
+                "column": 113,
+                "original": 0.010943878442049026,
+                "parent": 0.010943878442049026,
+                "child": 0.005471939221024513
+              },
+              {
+                "row": 2,
+                "column": 157,
+                "original": 0.020051389932632446,
+                "parent": 0.020051389932632446,
+                "child": 0.010025694966316223
+              },
+              {
+                "row": 3,
+                "column": 113,
+                "original": -0.010261762887239456,
+                "parent": -0.010261762887239456,
+                "child": -0.005130881443619728
+              },
+              {
+                "row": 3,
+                "column": 157,
+                "original": 0.017504842951893806,
+                "parent": 0.017504842951893806,
+                "child": 0.008752421475946903
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      },
+      "reference_nll_increase": 0.020525127447545977,
+      "reference_accuracy_change": -0.004456180887935257,
+      "reference_examples_nll_worse": 61,
+      "reference_examples_nll_better": 3,
+      "worst_reference_examples": [
+        {
+          "id": "tsval-09423",
+          "nll_change": 0.06982711932311236
+        },
+        {
+          "id": "tsval-20619",
+          "nll_change": 0.0633424991713949
+        },
+        {
+          "id": "tsval-00307",
+          "nll_change": 0.04894179783272845
+        },
+        {
+          "id": "tsval-17667",
+          "nll_change": 0.04677882688768431
+        },
+        {
+          "id": "tsval-01191",
+          "nll_change": 0.04649498096493243
+        }
+      ]
+    },
+    "candidate-02": {
+      "parent": "candidate-01",
+      "changed_parameters": 64,
+      "lineage_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": "candidate-01",
+        "parent_patch_sha256": "4fee55bb77cdf46aac64af8c5ac7f7d4e6b569f349fbf6d7f6baf5fb980fc54f",
+        "candidate_dir": "candidate-02",
+        "patch_sha256": "8512606c1bd90ca8a88099e413ed2fd1066b27603640a1df09ef810f1bcd6dda",
+        "incremental_changed": 64,
+        "net_changed": 64,
+        "retained_parent_changes": 64,
+        "revised_parent_changes": 0,
+        "restored_to_original": 64,
+        "new_changes": 0,
+        "tensors": {
+          "transformer.h.7.mlp.c_proj.weight": {
+            "incremental_changed": 64,
+            "net_changed": 64,
+            "retained_parent_changes": 64,
+            "revised_parent_changes": 0,
+            "restored_to_original": 64,
+            "new_changes": 0,
+            "incremental_l2": 0.07624687194736869,
+            "incremental_max_abs": 0.02075670287013054,
+            "examples": [
+              {
+                "row": 0,
+                "column": 113,
+                "original": 0.023803943768143654,
+                "parent": 0.011901971884071827,
+                "child": 0.023803943768143654
+              },
+              {
+                "row": 1,
+                "column": 113,
+                "original": -0.005765032488852739,
+                "parent": -0.0028825162444263697,
+                "child": -0.005765032488852739
+              },
+              {
+                "row": 2,
+                "column": 113,
+                "original": 0.010943878442049026,
+                "parent": 0.005471939221024513,
+                "child": 0.010943878442049026
+              },
+              {
+                "row": 3,
+                "column": 113,
+                "original": -0.010261762887239456,
+                "parent": -0.005130881443619728,
+                "child": -0.010261762887239456
+              },
+              {
+                "row": 4,
+                "column": 113,
+                "original": 0.0014512448105961084,
+                "parent": 0.0007256224052980542,
+                "child": 0.0014512448105961084
+              },
+              {
+                "row": 5,
+                "column": 113,
+                "original": -0.002515283180400729,
+                "parent": -0.0012576415902003646,
+                "child": -0.002515283180400729
+              },
+              {
+                "row": 6,
+                "column": 113,
+                "original": 0.013318703509867191,
+                "parent": 0.006659351754933596,
+                "child": 0.013318703509867191
+              },
+              {
+                "row": 7,
+                "column": 113,
+                "original": 0.006590200122445822,
+                "parent": 0.003295100061222911,
+                "child": 0.006590200122445822
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      },
+      "reference_nll_increase": 0.00801184554676393,
+      "reference_accuracy_change": -0.0011553061561313527,
+      "reference_examples_nll_worse": 52,
+      "reference_examples_nll_better": 12,
+      "worst_reference_examples": [
+        {
+          "id": "tsval-09423",
+          "nll_change": 0.035278547144407923
+        },
+        {
+          "id": "tsval-13579",
+          "nll_change": 0.02568550926144253
+        },
+        {
+          "id": "tsval-04434",
+          "nll_change": 0.02246357795564613
+        },
+        {
+          "id": "tsval-04998",
+          "nll_change": 0.021683160104313703
+        },
+        {
+          "id": "tsval-13358",
+          "nll_change": 0.02064299043420359
+        }
+      ]
+    },
+    "candidate-03": {
+      "parent": "candidate-02",
+      "changed_parameters": 64,
+      "lineage_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": "candidate-02",
+        "parent_patch_sha256": "8512606c1bd90ca8a88099e413ed2fd1066b27603640a1df09ef810f1bcd6dda",
+        "candidate_dir": "candidate-03",
+        "patch_sha256": "4c6d5224d44a0969715939ada4ee8cfcdcfc4bd68a4721831fa59056f1b977ba",
+        "incremental_changed": 64,
+        "net_changed": 64,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 64,
+        "restored_to_original": 0,
+        "new_changes": 0,
+        "tensors": {
+          "transformer.h.7.mlp.c_proj.weight": {
+            "incremental_changed": 64,
+            "net_changed": 64,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 64,
+            "restored_to_original": 0,
+            "new_changes": 0,
+            "incremental_l2": 0.039964507468067685,
+            "incremental_max_abs": 0.0139230377972126,
+            "examples": [
+              {
+                "row": 0,
+                "column": 157,
+                "original": 0.033855754882097244,
+                "parent": 0.016927877441048622,
+                "child": 0.025391817092895508
+              },
+              {
+                "row": 1,
+                "column": 157,
+                "original": -0.035840485244989395,
+                "parent": -0.017920242622494698,
+                "child": -0.02688036486506462
+              },
+              {
+                "row": 2,
+                "column": 157,
+                "original": 0.020051389932632446,
+                "parent": 0.010025694966316223,
+                "child": 0.015038542449474335
+              },
+              {
+                "row": 3,
+                "column": 157,
+                "original": 0.017504842951893806,
+                "parent": 0.008752421475946903,
+                "child": 0.013128632679581642
+              },
+              {
+                "row": 4,
+                "column": 157,
+                "original": -0.021341443061828613,
+                "parent": -0.010670721530914307,
+                "child": -0.01600608229637146
+              },
+              {
+                "row": 5,
+                "column": 157,
+                "original": 0.003587194951251149,
+                "parent": 0.0017935974756255746,
+                "child": 0.002690396271646023
+              },
+              {
+                "row": 6,
+                "column": 157,
+                "original": -0.014518206007778645,
+                "parent": -0.007259103003889322,
+                "child": -0.010888654738664627
+              },
+              {
+                "row": 7,
+                "column": 157,
+                "original": -0.0556921511888504,
+                "parent": -0.0278460755944252,
+                "child": -0.0417691133916378
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      },
+      "reference_nll_increase": 0.0022001336031847174,
+      "reference_accuracy_change": -0.0006601749463607809,
+      "reference_examples_nll_worse": 43,
+      "reference_examples_nll_better": 21,
+      "worst_reference_examples": [
+        {
+          "id": "tsval-09423",
+          "nll_change": 0.015609991663160905
+        },
+        {
+          "id": "tsval-13579",
+          "nll_change": 0.010728492630616149
+        },
+        {
+          "id": "tsval-13358",
+          "nll_change": 0.008587335976621313
+        },
+        {
+          "id": "tsval-04998",
+          "nll_change": 0.00854412678331995
+        },
+        {
+          "id": "tsval-01191",
+          "nll_change": 0.00805275456740806
+        }
+      ]
+    },
+    "candidate-04": {
+      "parent": null,
+      "changed_parameters": 64,
+      "lineage_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": null,
+        "parent_patch_sha256": null,
+        "candidate_dir": "candidate-04",
+        "patch_sha256": "655877e15614fa12720092644c55a95d3b6fdd8c327e109b8ba6bd849b2ce41b",
+        "incremental_changed": 64,
+        "net_changed": 64,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 0,
+        "new_changes": 64,
+        "tensors": {
+          "transformer.h.7.mlp.c_proj.weight": {
+            "incremental_changed": 64,
+            "net_changed": 64,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 0,
+            "restored_to_original": 0,
+            "new_changes": 64,
+            "incremental_l2": 0.03996450442761694,
+            "incremental_max_abs": 0.013923034071922302,
+            "examples": [
+              {
+                "row": 0,
+                "column": 157,
+                "original": 0.033855754882097244,
+                "parent": 0.033855754882097244,
+                "child": 0.04231969267129898
+              },
+              {
+                "row": 1,
+                "column": 157,
+                "original": -0.035840485244989395,
+                "parent": -0.035840485244989395,
+                "child": -0.04480060562491417
+              },
+              {
+                "row": 2,
+                "column": 157,
+                "original": 0.020051389932632446,
+                "parent": 0.020051389932632446,
+                "child": 0.025064237415790558
+              },
+              {
+                "row": 3,
+                "column": 157,
+                "original": 0.017504842951893806,
+                "parent": 0.017504842951893806,
+                "child": 0.02188105322420597
+              },
+              {
+                "row": 4,
+                "column": 157,
+                "original": -0.021341443061828613,
+                "parent": -0.021341443061828613,
+                "child": -0.026676803827285767
+              },
+              {
+                "row": 5,
+                "column": 157,
+                "original": 0.003587194951251149,
+                "parent": 0.003587194951251149,
+                "child": 0.0044839936308562756
+              },
+              {
+                "row": 6,
+                "column": 157,
+                "original": -0.014518206007778645,
+                "parent": -0.014518206007778645,
+                "child": -0.018147757276892662
+              },
+              {
+                "row": 7,
+                "column": 157,
+                "original": -0.0556921511888504,
+                "parent": -0.0556921511888504,
+                "child": -0.0696151852607727
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      },
+      "reference_nll_increase": 0.0015431814576305491,
+      "reference_accuracy_change": 0.0003300874731804182,
+      "reference_examples_nll_worse": 41,
+      "reference_examples_nll_better": 23,
+      "worst_reference_examples": [
+        {
+          "id": "tsval-00009",
+          "nll_change": 0.010253084924545908
+        },
+        {
+          "id": "tsval-14655",
+          "nll_change": 0.008258811374220354
+        },
+        {
+          "id": "tsval-21133",
+          "nll_change": 0.00799700390435154
+        },
+        {
+          "id": "tsval-01393",
+          "nll_change": 0.007802428365402125
+        },
+        {
+          "id": "tsval-20845",
+          "nll_change": 0.007437915893429459
+        }
+      ]
+    }
+  }
+}

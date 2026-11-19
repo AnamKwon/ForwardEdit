@@ -1,0 +1,86 @@
+[
+  {
+    "id": "generated-failure-versus-copy-proxy",
+    "revision": 1,
+    "status": "scoped",
+    "trigger": "A direct weight edit targets generated repetition but its mechanism evidence comes from teacher-forced reference-copy positions.",
+    "scope": "Inference-only generative failure analysis; no universal target layer, neuron or strength.",
+    "studies": [
+      "004 retrospective development audit",
+      "005 fresh discovery/development intervention"
+    ],
+    "observed": "004first16failure positions had no completing8gram>=3. Development gain .022824 hadCI[-.012705,.069617],77%netgain fromoneprompt.005uses actualgenerated recurring contexts; even then selectedneurons didnottransfer consistently.",
+    "mechanism": "Proxy mismatch is reproduced; full cause of unsuccessful generalization remains uncertain.",
+    "cause_status": "reproduced_input_proxy_mismatch; broader causal role unconfirmed",
+    "discriminator": "Inspect exact token IDs at declared positions; require observed recurrence excludingEOS, match prompt/absoluteposition. Valid true recurrence accepted; two-occurrence, shortbigram, EOS-tail and holdout/promptmismatch controls rejected.",
+    "opposing_control": "005opposite-sign matched intervention also reduced meanrepetition butCIspanned0 andnormalNLLworsened; local semantic-writer inference is unsupported.",
+    "inspection_direction": "Use actual target-failure trajectories and separate selection contexts from challenge contexts. Inspect context-level signed effects, preserve uncertainty iftheyconflict.",
+    "limits": [
+      "Normal reference is not semantically equivalent to generated text.",
+      "Distinct context counts do not establish statistical independence.",
+      "No general model-improvement method validated."
+    ],
+    "validation": "tests/test_contexts.py actualtoken controls passed; updatedskill structurepassed. Skill behavioral transfer to another unseenmodel/task untested.",
+    "disposition": "Narrow additions to existing diagnosis/analysis guidance; no benchmark-specific preferred component.",
+    "evidence": [
+      {
+        "path": "runs/failure-repair-005/retrospective-diagnosis.json",
+        "sha256": "0046112ff681a5fb542e51069ada5a68abd73c43a8781e8f01d9361455fd0e36",
+        "role": "retrospective host recomputation",
+        "claim": "Target/proxy mismatch and concentration observed."
+      },
+      {
+        "path": "runs/failure-repair-005/observed-contexts.json",
+        "sha256": "f2bcd7e9e47680835b8669fe3fdea67ee18a9ab7172969c9e588df97581e439e",
+        "role": "actual MCP discovery context artifact",
+        "claim": "Actual recurrence witnesses with samepositionreference."
+      },
+      {
+        "path": "runs/failure-repair-005/notes.md",
+        "sha256": "2138e7289f34335b780823fa8959aab6ce953569f0f097fa90546f2076ba972c",
+        "role": "development intervention observations, not causal authority",
+        "claim": "Opposite control, contrary signed contexts and qualitative regressions retained."
+      }
+    ]
+  },
+  {
+    "id": "context-units-and-uncertain-small-development-gain",
+    "revision": 1,
+    "status": "scoped",
+    "trigger": "Several adjacent token positions or duplicated IDlabels are presented as broad evidence; small validationmean improves under adaptive editing.",
+    "scope": "Report actual context units and uncertainty; optional concentration guard fixed before data, not a universal numericalthreshold.",
+    "observed": "005firstneuronselection used8positionsfrom2prompts; otherprompts contradicted sign. Opposite perturbations both gave positive meanrepetition butCIincluded0; referenceNLL increased inbothdirections.",
+    "mechanism": "Pseudoreplication/selection bias and greedytrajectory sensitivity are plausible; exact broad circuit cause is not established.",
+    "cause_status": "context selection units directly observed; sensitivity interpretation provisional",
+    "discriminator": "Group identical full token-sequence pairs and positionpairs before contextmeans. Relabelled identicalsequences remain1context/2positions despite4observationrows. Distributed improvement control passes; sole-promptgain control fails predeclared leave-largest-outguard.",
+    "opposing_control": "Bothfinite signs and realtext checks retained. Confidence0crossing blocks positive selection despitepointgain. Valid distributedimprovement remainsallowed.",
+    "inspection_direction": "Read context_evidence andgain_ci95, not justrowcounts/checkbooleans; compare sameinput localdelta, actualdownstream and actualgeneratedtext separately.",
+    "limits": [
+      "Context grouping and metrics code do not automatically improve a model.",
+      "ValidationCI is adaptive; independentfrozen confirmation stillrequired.",
+      "No blind strengthsweep or numericalgradient inference is authorized."
+    ],
+    "validation": "95tests passed including groupingaliases and validdistributed/concentratedopposingcontrols. New guidance itself has not undergone independentbehavioraltransfer evaluation.",
+    "disposition": "Update existing analysisplaybook/evaluationskill; retainrawstudyoutside deployedskill.",
+    "evidence": [
+      {
+        "path": "tests/test_parameter_analysis.py",
+        "sha256": "758e794389cd099197f485d216b273e92d2c273cf7869be7ddd2d9dac787a18b",
+        "role": "executed code fixture",
+        "claim": "Duplicate tokensequence IDs/positions cannotinflate distinct context summary."
+      },
+      {
+        "path": "tests/test_generation_metrics.py",
+        "sha256": "b9baa4376e6dff039cd4b10d8b77b3f59b8cd0153f13640b40e4b1edacc9be33",
+        "role": "executed valid and minimallyinvalid gatecontrols",
+        "claim": "Distributedgain accepted, identity/damage/short/singlecontributor failures distinguished."
+      },
+      {
+        "path": "runs/failure-repair-005/parameter-normal-audit.json",
+        "sha256": "00cad5682c265b31eb14d49e0a5e7a74ca1e0f9d91d203932cdc2e5af7e46846",
+        "role": "postfreeze supplemental development audit",
+        "claim": "NormalNLLdamage counts61/52/43/41outof64, not word-errorcounts."
+      }
+    ]
+  }
+]

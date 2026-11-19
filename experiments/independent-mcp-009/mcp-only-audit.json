@@ -1,0 +1,234 @@
+{
+  "registered_mcp_servers": [
+    {
+      "name": "weightspace",
+      "status": "connected",
+      "source": "dynamic"
+    }
+  ],
+  "available_tools": [
+    "mcp__weightspace__analyze_matrix_geometry",
+    "mcp__weightspace__array_compute",
+    "mcp__weightspace__compare_candidate_parameters",
+    "mcp__weightspace__create_candidate",
+    "mcp__weightspace__create_candidate_from_arrays",
+    "mcp__weightspace__describe_model_structure",
+    "mcp__weightspace__describe_parameter",
+    "mcp__weightspace__development_examples",
+    "mcp__weightspace__experiment_info",
+    "mcp__weightspace__forward_and_wait",
+    "mcp__weightspace__freeze_candidate",
+    "mcp__weightspace__generation_window",
+    "mcp__weightspace__inspect_checkpoint",
+    "mcp__weightspace__inspect_module_computation",
+    "mcp__weightspace__prepare_edit_from_arrays",
+    "mcp__weightspace__preview_edit",
+    "mcp__weightspace__read_artifact",
+    "mcp__weightspace__read_guidance",
+    "mcp__weightspace__read_parameter_entries",
+    "mcp__weightspace__read_tensor_slice",
+    "mcp__weightspace__record_observation",
+    "mcp__weightspace__research_export_tensor",
+    "mcp__weightspace__research_forward",
+    "mcp__weightspace__research_make_contexts",
+    "mcp__weightspace__research_prepare_edit",
+    "mcp__weightspace__research_read_array",
+    "mcp__weightspace__research_read_generations",
+    "mcp__weightspace__research_result",
+    "mcp__weightspace__research_status",
+    "mcp__weightspace__revise_candidate"
+  ],
+  "available_tools_only_weightspace": true,
+  "actual_tool_calls_only_weightspace": true,
+  "loop_engineering_registered": false,
+  "skill_reads": [
+    {
+      "path": "skills/weight-space-mcp-only/SKILL.md"
+    },
+    {
+      "path": "skills/weight-space-engineer/SKILL.md"
+    },
+    {
+      "path": "skills/weight-space-engineer/references/research-tools.md"
+    },
+    {
+      "path": "docs/PARAMETER_ANALYSIS.md"
+    },
+    {
+      "path": "skills/weight-evaluate/SKILL.md"
+    },
+    {
+      "path": "skills/weight-space-engineer/references/analysis-playbook.md"
+    },
+    {
+      "path": "skills/weight-space-mcp-only/references/array-operations.md"
+    },
+    {
+      "path": "skills/weight-evaluate/references/evaluation-controls.md"
+    },
+    {
+      "path": "docs/INFERENCE_ONLY_CONTRACT.md"
+    }
+  ],
+  "tool_calls": [
+    {
+      "id": "toolu_01EMYwZMiTB4oyvnkTGm2JtP",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-space-mcp-only/SKILL.md"
+      }
+    },
+    {
+      "id": "toolu_01YRVS3Txi7hAVkSQmqnErpf",
+      "name": "mcp__weightspace__experiment_info",
+      "input": {}
+    },
+    {
+      "id": "toolu_01BDbjtHahvSiNiYYgEWT1pU",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-space-engineer/SKILL.md"
+      }
+    },
+    {
+      "id": "toolu_01KjZSXhctqo4N7W2xuQxn3r",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-space-engineer/references/research-tools.md"
+      }
+    },
+    {
+      "id": "toolu_01UfqaGZoUEY1QYFSC5Sk7ad",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "docs/PARAMETER_ANALYSIS.md"
+      }
+    },
+    {
+      "id": "toolu_01LTQtUbn4fLh9vP3XVibXbY",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-evaluate/SKILL.md"
+      }
+    },
+    {
+      "id": "toolu_01E7aCpSY4KuhQhhTUFqNFKg",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-space-engineer/references/analysis-playbook.md"
+      }
+    },
+    {
+      "id": "toolu_01NRHzeND3pizwQQ9vpYwJtD",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-space-mcp-only/references/array-operations.md"
+      }
+    },
+    {
+      "id": "toolu_0168zMNXZNHoYYFTS6TGPNE5",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "skills/weight-evaluate/references/evaluation-controls.md"
+      }
+    },
+    {
+      "id": "toolu_018FacMEDhQtwo5PZN4hruC6",
+      "name": "mcp__weightspace__read_guidance",
+      "input": {
+        "path": "docs/INFERENCE_ONLY_CONTRACT.md"
+      }
+    },
+    {
+      "id": "toolu_011CDmccdXH62tt5PFUuQKCC",
+      "name": "mcp__weightspace__describe_model_structure",
+      "input": {
+        "model_dir": "model",
+        "max_modules": 40
+      }
+    },
+    {
+      "id": "toolu_01CTyEw3dXU1Go5KYaybJnHV",
+      "name": "mcp__weightspace__forward_and_wait",
+      "input": {
+        "spec": {
+          "type": "generate",
+          "model": "original",
+          "split": "validation",
+          "ids": [
+            "gsm8k_train_1506",
+            "gsm8k_train_2767",
+            "gsm8k_train_6911",
+            "gsm8k_train_2558",
+            "gsm8k_train_6518",
+            "gsm8k_train_1685",
+            "gsm8k_train_3401",
+            "gsm8k_train_1584",
+            "gsm8k_train_2844",
+            "gsm8k_train_1790",
+            "gsm8k_train_7309",
+            "gsm8k_train_187",
+            "gsm8k_train_3526",
+            "gsm8k_train_1139",
+            "gsm8k_train_3329",
+            "gsm8k_train_2789",
+            "gsm8k_train_7140",
+            "gsm8k_train_4751",
+            "gsm8k_train_6144",
+            "gsm8k_train_7251",
+            "gsm8k_train_3796",
+            "gsm8k_train_6416",
+            "gsm8k_train_5754",
+            "gsm8k_train_164",
+            "gsm8k_train_3701",
+            "gsm8k_train_5625",
+            "gsm8k_train_4548",
+            "gsm8k_train_402",
+            "gsm8k_train_1562",
+            "gsm8k_train_3643",
+            "gsm8k_train_3242",
+            "gsm8k_train_5859",
+            "math_train_counting_and_probability_280",
+            "math_train_counting_and_probability_319",
+            "math_train_precalculus_248",
+            "math_train_number_theory_574",
+            "math_train_algebra_943",
+            "math_train_algebra_387",
+            "math_train_geometry_443",
+            "math_train_counting_and_probability_65",
+            "math_train_prealgebra_1129",
+            "math_train_geometry_135",
+            "math_train_intermediate_algebra_258",
+            "math_train_counting_and_probability_504",
+            "math_train_geometry_180",
+            "math_train_geometry_318",
+            "math_train_intermediate_algebra_768",
+            "math_train_precalculus_402",
+            "math_train_prealgebra_712",
+            "math_train_precalculus_222",
+            "math_train_intermediate_algebra_555",
+            "math_train_prealgebra_300",
+            "math_train_prealgebra_384",
+            "math_train_algebra_163",
+            "math_train_geometry_297",
+            "math_train_precalculus_148",
+            "math_train_intermediate_algebra_823",
+            "math_train_counting_and_probability_270",
+            "math_train_algebra_499",
+            "math_train_number_theory_612",
+            "math_train_prealgebra_598",
+            "math_train_intermediate_algebra_124",
+            "math_train_algebra_1008",
+            "math_train_algebra_164"
+          ],
+          "n": 1,
+          "max_new_tokens": 32768
+        }
+      }
+    }
+  ],
+  "isolation_limits": "Fresh official CLI session and empty cwd, built-in tools disabled, one explicit MCP, project memory excluded. Not a fresh OS container or a claim of process-level filesystem confinement.",
+  "editor_tool_events_vs_mcp_requests_match": true,
+  "unmatched_cli_event_signatures": [],
+  "unmatched_mcp_request_signatures": []
+}

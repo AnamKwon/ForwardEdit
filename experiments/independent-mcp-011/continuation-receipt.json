@@ -1,0 +1,13 @@
+{
+  "copied_existing_research_ledger": true,
+  "completed_forward_outputs_reused_without_reroll": true,
+  "successful_batches_carried_forward": 3,
+  "scientific_success_budget_still": 50,
+  "scientific_attempt_budget_in_ledger_still": 74,
+  "earlier_009_attempts_counted_separately": 1,
+  "previous_actual_responses": 90,
+  "remaining_actual_responses": 60,
+  "prior_cost_usd": 4.582312600000002,
+  "remaining_cost_ceiling": 15.417687399999998,
+  "heldout_test_sha256": "604c4ac60e7be9ebecca0b73df3c460758012bc59c4508a51ea1bc15fb9867c0"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "describe_parameter",
+  "ok": true,
+  "elapsed_seconds": 1.2516255676746368,
+  "utc": 1793852921.7395527,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tensor\": \"model.layers.23.mlp.down_proj.weight\",\n  \"owner\": \"model.layers.23.mlp.down_proj\",\n  \"module_class\": \"Linear\",\n  \"shape\": [\n    1024,\n    3584\n  ],\n  \"layout\": \"out,in\",\n  \"forward_equation\": \"y = x @ W.T + bias\",\n  \"input_feature_axis\": 1,\n  \"output_feature_axis\": 0,\n  \"structural_role\": \"MLP hidden features -> residual stream; each input-feature slice writes a residual direction\",\n  \"semantic_role_status\": \"hypothesis_required\",\n  \"rows\": [\n    0,\n    1,\n    2\n  ],\n  \"columns\": [\n    20,\n    25,\n    43\n  ],\n  \"values\": [\n    [\n      -0.11749039590358734,\n      -0.11620613187551498,\n      -0.14850884675979614\n    ],\n    [\n      0.02496548555791378,\n      0.023732846602797508,\n      0.030338218435645103\n    ],\n    [\n      -0.009070039726793766,\n      0.005465782713145018,\n      0.0006125103682279587\n    ]\n  ],\n  \"source_sha256\": \"45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5\",\n  \"candidate_dir\": \"candidates/c1_L23_gate_u054\",\n  \"requires_grad\": false,\n  \"update_rule\": \"LLM supplies explicit new values; no gradients or optimizer\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.3398653417825699,
+  "utc": 1793850840.2896316,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/H_L23_10.npy.json\",\n  \"sha256\": \"249083f30973bd04c0a69bc5d023954a8837b277232d13f6c611b18fc9dd5dbb\",\n  \"characters\": 1196,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"path\\\": \\\"analysis/H_L23_10.npy\\\",\\n  \\\"sha256\\\": \\\"74a16356c9e8c95c004d1acc861d4423a60681ea30e393705e8300756e97033d\\\",\\n  \\\"shape\\\": [\\n    10,\\n    3584\\n  ],\\n  \\\"dtype\\\": \\\"float64\\\",\\n  \\\"norm\\\": 59.91812085246402,\\n  \\\"min\\\": -3.890625,\\n  \\\"max\\\": 8.4375,\\n  \\\"preview\\\": [\\n    3.984375,\\n    -0.0289306640625,\\n    -2.640625,\\n    0.09521484375,\\n    -0.91796875,\\n    -0.3984375,\\n    1.1875,\\n    2.4375,\\n    -1.15625,\\n    \"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

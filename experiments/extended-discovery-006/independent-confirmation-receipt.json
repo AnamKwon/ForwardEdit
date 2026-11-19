@@ -1,0 +1,137 @@
+{
+  "actual_population": "independent_test",
+  "scope": "Selected official subsets; not full benchmark scores",
+  "candidate_dir": "candidates/source-informed-l15l19-001",
+  "frozen_manifest_sha256": "7f4a69e733a696ee42362d46b9b4c3c0903533e9e57626dae14e7473dd019a43",
+  "sealed_dataset_sha256": "72193188c6bb22e6c5791d6f32147a2851d67069dd251657cc39e4652b94bbb7",
+  "statistics": {
+    "items": 192,
+    "original_accuracy": 0.09375,
+    "edited_accuracy": 0.5364583333333334,
+    "gain": 0.4427083333333333,
+    "paired_bootstrap_interval": [
+      0.359375,
+      0.5260416666666666
+    ],
+    "confidence": 0.975,
+    "wrong_to_right": 86,
+    "right_to_wrong": 1,
+    "previously_correct_to_wrong_fraction": 0.005208333333333333,
+    "originally_correct_count": 18,
+    "fraction_of_originally_correct_lost": 0.05555555555555555,
+    "exact_one_sided_mcnemar_p": 5.686866711302065e-25,
+    "source_results": {
+      "gsm8k_test": {
+        "items": 128,
+        "original_accuracy": 0.1015625,
+        "edited_accuracy": 0.59375,
+        "gain": 0.4921875
+      },
+      "math500_test": {
+        "items": 64,
+        "original_accuracy": 0.078125,
+        "edited_accuracy": 0.421875,
+        "gain": 0.34375
+      }
+    },
+    "original_unparsed": 174,
+    "edited_unparsed": 73,
+    "gates": {
+      "gain": true,
+      "paired_interval_positive": true,
+      "mcnemar": true,
+      "normal_preservation": true,
+      "conditional_normal_preservation": false,
+      "both_sources_nonnegative": true
+    },
+    "demonstrated": false
+  },
+  "jobs": [
+    {
+      "job_id": "c0b91520cf6045069aca58e19e21d083",
+      "result_sha256": "3b33f5780824cf2c3a7b1d56b99f99243901f180cc8f894e12ea090b993644ce",
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "metrics": {
+        "original": {
+          "accuracy": 0.10416666666666667,
+          "parse_failure": 86,
+          "cutoff": 86,
+          "samples": 96,
+          "input_tokens": 8546,
+          "generated_tokens": 2852292,
+          "mean_length": 29711.375,
+          "engine_seconds": 4742.900210097432,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.59375,
+          "parse_failure": 28,
+          "cutoff": 27,
+          "samples": 96,
+          "input_tokens": 8546,
+          "generated_tokens": 1615734,
+          "mean_length": 16830.5625,
+          "engine_seconds": 2182.2402816414833,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 47,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 47,
+          "correct_to_unparsed": 0
+        }
+      },
+      "exact_order_and_paired_input_tokens": true,
+      "input_tokens_sha256": "1746239311a1daf14bce4219e2c2b19d988764187eaad019a14279512beda3df"
+    },
+    {
+      "job_id": "b92aff042b58400b8d92da3c3e12bed7",
+      "result_sha256": "ddd8a14448cf84eeec8b75b48ab6de6512095fd345ba75f16755215be8ce1dd0",
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "metrics": {
+        "original": {
+          "accuracy": 0.08333333333333333,
+          "parse_failure": 88,
+          "cutoff": 89,
+          "samples": 96,
+          "input_tokens": 9019,
+          "generated_tokens": 2942554,
+          "mean_length": 30651.604166666668,
+          "engine_seconds": 4547.59290061146,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.4791666666666667,
+          "parse_failure": 45,
+          "cutoff": 45,
+          "samples": 96,
+          "input_tokens": 9019,
+          "generated_tokens": 2048766,
+          "mean_length": 21341.3125,
+          "engine_seconds": 2870.2893803343177,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 39,
+          "right_to_wrong": 1,
+          "unparsed_to_correct": 39,
+          "correct_to_unparsed": 1
+        }
+      },
+      "exact_order_and_paired_input_tokens": true,
+      "input_tokens_sha256": "9d948ee3b08a95e453000f917c3c318f825fb351c6c791badb6a383ed096c274"
+    }
+  ],
+  "normal_reference_preservation": "Frozen fixed64development teacher gates passed before selection; independent normal preservation is the preregistered previously-correct answer loss fraction.",
+  "no_reselection": true
+}

@@ -1,0 +1,16 @@
+{
+  "name": "preview_edit",
+  "ok": false,
+  "elapsed_seconds": 0.0756862536072731,
+  "utc": 1793850456.051231,
+  "error": "'strength' is a required property",
+  "error_detail": {
+    "error_type": "InvalidToolArguments",
+    "message": "'strength' is a required property",
+    "argument_path": [
+      "plan",
+      "operations",
+      0
+    ]
+  }
+}

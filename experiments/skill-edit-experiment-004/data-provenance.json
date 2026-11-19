@@ -1,0 +1,9 @@
+{
+  "url": "https://huggingface.co/datasets/roneneldan/TinyStories/resolve/f54c09fd23315a6f9c86f9dc80f725de7d8f9c64/TinyStories-valid.txt",
+  "revision": "f54c09fd23315a6f9c86f9dc80f725de7d8f9c64",
+  "download_sha256": "94e431816c4cce81ff71e4408ff8d3bda9a42e8d2663986697c3954288cb38b4",
+  "split_seed": 2026110404,
+  "selection": "Random source row order, unique complete stories96..240tokens, first128; no model scores used",
+  "license": "cdla-sharing-1.0; source https://huggingface.co/datasets/roneneldan/TinyStories",
+  "limits": "Editing-heldout only; no claim of decontamination or pretrained model never seeing these texts."
+}

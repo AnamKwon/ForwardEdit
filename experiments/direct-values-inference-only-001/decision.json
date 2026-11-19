@@ -1,0 +1,43 @@
+{
+ "selected_candidate": null,
+ "reason": "Neither candidate improved NLL on discovery or validation; baseline retained.",
+ "rules_audit": {
+  "training": false,
+  "gradients_or_autograd": false,
+  "optimizer": false,
+  "numerical_gradient_or_sweeps": false,
+  "model_forward_outside_mcp": false,
+  "cuda_used_only_in_mcp_probe_model_diagnose_model_score_candidate": true,
+  "candidates_created_via_mcp_write_parameter_values": [
+   "candidate-01",
+   "candidate-02"
+  ],
+  "nonidentity_candidates_used": 2,
+  "heldout_or_evaluate_candidate_used": false,
+  "values_hand_authored": true,
+  "note": "session.py only forwards tool calls (CLI, one call per invocation); values were typed by hand. evaluate_baseline (CPU, MCP) used for 12+12 baseline; no identity candidate was written."
+ },
+ "hashes": {
+  "model": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+  "development.json": "5612315540b2b5de12c43b52ad8bebda8b199c569ce2853253e582b9f30c9eed",
+  "candidate-01_patch": "557d3d55fc30b2201a1dd10d1df111c22e0e9591bf477539b539173d57b4d758",
+  "candidate-02_patch": "41b66cbccbbbc5172066517582b6b6359973becd2ed1bb13af3b645c00489006"
+ },
+ "baseline": {
+  "discovery": {
+   "nll": 2.45486,
+   "acc": 0.41693
+  },
+  "validation": {
+   "nll": 2.92543,
+   "acc": 0.38562
+  }
+ },
+ "limitations": [
+  "Semantic role of the edited neurons is unknown; the newline-suppression story was only partly supported (candidate-02) and contradicted (candidate-01).",
+  "Only 6 of 3.7M weights changed, 12+12 tiny dev stories; differences are small and not evidence of capability change.",
+  "Neuron selection used only unembedding-row alignment on 2 residual dims; neuron activation signs were not observed (diagnose_model gives only mean/RMS).",
+  "Newline-vs-no-newline mismatch reflects dev-data format, not necessarily model error.",
+  "No test/heldout conclusions."
+ ]
+}

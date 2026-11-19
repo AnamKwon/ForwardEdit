@@ -1,0 +1,99 @@
+{
+  "version": 1,
+  "target": "Direct-edit adaptation of pretrained TinyStories: reduce generated repetition while preserving normal reference prediction; independent confirmation does not certify broad math/general ability.",
+  "new_user_authorization": "Use new skills/MCP to test actual parameter updates, repeated revision, and independent performance. Prior frozen loops remain closed.",
+  "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+  "config_sha256": "d858fe2b68aea5139e884523c559bdb55a4f8bd553f5dbd02b16868e6c367710",
+  "decoding": {
+    "device": "cuda",
+    "greedy": true,
+    "max_new_tokens": 128,
+    "stop_at_eos": true,
+    "use_cache": true
+  },
+  "samples": {
+    "discovery": 32,
+    "validation": 32,
+    "heldout": 64
+  },
+  "metric": {
+    "ngram_size": 8,
+    "definition": "Mean per-prompt repeated generated content8gram fraction, excluding EOS and tokens after EOS"
+  },
+  "selection": {
+    "min_repeat_gain": 0.02,
+    "max_reference_nll_increase": 0.02,
+    "max_reference_accuracy_drop": 0.01,
+    "max_short_rate_increase": 0.05,
+    "minimum_median_length": "min(32,0.75*baseline_median)"
+  },
+  "confirmation": {
+    "paired_bootstrap_draws": 2000,
+    "bootstrap_seed": 17,
+    "gain_ci95_lower_positive": true,
+    "freeze_before_heldout": true,
+    "no_reselection": true,
+    "diagnostic_even_if_validation_ineligible": true,
+    "adoption_requires_validation_eligibility": true
+  },
+  "budgets": {
+    "worker_forward_tool_calls": 55,
+    "new_nonidentity_candidates": 6,
+    "max_primary_iterations": 4,
+    "baseline_host_calls": 9,
+    "native_verifier_forward_reserve": 12,
+    "host_confirmation_forward_calls": 17,
+    "all_forward_tool_calls_cap": 100
+  },
+  "public_files": {
+    "prompts-discovery-0.json": "ffb173ae1fd78264d8361ed53e7c71321165a03f870f86ae99056867283214f8",
+    "prompts-discovery-1.json": "9c1f4535dcc3fe9c8f4a23dd9439c5c27e90be99a39e029d9ac9b9101f8ac8b0",
+    "prompts-discovery-2.json": "f8d9b9e04fbf55d7ecfdbb3ff770fd323b073d553378da0f61af280cc39cdd6a",
+    "prompts-discovery-3.json": "dc9a3abb43f5242890de7ce6d55b9b605a51f30754f5fbdef1504bf9daafffc2",
+    "prompts-validation-0.json": "5025c3cd721d63c47306c46496ff2c48a7945f5476e2c0451b15be7e71439d17",
+    "prompts-validation-1.json": "35bfe01799381becd6d2fe0588ec88585136065b57a4acf1a31c026aac64abbf",
+    "prompts-validation-2.json": "3b188f45c98b80025400f693c582d9df05b549658b8a8563c176f0acc9e1aec2",
+    "prompts-validation-3.json": "77a34edca83028df57f801a0c9a0ff73281c2df2a7eb197ba5e6213932f79186",
+    "references-development.json": "0175622e82c93ec2f1b14d98cedde06f892717b8a2dbab90f3a6760135ab8906",
+    "texts-development.json": "ce9758bb0b2a51f3e80d7b8af389549cc94c5fedcf5e4bab706c31134a07ccb6"
+  },
+  "sealed_files": {
+    "prompts-test-0.json": "fb3817300b7a97e7b1bdc73c153dfefbb1cdfafc9d469b0d82f369eacbe0ef78",
+    "prompts-test-1.json": "c0cdcd37bbff2b5374ccc2cea1a89f6bc3d417210253e8320d8f1fce4888c52c",
+    "prompts-test-2.json": "6066f5f9f18697c277a2fd166dc950d50f17aa73fcde25abf6035290e45194ae",
+    "prompts-test-3.json": "673dd6a0218b257ef73bd850cc4e83b6e45ab538ee6e5c35ca9c94753d8fc6a2",
+    "prompts-test-4.json": "12eddf3de778a22154c09b8d423596e7df511aa3382ce2f037f5b9e7dde592ea",
+    "prompts-test-5.json": "20b29c6664a5efd826384fa255aaea6b20b30596fb978f8a84697eda6e6a18e5",
+    "prompts-test-6.json": "5786494119b9b5b7ea42cfa615478388a97b2cda0cc5b67cae9b174a4ca510d4",
+    "prompts-test-7.json": "f14606814272c15d6f49d64b24c3d060c777b5138515e74ef3ba81006ae47ceb",
+    "references-test.json": "71ee3b037859df232c369389c10e4db47e1b0242467fee36c320a13e7cef8d86"
+  },
+  "limits": {
+    "max_changed_fraction": 0.02,
+    "max_relative_l2": 0.15
+  },
+  "rules": [
+    "No backward/autograd/optimizers/training/numerical gradients/automatic fitting/sweeps",
+    "MCP-only model execution; GPU inference only",
+    "LLM chooses actual target,direction,coefficient from current evidence",
+    "Use new skill and revise_candidate for at least2 actual feedback-dependent children unless documented absence of support; do not force ungrounded edits",
+    "No embedding/output head/finalnorm editing or whole tensor scalar changes",
+    "Freeze one diagnostic/eligible candidate; evaluate sealed test once even if validation failed; do not adopt unless both stages pass"
+  ],
+  "source_prior_knowledge": "Host/Claude have prior failed TinyStories editing experience on handwritten template development data. This source split differs; pretrained contamination unknown.",
+  "implementation_sha256": {
+    "weight_space_lab/experiment.py": "e8b8528c9d71f78ba8bcfa41aa0e59b2414d347699e22836f7b79ee69d2c9fce",
+    "weight_space_lab/evaluation.py": "da561fafcaafa3f2c74f77b5d44565214871f2abbfb1d730757bdf689c621d01",
+    "weight_space_lab/analysis.py": "31f541fa91249d6b5a2181b9bfecf667987db45e30a41649bcc341db9f648ef9",
+    "weight_space_lab/__init__.py": "6574d04466e9f86b26c05149687d833a400940ba9951a49d0cbda0b864859606",
+    "weight_space_lab/inference.py": "13d244a29b8eeff742a9b9bc326921be889141b0cc79ff74b49642d2e3203f65",
+    "weight_space_lab/computation.py": "05e3455927697e727ca56633702a1b0eaaa6a0f2418c6ebbea18fb07aca79524",
+    "weight_space_lab/benchmarks.py": "e049f97fa560c4db8484f9aeabe3a83a3e08baf8bad744b81495a5ae626c5a99",
+    "weight_space_lab/diagnostics.py": "9c62c70be02b68938299bdbb2f9e3202e28d7470e6b4c18412d58f38c5a2562e",
+    "weight_space_lab/lineage.py": "14ee272b643ced6e7af52577704bd2d7a9f8386126b0b01c6c47067b8e77e6d7",
+    "weight_space_lab/core.py": "e4cae55604e641507797d4cf48afc235f256e0ab5f7be058eb0289972602d4c0",
+    "weight_space_lab/cli.py": "8d656fe775f4c7db39a6912d8bd1aa3c94e0ce7a909f04076e0197d4cd643268",
+    "weight_space_lab/confirmation.py": "e33fc34fb6b162fd519934d29473d311ebffe004ca9b9102f16403844db8d469",
+    "weight_space_lab/server.py": "ee6e3adbcaa0bbb9d091ac679191e4b02cb191a9462ed9d3b7936f4335bbf60b"
+  }
+}

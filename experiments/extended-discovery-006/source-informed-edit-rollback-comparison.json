@@ -1,0 +1,230 @@
+{
+  "tool": "compare_candidate_parameters",
+  "arguments": {
+    "model_dir": "model",
+    "candidate_dir": "candidates/source-informed-l15l19-001",
+    "parent_candidate_dir": "candidates/claude-l23-closure-key-002"
+  },
+  "isError": false,
+  "result": {
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "parent_candidate_dir": "candidates/claude-l23-closure-key-002",
+    "parent_patch_sha256": "859d578285d23fdd6f0953450d454780c89629c943051268242435e1eb9c8f4a",
+    "candidate_dir": "candidates/source-informed-l15l19-001",
+    "patch_sha256": "d0d2bbfc2f5bf3832ad9edb10b712b85c8ffd3e6e21b867879c19dae721fc467",
+    "incremental_changed": 387072,
+    "net_changed": 124928,
+    "retained_parent_changes": 0,
+    "revised_parent_changes": 0,
+    "restored_to_original": 262144,
+    "new_changes": 124928,
+    "tensors": {
+      "model.layers.15.mlp.down_proj.weight": {
+        "incremental_changed": 77824,
+        "net_changed": 77824,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 0,
+        "new_changes": 77824,
+        "incremental_l2": 0.8600619805127134,
+        "incremental_max_abs": 0.06989303231239319,
+        "examples": [
+          {
+            "row": 0,
+            "column": 0,
+            "original": 0.0235595703125,
+            "parent": 0.0235595703125,
+            "child": 0.044111013412475586
+          },
+          {
+            "row": 0,
+            "column": 2,
+            "original": 0.0224609375,
+            "parent": 0.0224609375,
+            "child": 0.012258553877472878
+          },
+          {
+            "row": 0,
+            "column": 11,
+            "original": -0.026123046875,
+            "parent": -0.026123046875,
+            "child": -0.010657585225999355
+          },
+          {
+            "row": 0,
+            "column": 25,
+            "original": -0.0157470703125,
+            "parent": -0.0157470703125,
+            "child": -0.00316173629835248
+          },
+          {
+            "row": 0,
+            "column": 34,
+            "original": -0.002227783203125,
+            "parent": -0.002227783203125,
+            "child": 0.00373273529112339
+          },
+          {
+            "row": 0,
+            "column": 35,
+            "original": 0.083984375,
+            "parent": 0.083984375,
+            "child": 0.058954548090696335
+          },
+          {
+            "row": 0,
+            "column": 38,
+            "original": -0.0751953125,
+            "parent": -0.0751953125,
+            "child": -0.05715067312121391
+          },
+          {
+            "row": 0,
+            "column": 39,
+            "original": -0.0267333984375,
+            "parent": -0.0267333984375,
+            "child": -0.02016117237508297
+          }
+        ]
+      },
+      "model.layers.19.mlp.down_proj.weight": {
+        "incremental_changed": 47104,
+        "net_changed": 47104,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 0,
+        "new_changes": 47104,
+        "incremental_l2": 1.0030578594328898,
+        "incremental_max_abs": 0.16534753888845444,
+        "examples": [
+          {
+            "row": 0,
+            "column": 1,
+            "original": -0.177734375,
+            "parent": -0.177734375,
+            "child": -0.06897812336683273
+          },
+          {
+            "row": 0,
+            "column": 5,
+            "original": -0.08544921875,
+            "parent": -0.08544921875,
+            "child": -0.03561903163790703
+          },
+          {
+            "row": 0,
+            "column": 11,
+            "original": 0.09326171875,
+            "parent": 0.09326171875,
+            "child": -0.07208582013845444
+          },
+          {
+            "row": 0,
+            "column": 13,
+            "original": -0.11328125,
+            "parent": -0.11328125,
+            "child": -0.045145321637392044
+          },
+          {
+            "row": 0,
+            "column": 15,
+            "original": -0.0245361328125,
+            "parent": -0.0245361328125,
+            "child": -0.009397163987159729
+          },
+          {
+            "row": 0,
+            "column": 17,
+            "original": -0.099609375,
+            "parent": -0.099609375,
+            "child": -0.04979957267642021
+          },
+          {
+            "row": 0,
+            "column": 34,
+            "original": 0.004852294921875,
+            "parent": 0.004852294921875,
+            "child": -0.009304891340434551
+          },
+          {
+            "row": 0,
+            "column": 36,
+            "original": 0.02783203125,
+            "parent": 0.02783203125,
+            "child": 0.001394937513396144
+          }
+        ]
+      },
+      "model.layers.23.mlp.down_proj.weight": {
+        "incremental_changed": 262144,
+        "net_changed": 0,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 262144,
+        "new_changes": 0,
+        "incremental_l2": 0.3114696593842412,
+        "incremental_max_abs": 0.015233242884278297,
+        "examples": [
+          {
+            "row": 0,
+            "column": 12,
+            "original": 0.11572265625,
+            "parent": 0.11573817580938339,
+            "child": 0.11572265625
+          },
+          {
+            "row": 0,
+            "column": 19,
+            "original": 0.1123046875,
+            "parent": 0.11232751607894897,
+            "child": 0.1123046875
+          },
+          {
+            "row": 0,
+            "column": 28,
+            "original": 0.04736328125,
+            "parent": 0.04736744612455368,
+            "child": 0.04736328125
+          },
+          {
+            "row": 0,
+            "column": 47,
+            "original": 0.041259765625,
+            "parent": 0.0412883535027504,
+            "child": 0.041259765625
+          },
+          {
+            "row": 0,
+            "column": 49,
+            "original": 0.01123046875,
+            "parent": 0.011263097636401653,
+            "child": 0.01123046875
+          },
+          {
+            "row": 0,
+            "column": 63,
+            "original": -0.025390625,
+            "parent": -0.025399310514330864,
+            "child": -0.025390625
+          },
+          {
+            "row": 0,
+            "column": 64,
+            "original": -0.291015625,
+            "parent": -0.29097646474838257,
+            "child": -0.291015625
+          },
+          {
+            "row": 0,
+            "column": 71,
+            "original": 0.006195068359375,
+            "parent": 0.006193106062710285,
+            "child": 0.006195068359375
+          }
+        ]
+      }
+    },
+    "model_forward_calls": 0,
+    "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+  }
+}

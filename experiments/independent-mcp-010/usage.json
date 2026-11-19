@@ -1,0 +1,104 @@
+{
+  "actual_model": "claude-opus-5-5",
+  "session_id": "d619b60a-8635-49f9-82c8-8db7c16ac67e",
+  "observed_distinct_assistant_response_ids": 84,
+  "actual_tool_calls": 101,
+  "tools_by_name": {
+    "mcp__weightspace__read_guidance": 11,
+    "mcp__weightspace__experiment_info": 1,
+    "mcp__weightspace__describe_model_structure": 2,
+    "mcp__weightspace__forward_and_wait": 3,
+    "mcp__weightspace__generation_window": 6,
+    "mcp__weightspace__research_read_generations": 2,
+    "mcp__weightspace__read_artifact": 11,
+    "mcp__weightspace__research_make_contexts": 2,
+    "mcp__weightspace__research_forward": 1,
+    "mcp__weightspace__research_status": 12,
+    "mcp__weightspace__research_result": 2,
+    "mcp__weightspace__inspect_module_computation": 1,
+    "mcp__weightspace__analyze_matrix_geometry": 1,
+    "mcp__weightspace__research_read_array": 3,
+    "mcp__weightspace__array_compute": 15,
+    "mcp__weightspace__record_observation": 1,
+    "mcp__weightspace__prepare_edit_from_arrays": 1,
+    "mcp__weightspace__preview_edit": 19,
+    "mcp__weightspace__research_prepare_edit": 1,
+    "mcp__weightspace__create_candidate_from_arrays": 1,
+    "mcp__weightspace__read_tensor_slice": 1,
+    "mcp__weightspace__create_candidate": 2,
+    "mcp__weightspace__inspect_checkpoint": 1,
+    "mcp__weightspace__compare_candidate_parameters": 1
+  },
+  "provider_result_available": true,
+  "provider_sdk_turns": 103,
+  "provider_reported_cost_usd": 4.183906800000002,
+  "provider_reported_usage": {
+    "input_tokens": 168,
+    "cache_creation_input_tokens": 177218,
+    "cache_read_input_tokens": 8474554,
+    "output_tokens": 53529,
+    "output_tokens_details": {
+      "thinking_tokens": 32456
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 177218,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 515,
+        "cache_read_input_tokens": 176512,
+        "cache_creation_input_tokens": 706,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 706
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "provider_reported_model_usage": {
+    "claude-opus-5-5": {
+      "inputTokens": 168,
+      "outputTokens": 53529,
+      "cacheReadInputTokens": 8474554,
+      "cacheCreationInputTokens": 177218,
+      "webSearchRequests": 0,
+      "costUSD": 4.183906800000002,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 32456,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 177218,
+      "canonicalModel": "claude-opus-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "provider_duration_ms": 1685242,
+  "provider_api_duration_ms": 597644,
+  "provider_status": "error_during_execution",
+  "event_last_usage_by_response_partial_crosscheck": {
+    "input_tokens": 168,
+    "output_tokens": 844,
+    "cache_creation_input_tokens": 177218,
+    "cache_read_input_tokens": 8474554
+  },
+  "end": {
+    "session_id": "d619b60a-8635-49f9-82c8-8db7c16ac67e",
+    "exit_code": 0,
+    "reason": "process_exit",
+    "utc": 1793849702.0393395,
+    "elapsed_seconds": 1688.9611705839634
+  },
+  "cost_scope": "Claude CLI reported API-equivalent list-price estimate. User OAuth/subscription invoice and host Codex conversation billing are not exposed; no billed-total claim. GPU monetary cost requires a supplied rate."
+}

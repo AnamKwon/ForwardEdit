@@ -1,0 +1,75 @@
+{
+  "revisions": [
+    {
+      "parent": "candidates/c1_L23_gate_u054",
+      "child": "candidates/c2_restore_row0",
+      "write_request_utc": 1793853110.8633668,
+      "parent_result_reads_before_write": [
+        {
+          "name": "generation_window",
+          "arguments": {
+            "job_id": "b12c075924474a0787943091bad977bb",
+            "identifier": "math_train_algebra_943",
+            "which": "edited",
+            "from_end": true,
+            "max_chars": 1800
+          },
+          "request_utc": 1793852921.8168428,
+          "response_utc": 1793852922.271811,
+          "parent_job_ids": [
+            "b12c075924474a0787943091bad977bb"
+          ]
+        },
+        {
+          "name": "research_result",
+          "arguments": {
+            "job_id": "b12c075924474a0787943091bad977bb"
+          },
+          "request_utc": 1793852869.2893505,
+          "response_utc": 1793852878.7088528,
+          "parent_job_ids": [
+            "b12c075924474a0787943091bad977bb"
+          ]
+        },
+        {
+          "name": "generation_window",
+          "arguments": {
+            "job_id": "b12c075924474a0787943091bad977bb",
+            "identifier": "gsm8k_train_7251",
+            "which": "edited",
+            "offset": 5400,
+            "max_chars": 2200
+          },
+          "request_utc": 1793852922.3452265,
+          "response_utc": 1793852922.7886467,
+          "parent_job_ids": [
+            "b12c075924474a0787943091bad977bb"
+          ]
+        },
+        {
+          "name": "research_read_generations",
+          "arguments": {
+            "job_id": "b12c075924474a0787943091bad977bb",
+            "ids": [
+              "gsm8k_train_7251",
+              "gsm8k_train_3643",
+              "gsm8k_train_5859",
+              "math_train_algebra_943",
+              "math_train_algebra_164"
+            ],
+            "which": "edited",
+            "max_chars": 650
+          },
+          "request_utc": 1793852890.7671719,
+          "response_utc": 1793852891.2117083,
+          "parent_job_ids": [
+            "b12c075924474a0787943091bad977bb"
+          ]
+        }
+      ],
+      "parent_generation_feedback_actually_read_before_revision": true
+    }
+  ],
+  "verified_feedback_dependent_revisions": 1,
+  "criterion": "Successful MCP result/generation reads completed before the actual edit request; mere availability of a completed parent job is insufficient."
+}

@@ -1,0 +1,49 @@
+{
+  "name": "forward_and_wait",
+  "arguments": {
+    "spec": {
+      "type": "teacher_forced",
+      "model": "edited",
+      "candidate_dir": "candidates/c1_L23_gate_u054",
+      "dataset_path": "analysis/ctx_base_A.json",
+      "split": "validation",
+      "ids": [
+        "gsm8k_train_7251",
+        "gsm8k_train_3643",
+        "math_train_algebra_164",
+        "gsm8k_train_1506",
+        "gsm8k_train_2767",
+        "gsm8k_train_6911",
+        "gsm8k_train_2558"
+      ],
+      "observations": {
+        "layers": [
+          23
+        ],
+        "mlp_layers": [
+          23
+        ],
+        "positions": {
+          "gsm8k_train_7251": [
+            1562,
+            1574,
+            1582
+          ],
+          "gsm8k_train_3643": [
+            2949,
+            2953,
+            2963,
+            2972
+          ],
+          "gsm8k_train_2558": [
+            4031,
+            4086,
+            4092
+          ]
+        }
+      },
+      "n": 1
+    }
+  },
+  "utc": 1793850864.3987103
+}

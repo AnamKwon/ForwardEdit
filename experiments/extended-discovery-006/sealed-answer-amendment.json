@@ -1,0 +1,15 @@
+{
+  "type": "pre_evaluation_data_quality_amendment",
+  "utc": "2026-11-04T09:54:09.367466+00:00",
+  "reason": "prepare_data.py reused stale train answer for MATH500 rows; use each official pinned row answer.",
+  "original_retained_sha256": "bf493aa21e4f37f74f008adbf0647d31c4c921bc498ffe92fe633e557a73eebe",
+  "corrected_sha256": "72193188c6bb22e6c5791d6f32147a2851d67069dd251657cc39e4652b94bbb7",
+  "official_math500_file_sha256": "35dc41080a3680858b27fa7e0533d2d547825316fc5dafe5d316f4ccc5a06132",
+  "corrected_answer_count": 64,
+  "fixed_population_sha256": "f6c4cf04d3ea88de68c820b03d01710fd2c95c4f3764898da6bca69b0cfc301f",
+  "problem_ids_prompts_order_and_source_unchanged": true,
+  "development_data_and_decoder_unchanged": true,
+  "corrected_data_path": "sealed/test-corrected.json",
+  "timing": "Before any edited candidate exists or independent inference. No answers/questions exposed to controller. Original native protocol remains retained; final host freeze must bind this explicit amendment.",
+  "repair_script_sha256": "89c4a9a0c73942f0f0dd5d889144550b6dc89530ad3f19771b7caa4a212fabcd"
+}

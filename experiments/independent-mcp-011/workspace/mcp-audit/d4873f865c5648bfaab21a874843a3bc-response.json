@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.036528922617435455,
+  "utc": 1793850657.2751951,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/dx_top16abs.npy.json\",\n  \"sha256\": \"6bf35b0fbdb16c5b0e289d24aff1769a1442afe592e2dd2ef5d7ee39d2c4bc09\",\n  \"characters\": 985,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"path\\\": \\\"analysis/dx_top16abs.npy\\\",\\n  \\\"sha256\\\": \\\"d4f6749db5a27b21f8a0c12658d617b9173e718d7730724301a2d8daf15e4f3e\\\",\\n  \\\"shape\\\": [\\n    16\\n  ],\\n  \\\"dtype\\\": \\\"int64\\\",\\n  \\\"norm\\\": 1884.8981404839892,\\n  \\\"min\\\": 0.0,\\n  \\\"max\\\": 991.0,\\n  \\\"preview\\\": [\\n    0,\\n    22,\\n    751,\\n    152,\\n    18,\\n    3,\\n    276,\\n    288,\\n    532,\\n    940,\\n    623,\\n    16,\\n    503,\\n    52,\\n    991,\\n    114\\n  ],\\n  \\\"model_forward_calls\\\": 0,\\n  \\\"operation\\\": \\\"topk\\\",\\n  \\\"inputs\\\": [\\n    {\\n      \\\"path\\\": \\\"analysis/dx.npy\\\",\\n      \\\"sha256\\\": \\\"78dc24cfdba5e15e3c6d0594887532ebdb99e950f38761dea4cfb6e37fb17455\\\"\\n    }\\n  ],\\n  \\\"options\\\": {\\n    \\\"k\\\": 16,\\n    \\\"absolute\\\": true\\n  },\\n  \\\"top_values\\\": [\\n    -2.4287109375,\\n    -0.7294921875,\\n    -0.68798828125,\\n    -0.6845703125,\\n    0.6343994140625,\\n    0.62005615234375,\\n    -0.61474609375,\\n    0.5901870727539062,\\n    -0.58642578125,\\n    0.57318115234375,\\n    -0.56927490234375,\\n    0.5587158203125,\\n    -0.541259765625,\\n    -0.53173828125,\\n    0.5205078125,\\n    -0.5150146484375\\n  ]\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

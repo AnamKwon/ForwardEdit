@@ -1,0 +1,23 @@
+{
+  "kind": "frozen_generation_choice",
+  "model_dir": "model",
+  "selected_candidate": "candidate-03",
+  "validation_eligible": true,
+  "diagnostic_only": false,
+  "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+  "config_sha256": "d858fe2b68aea5139e884523c559bdb55a4f8bd553f5dbd02b16868e6c367710",
+  "patch_sha256": "0f4923a3c5d32bd0476f13614b5c24e7d8b8e10579505f8ef45e195ae3c84757",
+  "protocol_path": "protocol.json",
+  "protocol_sha256": "8874c43ae66333c3176c445d3634b645f0afd8c5265f868bbd11321bc6281586",
+  "decoding": {
+    "device": "cuda",
+    "greedy": true,
+    "max_new_tokens": 128,
+    "stop_at_eos": true,
+    "use_cache": true
+  },
+  "decision_sha256": "a23c6a09eb6558ba44e2a48b8f3c61e4c8e564950069cb0e5950f8c24b4e5c26",
+  "job_id": "job-6cf6c9b78d6e21a18ed8c67722a3995e",
+  "loop_closed": true,
+  "no_reselection": true
+}

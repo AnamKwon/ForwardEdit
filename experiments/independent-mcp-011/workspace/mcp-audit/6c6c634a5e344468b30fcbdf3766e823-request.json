@@ -1,0 +1,7 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/X_dec.npy.json"
+  },
+  "utc": 1793850655.8545616
+}

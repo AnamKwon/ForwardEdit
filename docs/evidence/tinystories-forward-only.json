@@ -1,0 +1,979 @@
+{
+  "selected_index": null,
+  "status": "no_gain",
+  "why": "No plan had validation NLL gain > 0.0001 nats/token with accuracy drop <= 0.01; honest no_gain, nothing frozen (selected_index=null).",
+  "min_gain": 0.0001,
+  "accuracy_allowance": 0.01,
+  "n_plans_evaluated": 12,
+  "max_plans": 12,
+  "selection_rule": "max validation nll_gain subject to gain>min_gain and (baseline_acc-candidate_acc)<=allowance",
+  "source": {
+    "checkpoint": "model/model.safetensors",
+    "sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "source_json": {
+      "repo": "roneneldan/TinyStories-1M",
+      "revision": "77f1b168e219585646439073245fe87e56b3023e",
+      "mode": "pretrained_unmodified",
+      "notes": "Local FP32 safetensors conversion; no training."
+    }
+  },
+  "dataset": {
+    "path": "development.json",
+    "sha256": "5612315540b2b5de12c43b52ad8bebda8b199c569ce2853253e582b9f30c9eed",
+    "split_sha256": {
+      "discovery": "edb81877ecab42cd8a842e1d153045ed01c3a86cb7e8ac7b94f76100541d260d",
+      "validation": "5f2f903c108d76fbc1e38bf419e2e539cb20204c24e4032a6cb087d0d747725b"
+    },
+    "cross_split_duplicate_sequences": 0
+  },
+  "baseline": {
+    "discovery": {
+      "nll": 2.4548630489040355,
+      "accuracy": 0.4169278996865204,
+      "tokens": 319,
+      "examples": 12
+    },
+    "validation": {
+      "nll": 2.9254278648124963,
+      "accuracy": 0.38562091503267976,
+      "tokens": 306,
+      "examples": 12
+    }
+  },
+  "identity": {
+    "strength0_patch_equals_original_tensor": true,
+    "changed_parameters": 0,
+    "metrics": {
+      "discovery": {
+        "nll": 2.4548630489040355,
+        "accuracy": 0.4169278996865204,
+        "tokens": 319,
+        "examples": 12
+      },
+      "validation": {
+        "nll": 2.9254278648124963,
+        "accuracy": 0.38562091503267976,
+        "tokens": 306,
+        "examples": 12
+      }
+    },
+    "max_abs_nll_diff_vs_baseline": 0.0
+  },
+  "module_axes": {
+    "c_fc": "[256,64] (out,in)",
+    "mlp.c_proj": "[64,256]; axis=1 columns = 256 hidden neurons, axis=0 rows = residual dims",
+    "attn.out_proj": "[64,64]; axis=1 columns = concatenated head dims, head h = columns 4h..4h+3 (16 heads, head_dim 4)",
+    "tied": [
+      "lm_head.weight",
+      "transformer.wte.weight"
+    ],
+    "attention_layers": "global/local alternating x4 (window 256)",
+    "config": {
+      "hidden": 64,
+      "layers": 8,
+      "heads": 16,
+      "vocab": 50257
+    }
+  },
+  "observations": {
+    "n_discovery_positions": 319,
+    "mlp_neuron_contrib": {
+      "0": {
+        "median": 0.01951015740633011,
+        "top5_neurons": [
+          31,
+          84,
+          86,
+          107,
+          140
+        ],
+        "top5_values": [
+          0.03421173244714737,
+          0.03328673541545868,
+          0.03258230909705162,
+          0.03224840387701988,
+          0.0315253771841526
+        ],
+        "top_over_median": 1.7535344362258911
+      },
+      "1": {
+        "median": 0.01047584880143404,
+        "top5_neurons": [
+          136,
+          213,
+          155,
+          157,
+          49
+        ],
+        "top5_values": [
+          0.028936639428138733,
+          0.021961035206913948,
+          0.021293535828590393,
+          0.019260557368397713,
+          0.0192096009850502
+        ],
+        "top_over_median": 2.762223958969116
+      },
+      "2": {
+        "median": 0.010839352384209633,
+        "top5_neurons": [
+          233,
+          140,
+          52,
+          206,
+          136
+        ],
+        "top5_values": [
+          0.050627488642930984,
+          0.02552279829978943,
+          0.022163426503539085,
+          0.0205499529838562,
+          0.018854087218642235
+        ],
+        "top_over_median": 4.670711517333984
+      },
+      "3": {
+        "median": 0.01270024012774229,
+        "top5_neurons": [
+          157,
+          20,
+          210,
+          192,
+          52
+        ],
+        "top5_values": [
+          0.01970602199435234,
+          0.019599517807364464,
+          0.019496094435453415,
+          0.01879819668829441,
+          0.018744146451354027
+        ],
+        "top_over_median": 1.5516259670257568
+      },
+      "4": {
+        "median": 0.011140037328004837,
+        "top5_neurons": [
+          167,
+          4,
+          52,
+          183,
+          36
+        ],
+        "top5_values": [
+          0.019878748804330826,
+          0.01809733361005783,
+          0.016759591177105904,
+          0.016748951748013496,
+          0.01621801219880581
+        ],
+        "top_over_median": 1.7844418287277222
+      },
+      "5": {
+        "median": 0.009531167335808277,
+        "top5_neurons": [
+          207,
+          171,
+          229,
+          24,
+          193
+        ],
+        "top5_values": [
+          0.016195805743336678,
+          0.014794795773923397,
+          0.014100207947194576,
+          0.01392753329128027,
+          0.013822418637573719
+        ],
+        "top_over_median": 1.6992467641830444
+      },
+      "6": {
+        "median": 0.011802257969975471,
+        "top5_neurons": [
+          131,
+          121,
+          17,
+          200,
+          129
+        ],
+        "top5_values": [
+          0.019009528681635857,
+          0.018049024045467377,
+          0.017026472836732864,
+          0.016784215345978737,
+          0.016673879697918892
+        ],
+        "top_over_median": 1.6106687784194946
+      },
+      "7": {
+        "median": 0.018464842811226845,
+        "top5_neurons": [
+          101,
+          88,
+          215,
+          60,
+          19
+        ],
+        "top5_values": [
+          0.03442014381289482,
+          0.031927838921546936,
+          0.03180958330631256,
+          0.02983940951526165,
+          0.02888721600174904
+        ],
+        "top_over_median": 1.8640908002853394
+      }
+    },
+    "attn_head_contrib": {
+      "0": {
+        "median": 0.03982101380825043,
+        "argmax_head": 7,
+        "max_over_median": 1.5212419033050537,
+        "per_head": [
+          0.03982101380825043,
+          0.03145528584718704,
+          0.0550529919564724,
+          0.03240501135587692,
+          0.04402383789420128,
+          0.028929073363542557,
+          0.04267621785402298,
+          0.0605773963034153,
+          0.04322996735572815,
+          0.03732401132583618,
+          0.05626111105084419,
+          0.04986027628183365,
+          0.038705013692379,
+          0.027409251779317856,
+          0.03353491425514221,
+          0.04166184365749359
+        ]
+      },
+      "1": {
+        "median": 0.05723605677485466,
+        "argmax_head": 5,
+        "max_over_median": 6.543076992034912,
+        "per_head": [
+          0.10010196268558502,
+          0.14167536795139313,
+          0.08268166333436966,
+          0.050742022693157196,
+          0.03975960239768028,
+          0.3744999170303345,
+          0.05071466788649559,
+          0.04564867168664932,
+          0.048260435461997986,
+          0.041437022387981415,
+          0.07087705284357071,
+          0.05723605677485466,
+          0.17003190517425537,
+          0.13119761645793915,
+          0.05691409111022949,
+          0.14433994889259338
+        ]
+      },
+      "2": {
+        "median": 0.12886428833007812,
+        "argmax_head": 13,
+        "max_over_median": 1.7754619121551514,
+        "per_head": [
+          0.12297666072845459,
+          0.13382673263549805,
+          0.06577591598033905,
+          0.09662247449159622,
+          0.06868932396173477,
+          0.20057956874370575,
+          0.16080647706985474,
+          0.041493527591228485,
+          0.19302280247211456,
+          0.08629165589809418,
+          0.17161105573177338,
+          0.14655259251594543,
+          0.12886428833007812,
+          0.22879363596439362,
+          0.11286304891109467,
+          0.20529504120349884
+        ]
+      },
+      "3": {
+        "median": 0.06967943161725998,
+        "argmax_head": 3,
+        "max_over_median": 1.7850301265716553,
+        "per_head": [
+          0.09912406653165817,
+          0.11572004854679108,
+          0.050674788653850555,
+          0.12437988817691803,
+          0.04370788484811783,
+          0.0535534992814064,
+          0.04120742157101631,
+          0.074091836810112,
+          0.07010314613580704,
+          0.04221929982304573,
+          0.053819674998521805,
+          0.1145181879401207,
+          0.0740073174238205,
+          0.06967943161725998,
+          0.031962402164936066,
+          0.06988674402236938
+        ]
+      },
+      "4": {
+        "median": 0.03364589810371399,
+        "argmax_head": 13,
+        "max_over_median": 1.5992412567138672,
+        "per_head": [
+          0.04191940277814865,
+          0.042048320174217224,
+          0.03364589810371399,
+          0.03398831933736801,
+          0.03971782326698303,
+          0.02920996956527233,
+          0.03422611951828003,
+          0.042328279465436935,
+          0.02604585886001587,
+          0.04210037365555763,
+          0.026370782405138016,
+          0.019685374572873116,
+          0.0269367266446352,
+          0.053807906806468964,
+          0.02614688314497471,
+          0.032435014843940735
+        ]
+      },
+      "5": {
+        "median": 0.024550169706344604,
+        "argmax_head": 8,
+        "max_over_median": 2.928166627883911,
+        "per_head": [
+          0.02544086053967476,
+          0.018187351524829865,
+          0.044619180262088776,
+          0.04602624475955963,
+          0.01584460213780403,
+          0.03207524120807648,
+          0.021953940391540527,
+          0.02027874067425728,
+          0.07188698649406433,
+          0.02302965149283409,
+          0.019618572667241096,
+          0.024550169706344604,
+          0.03826379030942917,
+          0.0190254095941782,
+          0.03307174891233444,
+          0.04199562594294548
+        ]
+      },
+      "6": {
+        "median": 0.030140671879053116,
+        "argmax_head": 9,
+        "max_over_median": 2.0313234329223633,
+        "per_head": [
+          0.030140671879053116,
+          0.04365800321102142,
+          0.04173216596245766,
+          0.020396415144205093,
+          0.015887971967458725,
+          0.03824229538440704,
+          0.04046646133065224,
+          0.04459095001220703,
+          0.019019166007637978,
+          0.06122545152902603,
+          0.02843921259045601,
+          0.05506514757871628,
+          0.049824200570583344,
+          0.02544426918029785,
+          0.021233217790722847,
+          0.019699914380908012
+        ]
+      },
+      "7": {
+        "median": 0.039535850286483765,
+        "argmax_head": 8,
+        "max_over_median": 1.4682704210281372,
+        "per_head": [
+          0.049646973609924316,
+          0.018328167498111725,
+          0.021832551807165146,
+          0.030176863074302673,
+          0.05006216838955879,
+          0.053544141352176666,
+          0.040145594626665115,
+          0.021724799647927284,
+          0.058049317449331284,
+          0.04569096118211746,
+          0.04437122121453285,
+          0.04185044765472412,
+          0.03528021648526192,
+          0.039379723370075226,
+          0.01945159025490284,
+          0.039535850286483765
+        ]
+      }
+    },
+    "mlp_output_mean_energy_fraction": {
+      "0": 0.16555890440940857,
+      "1": 0.4961893856525421,
+      "2": 0.4005763530731201,
+      "3": 0.32530102133750916,
+      "4": 0.3816405236721039,
+      "5": 0.5461682677268982,
+      "6": 0.4506957530975342,
+      "7": 0.32011598348617554
+    },
+    "weight_norms": {
+      "transformer.h.0.mlp.c_proj.weight": 2.974971055984497,
+      "transformer.h.1.mlp.c_proj.weight": 2.4392876625061035,
+      "transformer.h.2.mlp.c_proj.weight": 2.2871062755584717,
+      "transformer.h.3.mlp.c_proj.weight": 2.2567527294158936,
+      "transformer.h.4.mlp.c_proj.weight": 2.1245529651641846,
+      "transformer.h.5.mlp.c_proj.weight": 2.0499343872070312,
+      "transformer.h.6.mlp.c_proj.weight": 2.181990385055542,
+      "transformer.h.7.mlp.c_proj.weight": 2.6670823097229004,
+      "transformer.h.0.attn.attention.out_proj.weight": 1.1894177198410034,
+      "transformer.h.1.attn.attention.out_proj.weight": 1.3089044094085693,
+      "transformer.h.2.attn.attention.out_proj.weight": 1.7575926780700684,
+      "transformer.h.3.attn.attention.out_proj.weight": 1.2342166900634766,
+      "transformer.h.4.attn.attention.out_proj.weight": 0.9482342600822449,
+      "transformer.h.5.attn.attention.out_proj.weight": 1.0266937017440796,
+      "transformer.h.6.attn.attention.out_proj.weight": 1.0322612524032593,
+      "transformer.h.7.attn.attention.out_proj.weight": 1.1912851333618164
+    }
+  },
+  "plans": [
+    {
+      "changed_parameters": 256,
+      "changed_fraction": 6.833985409441151e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.1.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.04417846238291062,
+          "max_absolute_delta": 0.013360053300857544
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.1.attn.attention.out_proj.weight": 0.06783169103068441
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.494441177617081,
+          "accuracy": 0.4169278996865204,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.9976725233898525,
+          "accuracy": 0.37254901960784315,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.03957812871304567,
+          "accuracy_change": 0.0
+        },
+        "validation": {
+          "nll_gain": -0.07224465857735618,
+          "accuracy_change": -0.01307189542483661
+        }
+      },
+      "index": 0,
+      "hypothesis": "Layer-1 attention head 5 is an outlier in discovery forward activations (contrib 0.374 = 6.5x the layer-1 head median): possibly an overactive output contribution. Scale its out_proj columns 20-23 (axis=1) by 0.85 (strength 0.15).",
+      "predicted_effect": "If overactive, small NLL gain; if it carries needed context, NLL worsens. |dNLL| expected <0.05.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.07224, discovery nll_gain=-0.03958; predicted: If overactive, small NLL gain; if it carries needed context, NLL worsens. |dNLL| expected <0.05."
+    },
+    {
+      "changed_parameters": 256,
+      "changed_fraction": 6.833985409441151e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.1.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.09719262012016727,
+          "max_absolute_delta": 0.029392119497060776
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.1.attn.attention.out_proj.weight": 0.14922972880625118
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.6438381017019106,
+          "accuracy": 0.4106583072100313,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 3.168290909593308,
+          "accuracy": 0.3333333333333333,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.18897505279787508,
+          "accuracy_change": -0.006269592476489061
+        },
+        "validation": {
+          "nll_gain": -0.24286304478081178,
+          "accuracy_change": -0.05228758169934644
+        }
+      },
+      "index": 1,
+      "hypothesis": "Same head (L1 head 5) with stronger attenuation (x0.67, strength 0.33, the largest dose inside the 0.1 relative-L2 budget; strength 0.6 was rejected pre-evaluation by core.prepare, rel L2 0.177) to test dose-response of the overactive-head hypothesis.",
+      "predicted_effect": "Larger magnitude than plan 0 with same sign if hypothesis true.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.24286, discovery nll_gain=-0.18898; predicted: Larger magnitude than plan 0 with same sign if hypothesis true."
+    },
+    {
+      "changed_parameters": 64,
+      "changed_fraction": 1.7084963523602878e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.2.mlp.c_proj.weight",
+          "changed_parameters": 64,
+          "relative_l2": 0.02638251737422675,
+          "max_absolute_delta": 0.01646384410560131
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.2.mlp.c_proj.weight": 0.06644759247814382
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.451107360942683,
+          "accuracy": 0.43573667711598746,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.9459493090585647,
+          "accuracy": 0.39869281045751637,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": 0.003755687961352727,
+          "accuracy_change": 0.018808777429467072
+        },
+        "validation": {
+          "nll_gain": -0.020521444246068388,
+          "accuracy_change": 0.01307189542483661
+        }
+      },
+      "index": 2,
+      "hypothesis": "Layer-2 MLP hidden neuron 233 contributes 0.051, 4.7x the layer median: a single dominant hidden neuron may be an overactive output. Scale c_proj column 233 (axis=1) by 0.6.",
+      "predicted_effect": "Small effect (<0.02 nats) in either direction.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.02052, discovery nll_gain=+0.00376; predicted: Small effect (<0.02 nats) in either direction."
+    },
+    {
+      "changed_parameters": 320,
+      "changed_fraction": 8.542481761801439e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.7.mlp.c_proj.weight",
+          "changed_parameters": 320,
+          "relative_l2": 0.026407774960049094,
+          "max_absolute_delta": 0.013050366193056107
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.7.mlp.c_proj.weight": 0.11305291273074043
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.4730142834603206,
+          "accuracy": 0.4231974921630094,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.9651301929607903,
+          "accuracy": 0.38235294117647056,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.01815123455628509,
+          "accuracy_change": 0.006269592476489005
+        },
+        "validation": {
+          "nll_gain": -0.039702328148294,
+          "accuracy_change": -0.0032679738562091942
+        }
+      },
+      "index": 3,
+      "hypothesis": "Layer 7 (last block, writes directly into ln_f/logits) has the strongest MLP neuron contributions of late layers (top5 neurons [101, 88, 215, 60, 19]). Attenuate those 5 c_proj columns by 20% as unnecessary broad logit pressure.",
+      "predicted_effect": "Last-layer edits propagate directly to logits; modest change, sign uncertain.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.03970, discovery nll_gain=-0.01815; predicted: Last-layer edits propagate directly to logits; modest change, sign uncertain."
+    },
+    {
+      "changed_parameters": 320,
+      "changed_fraction": 8.542481761801439e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.0.mlp.c_proj.weight",
+          "changed_parameters": 320,
+          "relative_l2": 0.028326958405668064,
+          "max_absolute_delta": 0.01496008038520813
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.0.mlp.c_proj.weight": 0.024893441750604466
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.4597281413004217,
+          "accuracy": 0.41379310344827586,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.929376009306778,
+          "accuracy": 0.3954248366013072,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.004865092396386217,
+          "accuracy_change": -0.0031347962382445305
+        },
+        "validation": {
+          "nll_gain": -0.0039481444942817134,
+          "accuracy_change": 0.009803921568627416
+        }
+      },
+      "index": 4,
+      "hypothesis": "Layer 0 MLP has the largest contributions of early layers (top5 [31, 84, 86, 107, 140]); broad early features may be unnecessary. Scale those columns by 0.8.",
+      "predicted_effect": "Early-layer change amplified downstream; likely slight harm.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.00395, discovery nll_gain=-0.00487; predicted: Early-layer change amplified downstream; likely slight harm."
+    },
+    {
+      "changed_parameters": 16384,
+      "changed_fraction": 0.004373750662042337,
+      "tensors": [
+        {
+          "tensor": "transformer.h.5.mlp.c_proj.weight",
+          "changed_parameters": 16384,
+          "relative_l2": 0.07031550166367184,
+          "max_absolute_delta": 0.00872605387121439
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.5.mlp.c_proj.weight": 0.1693111234630258
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.6274283919149664,
+          "accuracy": 0.4200626959247649,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 3.1069369214536966,
+          "accuracy": 0.369281045751634,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.17256534301093085,
+          "accuracy_change": 0.0031347962382445305
+        },
+        "validation": {
+          "nll_gain": -0.18150905664120032,
+          "accuracy_change": -0.01633986928104575
+        }
+      },
+      "index": 5,
+      "hypothesis": "Layer-5 MLP output has 55% of its mean squared energy in a constant (token-independent) mean vector, i.e. a broad component. Project the discovery mean-output direction out of all 256 c_proj columns (axis=1, direction in 64-d residual space) with strength 0.5.",
+      "predicted_effect": "Removes part of a constant bias-like push; tiny effect expected since LN follows.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.18151, discovery nll_gain=-0.17257; predicted: Removes part of a constant bias-like push; tiny effect expected since LN follows."
+    },
+    {
+      "changed_parameters": 16384,
+      "changed_fraction": 0.004373750662042337,
+      "tensors": [
+        {
+          "tensor": "transformer.h.1.mlp.c_proj.weight",
+          "changed_parameters": 16384,
+          "relative_l2": 0.061489527446102726,
+          "max_absolute_delta": 0.007542888168245554
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.1.mlp.c_proj.weight": 0.1610244092526839
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.930522958631994,
+          "accuracy": 0.3510971786833856,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 3.4042121720868135,
+          "accuracy": 0.3202614379084967,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.4756599097279586,
+          "accuracy_change": -0.0658307210031348
+        },
+        "validation": {
+          "nll_gain": -0.4787843072743172,
+          "accuracy_change": -0.06535947712418305
+        }
+      },
+      "index": 6,
+      "hypothesis": "Layer-1 MLP output has 50% of its energy in the mean vector (highest early layer). Project mean direction from all c_proj columns, strength 0.3.",
+      "predicted_effect": "Small effect; early layer -> possible amplification of harm.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.47878, discovery nll_gain=-0.47566; predicted: Small effect; early layer -> possible amplification of harm."
+    },
+    {
+      "changed_parameters": 256,
+      "changed_fraction": 6.833985409441151e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.2.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.09429288132117385,
+          "max_absolute_delta": 0.031063079833984375
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.2.attn.attention.out_proj.weight": 0.09558547061561803
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.499947478438623,
+          "accuracy": 0.42946708463949845,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.9480890116935003,
+          "accuracy": 0.38562091503267976,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.04508442953458758,
+          "accuracy_change": 0.012539184952978066
+        },
+        "validation": {
+          "nll_gain": -0.02266114688100407,
+          "accuracy_change": 0.0
+        }
+      },
+      "index": 7,
+      "hypothesis": "Layer-2 attention head 13 is the layer's top head (0.229, 1.8x median) - mild outlier. Scale out_proj columns 52-55 by 0.7.",
+      "predicted_effect": "Mild; sign uncertain.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.02266, discovery nll_gain=-0.04508; predicted: Mild; sign uncertain."
+    },
+    {
+      "changed_parameters": 256,
+      "changed_fraction": 6.833985409441151e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.1.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.08288866124589293,
+          "max_absolute_delta": 0.023749515414237976
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.1.attn.attention.out_proj.weight": 0.03839298420097072
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.449599114154253,
+          "accuracy": 0.4231974921630094,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.944476273112483,
+          "accuracy": 0.39869281045751637,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": 0.005263934749782706,
+          "accuracy_change": 0.006269592476489005
+        },
+        "validation": {
+          "nll_gain": -0.019048408299986885,
+          "accuracy_change": 0.01307189542483661
+        }
+      },
+      "index": 8,
+      "hypothesis": "Layer-1 attention head 12 is the second-largest outlier in layer 1 (0.170). Scale out_proj columns 48-51 by 0.7.",
+      "predicted_effect": "Smaller than head 5 effect.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.01905, discovery nll_gain=+0.00526; predicted: Smaller than head 5 effect."
+    },
+    {
+      "changed_parameters": 16384,
+      "changed_fraction": 0.004373750662042337,
+      "tensors": [
+        {
+          "tensor": "transformer.h.2.mlp.c_proj.weight",
+          "changed_parameters": 16384,
+          "relative_l2": 0.0498302944018487,
+          "max_absolute_delta": 0.01071312464773655
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.2.mlp.c_proj.weight": 0.1432655443618946
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.6420923100306837,
+          "accuracy": 0.41379310344827586,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 3.161159435977398,
+          "accuracy": 0.35947712418300654,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.18722926112664817,
+          "accuracy_change": -0.0031347962382445305
+        },
+        "validation": {
+          "nll_gain": -0.2357315711649015,
+          "accuracy_change": -0.02614379084967322
+        }
+      },
+      "index": 9,
+      "hypothesis": "Layer-2 MLP output has 40% energy in constant mean vector. Project mean direction from all c_proj columns, strength 0.3.",
+      "predicted_effect": "Small effect.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.23573, discovery nll_gain=-0.18723; predicted: Small effect."
+    },
+    {
+      "changed_parameters": 16384,
+      "changed_fraction": 0.004373750662042337,
+      "tensors": [
+        {
+          "tensor": "transformer.h.4.mlp.c_proj.weight",
+          "changed_parameters": 16384,
+          "relative_l2": 0.0638073663700136,
+          "max_absolute_delta": 0.007665501325391233
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.4.mlp.c_proj.weight": 0.15991774587417393
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.5970536646444007,
+          "accuracy": 0.4106583072100313,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 3.07022559198265,
+          "accuracy": 0.3562091503267974,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.14219061574036518,
+          "accuracy_change": -0.006269592476489061
+        },
+        "validation": {
+          "nll_gain": -0.14479772717015393,
+          "accuracy_change": -0.02941176470588236
+        }
+      },
+      "index": 10,
+      "hypothesis": "Layer-4 MLP output has 38% energy in constant mean vector. Project mean direction from all c_proj columns, strength 0.5.",
+      "predicted_effect": "Small effect.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.14480, discovery nll_gain=-0.14219; predicted: Small effect."
+    },
+    {
+      "changed_parameters": 256,
+      "changed_fraction": 6.833985409441151e-05,
+      "tensors": [
+        {
+          "tensor": "transformer.h.3.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.07516937037628077,
+          "max_absolute_delta": 0.02100856602191925
+        }
+      ],
+      "predicted_relative_output_change_on_discovery_forward": {
+        "transformer.h.3.attn.attention.out_proj.weight": 0.07002553672381635
+      },
+      "metrics": {
+        "discovery": {
+          "nll": 2.4972708864541064,
+          "accuracy": 0.4231974921630094,
+          "tokens": 319,
+          "examples": 12
+        },
+        "validation": {
+          "nll": 2.9511713675641165,
+          "accuracy": 0.39215686274509803,
+          "tokens": 306,
+          "examples": 12
+        }
+      },
+      "delta": {
+        "discovery": {
+          "nll_gain": -0.04240783755007094,
+          "accuracy_change": 0.006269592476489005
+        },
+        "validation": {
+          "nll_gain": -0.025743502751620184,
+          "accuracy_change": 0.006535947712418277
+        }
+      },
+      "index": 11,
+      "hypothesis": "Layer-3 attention head 3 is the layer's top head (0.124-ish, 1.8x median). Scale out_proj columns 12-15 by 0.7.",
+      "predicted_effect": "Mild; sign uncertain.",
+      "passes_validation_rule": false,
+      "observed_vs_predicted": "validation nll_gain=-0.02574, discovery nll_gain=-0.04241; predicted: Mild; sign uncertain."
+    }
+  ],
+  "limitations": [
+    "Development sets are tiny (12 stories each; ~320 scored tokens per split): validation gains are noisy and selection among 12 plans carries winner's-curse bias.",
+    "Hypotheses are motivated by activation magnitude statistics, not causal proof.",
+    "Activation observations come from discovery split only; hook statistics use mean |activation| x weight column norm as a proxy for contribution.",
+    "Evaluator: CPU FP32, batch-by-length; candidates evaluated in memory via core.prepare (no candidate dirs written).",
+    "No heldout/test data accessed; no general-improvement claim; heldout is run independently once after freezing.",
+    "Plans were chosen once from observations before any candidate was evaluated; no strength sweeps."
+  ]
+}

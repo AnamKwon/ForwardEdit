@@ -1,0 +1,17 @@
+{
+  "name": "create_candidate_from_arrays",
+  "ok": true,
+  "elapsed_seconds": 1.3201723024249077,
+  "utc": 1793853112.183517,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"output\": \"candidates/c2_restore_row0\",\n  \"source_sha256\": \"45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5\",\n  \"total_parameters\": 752393024,\n  \"changed_parameters\": 3069,\n  \"changed_fraction\": 4.078985187401206e-6,\n  \"tensors\": [\n    {\n      \"tensor\": \"model.layers.23.mlp.down_proj.weight\",\n      \"changed_parameters\": 3069,\n      \"relative_l2\": 0.030735275099729908,\n      \"max_absolute_delta\": 0.037388723343610764\n    }\n  ],\n  \"status\": \"unevaluated\",\n  \"patch_sha256\": \"27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

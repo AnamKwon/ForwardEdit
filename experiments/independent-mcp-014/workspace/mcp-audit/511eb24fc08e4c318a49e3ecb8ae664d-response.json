@@ -1,0 +1,11 @@
+{
+  "name": "read_artifact",
+  "ok": false,
+  "elapsed_seconds": 0.057419583201408386,
+  "utc": 1793853039.7029421,
+  "error": "bounded current-workspace text artifact required",
+  "error_detail": {
+    "error_type": "ValueError",
+    "message": "bounded current-workspace text artifact required"
+  }
+}

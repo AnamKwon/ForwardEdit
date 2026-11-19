@@ -1,0 +1,8 @@
+{
+  "previous_authoritative_response_ids": 117,
+  "remaining_current_response_ids": 33,
+  "previous_api_equivalent_usd": 6.5261472,
+  "remaining_api_equivalent_usd": 13.4738528,
+  "cause": "012 final shutdown flush included one more response than its earlier live snapshot. Final response-id receipts are authoritative. This external guard tightens the current ceiling; no budget reset or extra response.",
+  "utc": 1793853321.485634
+}

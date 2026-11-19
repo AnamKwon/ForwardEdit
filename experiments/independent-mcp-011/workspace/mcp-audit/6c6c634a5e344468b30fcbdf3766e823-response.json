@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.5097655728459358,
+  "utc": 1793850656.3643045,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/X_dec.npy.json\",\n  \"sha256\": \"6a845615fe8bed80eb74dd2110ae145f9805d404ff9e2406fd1c3ba89c2128fb\",\n  \"characters\": 805,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"path\\\": \\\"analysis/X_dec.npy\\\",\\n  \\\"sha256\\\": \\\"5e70aa9deca9e9d224b21fac99e9a3f6d2b86551be3d4c2b8a34243d3837e3c3\\\",\\n  \\\"shape\\\": [\\n    2,\\n    1024\\n  ],\\n  \\\"dtype\\\": \\\"float64\\\",\\n  \\\"norm\\\": 14.544249629436857,\\n  \\\"min\\\": -4.21875,\\n  \\\"max\\\": 0.8671875,\\n  \\\"preview\\\": [\\n    -4.21875,\\n    0.54296875,\\n    0.29296875,\\n    0.5859375,\\n    0.189453125,\\n    0.3359375,\\n    0.494140625,\\n    0.02978515625,\\n    -0.0810546875,\\n    0.138671875,\\n    0.1044921875,\\n    -0.1171875,\\n    0.29296875,\\n    -0.427734375,\\n    0.1591796875,\\n    0.005859375\\n  ],\\n  \\\"model_forward_calls\\\": 0,\\n  \\\"operation\\\": \\\"take\\\",\\n  \\\"inputs\\\": [\\n    {\\n      \\\"path\\\": \\\"analysis/X_L23_10.npy\\\",\\n      \\\"sha256\\\": \\\"acbf2c10e9c2184e31e86e9e3a5d0624c11a2e49ab5b2f34757e786b62a3557e\\\"\\n    }\\n  ],\\n  \\\"options\\\": {\\n    \\\"indices\\\": [\\n      2,\\n      6\\n    ],\\n    \\\"axis\\\": 0\\n  }\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

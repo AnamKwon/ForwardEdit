@@ -1,0 +1,22 @@
+{
+  "source_config_patch_protocol_decision_unchanged": true,
+  "confirmation_all33requests_successful": true,
+  "independent_raw_token_metric_and_ci_recomputed": true,
+  "heldout_prompts": 128,
+  "repeat_improved": 38,
+  "repeat_regressed": 55,
+  "repeat_metric_unchanged": 35,
+  "repeat_gain": -0.0045211662457535565,
+  "repeat_gain_ci95": [
+    -0.025610529833965702,
+    0.016950436685633223
+  ],
+  "normal_reference_nll_regressed_examples": 91,
+  "normal_reference_nll_gain_ci95": [
+    -0.003439980997879261,
+    -0.0017763065927386484
+  ],
+  "adoption_passed": false,
+  "no_reselection": true,
+  "interpretation": "Postfreeze host audit only. Numeric integrity is not causal-role or learning proof; this test is now exposed and cannot serve as a fresh test in a later run."
+}

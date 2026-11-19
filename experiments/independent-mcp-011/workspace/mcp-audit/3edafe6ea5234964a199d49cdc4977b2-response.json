@@ -1,0 +1,17 @@
+{
+  "name": "list_workspace_artifacts",
+  "ok": true,
+  "elapsed_seconds": 0.04059929400682449,
+  "utc": 1793850598.1661518,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 4,\n  \"offset\": 0,\n  \"files\": [\n    {\n      \"path\": \"notes/observation-72c57d48d5cf42c18f40441b74159f25.json\",\n      \"bytes\": 2665\n    },\n    {\n      \"path\": \"notes/resolved-edit-d960908c3cdf4ed582ad704fe6e8a5d9.json\",\n      \"bytes\": 34774\n    },\n    {\n      \"path\": \"notes/submitted-forward-40e08305fc8a4106bed4210d154a0e54.json\",\n      \"bytes\": 899\n    },\n    {\n      \"path\": \"notes/submitted-forward-9501440f2f2843aaaa9a1e1aa83df8d3.json\",\n      \"bytes\": 2443\n    }\n  ],\n  \"next_offset\": null\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

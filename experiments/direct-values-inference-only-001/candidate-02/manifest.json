@@ -1,0 +1,81 @@
+{
+  "plan": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "hypothesis": "candidate-01 falsified: zeroing these entries RAISED newline log-prob after periods (disc-00 -1.336 -> -1.250, disc-01 -1.141 -> -0.976, disc-02 -0.949 -> -0.797), so my sign assumption (positive neuron activation) was wrong; these entries net-suppress newline. Revised hypothesis (still unverified): amplifying them by 1.5x (row34 col16 0.0359->0.0539, col18 0.0410->0.0615; row18 col4 -0.0529->-0.0793, col6 -0.0607->-0.0910, col21 -0.0573->-0.0860, col27 -0.0388->-0.0582) should lower newline log-prob after periods.",
+    "limits": {
+      "max_changed_fraction": 0.002,
+      "max_relative_l2": 0.05
+    },
+    "operations": [
+      {
+        "kind": "set_values",
+        "tensor": "transformer.h.7.mlp.c_proj.weight",
+        "rows": [
+          34,
+          18
+        ],
+        "columns": [
+          4,
+          6,
+          16,
+          18,
+          21,
+          27
+        ],
+        "expected_values": [
+          [
+            0.0034798039123415947,
+            -0.019071510061621666,
+            0.035900674760341644,
+            0.04097767546772957,
+            0.013377838768064976,
+            -0.025114405900239944
+          ],
+          [
+            -0.052891526371240616,
+            -0.06069415062665939,
+            0.029698221012949944,
+            0.013792362995445728,
+            -0.05732343718409538,
+            -0.03882833197712898
+          ]
+        ],
+        "values": [
+          [
+            0.0034798039123415947,
+            -0.019071510061621666,
+            0.0539,
+            0.0615,
+            0.013377838768064976,
+            -0.025114405900239944
+          ],
+          [
+            -0.0793,
+            -0.091,
+            0.029698221012949944,
+            0.013792362995445728,
+            -0.086,
+            -0.0582
+          ]
+        ]
+      }
+    ]
+  },
+  "report": {
+    "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "total_parameters": 3745984,
+    "changed_parameters": 6,
+    "changed_fraction": 1.6017153303377698e-06,
+    "tensors": [
+      {
+        "tensor": "transformer.h.7.mlp.c_proj.weight",
+        "changed_parameters": 6,
+        "relative_l2": 0.022366766282894066,
+        "max_absolute_delta": 0.03030584752559662
+      }
+    ],
+    "status": "unevaluated",
+    "patch_sha256": "41b66cbccbbbc5172066517582b6b6359973becd2ed1bb13af3b645c00489006"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/nonexistent-file.json"
+  },
+  "utc": 1793850282.5720685
+}

@@ -1,0 +1,18 @@
+{
+  "name": "array_compute",
+  "arguments": {
+    "operation": "matmul",
+    "inputs": [
+      {
+        "path": "analysis/X_L23_10.npy",
+        "sha256": "acbf2c10e9c2184e31e86e9e3a5d0624c11a2e49ab5b2f34757e786b62a3557e"
+      },
+      {
+        "path": "analysis/u_dx.npy",
+        "sha256": "fdc62bb1746ac891b0f818e3ffd7ea170d8acd7863d1a18ee9bb221f3b1b7fad"
+      }
+    ],
+    "output": "analysis/proj_X10_on_u.npy"
+  },
+  "utc": 1793850667.3527071
+}

@@ -1,0 +1,9 @@
+{
+  "name": "compare_candidate_parameters",
+  "arguments": {
+    "model_dir": "model",
+    "candidate_dir": "candidates/c2_restore_row0",
+    "parent_candidate_dir": "candidates/c1_L23_gate_u054"
+  },
+  "utc": 1793853112.2647295
+}

@@ -1,0 +1,36 @@
+{
+  "kind": "feedback_c1_teacher_forced",
+  "candidate": "candidates/c1_L23_gate_u054",
+  "patch_sha256": "995192953439681c835e11f40715d7f432607eeaacc27b5b683db2e72a32f143",
+  "jobs": {
+    "original_7ctx": "57a63774f7104b839326b573fca8d356",
+    "original_3ctx_positions": "9539a018ae434f6fa1a0204179846f2e",
+    "edited_7ctx": "fb9e7e24181e4fe1bfd2eba2160a69a9"
+  },
+  "gpu_bf16_changed": 3070,
+  "file_changed": 3072,
+  "lp_think_close": {
+    "7251:1582": [
+      -2.491,
+      -0.369
+    ],
+    "3643:2972": [
+      -2.175,
+      -0.342
+    ]
+  },
+  "near_conclusion_3643:2963_continuation_lp": [
+    -0.033,
+    -0.601
+  ],
+  "ctrl_positions": "7251:1562 -0.00056->-0.00047, 1574 unchanged, 3643:2949 -0.0010->-0.0019, 2953 unchanged",
+  "self_generated_prefix_nll_7ctx": [
+    0.42197,
+    0.43425
+  ],
+  "token_acc_7ctx": [
+    0.86838,
+    0.86274
+  ],
+  "interpretation": "Prediction confirmed locally: P(</think>) at decision points rises ~0.08->0.69; near-conclusion now ~45% terminates. NLL +0.0123 / token acc -0.0056 on self-generated prefixes (within 0.03/0.01 gates but includes intended </think> pressure). Gold-reference NLL and full-budget generation still required."
+}

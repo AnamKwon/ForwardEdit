@@ -1,0 +1,33 @@
+{
+  "utc": 1793852667.7998176,
+  "copied_from": "/path/to/runs/independent-mcp-011",
+  "development_sha256": "9a3be23df867d145a3b1454ebb05b82152fe5e69b24af6d7e92f7ef9779ab51d",
+  "sealed_sha256": "604c4ac60e7be9ebecca0b73df3c460758012bc59c4508a51ea1bc15fb9867c0",
+  "research_config_byte_identical": true,
+  "changed_model_weights_by_setup": 0,
+  "candidate_files_copied_without_change": [
+    [
+      "candidates/c1_L23_gate_u054/manifest.json",
+      "35814f6f6761fccaa2d729dee4bc0196072edfb15384470d5cd6649a593ed8fb"
+    ],
+    [
+      "candidates/c1_L23_gate_u054/replacements.safetensors",
+      "995192953439681c835e11f40715d7f432607eeaacc27b5b683db2e72a32f143"
+    ]
+  ],
+  "previous_provider_error": {
+    "is_error": true,
+    "api_error_status": 429,
+    "api_error": "usage_limit_reached"
+  },
+  "model_response_budget": {
+    "global": 150,
+    "spent": 112,
+    "remaining": 38
+  },
+  "cost_budget_api_equivalent_usd": {
+    "global": 20,
+    "spent": 6.4878376,
+    "remaining": 13.5121624
+  }
+}

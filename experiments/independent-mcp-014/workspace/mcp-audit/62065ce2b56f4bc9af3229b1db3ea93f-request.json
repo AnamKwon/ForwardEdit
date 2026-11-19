@@ -1,0 +1,27 @@
+{
+  "name": "record_observation",
+  "arguments": {
+    "observation": {
+      "kind": "c1_feedback_and_single_diagnostic_revision",
+      "parent_candidate_dir": "candidates/c1_L23_gate_u054",
+      "feedback_jobs": [
+        "b12c075924474a0787943091bad977bb",
+        "fb9e7e24181e4fe1bfd2eba2160a69a9"
+      ],
+      "observed": "C1 7/64 vs original 5/64, user paired feedback wrong-to-right 5 and old-correct lost 3/5. Direct reads confirm 7251, algebra943, algebra164 all cutoff, while 3643 and5859 remain correct. Prefix teacher effects do not establish gold-reference preservation.",
+      "hypothesis": "The dominant residual output coordinate 0 of u is a nuisance component of two-example decision contrast; its large write may perturb trajectories beyond the desired termination effect. Test by restoring only W[0,20], W[0,25], W[0,43] to source, retaining all other C1 entries and alpha .54. This is a single component-removal causal control, not a coordinate/strength sweep.",
+      "value_derivation": "Source row0 [0.006988525390625,-0.003692626953125,-0.052978515625]; parent [-0.11749039590358734,-0.11620613187551498,-0.14850884675979614]. Exact restoration; u0=-0.35738995882766866 is largest absolute component, vs max positive .0933532. No magnitude fitting.",
+      "alternative": "Stochastic autoregressive divergence, gate learned from just two contexts, or all of u being content-dependent can explain regressions. Coordinate0 has no proven semantic label.",
+      "prediction": "Retain positive local projection of cumulative delta on u, reduce dominant-coordinate disturbance, improve old-correct retention relative C1; full64 generation and full64 gold-reference NLL/accuracy must still meet immutable gates.",
+      "disconfirming_result": "Any original correct answer lost rejects preservation on this five-correct baseline; lower than required accuracy gain or failed reference gates rejects gain. If loss persists, dominant-coordinate-only explanation is insufficient. No subsequent sweep.",
+      "controls": [
+        {
+          "kind": "component_removal",
+          "purpose": "C1 versus child differs only at three row0 entries; source baseline already saved."
+        }
+      ],
+      "edit_count_planned": 1
+    }
+  },
+  "utc": 1793853004.3061347
+}

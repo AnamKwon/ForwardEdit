@@ -1,0 +1,687 @@
+{
+  "scope": "Predeclared fixed6short8192causal generation probes and fresh14conditional transfer observations. Smalln1, same-weight generation variability already observed; no full mechanistic necessity or independent math proof.",
+  "generation_controls": [
+    {
+      "receipt": "source-informed-first-probe-result.json",
+      "job_id": "8a231dda94c44cbfa98ec3d2fc1e2932",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 115.80688106268644,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.5,
+          "parse_failure": 3,
+          "cutoff": 3,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 36933,
+          "mean_length": 6155.5,
+          "engine_seconds": 130.22382033616304,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 3,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 3,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123452
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-column-shrink-generation-result.json",
+      "job_id": "3cb4bab5bf634c66b87870d7277bab93",
+      "metrics": {
+        "original": {
+          "accuracy": 0.3333333333333333,
+          "parse_failure": 4,
+          "cutoff": 5,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 47337,
+          "mean_length": 7889.5,
+          "engine_seconds": 112.19906898587942,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.3333333333333333,
+          "parse_failure": 4,
+          "cutoff": 4,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 45584,
+          "mean_length": 7597.333333333333,
+          "engine_seconds": 166.28447853028774,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 1,
+          "right_to_wrong": 1,
+          "unparsed_to_correct": 1,
+          "correct_to_unparsed": 1
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 124928
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-l15_only-generation-result.json",
+      "job_id": "6896683b9a5d4708af8c6b8bdcf6247b",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 143.28947684913874,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 146.47869803756475,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 0,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 0,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 76725
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-l19_only-generation-result.json",
+      "job_id": "b3da0684c15e41c4b35d3c37ed1fbd42",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 145.3192523792386,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.16666666666666666,
+          "parse_failure": 5,
+          "cutoff": 5,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 43502,
+          "mean_length": 7250.333333333333,
+          "engine_seconds": 170.68774703145027,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 1,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 1,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 46727
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-opposing-generation-result.json",
+      "job_id": "a967cbf3a41b47b3b2d5dcad941eac51",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 144.89210306853056,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.3333333333333333,
+          "parse_failure": 4,
+          "cutoff": 4,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 45320,
+          "mean_length": 7553.333333333333,
+          "engine_seconds": 174.31866171211004,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 2,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 2,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 123448
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-orthogonal-generation-result.json",
+      "job_id": "f440d9f1b4bf4f978724c6c83b833ee5",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 137.44592951238155,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 169.90974175930023,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 0,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 0,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 124203
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    },
+    {
+      "receipt": "causal-single-neuron-generation-result.json",
+      "job_id": "7fde4c75406342ee830f073a867f5924",
+      "metrics": {
+        "original": {
+          "accuracy": 0.0,
+          "parse_failure": 6,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 115.66088701784611,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "edited": {
+          "accuracy": 0.16666666666666666,
+          "parse_failure": 5,
+          "cutoff": 6,
+          "samples": 6,
+          "input_tokens": 937,
+          "generated_tokens": 49152,
+          "mean_length": 8192.0,
+          "engine_seconds": 123.90834547579288,
+          "backend": "vllm-0.17.1",
+          "model_forward_counter_scope": "Engine-internal autoregressive/profiling invocations are not observable here; logical pass and token/sample counts are reported separately."
+        },
+        "paired": {
+          "wrong_to_right": 1,
+          "right_to_wrong": 0,
+          "unparsed_to_correct": 1,
+          "correct_to_unparsed": 0
+        }
+      },
+      "actual_changed": {
+        "original": 0,
+        "edited": 1024
+      },
+      "gradients_enabled": false,
+      "optimizer_steps": 0
+    }
+  ],
+  "fresh_prefix_transfer": {
+    "original": {
+      "job_id": "02dfe42dfc1647a7a026f62e3a085e45",
+      "metrics": {
+        "nll": 1.9681494022772563,
+        "accuracy": 0.5959974984365228,
+        "target_tokens": 1599,
+        "input_tokens": 1613,
+        "generated_tokens": 0,
+        "samples": 14,
+        "execution": {
+          "causal_lm_forward": 0,
+          "backbone_forward": 14,
+          "output_head_forward": 80,
+          "largest_head_chunk_tokens": 22
+        }
+      },
+      "actual_changed": {
+        "original": 0
+      }
+    },
+    "edited": {
+      "job_id": "04e8c716d77c46fcaac55c845461c42d",
+      "metrics": {
+        "nll": 1.968877652199884,
+        "accuracy": 0.5947467166979362,
+        "target_tokens": 1599,
+        "input_tokens": 1613,
+        "generated_tokens": 0,
+        "samples": 14,
+        "execution": {
+          "causal_lm_forward": 0,
+          "backbone_forward": 14,
+          "output_head_forward": 80,
+          "largest_head_chunk_tokens": 22
+        }
+      },
+      "actual_changed": {
+        "edited": 123452
+      }
+    }
+  },
+  "limitations": [
+    "Opposing edit also solves2/6, so directional suppression is not a unique demonstrated mechanism.",
+    "L15-only0/6, L19-only1/6, orthogonal0/6 are bounded observations, not statistical necessity proofs.",
+    "Short8192controls cannot measure source age rescue that required13851tokens in full32kprimary.",
+    "Fresh14teacher score includes supplied prefixes; it is not clean problem-solving accuracy.",
+    "Primary64development5to35pass; independent192confirmationpending.",
+    "Per-problem comparisons matter: some perturbed controls can rescue original normal cases under short cutoff; compare target IDs rather than only aggregate6case totals. Original branch differs across some runs."
+  ],
+  "per_problem_generation_controls": [
+    {
+      "receipt": "source-informed-first-probe-result.json",
+      "job_id": "8a231dda94c44cbfa98ec3d2fc1e2932",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 4076
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 7062
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 1219
+        }
+      ]
+    },
+    {
+      "receipt": "causal-column-shrink-generation-result.json",
+      "job_id": "3cb4bab5bf634c66b87870d7277bab93",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": true,
+          "edited_grade": null,
+          "original_tokens": 6377,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 7464
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": true,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 5352
+        }
+      ]
+    },
+    {
+      "receipt": "causal-l15_only-generation-result.json",
+      "job_id": "6896683b9a5d4708af8c6b8bdcf6247b",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        }
+      ]
+    },
+    {
+      "receipt": "causal-l19_only-generation-result.json",
+      "job_id": "b3da0684c15e41c4b35d3c37ed1fbd42",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 2542
+        }
+      ]
+    },
+    {
+      "receipt": "causal-opposing-generation-result.json",
+      "job_id": "a967cbf3a41b47b3b2d5dcad941eac51",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 4709
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 7843
+        }
+      ]
+    },
+    {
+      "receipt": "causal-orthogonal-generation-result.json",
+      "job_id": "f440d9f1b4bf4f978724c6c83b833ee5",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        }
+      ]
+    },
+    {
+      "receipt": "causal-single-neuron-generation-result.json",
+      "job_id": "7fde4c75406342ee830f073a867f5924",
+      "pairs": [
+        {
+          "id": "math_train_number_theory_129",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_prealgebra_316",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_85",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_673",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "gsm8k_train_2649",
+          "original_grade": null,
+          "edited_grade": null,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        },
+        {
+          "id": "math_train_algebra_117",
+          "original_grade": null,
+          "edited_grade": true,
+          "original_tokens": 8192,
+          "edited_tokens": 8192
+        }
+      ]
+    }
+  ]
+}

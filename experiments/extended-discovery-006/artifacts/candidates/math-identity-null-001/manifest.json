@@ -1,0 +1,38 @@
+{
+  "plan": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "hypothesis": "Research causal-null control for observed cohort/batch sensitivity: zero weight edit, same6mathitems/8192tokens/seed as first paired probe. This is not a learned candidate or performance gain.",
+    "limits": {
+      "max_changed_fraction": 0.005,
+      "max_relative_l2": 0.25
+    },
+    "operations": [
+      {
+        "kind": "scale",
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "axis": 1,
+        "indices": [
+          161
+        ],
+        "strength": 0.0
+      }
+    ]
+  },
+  "report": {
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "total_parameters": 752393024,
+    "changed_parameters": 0,
+    "changed_fraction": 0.0,
+    "tensors": [
+      {
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "changed_parameters": 0,
+        "relative_l2": 0.0,
+        "max_absolute_delta": 0.0
+      }
+    ],
+    "status": "unevaluated",
+    "patch_sha256": "8d9a781bf320f1d742b0a3da3c5b404f268c6f273853cc6a00f4b74872cdd7ac"
+  }
+}

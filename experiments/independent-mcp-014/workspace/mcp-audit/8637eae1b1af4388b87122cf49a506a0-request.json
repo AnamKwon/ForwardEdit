@@ -1,0 +1,19 @@
+{
+  "name": "describe_parameter",
+  "arguments": {
+    "model_dir": "model",
+    "candidate_dir": "candidates/c1_L23_gate_u054",
+    "tensor": "model.layers.23.mlp.down_proj.weight",
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "columns": [
+      20,
+      25,
+      43
+    ]
+  },
+  "utc": 1793852920.4879525
+}

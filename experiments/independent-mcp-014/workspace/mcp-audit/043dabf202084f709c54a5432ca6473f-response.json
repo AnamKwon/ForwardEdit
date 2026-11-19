@@ -1,0 +1,17 @@
+{
+  "name": "compare_candidate_parameters",
+  "ok": true,
+  "elapsed_seconds": 2.1946824193000793,
+  "utc": 1793853114.4593904,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"source_sha256\": \"45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5\",\n  \"parent_candidate_dir\": \"candidates/c1_L23_gate_u054\",\n  \"parent_patch_sha256\": \"995192953439681c835e11f40715d7f432607eeaacc27b5b683db2e72a32f143\",\n  \"candidate_dir\": \"candidates/c2_restore_row0\",\n  \"patch_sha256\": \"27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd\",\n  \"incremental_changed\": 3,\n  \"net_changed\": 3069,\n  \"retained_parent_changes\": 3069,\n  \"revised_parent_changes\": 0,\n  \"restored_to_original\": 3,\n  \"new_changes\": 0,\n  \"tensors\": {\n    \"model.layers.23.mlp.down_proj.weight\": {\n      \"incremental_changed\": 3,\n      \"net_changed\": 3069,\n      \"retained_parent_changes\": 3069,\n      \"revised_parent_changes\": 0,\n      \"restored_to_original\": 3,\n      \"new_changes\": 0,\n      \"incremental_l2\": 0.1930811611815487,\n      \"incremental_max_abs\": 0.12447892129421234,\n      \"examples\": [\n        {\n          \"row\": 0,\n          \"column\": 20,\n          \"original\": 0.006988525390625,\n          \"parent\": -0.11749039590358734,\n          \"child\": 0.006988525390625\n        },\n        {\n          \"row\": 0,\n          \"column\": 25,\n          \"original\": -0.003692626953125,\n          \"parent\": -0.11620613187551498,\n          \"child\": -0.003692626953125\n        },\n        {\n          \"row\": 0,\n          \"column\": 43,\n          \"original\": -0.052978515625,\n          \"parent\": -0.14850884675979614,\n          \"child\": -0.052978515625\n        }\n      ]\n    }\n  },\n  \"model_forward_calls\": 0,\n  \"interpretation\": \"Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning.\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "research_read_array",
+  "ok": true,
+  "elapsed_seconds": 0.038728922605514526,
+  "utc": 1793850954.2393668,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"shape\": [\n    1839\n  ],\n  \"dtype\": \"float32\",\n  \"sha256\": \"5e50080a340a310e75bc0dcc14bab9d4cada73dd4840db7f3d14e4a215f15e0a\",\n  \"entries\": [\n    {\n      \"coordinates\": [\n        1561\n      ],\n      \"value\": -0.113800048828125\n    },\n    {\n      \"coordinates\": [\n        1562\n      ],\n      \"value\": -0.0004673004150390625\n    },\n    {\n      \"coordinates\": [\n        1563\n      ],\n      \"value\": -1.7658443450927734\n    },\n    {\n      \"coordinates\": [\n        1573\n      ],\n      \"value\": -0.7576217651367188\n    },\n    {\n      \"coordinates\": [\n        1574\n      ],\n      \"value\": -3.814697265625e-6\n    },\n    {\n      \"coordinates\": [\n        1575\n      ],\n      \"value\": -2.6187000274658203\n    },\n    {\n      \"coordinates\": [\n        1581\n      ],\n      \"value\": -1.5069999694824219\n    },\n    {\n      \"coordinates\": [\n        1582\n      ],\n      \"value\": -0.3688220977783203\n    },\n    {\n      \"coordinates\": [\n        1583\n      ],\n      \"value\": -0.0000133514404296875\n    }\n  ]\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "valid_protected_source_data_accepted": true,
+  "one_byte_changed_required_reference_rejected_by_expected_hash_assertion": true,
+  "metric_gate": "verify.py self-test passed: valid improvement accepted; identity, normal-NLL damage, short-EOS fake improvement rejected"
+}

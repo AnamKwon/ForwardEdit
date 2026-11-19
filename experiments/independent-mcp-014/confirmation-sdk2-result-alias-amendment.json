@@ -1,0 +1,21 @@
+{
+  "utc": 1793854440.9576037,
+  "cause": "MCP2 Python client exposes CallToolResult is_error/structured_content; old host checker used MCP1 aliases. One read-only parameter-comparison call, no test inference before fix.",
+  "previous_script_sha256": "a738aec4fca9a0bbb0b38c696e472b5b83a7cec1028b67304e6cd180a14de69e",
+  "fixed_script_sha256": "c0d418ce9054f227ce151f82ace719ad99d140c95b94c17f953efd29e405f4fd",
+  "exact_diff": [
+    "--- \n",
+    "+++ \n",
+    "@@ -15,4 +15,4 @@\n",
+    " def decoded(r):",
+    "- if r.isError:raise RuntimeError(str(r.content))",
+    "- return r.structuredContent or json.loads(next(x.text for x in r.content if x.type=='text'))",
+    "+ if r.is_error:raise RuntimeError(str(r.content))",
+    "+ return r.structured_content or json.loads(next(x.text for x in r.content if x.type=='text'))",
+    " def check():"
+  ],
+  "test_jobs_before_fix": 0,
+  "test_outcomes_seen": 0,
+  "frozen_patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd",
+  "scientific_threshold_data_parameter_changes": false
+}

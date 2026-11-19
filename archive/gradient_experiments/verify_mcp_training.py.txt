@@ -1,0 +1,244 @@
+"""Real stdio MCP edit verification and subsequent, separate AdamW training.
+
+This verifies plumbing/learning compatibility, not general model improvement.
+The MCP edits parameters; the local verifier performs training, since the MCP
+does not expose an optimizer or a training tool. All outputs use a new workspace.
+"""
+import argparse
+import asyncio
+import json
+import os
+import shutil
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+import numpy as np
+import torch
+from mcp import ClientSession, StdioServerParameters
+from mcp.client.stdio import stdio_client
+from safetensors.numpy import load_file
+from transformers import GPT2Config, GPT2LMHeadModel
+
+from weight_space_lab import core, evaluation as ev
+
+
+def fixture(root):
+    torch.manual_seed(23)
+    rng = np.random.default_rng(23)
+    config = GPT2Config(vocab_size=16, n_positions=12, n_embd=16, n_layer=1, n_head=2,
+                        resid_pdrop=0, embd_pdrop=0, attn_pdrop=0)
+    model = GPT2LMHeadModel(config).eval()
+    pairs = rng.permutation(256)[:160]
+    sequences = []
+    for pair in pairs:
+        seq = [int(pair // 16), int(pair % 16)]
+        while len(seq) < 12:
+            seq.append((seq[-1] + 1) % 16)
+        sequences.append(seq)
+    groups = {"discovery": sequences[:96], "validation": sequences[96:128], "test": sequences[128:]}
+    data = {"name": "mcp-training-verification", "version": "seed23-v1", "splits": {
+        k: [{"id": f"{k}-{i}", "tokens": seq} for i, seq in enumerate(rows)] for k, rows in groups.items()}}
+    (root / "data.json").write_text(json.dumps(data, indent=2))
+    # Short fixture pretraining, separate from the edit and continuation checks.
+    optimizer = torch.optim.AdamW(model.parameters(), lr=.003)
+    ids = torch.tensor(groups["discovery"])
+    model.train()
+    for _ in range(40):
+        loss = model(input_ids=ids, labels=ids).loss
+        optimizer.zero_grad(set_to_none=True)
+        loss.backward()
+        optimizer.step()
+    model.eval().save_pretrained(root / "model", safe_serialization=True)
+    return "transformer.h.0.mlp.c_proj.weight"
+
+
+async def check_case(root, tensor, steps):
+    source_hash = core.sha256(root / "model/model.safetensors")
+    original = load_file(str(root / "model/model.safetensors"))[tensor]
+    # Same explicit row block for both Linear and Conv1D: no inferred semantics.
+    indices = [0, 2]
+    direction = np.zeros(original.shape[1]); direction[0] = 1
+    left = np.array([.01, -.02], dtype=np.float64)
+    right = np.linspace(-1, 1, original.shape[1])
+    cases = {
+        "identity": {"kind": "scale", "strength": 0.0},
+        "scale": {"kind": "scale", "strength": .1},
+        "project_out": {"kind": "project_out", "strength": .1, "direction": direction.tolist()},
+        "rank_one": {"kind": "rank_one", "strength": .1, "left": left.tolist(), "right": right.tolist()},
+    }
+    base_model = ev.load_causal_lm(root, "model")
+    dataset = ev.load_dataset(root, "data.json")
+    sample = torch.tensor([dataset["splits"]["discovery"][0]["tokens"][:-1]])
+    with torch.inference_mode():
+        base_logits = base_model(sample).logits.clone()
+    params = StdioServerParameters(command=sys.executable, args=[
+        "-B", "-m", "weight_space_lab.server", "--workspace", str(root)],
+        env={**os.environ, "OMP_NUM_THREADS": "1", "MKL_NUM_THREADS": "1",
+             "PYTHONPATH": str(Path(__file__).resolve().parents[1]), "PYTHONDONTWRITEBYTECODE": "1"})
+    async with stdio_client(params) as (reader, writer):
+        async with ClientSession(reader, writer) as session:
+            await session.initialize()
+
+            async def call(name, arguments):
+                result = await session.call_tool(name, arguments)
+                if result.isError:
+                    raise AssertionError(f"MCP {name}: {result.content}")
+                return json.loads(result.content[0].text)
+
+            info = await call("inspect_checkpoint", {"checkpoint": "model/model.safetensors"})
+            assert info["sha256"] == source_hash
+            values = await call("read_tensor_slice", {"checkpoint": "model/model.safetensors",
+                "tensor": tensor, "rows": indices, "columns": [0, 1]})
+            np.testing.assert_array_equal(values["values"], original[np.ix_(indices, [0, 1])])
+            before_metrics = await call("evaluate_baseline", {"model_dir": "model",
+                "dataset_path": "data.json", "splits": ["discovery", "validation"]})
+            edits = {}
+            for name, operation in cases.items():
+                plan = {"checkpoint": "model/model.safetensors", "source_sha256": source_hash,
+                    "hypothesis": f"MCP parameter/forward plumbing control: {name}; no improvement assumed",
+                    "limits": {"max_changed_fraction": .1, "max_relative_l2": .2},
+                    "operations": [{"tensor": tensor, "axis": 0, "indices": indices, **operation}]}
+                preview = await call("preview_edit", {"plan": plan})
+                created = await call("create_candidate", {"plan": plan, "output": name})
+                # Independent expected arithmetic; do not reuse core.prepare.
+                expected = original.astype(np.float64)
+                block = expected[indices, :].copy()
+                if operation["kind"] == "scale":
+                    expected[indices, :] = block * (1 - operation["strength"])
+                elif operation["kind"] == "project_out":
+                    expected[indices, :] = block - .1 * np.outer(block @ direction, direction)
+                else:
+                    expected[indices, :] = block + .1 * np.outer(left, right)
+                expected = expected.astype(original.dtype)
+                patch = load_file(str(root / name / "replacements.safetensors"))[tensor]
+                np.testing.assert_array_equal(patch, expected)
+                changed = int(np.count_nonzero(expected != original))
+                assert preview["changed_parameters"] == created["changed_parameters"] == changed
+                edited, _ = ev.apply_candidate(root, "model", name)
+                parameter = dict(edited.named_parameters())[tensor]
+                assert isinstance(parameter, torch.nn.Parameter) and parameter.requires_grad
+                np.testing.assert_array_equal(parameter.detach().numpy(), expected)
+                for key, value in base_model.state_dict().items():
+                    if key != tensor:
+                        assert torch.equal(value, edited.state_dict()[key]), key
+                with torch.inference_mode():
+                    logit_delta = float((edited(sample).logits - base_logits).abs().max())
+                assert (changed == 0 and logit_delta == 0) if name == "identity" else (changed > 0 and logit_delta > 0)
+                measured = await call("evaluate_candidate", {"model_dir": "model", "candidate_dir": name,
+                    "dataset_path": "data.json", "options": {"min_nll_gain": .0001,
+                        "selection_split": "discovery", "heldout_split": "validation",
+                        "bootstrap": 100, "max_accuracy_drop": 1.0}})
+                local_metrics = ev.evaluate_model(edited, dataset, ["validation"])["validation"]
+                assert abs(local_metrics["nll"] - measured["candidate"]["validation"]["nll"]) < 1e-10
+                edits[name] = {"changed_parameters": changed, "expected_tensor_exact": True,
+                    "actual_parameter_exact": True, "unselected_parameters_unchanged": True,
+                    "max_absolute_logit_change": logit_delta,
+                    "validation_nll": local_metrics["nll"], "mcp_local_metrics_match": True,
+                    "edit_alone_gate_passed": measured["gate"]["passed"]}
+
+            # Separate gradient_training: optimize ONLY the actual edited matrix.
+            trained, _ = ev.apply_candidate(root, "model", "rank_one")
+            frozen_control, _ = ev.apply_candidate(root, "model", "rank_one")
+            for key, param in trained.named_parameters():
+                param.requires_grad_(key == tensor)
+            target = dict(trained.named_parameters())[tensor]
+            prior = {k: v.detach().clone() for k, v in trained.state_dict().items()}
+            mcp_edit_mask = prior[tensor] != base_model.state_dict()[tensor]
+            assert int(mcp_edit_mask.sum()) == edits["rank_one"]["changed_parameters"] > 0
+            metrics_before = ev.evaluate_model(trained, dataset, ["discovery", "validation"])
+            optimizer = torch.optim.AdamW([target], lr=.003, weight_decay=0)
+            total = sum(len(e["tokens"]) - 1 for e in dataset["splits"]["discovery"])
+            gradient_norms, edited_gradient_norms = [], []
+            for _ in range(steps):
+                optimizer.zero_grad(set_to_none=True)
+                # Token-normalized objective handles variable sequence lengths.
+                for example in dataset["splits"]["discovery"]:
+                    ids = torch.tensor([example["tokens"]])
+                    logits = trained(ids[:, :-1]).logits
+                    loss = torch.nn.functional.cross_entropy(logits.reshape(-1, logits.shape[-1]),
+                        ids[:, 1:].reshape(-1), reduction="sum") / total
+                    loss.backward()
+                assert target.grad is not None and torch.isfinite(target.grad).all()
+                norm = float(target.grad.norm())
+                assert norm > 0
+                gradient_norms.append(norm)
+                edited_norm = float(target.grad[mcp_edit_mask].norm())
+                assert edited_norm > 0
+                edited_gradient_norms.append(edited_norm)
+                optimizer.step()
+            metrics_after = ev.evaluate_model(trained, dataset, ["discovery", "validation"])
+            delta_count = int((prior[tensor] != target.detach()).sum())
+            assert delta_count > 0
+            edited_cells_updated = int(((prior[tensor] != target.detach()) & mcp_edit_mask).sum())
+            assert edited_cells_updated > 0
+            for key, value in trained.state_dict().items():
+                assert torch.isfinite(value).all()
+                if key != tensor:
+                    assert torch.equal(value, prior[key]), key
+            assert metrics_after["discovery"]["nll"] < metrics_before["discovery"]["nll"]
+            control_metrics = ev.evaluate_model(frozen_control, dataset, ["discovery", "validation"])
+            assert control_metrics == metrics_before
+            trained.save_pretrained(root / "trained", safe_serialization=True)
+            reloaded = ev.load_causal_lm(root, "trained")
+            for key, value in trained.state_dict().items():
+                assert torch.equal(value, reloaded.state_dict()[key]), key
+            with torch.inference_mode():
+                assert torch.equal(trained(sample).logits, reloaded(sample).logits)
+            reloaded_metrics = await call("evaluate_baseline", {"model_dir": "trained",
+                "dataset_path": "data.json", "splits": ["discovery", "validation"]})
+            assert reloaded_metrics["metrics"] == ev._strip(metrics_after)
+            assert core.sha256(root / "model/model.safetensors") == source_hash
+            return {"source_sha256": source_hash, "tensor": tensor,
+                "edits_via_actual_stdio_mcp": edits, "training": {"mode": "gradient_training",
+                    "executor": "local verification harness, not MCP", "optimizer": "AdamW",
+                    "steps": steps, "only_edited_matrix_trainable": True,
+                    "gradient_norm_first": gradient_norms[0], "gradient_norm_last": gradient_norms[-1],
+                    "finite_nonzero_gradients_every_step": True, "optimizer_changed_parameters": delta_count,
+                    "mcp_edited_cells": int(mcp_edit_mask.sum()),
+                    "mcp_edited_cells_updated_by_optimizer": edited_cells_updated,
+                    "mcp_edited_cells_gradient_norm_first": edited_gradient_norms[0],
+                    "mcp_edited_cells_gradient_norm_last": edited_gradient_norms[-1],
+                    "mcp_edited_cells_nonzero_gradient_every_step": True,
+                    "other_parameters_unchanged": True, "before": ev._strip(metrics_before),
+                    "after": ev._strip(metrics_after), "no_optimizer_control_unchanged": True,
+                    "checkpoint_and_logits_roundtrip_exact": True, "trained_metrics_verified_via_mcp": True},
+                "original_checkpoint_unchanged": True,
+                "scope": "Plumbing and trainability verification using development splits only; not generalization or general-ability certification."}
+
+
+async def verify(root, pretrained_root=None, steps=30):
+    root = Path(root).resolve()
+    root.mkdir(parents=True, exist_ok=False)
+    torch.set_num_threads(1)
+    tiny = root / "tiny"; tiny.mkdir()
+    tensor = fixture(tiny)
+    results = {"tiny": await check_case(tiny, tensor, steps)}
+    (root / "tiny-report.json").write_text(json.dumps(results["tiny"], indent=2, allow_nan=False))
+    if pretrained_root is not None:
+        pretrained_root = Path(pretrained_root).resolve()
+        dest = root / "pretrained"; dest.mkdir()
+        shutil.copytree(pretrained_root / "model", dest / "model")
+        shutil.copy2(pretrained_root / "development.json", dest / "data.json")
+        results["pretrained"] = await check_case(dest, "transformer.h.7.mlp.c_proj.weight", steps)
+    report = {"passed": True, "cases": results,
+        "note": "MCP direct edits are not optimizer training; subsequent training is explicitly performed by the verifier."}
+    (root / "report.json").write_text(json.dumps(report, indent=2, allow_nan=False))
+    return report
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--workspace", type=Path, required=True)
+    parser.add_argument("--pretrained-root", type=Path)
+    parser.add_argument("--steps", type=int, default=30)
+    args = parser.parse_args()
+    if not 1 <= args.steps <= 100:
+        parser.error("steps must be in [1,100]")
+    report = asyncio.run(asyncio.wait_for(verify(args.workspace, args.pretrained_root, args.steps), timeout=600))
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == "__main__":
+    main()

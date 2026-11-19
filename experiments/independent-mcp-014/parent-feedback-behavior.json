@@ -1,0 +1,19 @@
+{
+  "parent_c1_to_child_c2": {
+    "wrong_to_right": 5,
+    "right_to_wrong": 2,
+    "retained_correct": 5
+  },
+  "same_lost_original_correct_IDs": {
+    "c1": [
+      "gsm8k_train_7251",
+      "math_train_algebra_164",
+      "math_train_algebra_943"
+    ],
+    "c2": [
+      "gsm8k_train_7251",
+      "math_train_algebra_164",
+      "math_train_algebra_943"
+    ]
+  }
+}

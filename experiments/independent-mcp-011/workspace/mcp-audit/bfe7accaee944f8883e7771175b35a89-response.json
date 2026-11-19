@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.724237784743309,
+  "utc": 1793850669.7966335,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/X_L23_10.npy.json\",\n  \"sha256\": \"e780eeea9e59d0d529f56d69859418f39776bcbeaf0baa4590c6512854f19226\",\n  \"characters\": 1225,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"path\\\": \\\"analysis/X_L23_10.npy\\\",\\n  \\\"sha256\\\": \\\"acbf2c10e9c2184e31e86e9e3a5d0624c11a2e49ab5b2f34757e786b62a3557e\\\",\\n  \\\"shape\\\": [\\n    10,\\n    1024\\n  ],\\n  \\\"dtype\\\": \\\"float64\\\",\\n  \\\"norm\\\": 30.080204540273265,\\n  \\\"min\\\": -4.21875,\\n  \\\"max\\\": 1.1484375,\\n  \\\"preview\\\": [\\n    -1.09375,\\n    -0.1328125,\\n    -0.107421875,\\n    0.03515625,\\n    -0.1123046875,\\n    0.3203125,\\n    0.333984375,\\n    -0.421875,\\n    0.0791015625,\\n    0.10546875,\\n    0.515625,\\n    -0.2265625,\\n    -0.0859375,\\n    -0.3515625,\\n    0.0205078125,\\n    0.0830078125\\n  ],\\n  \\\"model_forward_calls\\\": 0,\\n  \\\"operation\\\": \\\"concatenate\\\",\\n  \\\"inputs\\\": [\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/77f0d3b42ba0430098dd9d66fef10623.npy\\\",\\n      \\\"sha256\\\": \\\"008ee111e125f1023aa5f3faaf6c4f7db7fe85fe18020314e8262988d3dd0100\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/8726211098ff429f90a6b5ca109230cd.npy\\\",\\n      \\\"sha256\\\": \\\"068c6f2ac70c571114a2841be0e64f4f45c551be2f1ae76209d06b0dbb511b97\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/acc8701dffe7470885383eb962a46fb1.npy\\\",\\n      \\\"sha256\\\": \\\"dcd66f88a3ac2e493aab95958647b6c54f87c5ab68e6de2ef56c5e3b75661659\\\"\\n    }\\n  ],\\n  \\\"options\\\": {\\n    \\\"axis\\\": 0\\n  }\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

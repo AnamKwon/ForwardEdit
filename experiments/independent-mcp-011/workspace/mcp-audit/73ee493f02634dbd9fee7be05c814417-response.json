@@ -1,0 +1,17 @@
+{
+  "name": "array_compute",
+  "ok": true,
+  "elapsed_seconds": 0.5343590527772903,
+  "utc": 1793850844.962007,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/H10_cols.npy\",\n  \"sha256\": \"8d8f97bfc5d5b0532ace7fa48570b4881b6b3aab5a1223c5b7d64e8430102746\",\n  \"shape\": [\n    10,\n    3\n  ],\n  \"dtype\": \"float64\",\n  \"norm\": 8.751714449903227,\n  \"min\": -0.921875,\n  \"max\": 3.078125,\n  \"preview\": [\n    1.234375,\n    1.4296875,\n    -0.61328125,\n    0.0908203125,\n    0.93359375,\n    0.310546875,\n    2.703125,\n    3.078125,\n    2.40625,\n    0.51171875,\n    0.78515625,\n    0.72265625,\n    -0.90625,\n    0.056396484375,\n    0.10498046875,\n    2.265625\n  ],\n  \"model_forward_calls\": 0,\n  \"operation\": \"take\",\n  \"inputs\": [\n    {\n      \"path\": \"analysis/H_L23_10.npy\",\n      \"sha256\": \"74a16356c9e8c95c004d1acc861d4423a60681ea30e393705e8300756e97033d\"\n    }\n  ],\n  \"options\": {\n    \"indices\": [\n      20,\n      25,\n      43\n    ],\n    \"axis\": 1\n  }\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

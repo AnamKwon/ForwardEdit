@@ -1,0 +1,22 @@
+{
+  "source_code_protocol_mismatches": [],
+  "source_checkpoint_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+  "frozen_selection": {
+    "candidate_dir": "candidates/c2_restore_row0",
+    "manifest_sha256": "15b312dde18162bdedb0fbbeab3972b0b363ab3953f0a0ec3d1f9058b238026a",
+    "patch_sha256": "27a0a5b74e13dcbbabf6771ee5c256539c6f15df9a9cca650272c435c88d6ddd",
+    "evidence_job_ids": [
+      "fd481604f2834219944cb87aeeb8989f",
+      "b12c075924474a0787943091bad977bb",
+      "fb9e7e24181e4fe1bfd2eba2160a69a9",
+      "9539a018ae434f6fa1a0204179846f2e",
+      "6612ecc780f44d1196dd2f94028d8a27",
+      "29312dd5233849638b275340a7afb9e2",
+      "188c7e2ab488476a87d16329987ce153"
+    ],
+    "decision": "diagnostic_only",
+    "explanation": "No qualified gain. Exactly one feedback-dependent followup revision restores original W[0,20/25/43] of final MLP down_proj while retaining other C1 writes. Verified 3069 net stored changes,3067 actual GPU BF16 changes. Full64 accuracy source5/64,parent7/64,child10/64; paired child wrong-to-right8,right-to-wrong3,retained2. Old-correct loss3/5=.60 violates .05; net5/64 gain below .10. Full64 gold-reference NLL1.2388549153483155->1.251021493848549 and token accuracy.7149743668222511->.7097712143239727 satisfy aggregate reference gates but cannot replace answer preservation. The row0-only cause explanation is insufficient: identical three old-correct failures persist as cutoffs. Freeze C2 only as diagnostic artifact, no improvement certification. No independent test seen; no editing or reselection after freeze.",
+    "utc": 1793854299.487345,
+    "performance_certified": false
+  }
+}

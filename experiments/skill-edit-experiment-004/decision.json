@@ -1,0 +1,1976 @@
+{
+ "confirmation_candidate": "candidate-03",
+ "validation_eligible": true,
+ "decision": "eligible_for_confirmation",
+ "baseline": {
+  "validation_mean_repeat_fraction": 0.06926490728980994,
+  "reference_validation": {
+   "examples": 32,
+   "tokens": 5536,
+   "nll": 2.3038915823859227,
+   "accuracy": 0.4779624277456647
+  },
+  "short_rate": 0.0,
+  "median_content_tokens": 128.0
+ },
+ "thresholds": {
+  "min_repeat_gain": 0.02,
+  "max_reference_nll_increase": 0.02,
+  "max_reference_accuracy_drop": 0.01,
+  "max_short_rate_increase": 0.05,
+  "minimum_median_length": "min(32,0.75*baseline_median)"
+ },
+ "limits": {
+  "max_changed_fraction": 0.02,
+  "max_relative_l2": 0.15
+ },
+ "candidates": {
+  "candidate-01": {
+   "mean_repeat_fraction": 0.1026613833009919,
+   "short_rate": 0.0,
+   "median_content_tokens": 128.0,
+   "eos_rate": 0.21875,
+   "reference_validation": {
+    "examples": 32,
+    "tokens": 5536,
+    "nll": 2.3077016750948904,
+    "accuracy": 0.47958815028901736,
+    "per_example": [
+     {
+      "id": "tsval-04217",
+      "tokens": 139,
+      "nll_sum": 278.691625002274,
+      "correct": 74
+     },
+     {
+      "id": "tsval-01315",
+      "tokens": 113,
+      "nll_sum": 283.6637121408759,
+      "correct": 48
+     },
+     {
+      "id": "tsval-00910",
+      "tokens": 193,
+      "nll_sum": 541.1704049058277,
+      "correct": 74
+     },
+     {
+      "id": "tsval-03377",
+      "tokens": 166,
+      "nll_sum": 384.50794467982865,
+      "correct": 86
+     },
+     {
+      "id": "tsval-02811",
+      "tokens": 201,
+      "nll_sum": 317.39362243253225,
+      "correct": 126
+     },
+     {
+      "id": "tsval-01509",
+      "tokens": 170,
+      "nll_sum": 399.22457713384256,
+      "correct": 80
+     },
+     {
+      "id": "tsval-04741",
+      "tokens": 138,
+      "nll_sum": 291.88875553036036,
+      "correct": 69
+     },
+     {
+      "id": "tsval-11332",
+      "tokens": 193,
+      "nll_sum": 394.12444511065667,
+      "correct": 98
+     },
+     {
+      "id": "tsval-15235",
+      "tokens": 222,
+      "nll_sum": 515.2841419890906,
+      "correct": 108
+     },
+     {
+      "id": "tsval-14731",
+      "tokens": 153,
+      "nll_sum": 356.2747667258425,
+      "correct": 64
+     },
+     {
+      "id": "tsval-12148",
+      "tokens": 219,
+      "nll_sum": 665.8011116260707,
+      "correct": 88
+     },
+     {
+      "id": "tsval-03695",
+      "tokens": 145,
+      "nll_sum": 349.4767318630635,
+      "correct": 72
+     },
+     {
+      "id": "tsval-02763",
+      "tokens": 130,
+      "nll_sum": 253.84744109631498,
+      "correct": 72
+     },
+     {
+      "id": "tsval-10529",
+      "tokens": 206,
+      "nll_sum": 538.9160178650314,
+      "correct": 91
+     },
+     {
+      "id": "tsval-16497",
+      "tokens": 193,
+      "nll_sum": 287.38785199675067,
+      "correct": 121
+     },
+     {
+      "id": "tsval-04616",
+      "tokens": 184,
+      "nll_sum": 323.3142842157374,
+      "correct": 105
+     },
+     {
+      "id": "tsval-15240",
+      "tokens": 192,
+      "nll_sum": 505.5162334304706,
+      "correct": 82
+     },
+     {
+      "id": "tsval-00888",
+      "tokens": 176,
+      "nll_sum": 375.567174831878,
+      "correct": 95
+     },
+     {
+      "id": "tsval-14084",
+      "tokens": 194,
+      "nll_sum": 445.75402351824965,
+      "correct": 85
+     },
+     {
+      "id": "tsval-11346",
+      "tokens": 193,
+      "nll_sum": 564.7066382291858,
+      "correct": 76
+     },
+     {
+      "id": "tsval-12624",
+      "tokens": 191,
+      "nll_sum": 363.6504020275344,
+      "correct": 98
+     },
+     {
+      "id": "tsval-04837",
+      "tokens": 189,
+      "nll_sum": 332.74646114306165,
+      "correct": 110
+     },
+     {
+      "id": "tsval-21311",
+      "tokens": 176,
+      "nll_sum": 465.93907938654655,
+      "correct": 75
+     },
+     {
+      "id": "tsval-11166",
+      "tokens": 189,
+      "nll_sum": 402.6196426602736,
+      "correct": 92
+     },
+     {
+      "id": "tsval-09717",
+      "tokens": 163,
+      "nll_sum": 325.4169997408036,
+      "correct": 81
+     },
+     {
+      "id": "tsval-09037",
+      "tokens": 147,
+      "nll_sum": 458.03316209639615,
+      "correct": 56
+     },
+     {
+      "id": "tsval-11670",
+      "tokens": 110,
+      "nll_sum": 249.14510080857173,
+      "correct": 51
+     },
+     {
+      "id": "tsval-04360",
+      "tokens": 207,
+      "nll_sum": 474.492694092271,
+      "correct": 93
+     },
+     {
+      "id": "tsval-05212",
+      "tokens": 124,
+      "nll_sum": 276.73779397808096,
+      "correct": 66
+     },
+     {
+      "id": "tsval-05226",
+      "tokens": 171,
+      "nll_sum": 551.6143477512352,
+      "correct": 60
+     },
+     {
+      "id": "tsval-08278",
+      "tokens": 148,
+      "nll_sum": 339.7329762325305,
+      "correct": 67
+     },
+     {
+      "id": "tsval-12183",
+      "tokens": 201,
+      "nll_sum": 462.7963090841248,
+      "correct": 92
+     }
+    ]
+   },
+   "reference_discovery": {
+    "examples": 32,
+    "tokens": 5646,
+    "nll": 2.3433865719062648,
+    "accuracy": 0.4812256464753808,
+    "per_example": [
+     {
+      "id": "tsval-06734",
+      "tokens": 149,
+      "nll_sum": 531.859266138958,
+      "correct": 52
+     },
+     {
+      "id": "tsval-09872",
+      "tokens": 190,
+      "nll_sum": 367.0898968921699,
+      "correct": 98
+     },
+     {
+      "id": "tsval-05292",
+      "tokens": 165,
+      "nll_sum": 383.21548635092404,
+      "correct": 80
+     },
+     {
+      "id": "tsval-16092",
+      "tokens": 144,
+      "nll_sum": 311.1879268509158,
+      "correct": 74
+     },
+     {
+      "id": "tsval-20916",
+      "tokens": 151,
+      "nll_sum": 505.9236999780381,
+      "correct": 65
+     },
+     {
+      "id": "tsval-03749",
+      "tokens": 182,
+      "nll_sum": 439.0560759416524,
+      "correct": 86
+     },
+     {
+      "id": "tsval-07159",
+      "tokens": 177,
+      "nll_sum": 344.6317623608919,
+      "correct": 101
+     },
+     {
+      "id": "tsval-08537",
+      "tokens": 233,
+      "nll_sum": 362.1113810155439,
+      "correct": 144
+     },
+     {
+      "id": "tsval-03612",
+      "tokens": 148,
+      "nll_sum": 308.39009258384374,
+      "correct": 74
+     },
+     {
+      "id": "tsval-08570",
+      "tokens": 233,
+      "nll_sum": 443.02010891610837,
+      "correct": 127
+     },
+     {
+      "id": "tsval-07925",
+      "tokens": 173,
+      "nll_sum": 308.3398647867656,
+      "correct": 101
+     },
+     {
+      "id": "tsval-19578",
+      "tokens": 158,
+      "nll_sum": 380.2973497777897,
+      "correct": 74
+     },
+     {
+      "id": "tsval-19814",
+      "tokens": 174,
+      "nll_sum": 420.9624645068959,
+      "correct": 83
+     },
+     {
+      "id": "tsval-01276",
+      "tokens": 198,
+      "nll_sum": 581.9293487052914,
+      "correct": 72
+     },
+     {
+      "id": "tsval-12253",
+      "tokens": 177,
+      "nll_sum": 466.27893067099603,
+      "correct": 69
+     },
+     {
+      "id": "tsval-05999",
+      "tokens": 217,
+      "nll_sum": 531.8151552054285,
+      "correct": 96
+     },
+     {
+      "id": "tsval-05017",
+      "tokens": 190,
+      "nll_sum": 619.4067587997099,
+      "correct": 69
+     },
+     {
+      "id": "tsval-14855",
+      "tokens": 157,
+      "nll_sum": 352.87892142881367,
+      "correct": 75
+     },
+     {
+      "id": "tsval-12072",
+      "tokens": 170,
+      "nll_sum": 270.69128717993283,
+      "correct": 99
+     },
+     {
+      "id": "tsval-05994",
+      "tokens": 216,
+      "nll_sum": 537.7217026864862,
+      "correct": 89
+     },
+     {
+      "id": "tsval-14575",
+      "tokens": 137,
+      "nll_sum": 330.6041535915323,
+      "correct": 62
+     },
+     {
+      "id": "tsval-09791",
+      "tokens": 142,
+      "nll_sum": 262.0231657807418,
+      "correct": 81
+     },
+     {
+      "id": "tsval-15514",
+      "tokens": 199,
+      "nll_sum": 627.0549736885049,
+      "correct": 69
+     },
+     {
+      "id": "tsval-21906",
+      "tokens": 164,
+      "nll_sum": 420.7761934248024,
+      "correct": 72
+     },
+     {
+      "id": "tsval-09488",
+      "tokens": 153,
+      "nll_sum": 286.64340920233906,
+      "correct": 89
+     },
+     {
+      "id": "tsval-09720",
+      "tokens": 184,
+      "nll_sum": 360.7998372929932,
+      "correct": 108
+     },
+     {
+      "id": "tsval-11639",
+      "tokens": 233,
+      "nll_sum": 570.1200741644607,
+      "correct": 109
+     },
+     {
+      "id": "tsval-13123",
+      "tokens": 191,
+      "nll_sum": 507.1510221847633,
+      "correct": 80
+     },
+     {
+      "id": "tsval-11161",
+      "tokens": 174,
+      "nll_sum": 312.5845500017418,
+      "correct": 104
+     },
+     {
+      "id": "tsval-10984",
+      "tokens": 133,
+      "nll_sum": 291.7049061046661,
+      "correct": 64
+     },
+     {
+      "id": "tsval-12802",
+      "tokens": 190,
+      "nll_sum": 463.7423630527775,
+      "correct": 86
+     },
+     {
+      "id": "tsval-09505",
+      "tokens": 144,
+      "nll_sum": 330.74845571629106,
+      "correct": 65
+     }
+    ]
+   },
+   "gate": {
+    "mean_repeat_gain": -0.03339647601118195,
+    "gain_ci95": [
+     -0.08515847258599138,
+     0.002805468896798307
+    ],
+    "reference_nll_increase": 0.003810092708967705,
+    "reference_accuracy_change": 0.0016257225433526368,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+     {
+      "id": "tsval-04217",
+      "repeat_increase": 0.01652892561983471
+     },
+     {
+      "id": "tsval-00910",
+      "repeat_increase": 0.01652892561983471
+     },
+     {
+      "id": "tsval-03377",
+      "repeat_increase": 0.7101787101787101
+     },
+     {
+      "id": "tsval-15235",
+      "repeat_increase": 0.12396694214876033
+     },
+     {
+      "id": "tsval-14731",
+      "repeat_increase": 0.008264462809917356
+     },
+     {
+      "id": "tsval-12148",
+      "repeat_increase": 0.007317073170731714
+     },
+     {
+      "id": "tsval-03695",
+      "repeat_increase": 0.24793388429752064
+     },
+     {
+      "id": "tsval-11346",
+      "repeat_increase": 0.07324998234089143
+     },
+     {
+      "id": "tsval-12624",
+      "repeat_increase": 0.024793388429752067
+     },
+     {
+      "id": "tsval-21311",
+      "repeat_increase": 0.03443526170798898
+     },
+     {
+      "id": "tsval-09037",
+      "repeat_increase": 0.04132231404958678
+     },
+     {
+      "id": "tsval-04360",
+      "repeat_increase": 0.01652892561983471
+     },
+     {
+      "id": "tsval-08278",
+      "repeat_increase": 0.12396694214876033
+     }
+    ],
+    "checks": {
+     "mean_repeat_gain": false,
+     "gain_ci_lower_positive": true,
+     "reference_nll_preserved": true,
+     "reference_accuracy_preserved": true,
+     "short_rate_preserved": true,
+     "median_length_preserved": true
+    },
+    "decision": "gate_failed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+   }
+  },
+  "candidate-02": {
+   "mean_repeat_fraction": 0.08310659255001454,
+   "short_rate": 0.0,
+   "median_content_tokens": 128.0,
+   "eos_rate": 0.34375,
+   "reference_validation": {
+    "examples": 32,
+    "tokens": 5536,
+    "nll": 2.306696709580527,
+    "accuracy": 0.4785043352601156,
+    "per_example": [
+     {
+      "id": "tsval-04217",
+      "tokens": 139,
+      "nll_sum": 280.1681486312899,
+      "correct": 74
+     },
+     {
+      "id": "tsval-01315",
+      "tokens": 113,
+      "nll_sum": 282.99035457193935,
+      "correct": 48
+     },
+     {
+      "id": "tsval-00910",
+      "tokens": 193,
+      "nll_sum": 541.68775487018,
+      "correct": 75
+     },
+     {
+      "id": "tsval-03377",
+      "tokens": 166,
+      "nll_sum": 385.191201381154,
+      "correct": 81
+     },
+     {
+      "id": "tsval-02811",
+      "tokens": 201,
+      "nll_sum": 319.17494137113806,
+      "correct": 126
+     },
+     {
+      "id": "tsval-01509",
+      "tokens": 170,
+      "nll_sum": 396.5612377843165,
+      "correct": 82
+     },
+     {
+      "id": "tsval-04741",
+      "tokens": 138,
+      "nll_sum": 290.0739523312353,
+      "correct": 71
+     },
+     {
+      "id": "tsval-11332",
+      "tokens": 193,
+      "nll_sum": 393.36937653818967,
+      "correct": 98
+     },
+     {
+      "id": "tsval-15235",
+      "tokens": 222,
+      "nll_sum": 518.1627030615666,
+      "correct": 108
+     },
+     {
+      "id": "tsval-14731",
+      "tokens": 153,
+      "nll_sum": 355.82186628861916,
+      "correct": 63
+     },
+     {
+      "id": "tsval-12148",
+      "tokens": 219,
+      "nll_sum": 663.6628848240057,
+      "correct": 86
+     },
+     {
+      "id": "tsval-03695",
+      "tokens": 145,
+      "nll_sum": 348.0810700753996,
+      "correct": 71
+     },
+     {
+      "id": "tsval-02763",
+      "tokens": 130,
+      "nll_sum": 252.20917852467076,
+      "correct": 72
+     },
+     {
+      "id": "tsval-10529",
+      "tokens": 206,
+      "nll_sum": 540.569668771511,
+      "correct": 86
+     },
+     {
+      "id": "tsval-16497",
+      "tokens": 193,
+      "nll_sum": 287.7234786153916,
+      "correct": 118
+     },
+     {
+      "id": "tsval-04616",
+      "tokens": 184,
+      "nll_sum": 324.4947411902123,
+      "correct": 105
+     },
+     {
+      "id": "tsval-15240",
+      "tokens": 192,
+      "nll_sum": 505.3386877858727,
+      "correct": 80
+     },
+     {
+      "id": "tsval-00888",
+      "tokens": 176,
+      "nll_sum": 375.1908203352428,
+      "correct": 97
+     },
+     {
+      "id": "tsval-14084",
+      "tokens": 194,
+      "nll_sum": 444.9690958703578,
+      "correct": 88
+     },
+     {
+      "id": "tsval-11346",
+      "tokens": 193,
+      "nll_sum": 562.6422004011695,
+      "correct": 75
+     },
+     {
+      "id": "tsval-12624",
+      "tokens": 191,
+      "nll_sum": 363.76959055590737,
+      "correct": 98
+     },
+     {
+      "id": "tsval-04837",
+      "tokens": 189,
+      "nll_sum": 332.6546712765496,
+      "correct": 111
+     },
+     {
+      "id": "tsval-21311",
+      "tokens": 176,
+      "nll_sum": 466.4760894535225,
+      "correct": 76
+     },
+     {
+      "id": "tsval-11166",
+      "tokens": 189,
+      "nll_sum": 403.58849836693537,
+      "correct": 90
+     },
+     {
+      "id": "tsval-09717",
+      "tokens": 163,
+      "nll_sum": 325.57827501296055,
+      "correct": 82
+     },
+     {
+      "id": "tsval-09037",
+      "tokens": 147,
+      "nll_sum": 458.2700341017696,
+      "correct": 56
+     },
+     {
+      "id": "tsval-11670",
+      "tokens": 110,
+      "nll_sum": 251.05499622469637,
+      "correct": 51
+     },
+     {
+      "id": "tsval-04360",
+      "tokens": 207,
+      "nll_sum": 475.6154213734471,
+      "correct": 95
+     },
+     {
+      "id": "tsval-05212",
+      "tokens": 124,
+      "nll_sum": 276.88806690365817,
+      "correct": 66
+     },
+     {
+      "id": "tsval-05226",
+      "tokens": 171,
+      "nll_sum": 546.4069865505551,
+      "correct": 60
+     },
+     {
+      "id": "tsval-08278",
+      "tokens": 148,
+      "nll_sum": 339.2928914242664,
+      "correct": 67
+     },
+     {
+      "id": "tsval-12183",
+      "tokens": 201,
+      "nll_sum": 462.19409977006535,
+      "correct": 93
+     }
+    ]
+   },
+   "reference_discovery": {
+    "examples": 32,
+    "tokens": 5646,
+    "nll": 2.3358564670959643,
+    "accuracy": 0.4808714133900106,
+    "per_example": [
+     {
+      "id": "tsval-06734",
+      "tokens": 149,
+      "nll_sum": 531.5001292241272,
+      "correct": 52
+     },
+     {
+      "id": "tsval-09872",
+      "tokens": 190,
+      "nll_sum": 366.0082894126502,
+      "correct": 98
+     },
+     {
+      "id": "tsval-05292",
+      "tokens": 165,
+      "nll_sum": 382.53962578561806,
+      "correct": 82
+     },
+     {
+      "id": "tsval-16092",
+      "tokens": 144,
+      "nll_sum": 313.1167499681568,
+      "correct": 70
+     },
+     {
+      "id": "tsval-20916",
+      "tokens": 151,
+      "nll_sum": 501.7050930128669,
+      "correct": 66
+     },
+     {
+      "id": "tsval-03749",
+      "tokens": 182,
+      "nll_sum": 432.46779556314334,
+      "correct": 90
+     },
+     {
+      "id": "tsval-07159",
+      "tokens": 177,
+      "nll_sum": 342.85268662575476,
+      "correct": 102
+     },
+     {
+      "id": "tsval-08537",
+      "tokens": 233,
+      "nll_sum": 362.27604095720335,
+      "correct": 142
+     },
+     {
+      "id": "tsval-03612",
+      "tokens": 148,
+      "nll_sum": 311.856534452968,
+      "correct": 76
+     },
+     {
+      "id": "tsval-08570",
+      "tokens": 233,
+      "nll_sum": 441.4012608194053,
+      "correct": 125
+     },
+     {
+      "id": "tsval-07925",
+      "tokens": 173,
+      "nll_sum": 308.21571995198366,
+      "correct": 102
+     },
+     {
+      "id": "tsval-19578",
+      "tokens": 158,
+      "nll_sum": 374.67393402439524,
+      "correct": 73
+     },
+     {
+      "id": "tsval-19814",
+      "tokens": 174,
+      "nll_sum": 419.92145014902053,
+      "correct": 82
+     },
+     {
+      "id": "tsval-01276",
+      "tokens": 198,
+      "nll_sum": 578.7001007369231,
+      "correct": 74
+     },
+     {
+      "id": "tsval-12253",
+      "tokens": 177,
+      "nll_sum": 467.2678835444859,
+      "correct": 68
+     },
+     {
+      "id": "tsval-05999",
+      "tokens": 217,
+      "nll_sum": 531.8597797483314,
+      "correct": 95
+     },
+     {
+      "id": "tsval-05017",
+      "tokens": 190,
+      "nll_sum": 620.448310357898,
+      "correct": 66
+     },
+     {
+      "id": "tsval-14855",
+      "tokens": 157,
+      "nll_sum": 347.2368318477371,
+      "correct": 73
+     },
+     {
+      "id": "tsval-12072",
+      "tokens": 170,
+      "nll_sum": 268.36408321230647,
+      "correct": 98
+     },
+     {
+      "id": "tsval-05994",
+      "tokens": 216,
+      "nll_sum": 530.2574951844827,
+      "correct": 90
+     },
+     {
+      "id": "tsval-14575",
+      "tokens": 137,
+      "nll_sum": 331.4913678572308,
+      "correct": 65
+     },
+     {
+      "id": "tsval-09791",
+      "tokens": 142,
+      "nll_sum": 264.2014942215629,
+      "correct": 81
+     },
+     {
+      "id": "tsval-15514",
+      "tokens": 199,
+      "nll_sum": 622.9215182683799,
+      "correct": 72
+     },
+     {
+      "id": "tsval-21906",
+      "tokens": 164,
+      "nll_sum": 416.68903760869455,
+      "correct": 74
+     },
+     {
+      "id": "tsval-09488",
+      "tokens": 153,
+      "nll_sum": 287.1735690177726,
+      "correct": 84
+     },
+     {
+      "id": "tsval-09720",
+      "tokens": 184,
+      "nll_sum": 359.1806368257021,
+      "correct": 107
+     },
+     {
+      "id": "tsval-11639",
+      "tokens": 233,
+      "nll_sum": 568.2485575366984,
+      "correct": 106
+     },
+     {
+      "id": "tsval-13123",
+      "tokens": 191,
+      "nll_sum": 508.4924497147382,
+      "correct": 83
+     },
+     {
+      "id": "tsval-11161",
+      "tokens": 174,
+      "nll_sum": 313.31827068857064,
+      "correct": 102
+     },
+     {
+      "id": "tsval-10984",
+      "tokens": 133,
+      "nll_sum": 290.0137441285113,
+      "correct": 61
+     },
+     {
+      "id": "tsval-12802",
+      "tokens": 190,
+      "nll_sum": 461.0293811164475,
+      "correct": 88
+     },
+     {
+      "id": "tsval-09505",
+      "tokens": 144,
+      "nll_sum": 332.81579166004803,
+      "correct": 68
+     }
+    ]
+   },
+   "gate": {
+    "mean_repeat_gain": -0.013841685260204595,
+    "gain_ci95": [
+     -0.05089156265792012,
+     0.026237205100772806
+    ],
+    "reference_nll_increase": 0.002805127194604129,
+    "reference_accuracy_change": 0.0005419075144508789,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+     {
+      "id": "tsval-00910",
+      "repeat_increase": 0.05405405405405406
+     },
+     {
+      "id": "tsval-03377",
+      "repeat_increase": 0.05021367521367521
+     },
+     {
+      "id": "tsval-04741",
+      "repeat_increase": 0.024793388429752067
+     },
+     {
+      "id": "tsval-15235",
+      "repeat_increase": 0.20532777019979137
+     },
+     {
+      "id": "tsval-14731",
+      "repeat_increase": 0.256198347107438
+     },
+     {
+      "id": "tsval-10529",
+      "repeat_increase": 0.008264462809917356
+     },
+     {
+      "id": "tsval-15240",
+      "repeat_increase": 0.1322314049586777
+     },
+     {
+      "id": "tsval-14084",
+      "repeat_increase": 0.09090909090909091
+     },
+     {
+      "id": "tsval-11346",
+      "repeat_increase": 0.016659423439084456
+     },
+     {
+      "id": "tsval-12624",
+      "repeat_increase": 0.03305785123966942
+     },
+     {
+      "id": "tsval-21311",
+      "repeat_increase": 0.12534435261707988
+     },
+     {
+      "id": "tsval-05226",
+      "repeat_increase": 0.14567877444840543
+     },
+     {
+      "id": "tsval-08278",
+      "repeat_increase": 0.2231404958677686
+     },
+     {
+      "id": "tsval-12183",
+      "repeat_increase": 0.0008333912077227584
+     }
+    ],
+    "checks": {
+     "mean_repeat_gain": false,
+     "gain_ci_lower_positive": true,
+     "reference_nll_preserved": true,
+     "reference_accuracy_preserved": true,
+     "short_rate_preserved": true,
+     "median_length_preserved": true
+    },
+    "decision": "gate_failed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+   }
+  },
+  "candidate-03": {
+   "mean_repeat_fraction": 0.046441070298907455,
+   "short_rate": 0.0,
+   "median_content_tokens": 128.0,
+   "eos_rate": 0.40625,
+   "reference_validation": {
+    "examples": 32,
+    "tokens": 5536,
+    "nll": 2.3137178118803634,
+    "accuracy": 0.47651734104046245,
+    "per_example": [
+     {
+      "id": "tsval-04217",
+      "tokens": 139,
+      "nll_sum": 279.8028337378705,
+      "correct": 73
+     },
+     {
+      "id": "tsval-01315",
+      "tokens": 113,
+      "nll_sum": 280.8099188050581,
+      "correct": 47
+     },
+     {
+      "id": "tsval-00910",
+      "tokens": 193,
+      "nll_sum": 543.2818277876376,
+      "correct": 72
+     },
+     {
+      "id": "tsval-03377",
+      "tokens": 166,
+      "nll_sum": 386.73351064250085,
+      "correct": 84
+     },
+     {
+      "id": "tsval-02811",
+      "tokens": 201,
+      "nll_sum": 319.4273996354031,
+      "correct": 126
+     },
+     {
+      "id": "tsval-01509",
+      "tokens": 170,
+      "nll_sum": 401.2842463495771,
+      "correct": 79
+     },
+     {
+      "id": "tsval-04741",
+      "tokens": 138,
+      "nll_sum": 292.6978796961071,
+      "correct": 67
+     },
+     {
+      "id": "tsval-11332",
+      "tokens": 193,
+      "nll_sum": 397.0553064376588,
+      "correct": 95
+     },
+     {
+      "id": "tsval-15235",
+      "tokens": 222,
+      "nll_sum": 514.1347501991518,
+      "correct": 109
+     },
+     {
+      "id": "tsval-14731",
+      "tokens": 153,
+      "nll_sum": 356.42605578635664,
+      "correct": 64
+     },
+     {
+      "id": "tsval-12148",
+      "tokens": 219,
+      "nll_sum": 662.9332387219996,
+      "correct": 85
+     },
+     {
+      "id": "tsval-03695",
+      "tokens": 145,
+      "nll_sum": 349.4592940286452,
+      "correct": 72
+     },
+     {
+      "id": "tsval-02763",
+      "tokens": 130,
+      "nll_sum": 252.36258749787726,
+      "correct": 72
+     },
+     {
+      "id": "tsval-10529",
+      "tokens": 206,
+      "nll_sum": 541.368727541062,
+      "correct": 86
+     },
+     {
+      "id": "tsval-16497",
+      "tokens": 193,
+      "nll_sum": 287.3940189239138,
+      "correct": 119
+     },
+     {
+      "id": "tsval-04616",
+      "tokens": 184,
+      "nll_sum": 323.7491121926697,
+      "correct": 106
+     },
+     {
+      "id": "tsval-15240",
+      "tokens": 192,
+      "nll_sum": 506.18726024225884,
+      "correct": 82
+     },
+     {
+      "id": "tsval-00888",
+      "tokens": 176,
+      "nll_sum": 376.7483306477043,
+      "correct": 97
+     },
+     {
+      "id": "tsval-14084",
+      "tokens": 194,
+      "nll_sum": 444.3602498913612,
+      "correct": 87
+     },
+     {
+      "id": "tsval-11346",
+      "tokens": 193,
+      "nll_sum": 561.4869252718967,
+      "correct": 75
+     },
+     {
+      "id": "tsval-12624",
+      "tokens": 191,
+      "nll_sum": 368.01424833481906,
+      "correct": 101
+     },
+     {
+      "id": "tsval-04837",
+      "tokens": 189,
+      "nll_sum": 335.35053672120324,
+      "correct": 109
+     },
+     {
+      "id": "tsval-21311",
+      "tokens": 176,
+      "nll_sum": 469.73031592126495,
+      "correct": 76
+     },
+     {
+      "id": "tsval-11166",
+      "tokens": 189,
+      "nll_sum": 403.221743604371,
+      "correct": 96
+     },
+     {
+      "id": "tsval-09717",
+      "tokens": 163,
+      "nll_sum": 328.3702655748715,
+      "correct": 80
+     },
+     {
+      "id": "tsval-09037",
+      "tokens": 147,
+      "nll_sum": 457.6809172458238,
+      "correct": 57
+     },
+     {
+      "id": "tsval-11670",
+      "tokens": 110,
+      "nll_sum": 253.9673925063108,
+      "correct": 49
+     },
+     {
+      "id": "tsval-04360",
+      "tokens": 207,
+      "nll_sum": 478.6701791141787,
+      "correct": 91
+     },
+     {
+      "id": "tsval-05212",
+      "tokens": 124,
+      "nll_sum": 276.37535228763977,
+      "correct": 65
+     },
+     {
+      "id": "tsval-05226",
+      "tokens": 171,
+      "nll_sum": 554.2337269312295,
+      "correct": 58
+     },
+     {
+      "id": "tsval-08278",
+      "tokens": 148,
+      "nll_sum": 341.51761465240656,
+      "correct": 65
+     },
+     {
+      "id": "tsval-12183",
+      "tokens": 201,
+      "nll_sum": 463.9060396388625,
+      "correct": 94
+     }
+    ]
+   },
+   "reference_discovery": {
+    "examples": 32,
+    "tokens": 5646,
+    "nll": 2.3452068804749207,
+    "accuracy": 0.48069429684732556,
+    "per_example": [
+     {
+      "id": "tsval-06734",
+      "tokens": 149,
+      "nll_sum": 533.0190534492933,
+      "correct": 53
+     },
+     {
+      "id": "tsval-09872",
+      "tokens": 190,
+      "nll_sum": 372.65567581667653,
+      "correct": 98
+     },
+     {
+      "id": "tsval-05292",
+      "tokens": 165,
+      "nll_sum": 383.4494086373047,
+      "correct": 79
+     },
+     {
+      "id": "tsval-16092",
+      "tokens": 144,
+      "nll_sum": 308.7367176859083,
+      "correct": 72
+     },
+     {
+      "id": "tsval-20916",
+      "tokens": 151,
+      "nll_sum": 505.6188179886825,
+      "correct": 64
+     },
+     {
+      "id": "tsval-03749",
+      "tokens": 182,
+      "nll_sum": 436.54906028542064,
+      "correct": 85
+     },
+     {
+      "id": "tsval-07159",
+      "tokens": 177,
+      "nll_sum": 339.66380845146097,
+      "correct": 100
+     },
+     {
+      "id": "tsval-08537",
+      "tokens": 233,
+      "nll_sum": 366.5284682547499,
+      "correct": 143
+     },
+     {
+      "id": "tsval-03612",
+      "tokens": 148,
+      "nll_sum": 310.09363731390204,
+      "correct": 77
+     },
+     {
+      "id": "tsval-08570",
+      "tokens": 233,
+      "nll_sum": 446.2142589248143,
+      "correct": 127
+     },
+     {
+      "id": "tsval-07925",
+      "tokens": 173,
+      "nll_sum": 310.1689613694246,
+      "correct": 103
+     },
+     {
+      "id": "tsval-19578",
+      "tokens": 158,
+      "nll_sum": 378.63380900101686,
+      "correct": 75
+     },
+     {
+      "id": "tsval-19814",
+      "tokens": 174,
+      "nll_sum": 420.3783705074562,
+      "correct": 83
+     },
+     {
+      "id": "tsval-01276",
+      "tokens": 198,
+      "nll_sum": 580.3745819236334,
+      "correct": 72
+     },
+     {
+      "id": "tsval-12253",
+      "tokens": 177,
+      "nll_sum": 466.76193644494475,
+      "correct": 66
+     },
+     {
+      "id": "tsval-05999",
+      "tokens": 217,
+      "nll_sum": 535.3122096868839,
+      "correct": 96
+     },
+     {
+      "id": "tsval-05017",
+      "tokens": 190,
+      "nll_sum": 627.1667651906118,
+      "correct": 65
+     },
+     {
+      "id": "tsval-14855",
+      "tokens": 157,
+      "nll_sum": 355.25422976698763,
+      "correct": 74
+     },
+     {
+      "id": "tsval-12072",
+      "tokens": 170,
+      "nll_sum": 268.60437569517194,
+      "correct": 97
+     },
+     {
+      "id": "tsval-05994",
+      "tokens": 216,
+      "nll_sum": 534.5627370799875,
+      "correct": 91
+     },
+     {
+      "id": "tsval-14575",
+      "tokens": 137,
+      "nll_sum": 334.21468221496025,
+      "correct": 64
+     },
+     {
+      "id": "tsval-09791",
+      "tokens": 142,
+      "nll_sum": 263.81860992995286,
+      "correct": 81
+     },
+     {
+      "id": "tsval-15514",
+      "tokens": 199,
+      "nll_sum": 623.8327144443772,
+      "correct": 73
+     },
+     {
+      "id": "tsval-21906",
+      "tokens": 164,
+      "nll_sum": 418.9866059198013,
+      "correct": 74
+     },
+     {
+      "id": "tsval-09488",
+      "tokens": 153,
+      "nll_sum": 287.34007540558036,
+      "correct": 86
+     },
+     {
+      "id": "tsval-09720",
+      "tokens": 184,
+      "nll_sum": 359.5344141324597,
+      "correct": 108
+     },
+     {
+      "id": "tsval-11639",
+      "tokens": 233,
+      "nll_sum": 567.141231412511,
+      "correct": 105
+     },
+     {
+      "id": "tsval-13123",
+      "tokens": 191,
+      "nll_sum": 508.92984435493804,
+      "correct": 80
+     },
+     {
+      "id": "tsval-11161",
+      "tokens": 174,
+      "nll_sum": 311.7420069418333,
+      "correct": 104
+     },
+     {
+      "id": "tsval-10984",
+      "tokens": 133,
+      "nll_sum": 291.38791454578507,
+      "correct": 62
+     },
+     {
+      "id": "tsval-12802",
+      "tokens": 190,
+      "nll_sum": 461.6361333549547,
+      "correct": 87
+     },
+     {
+      "id": "tsval-09505",
+      "tokens": 144,
+      "nll_sum": 332.7269310299172,
+      "correct": 70
+     }
+    ]
+   },
+   "gate": {
+    "mean_repeat_gain": 0.022823836990902496,
+    "gain_ci95": [
+     -0.012705441437372404,
+     0.06961686455819956
+    ],
+    "reference_nll_increase": 0.009826229494440675,
+    "reference_accuracy_change": -0.0014450867052022698,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+     {
+      "id": "tsval-00910",
+      "repeat_increase": 0.05217391304347826
+     },
+     {
+      "id": "tsval-03377",
+      "repeat_increase": 0.015963834145652327
+     },
+     {
+      "id": "tsval-02811",
+      "repeat_increase": 0.04132231404958678
+     },
+     {
+      "id": "tsval-04741",
+      "repeat_increase": 0.018488540512907894
+     },
+     {
+      "id": "tsval-11332",
+      "repeat_increase": 0.008264462809917356
+     },
+     {
+      "id": "tsval-16497",
+      "repeat_increase": 0.024793388429752067
+     },
+     {
+      "id": "tsval-15240",
+      "repeat_increase": 0.008264462809917356
+     },
+     {
+      "id": "tsval-11346",
+      "repeat_increase": 0.044759334233018436
+     },
+     {
+      "id": "tsval-21311",
+      "repeat_increase": 0.031002331002331004
+     },
+     {
+      "id": "tsval-05212",
+      "repeat_increase": 0.008264462809917356
+     },
+     {
+      "id": "tsval-05226",
+      "repeat_increase": 0.16089054617240622
+     },
+     {
+      "id": "tsval-08278",
+      "repeat_increase": 0.2231404958677686
+     }
+    ],
+    "checks": {
+     "mean_repeat_gain": true,
+     "gain_ci_lower_positive": true,
+     "reference_nll_preserved": true,
+     "reference_accuracy_preserved": true,
+     "short_rate_preserved": true,
+     "median_length_preserved": true
+    },
+    "decision": "gate_passed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+   }
+  },
+  "candidate-04": {
+   "mean_repeat_fraction": 0.07203583149306833,
+   "short_rate": 0.0,
+   "median_content_tokens": 128.0,
+   "eos_rate": 0.1875,
+   "reference_validation": {
+    "examples": 32,
+    "tokens": 5536,
+    "nll": 2.322370380973764,
+    "accuracy": 0.47597543352601157,
+    "per_example": [
+     {
+      "id": "tsval-04217",
+      "tokens": 139,
+      "nll_sum": 280.19975037351975,
+      "correct": 75
+     },
+     {
+      "id": "tsval-01315",
+      "tokens": 113,
+      "nll_sum": 281.4985346852044,
+      "correct": 48
+     },
+     {
+      "id": "tsval-00910",
+      "tokens": 193,
+      "nll_sum": 548.1919969026741,
+      "correct": 70
+     },
+     {
+      "id": "tsval-03377",
+      "tokens": 166,
+      "nll_sum": 385.9603544221549,
+      "correct": 79
+     },
+     {
+      "id": "tsval-02811",
+      "tokens": 201,
+      "nll_sum": 313.79826540593535,
+      "correct": 122
+     },
+     {
+      "id": "tsval-01509",
+      "tokens": 170,
+      "nll_sum": 398.2044971582318,
+      "correct": 86
+     },
+     {
+      "id": "tsval-04741",
+      "tokens": 138,
+      "nll_sum": 294.08186910941123,
+      "correct": 70
+     },
+     {
+      "id": "tsval-11332",
+      "tokens": 193,
+      "nll_sum": 395.4035987165378,
+      "correct": 96
+     },
+     {
+      "id": "tsval-15235",
+      "tokens": 222,
+      "nll_sum": 520.6266858450124,
+      "correct": 106
+     },
+     {
+      "id": "tsval-14731",
+      "tokens": 153,
+      "nll_sum": 358.3180791097996,
+      "correct": 65
+     },
+     {
+      "id": "tsval-12148",
+      "tokens": 219,
+      "nll_sum": 668.1853781953417,
+      "correct": 90
+     },
+     {
+      "id": "tsval-03695",
+      "tokens": 145,
+      "nll_sum": 354.3862711435306,
+      "correct": 71
+     },
+     {
+      "id": "tsval-02763",
+      "tokens": 130,
+      "nll_sum": 255.31151449804585,
+      "correct": 68
+     },
+     {
+      "id": "tsval-10529",
+      "tokens": 206,
+      "nll_sum": 545.5435188843838,
+      "correct": 87
+     },
+     {
+      "id": "tsval-16497",
+      "tokens": 193,
+      "nll_sum": 291.50575018916464,
+      "correct": 121
+     },
+     {
+      "id": "tsval-04616",
+      "tokens": 184,
+      "nll_sum": 327.15575133640186,
+      "correct": 105
+     },
+     {
+      "id": "tsval-15240",
+      "tokens": 192,
+      "nll_sum": 505.8133217732842,
+      "correct": 81
+     },
+     {
+      "id": "tsval-00888",
+      "tokens": 176,
+      "nll_sum": 379.05200861237176,
+      "correct": 94
+     },
+     {
+      "id": "tsval-14084",
+      "tokens": 194,
+      "nll_sum": 445.5626887376645,
+      "correct": 86
+     },
+     {
+      "id": "tsval-11346",
+      "tokens": 193,
+      "nll_sum": 567.0142029804833,
+      "correct": 76
+     },
+     {
+      "id": "tsval-12624",
+      "tokens": 191,
+      "nll_sum": 365.0172771713616,
+      "correct": 97
+     },
+     {
+      "id": "tsval-04837",
+      "tokens": 189,
+      "nll_sum": 333.75541557409264,
+      "correct": 111
+     },
+     {
+      "id": "tsval-21311",
+      "tokens": 176,
+      "nll_sum": 470.8822990152589,
+      "correct": 75
+     },
+     {
+      "id": "tsval-11166",
+      "tokens": 189,
+      "nll_sum": 409.5622661269778,
+      "correct": 93
+     },
+     {
+      "id": "tsval-09717",
+      "tokens": 163,
+      "nll_sum": 323.842419751552,
+      "correct": 81
+     },
+     {
+      "id": "tsval-09037",
+      "tokens": 147,
+      "nll_sum": 461.41306119376713,
+      "correct": 56
+     },
+     {
+      "id": "tsval-11670",
+      "tokens": 110,
+      "nll_sum": 253.26386199077905,
+      "correct": 52
+     },
+     {
+      "id": "tsval-04360",
+      "tokens": 207,
+      "nll_sum": 477.90626992627244,
+      "correct": 95
+     },
+     {
+      "id": "tsval-05212",
+      "tokens": 124,
+      "nll_sum": 282.52160656510074,
+      "correct": 63
+     },
+     {
+      "id": "tsval-05226",
+      "tokens": 171,
+      "nll_sum": 552.7268498681752,
+      "correct": 63
+     },
+     {
+      "id": "tsval-08278",
+      "tokens": 148,
+      "nll_sum": 345.3725119270629,
+      "correct": 63
+     },
+     {
+      "id": "tsval-12183",
+      "tokens": 201,
+      "nll_sum": 464.5645518812042,
+      "correct": 90
+     }
+    ]
+   },
+   "reference_discovery": {
+    "examples": 32,
+    "tokens": 5646,
+    "nll": 2.349189070604581,
+    "accuracy": 0.4782146652497343,
+    "per_example": [
+     {
+      "id": "tsval-06734",
+      "tokens": 149,
+      "nll_sum": 531.5356957932833,
+      "correct": 56
+     },
+     {
+      "id": "tsval-09872",
+      "tokens": 190,
+      "nll_sum": 369.43307577378823,
+      "correct": 98
+     },
+     {
+      "id": "tsval-05292",
+      "tokens": 165,
+      "nll_sum": 387.461853425418,
+      "correct": 79
+     },
+     {
+      "id": "tsval-16092",
+      "tokens": 144,
+      "nll_sum": 316.53202354860684,
+      "correct": 72
+     },
+     {
+      "id": "tsval-20916",
+      "tokens": 151,
+      "nll_sum": 508.16993888902823,
+      "correct": 62
+     },
+     {
+      "id": "tsval-03749",
+      "tokens": 182,
+      "nll_sum": 430.78022188822524,
+      "correct": 86
+     },
+     {
+      "id": "tsval-07159",
+      "tokens": 177,
+      "nll_sum": 345.97987742638395,
+      "correct": 98
+     },
+     {
+      "id": "tsval-08537",
+      "tokens": 233,
+      "nll_sum": 362.1980128437139,
+      "correct": 141
+     },
+     {
+      "id": "tsval-03612",
+      "tokens": 148,
+      "nll_sum": 311.7135218837832,
+      "correct": 74
+     },
+     {
+      "id": "tsval-08570",
+      "tokens": 233,
+      "nll_sum": 441.0088532005311,
+      "correct": 127
+     },
+     {
+      "id": "tsval-07925",
+      "tokens": 173,
+      "nll_sum": 310.3289026233494,
+      "correct": 101
+     },
+     {
+      "id": "tsval-19578",
+      "tokens": 158,
+      "nll_sum": 381.05464639516026,
+      "correct": 71
+     },
+     {
+      "id": "tsval-19814",
+      "tokens": 174,
+      "nll_sum": 426.409588574865,
+      "correct": 83
+     },
+     {
+      "id": "tsval-01276",
+      "tokens": 198,
+      "nll_sum": 582.2565178233289,
+      "correct": 73
+     },
+     {
+      "id": "tsval-12253",
+      "tokens": 177,
+      "nll_sum": 474.5772234233265,
+      "correct": 63
+     },
+     {
+      "id": "tsval-05999",
+      "tokens": 217,
+      "nll_sum": 539.4005419931146,
+      "correct": 94
+     },
+     {
+      "id": "tsval-05017",
+      "tokens": 190,
+      "nll_sum": 617.3261103528523,
+      "correct": 71
+     },
+     {
+      "id": "tsval-14855",
+      "tokens": 157,
+      "nll_sum": 347.85522108191356,
+      "correct": 74
+     },
+     {
+      "id": "tsval-12072",
+      "tokens": 170,
+      "nll_sum": 271.7080481636947,
+      "correct": 100
+     },
+     {
+      "id": "tsval-05994",
+      "tokens": 216,
+      "nll_sum": 539.434432285737,
+      "correct": 91
+     },
+     {
+      "id": "tsval-14575",
+      "tokens": 137,
+      "nll_sum": 340.4741238244228,
+      "correct": 59
+     },
+     {
+      "id": "tsval-09791",
+      "tokens": 142,
+      "nll_sum": 261.1889790243189,
+      "correct": 81
+     },
+     {
+      "id": "tsval-15514",
+      "tokens": 199,
+      "nll_sum": 618.8774745772527,
+      "correct": 71
+     },
+     {
+      "id": "tsval-21906",
+      "tokens": 164,
+      "nll_sum": 421.2656953768,
+      "correct": 68
+     },
+     {
+      "id": "tsval-09488",
+      "tokens": 153,
+      "nll_sum": 286.804920414887,
+      "correct": 88
+     },
+     {
+      "id": "tsval-09720",
+      "tokens": 184,
+      "nll_sum": 358.4670032015485,
+      "correct": 108
+     },
+     {
+      "id": "tsval-11639",
+      "tokens": 233,
+      "nll_sum": 570.4408181392937,
+      "correct": 106
+     },
+     {
+      "id": "tsval-13123",
+      "tokens": 191,
+      "nll_sum": 508.9114619559453,
+      "correct": 80
+     },
+     {
+      "id": "tsval-11161",
+      "tokens": 174,
+      "nll_sum": 311.2415292954463,
+      "correct": 104
+     },
+     {
+      "id": "tsval-10984",
+      "tokens": 133,
+      "nll_sum": 292.48654341847936,
+      "correct": 62
+     },
+     {
+      "id": "tsval-12802",
+      "tokens": 190,
+      "nll_sum": 465.68959779639226,
+      "correct": 90
+     },
+     {
+      "id": "tsval-09505",
+      "tokens": 144,
+      "nll_sum": 332.5090382185728,
+      "correct": 69
+     }
+    ]
+   },
+   "gate": {
+    "mean_repeat_gain": -0.0027709242032583964,
+    "gain_ci95": [
+     -0.04290120681289985,
+     0.031971887135462104
+    ],
+    "reference_nll_increase": 0.018478798587841183,
+    "reference_accuracy_change": -0.0019869942196531487,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+     {
+      "id": "tsval-04217",
+      "repeat_increase": 0.03305785123966942
+     },
+     {
+      "id": "tsval-00910",
+      "repeat_increase": 0.04132231404958678
+     },
+     {
+      "id": "tsval-04741",
+      "repeat_increase": 0.049586776859504134
+     },
+     {
+      "id": "tsval-12148",
+      "repeat_increase": 0.47591211449304577
+     },
+     {
+      "id": "tsval-02763",
+      "repeat_increase": 0.06611570247933884
+     },
+     {
+      "id": "tsval-16497",
+      "repeat_increase": 0.03305785123966942
+     },
+     {
+      "id": "tsval-04616",
+      "repeat_increase": 0.03305785123966942
+     },
+     {
+      "id": "tsval-15240",
+      "repeat_increase": 0.09917355371900827
+     },
+     {
+      "id": "tsval-11346",
+      "repeat_increase": 0.007478632478632473
+     },
+     {
+      "id": "tsval-12624",
+      "repeat_increase": 0.024793388429752067
+     },
+     {
+      "id": "tsval-04837",
+      "repeat_increase": 0.024793388429752067
+     },
+     {
+      "id": "tsval-21311",
+      "repeat_increase": 0.09011164274322168
+     },
+     {
+      "id": "tsval-11670",
+      "repeat_increase": 0.031140350877192982
+     },
+     {
+      "id": "tsval-08278",
+      "repeat_increase": 0.049586776859504134
+     },
+     {
+      "id": "tsval-12183",
+      "repeat_increase": 0.01652892561983471
+     }
+    ],
+    "checks": {
+     "mean_repeat_gain": false,
+     "gain_ci_lower_positive": true,
+     "reference_nll_preserved": true,
+     "reference_accuracy_preserved": true,
+     "short_rate_preserved": true,
+     "median_length_preserved": true
+    },
+    "decision": "gate_failed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+   },
+   "role": "post-freeze matched control; not eligible for reselection",
+   "teacher_forced_logprob_change": {
+    "copy": 0.015459540640356432,
+    "fresh": -0.07229025352951725
+   }
+  }
+ },
+ "candidate_edits": {
+  "candidate-01": "L7 out_proj head15 cols60-63 x0.7 (from source)",
+  "candidate-02": "child of 01: same block set to x1.3 source (opposing challenge)",
+  "candidate-03": "child of 02: L7 block restored to source; L5 out_proj head5 cols20-23 x0.5",
+  "candidate-04": "control: L5 out_proj head2 cols8-11 x0.5 from source"
+ },
+ "reasons": [
+  "candidate-01 and candidate-02 failed the repeat gate in both directions (repeat .1027/.0831 vs .0693); L7H15 hypothesis disconfirmed.",
+  "candidate-03 passed all fixed development gates on full validation (recomputed with protected compare_generations, require_ci=False).",
+  "Selection made from development data only, frozen before any heldout access; gain is narrow (+.0228 vs .02) and concentrated in one prompt, so heldout may fail; adoption requires host test gates too.",
+  "Repetition metric is a narrow mechanical proxy; not story quality, math or general ability."
+ ],
+ "frozen_before_heldout": true,
+ "no_reselection": true
+}

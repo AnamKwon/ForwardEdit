@@ -1,0 +1,83 @@
+[
+ {
+  "iteration": 1,
+  "candidate": "candidate-01",
+  "parent": null,
+  "operation": "set_values (attenuate 0.3) transformer.h.7.attn.attention.out_proj.weight rows0-63 cols60-63 (head15)",
+  "evidence": "flow-01 per-head norms copy vs fresh; analysis-01 local deltas; proposal-01 ready_for_causal_probe",
+  "prediction": "val repeat 0.0693 -> <=0.049; ref NLL +<=0.02; local copy-position write reduction ~1.8x fresh (proj .0077 vs .0043)",
+  "disconfirming": "repeat not reduced by .02 or NLL/accuracy/short gates fail; post-edit flow shows no copy-selective change",
+  "recorded_before_write": true,
+  "observed": {
+   "val_repeat": 0.1027,
+   "baseline_val_repeat": 0.0693,
+   "repeat_gain": -0.0334,
+   "ref_nll_increase": 0.0038,
+   "acc_change": 0.0016,
+   "gate": "gate_failed",
+   "teacher_forced_logprob_change_copy": -0.0443,
+   "fresh": -0.0394,
+   "interpretation": "Hypothesis disconfirmed: attenuating L7H15 INCREASED generation repetition; downstream effect was not copy-selective (local selectivity did not carry to logprobs). Revised hypothesis: L7H15 may act against loops (copy-suppression-like or generic prediction support), so its write lowers repetition."
+  }
+ },
+ {
+  "iteration": 2,
+  "candidate": "candidate-02",
+  "parent": "candidate-01",
+  "operation": "set_values on same 64x4 block: from current parent 0.7*source to 1.3*source (opposing direction of iteration1, symmetric magnitude 0.3 so rel L2 vs source stays ~0.12 <=.15)",
+  "evidence": "candidate-01 full validation: repeat +0.033 vs baseline; flow-02",
+  "prediction": "If L7H15 write opposes loops, amplifying 1.3x reduces val repeat below 0.069 (target gain >=.02) with ref NLL change small (attenuation cost +.004; amplification may cost similar or improve).",
+  "disconfirming": "repeat not below baseline-.02, or NLL increase >.02; would indicate the 0.7 effect was non-monotone/nonspecific.",
+  "recorded_before_write": true,
+  "observed": {
+   "val_repeat": 0.0831,
+   "repeat_gain": -0.0138,
+   "ref_nll_increase": 0.0028,
+   "acc_change": 0.0006,
+   "eos_rate": 0.34375,
+   "gate": "gate_failed",
+   "per_prompt": "12148 .293->0, 03695 .207->0, 11332 .149->0 but 14731 .165->.421; 00888 .562->.504",
+   "teacher_forced_logprob_change_copy": 0.0245,
+   "fresh": 0.0292,
+   "interpretation": "Opposing edit also raised mean repetition: effect non-monotone in coefficient sign, dominated by per-prompt greedy-trajectory flips; L7H15 is not supported as a selective loop driver. Teacher-forced change again not copy-selective."
+  }
+ },
+ {
+  "iteration": 3,
+  "candidate": "candidate-03",
+  "parent": "candidate-02",
+  "operation": "(a) restore L7 out_proj cols60-63 to exact source values (rollback of disconfirmed L7H15 hypothesis); (b) attenuate transformer.h.5.attn.attention.out_proj.weight rows0-63 cols20-23 (head5) by 0.5",
+  "evidence": "flow-01: L5H5 head-output norm copy mean .166 vs fresh .100, consistent shift (copy median ~.136 vs fresh ~.096), second strongest consistent contrast; L7H15 disconfirmed by candidates 01/02",
+  "value_derivation": "0.5 halving; L5H5 carries 28.3% of tensor norm so rel L2 ~.142 <= .15 budget. Not fitted.",
+  "prediction": "If L5H5 (mid-layer, local attention) carries copy signal used for loops, val repeat drops >=.02 with NLL +<=.02.",
+  "disconfirming": "repeat not reduced by .02 vs baseline or NLL/accuracy gate fails; teacher-forced logprob not more reduced at copy than fresh positions.",
+  "recorded_before_write": true,
+  "observed": {
+   "val_repeat": 0.046441070298907455,
+   "gate": "gate_passed",
+   "teacher_forced_logprob_change_copy": -0.0408,
+   "fresh": -0.015,
+   "per_prompt": "00888 .562->0, 12148 .293->.12, 03695 .207->.099, 09717 .138->.013; new loops 05226 .041->.202, 08278 0->.223",
+   "interpretation": "Development gate passed narrowly (gain .0228 vs .02 min; NLL +.0098). Teacher-forced logprob dropped 2.7x more at copy than fresh positions, consistent with (not proof of) L5H5 copy-signal hypothesis. Gain is concentrated in one prompt (00888); two new loops appeared, so fragility is high."
+  }
+ },
+ {
+  "iteration": "control",
+  "candidate": "candidate-04",
+  "parent": null,
+  "operation": "control: L5 out_proj head2 cols8-11 x0.5 from source (head2 copy/fresh norm ratio .99, norm share .254, similar to head5 .283)",
+  "purpose": "specificity check of candidate-03 run AFTER freezing decision.json; cannot change the frozen choice",
+  "prediction": "If L5H5 effect is copy-specific, control gives smaller repeat gain and no copy-selective teacher-forced logprob change.",
+  "disconfirming": "Control matches or exceeds candidate-03 gain -> candidate-03 gain likely a nonspecific perturbation/trajectory effect.",
+  "recorded_before_write": true,
+  "observed": {
+   "val_repeat": 0.072,
+   "repeat_gain": -0.0028,
+   "ref_nll_increase": 0.0185,
+   "gate": "gate_failed",
+   "teacher_forced_logprob_change_copy": 0.0155,
+   "fresh": -0.0723,
+   "interpretation": "Matched-magnitude control on a non-contrast L5 head gave no repeat gain, larger NLL damage, and no copy-selective logprob drop. This supports (does not prove) head specificity of candidate-03. It is only one control on 32 prompts."
+  }
+ }
+]

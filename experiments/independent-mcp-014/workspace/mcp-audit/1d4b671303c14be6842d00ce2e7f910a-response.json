@@ -1,0 +1,11 @@
+{
+  "name": "prepare_edit_from_arrays",
+  "ok": false,
+  "elapsed_seconds": 1.539543442428112,
+  "utc": 1793853078.837944,
+  "error": "Missing required field: path",
+  "error_detail": {
+    "error_type": "MissingField",
+    "message": "Missing required field: path"
+  }
+}

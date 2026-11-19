@@ -1,0 +1,36 @@
+{
+  "name": "research_read_array",
+  "arguments": {
+    "path": "research_jobs/fb9e7e24181e4fe1bfd2eba2160a69a9/bc8bdeebd15d4980b598482d48e9f132.npy",
+    "indices": [
+      [
+        1561
+      ],
+      [
+        1562
+      ],
+      [
+        1563
+      ],
+      [
+        1573
+      ],
+      [
+        1574
+      ],
+      [
+        1575
+      ],
+      [
+        1581
+      ],
+      [
+        1582
+      ],
+      [
+        1583
+      ]
+    ]
+  },
+  "utc": 1793850954.2006598
+}

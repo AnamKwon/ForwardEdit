@@ -1,0 +1,198 @@
+{
+  "passed": true,
+  "cases": {
+    "tiny": {
+      "source_sha256": "5cf46251da3b0fb4e85cf012cc2843d018a51b9b306fa4b3631c885f8a157d20",
+      "tensor": "transformer.h.0.mlp.c_proj.weight",
+      "edits_via_actual_stdio_mcp": {
+        "identity": {
+          "changed_parameters": 0,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0,
+          "validation_nll": 1.446768746848839,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "scale": {
+          "changed_parameters": 32,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0025664567947387695,
+          "validation_nll": 1.4467736041597226,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "project_out": {
+          "changed_parameters": 2,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0010548233985900879,
+          "validation_nll": 1.4467683994653182,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "rank_one": {
+          "changed_parameters": 32,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0005854219198226929,
+          "validation_nll": 1.446775760910259,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        }
+      },
+      "training": {
+        "mode": "gradient_training",
+        "executor": "local verification harness, not MCP",
+        "optimizer": "AdamW",
+        "steps": 30,
+        "only_edited_matrix_trainable": true,
+        "gradient_norm_first": 0.0326717346906662,
+        "gradient_norm_last": 0.007986462675035,
+        "finite_nonzero_gradients_every_step": true,
+        "optimizer_changed_parameters": 1024,
+        "mcp_edited_cells": 32,
+        "mcp_edited_cells_updated_by_optimizer": 32,
+        "mcp_edited_cells_gradient_norm_first": 0.0034799915738403797,
+        "mcp_edited_cells_gradient_norm_last": 0.0005862071411684155,
+        "mcp_edited_cells_nonzero_gradient_every_step": true,
+        "other_parameters_unchanged": true,
+        "before": {
+          "discovery": {
+            "examples": 96,
+            "tokens": 1056,
+            "nll": 1.4165572591496398,
+            "accuracy": 0.9128787878787878
+          },
+          "validation": {
+            "examples": 32,
+            "tokens": 352,
+            "nll": 1.446775760910259,
+            "accuracy": 0.9119318181818182
+          }
+        },
+        "after": {
+          "discovery": {
+            "examples": 96,
+            "tokens": 1056,
+            "nll": 1.3988789482219433,
+            "accuracy": 0.9147727272727273
+          },
+          "validation": {
+            "examples": 32,
+            "tokens": 352,
+            "nll": 1.4281168076622826,
+            "accuracy": 0.9147727272727273
+          }
+        },
+        "no_optimizer_control_unchanged": true,
+        "checkpoint_and_logits_roundtrip_exact": true,
+        "trained_metrics_verified_via_mcp": true
+      },
+      "original_checkpoint_unchanged": true,
+      "scope": "Plumbing and trainability verification using development splits only; not generalization or general-ability certification."
+    },
+    "pretrained": {
+      "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+      "tensor": "transformer.h.7.mlp.c_proj.weight",
+      "edits_via_actual_stdio_mcp": {
+        "identity": {
+          "changed_parameters": 0,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0,
+          "validation_nll": 2.9254278648124963,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "scale": {
+          "changed_parameters": 512,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.6280670166015625,
+          "validation_nll": 2.9264481405032674,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "project_out": {
+          "changed_parameters": 2,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.0074748992919921875,
+          "validation_nll": 2.925457196454715,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        },
+        "rank_one": {
+          "changed_parameters": 512,
+          "expected_tensor_exact": true,
+          "actual_parameter_exact": true,
+          "unselected_parameters_unchanged": true,
+          "max_absolute_logit_change": 0.514643669128418,
+          "validation_nll": 2.925349400779786,
+          "mcp_local_metrics_match": true,
+          "edit_alone_gate_passed": false
+        }
+      },
+      "training": {
+        "mode": "gradient_training",
+        "executor": "local verification harness, not MCP",
+        "optimizer": "AdamW",
+        "steps": 30,
+        "only_edited_matrix_trainable": true,
+        "gradient_norm_first": 14.888622283935547,
+        "gradient_norm_last": 1.0898308753967285,
+        "finite_nonzero_gradients_every_step": true,
+        "optimizer_changed_parameters": 16384,
+        "mcp_edited_cells": 512,
+        "mcp_edited_cells_updated_by_optimizer": 512,
+        "mcp_edited_cells_gradient_norm_first": 2.569476842880249,
+        "mcp_edited_cells_gradient_norm_last": 0.21789978444576263,
+        "mcp_edited_cells_nonzero_gradient_every_step": true,
+        "other_parameters_unchanged": true,
+        "before": {
+          "discovery": {
+            "examples": 12,
+            "tokens": 319,
+            "nll": 2.454778398255685,
+            "accuracy": 0.4169278996865204
+          },
+          "validation": {
+            "examples": 12,
+            "tokens": 306,
+            "nll": 2.925349400779786,
+            "accuracy": 0.38562091503267976
+          }
+        },
+        "after": {
+          "discovery": {
+            "examples": 12,
+            "tokens": 319,
+            "nll": 0.4797080062506276,
+            "accuracy": 0.9310344827586207
+          },
+          "validation": {
+            "examples": 12,
+            "tokens": 306,
+            "nll": 4.549406124828604,
+            "accuracy": 0.24509803921568626
+          }
+        },
+        "no_optimizer_control_unchanged": true,
+        "checkpoint_and_logits_roundtrip_exact": true,
+        "trained_metrics_verified_via_mcp": true
+      },
+      "original_checkpoint_unchanged": true,
+      "scope": "Plumbing and trainability verification using development splits only; not generalization or general-ability certification."
+    }
+  },
+  "note": "MCP direct edits are not optimizer training; subsequent training is explicitly performed by the verifier."
+}

@@ -1,0 +1,18 @@
+{
+  "candidate_writes": 0,
+  "explicit_parent_revision_writes": 0,
+  "feedback_observed_before_parent_revision": 0,
+  "writes": [],
+  "proposal_count": 0,
+  "ready_proposal_count": 0,
+  "deferred_proposals": [],
+  "successful_logical_batches": 0,
+  "accepted_attempts": 1,
+  "selected_candidate": null,
+  "reference_preservation": {
+    "status": "missing",
+    "interpretation": "Full fixed-validation reference-text token prediction, separate from clean-question math accuracy and conditional loss of originally correct answers."
+  },
+  "training_guards_reported_for_all_successful_jobs": null,
+  "interpretation": "Numeric edit/proposal chronology and actual recorded feedback, not automatic certification of a semantic mechanism or broad model improvement."
+}

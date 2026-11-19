@@ -1,0 +1,985 @@
+{
+  "actual_model": "claude-opus-5-5",
+  "artifact_ref": "job-9539ac219694e934ec762f8b21401b13",
+  "changed_paths": [
+    "journal.json",
+    "report.md",
+    "selection.json"
+  ],
+  "checks": [
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv-qwen/bin/python",
+        "-B",
+        "verify.py",
+        "--case",
+        "source_protocol_and_inference_integrity"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 1,
+        "requirement_id": "integrity",
+        "total": 1
+      },
+      "check_id": "check-0",
+      "check_spec_sha256": "30377d539a9e6aca8d7c4e2ab779047a7a990cd5a7eb0d219637163ba9b0373a",
+      "criterion": "integrity",
+      "cwd": "/path/to/tmp/wsl-qwen-analysis-006",
+      "evidence_id": "67045cb132321af1ec252816d6eb6573d9cd7972c81a27d0fd9da238bfd5da84",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "7a3c03f28f6be690c94006cda60f43b25b90a1c54681d5d4a8a0b8a4f1bceddc",
+      "passed": true,
+      "verification_context_sha256": "127e89f0911cd93d6e1d0a6cf2cb133ecea8ed4f6e262dfe133a397df87b96e9"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv-qwen/bin/python",
+        "-B",
+        "verify.py",
+        "--case",
+        "fifty_passes_real_edits_and_budget"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 1,
+        "requirement_id": "research",
+        "total": 1
+      },
+      "check_id": "check-1",
+      "check_spec_sha256": "cd984f2ac72be4c47d0ddd08a2b4e91209a4f47fc8f9bd05947460df5b703aed",
+      "criterion": "research",
+      "cwd": "/path/to/tmp/wsl-qwen-analysis-006",
+      "evidence_id": "b372901e4175049c11e6ebae6de102c28a80d81447931a47cd4335fc230d0a4d",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "214e7140dabc1631de478ab7cdae91996618645b416297bafa330ca35ec4bc83",
+      "passed": true,
+      "verification_context_sha256": "127e89f0911cd93d6e1d0a6cf2cb133ecea8ed4f6e262dfe133a397df87b96e9"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv-qwen/bin/python",
+        "-B",
+        "verify.py",
+        "--case",
+        "fixed_math_validation_and_preservation"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 1,
+        "requirement_id": "validation",
+        "total": 1
+      },
+      "check_id": "check-2",
+      "check_spec_sha256": "967b878cf75d63230ae366f4d8c7634ac411706097ad7363d014c0d8678fccf9",
+      "criterion": "validation",
+      "cwd": "/path/to/tmp/wsl-qwen-analysis-006",
+      "evidence_id": "13422d66c58b553bb6b0cdf025daef3806e67cd4297f64354eb8c8c165bd43a3",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "28da614d5ad7535799b544f886f547443385b8132cba2daa7362a51bdcda3af4",
+      "passed": true,
+      "verification_context_sha256": "127e89f0911cd93d6e1d0a6cf2cb133ecea8ed4f6e262dfe133a397df87b96e9"
+    },
+    {
+      "argv": [
+        "/path/to/forwardedit/.venv-qwen/bin/python",
+        "-B",
+        "-c",
+        "import json,sys\nfrom pathlib import Path\n\ndef retention(old,new,maximum):\n    if len(old)!=len(new):raise ValueError('pair size mismatch')\n    correct=sum(x is True for x in old)\n    lost=sum(x is True and y is not True for x,y in zip(old,new))\n    return {'originally_correct':correct,'lost':lost,'fraction_lost':lost/correct if correct else None,\n            'passed':correct>0 and lost/correct<=maximum}\nif '--controls' in sys.argv:\n    assert retention([True]*3+[False]*61,[False]*3+[True]*20+[False]*41,.05)['passed'] is False\n    assert retention([True]*3+[False]*61,[True]*23+[False]*41,.05)['passed'] is True\n    assert retention([True]*64,[False]*3+[True]*61,.05)['passed'] is True\n    assert retention([True]*64,[False]*4+[True]*60,.05)['passed'] is False\n    assert retention([False]*64,[True]*64,.05)['passed'] is False\n    assert retention([True],[None],.05)['passed'] is False\n    print('Conditional retention: valid preservation accepted; all-original-correct loss, excess loss, unparsed regression and empty normal population rejected.')\n    raise SystemExit(0)\nimport verify as v\npassed=False;detail=''\ntry:\n    selection=json.loads(Path('selection.json').read_text())\n    assert selection.get('status')=='eligible','no eligible selection'\n    jid=selection['validation_job_id'];result=v.research.research_result(v.ROOT,jid)\n    spec=v.research.load_snapshot(v.ROOT,jid)['spec']\n    assert spec['model']=='both' and spec['split']=='validation' and spec['candidate_dir']==selection['candidate_dir']\n    old,new=v.raw(result,'original'),v.raw(result,'edited')\n    expected=v.research.read(v.ROOT,'validation-ids.json')\n    assert len(old)==len(new)==64 and set(r['id'] for r in old)==set(expected)\n    assert [(r['id'],r['sample']) for r in old]==[(r['id'],r['sample']) for r in new]\n    maximum=v.research.read(v.ROOT,'protocol.json')['validation']['max_previously_correct_to_wrong_fraction']\n    stats=retention([r['grade'] for r in old],[r['grade'] for r in new],maximum)\n    passed=stats['passed'];detail=json.dumps(stats)\nexcept Exception as e:detail=str(e)\nprint(detail,file=sys.stderr)\nprint(json.dumps({'case_results':[{'id':'previously_correct_math_answers_retained','passed':passed}]}))\nraise SystemExit(0 if passed else 1)\n"
+      ],
+      "artifact_binding": "stable_verification_snapshot",
+      "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+      "case_report": {
+        "case_ids_truncated": false,
+        "failed_ids": [],
+        "passed": 1,
+        "requirement_id": "validation",
+        "total": 1
+      },
+      "check_id": "regression:conditional-normal-retention",
+      "check_spec_sha256": "316f87726aa080ea5d3ebb3aa4ca0b2a981bb48d6d81b7faa2ae54142ccc47a9",
+      "criterion": "validation",
+      "cwd": "/path/to/tmp/wsl-qwen-analysis-006",
+      "evidence_id": "0fae3bbab8040c0c5ebd10739d50bc21250c7cb5f591170369d4ebacf02b8802",
+      "exit_code": 0,
+      "kind": "command",
+      "output_sha256": "2564f848e635fe273fb9257cac1944f12bf4357a8c8922f19a000c630609132b",
+      "passed": true,
+      "regression_id": "conditional-normal-retention",
+      "requirement_id": "validation",
+      "verification_context_sha256": "127e89f0911cd93d6e1d0a6cf2cb133ecea8ed4f6e262dfe133a397df87b96e9"
+    }
+  ],
+  "elapsed_seconds": 399.9305086135864,
+  "execution_budget": {
+    "clock_command_argv": [
+      "/path/to/home/.local/share/loop-engineering/loop-engineering",
+      "clock",
+      "--deadline-unix",
+      "1793817325.3282754"
+    ],
+    "deadline_scope": "current attempt including service verification; monotonic service timer is authoritative",
+    "deadline_unix_seconds": 1793817325.3282754,
+    "deadline_utc": "2026-11-04T18:35:25.328275456Z",
+    "includes_service_verification": true,
+    "max_budget_usd": 20,
+    "max_rounds": 6,
+    "max_rounds_scope": "host-managed worker/model invocations across this loop, including any reserved consultation; not tool calls inside one invocation",
+    "max_turns": 25,
+    "native_limit_sources": {
+      "max_budget_usd": "request_ceiling",
+      "max_turns": "request_ceiling"
+    },
+    "provider_output_accounting": "cumulative provider JSON stdout, including tool output, inline base64 images and repeated protocol representations; not model tokens or just the final answer",
+    "provider_output_limit_bytes": 2097152,
+    "started_at_unix_seconds": 1793813725.3282754,
+    "tool_call_budget": "No separate native count cap; existing wall, provider turn/dollar and individual tool limits still apply. Explicit task limits also remain binding.",
+    "wall_time_seconds": 3600
+  },
+  "final_workspace_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+  "host_review": {
+    "execution_coverage": [
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-0",
+            "declared_requirement_id": "integrity"
+          }
+        ],
+        "requirement_id": "integrity",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-1",
+            "declared_requirement_id": "research"
+          }
+        ],
+        "requirement_id": "research",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "missing_declared_cases": [],
+        "references": [
+          {
+            "acceptance_matches": true,
+            "check_id": "check-2",
+            "declared_requirement_id": "validation"
+          },
+          {
+            "acceptance_matches": true,
+            "check_id": "regression:conditional-normal-retention",
+            "declared_requirement_id": "validation"
+          }
+        ],
+        "requirement_id": "validation",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "declared_requirement_match",
+        "warnings": []
+      },
+      {
+        "approval_blockers": null,
+        "assessment_status": "host_claim_not_semantic_proof",
+        "references": [],
+        "requirement_id": "reasoning",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "host_assertion_only",
+        "warnings": []
+      },
+      {
+        "approval_blockers": [
+          "partial coverage or remaining gaps cannot approve the whole requirement"
+        ],
+        "assessment_status": "host_claim_not_semantic_proof",
+        "references": [],
+        "requirement_id": "confirmation",
+        "source": "declared_coverage_not_semantic_proof",
+        "status": "host_assertion_only",
+        "warnings": []
+      }
+    ],
+    "findings": [
+      {
+        "id": "independent-conditional-normal-preservation",
+        "requirement_id": "confirmation",
+        "status": "open",
+        "summary": "Frozen independent192test loses1of18originally-correct answers;5.5556% exceeds predeclared5%conditional-preservation limit."
+      }
+    ],
+    "passed": false,
+    "reason": "Reject whole-task completion: independent mathematical accuracy improves18to103/192 with strong paired significance, but1/18originally-correct answers is lost(5.56%>frozen5%). Retain the positive gain, exact failed gate and exposed-case diagnosis. Original development/integrity/research/reasoning checks pass; independent preservation requirement remains unmet. No post-test re-selection or change to frozen artifacts/thresholds.",
+    "requirement_verdicts": [
+      {
+        "assessment": {
+          "impact_response": "Current F/50development execution preserves original model/code/data/decoder and uses MCP for target computation and weight writes. Failed memory-profiling execution and exact retry are retained; current scope passes do not imply historical confinement.",
+          "method": "executed_cases",
+          "reason": "Original source/protocol and inference bytes remain bound. Runtime code/actual tool operations were inspected alongside flags; no forbidden fitting is asserted from flags alone. Historical scope limitations remain explicit.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Original source/protocol and inference bytes remain bound. Runtime code/actual tool operations were inspected alongside flags; no forbidden fitting is asserted from flags alone. Historical scope limitations remain explicit."
+        },
+        "evidence": "Current native check-0 passes with stable source/code/protocol binding and no live development jobs. All50target runs use frozen MCP workers with disabled gradients/optimizer steps0; source/decoder hashes and real GPU value checks are retained. Current nativeF changed only journal/report/selection, ",
+        "execution_refs": [
+          {
+            "check_id": "check-0",
+            "evidence_id": "67045cb132321af1ec252816d6eb6573d9cd7972c81a27d0fd9da238bfd5da84",
+            "job_id": "job-9539ac219694e934ec762f8b21401b13"
+          }
+        ],
+        "requirement_id": "integrity",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "impact_response": "All50terminal jobs and original caps are checked directly; failed execution, zero-edit null and count-unit distinctions remain visible. No extra native model submission follows evaluation_freeze.",
+          "method": "executed_cases",
+          "reason": "Ledger purposes cover baseline, real edit responses, opposing/layer/single-feature/matched-norm controls, transfer, fixed-prefix computations and normal/semantic preservation. Status/reconnect/rejected schemas are not successful forwards. The final audit adds no scientific forward or parameter write",
+          "scope": "requirement",
+          "uncertainty_resolution": "Ledger purposes cover baseline, real edit responses, opposing/layer/single-feature/matched-norm controls, transfer, fixed-prefix computations and normal/semantic preservation. Status/reconnect/rejected schemas are not successful forwards. T"
+        },
+        "evidence": "Native check-1 observes exactly50successful/51accepted development jobs;1failed initialization retained. research-fifty-trace records every spec/result hash and changed counts. Four nonidentity learning proposals, six causal controls and one null are distinct from50logical batches,122nativepublicact",
+        "execution_refs": [
+          {
+            "check_id": "check-1",
+            "evidence_id": "b372901e4175049c11e6ebae6de102c28a80d81447931a47cd4335fc230d0a4d",
+            "job_id": "job-9539ac219694e934ec762f8b21401b13"
+          }
+        ],
+        "requirement_id": "research",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "impact_response": "Clean original inputs/order/n1/32768 and exact selected patch/teacher jobs remain fixed. Every observed broader-language loss is retained separately; no unconditional all-task preservation claim is used for this fixed-math criterion.",
+          "method": "executed_cases",
+          "reason": "Original fixed64 mathematical and reference gates, plus stricter conditional loss gate, are met without changing data or decoder. Reported scope is mathematical preservation; repeated samples remain clustered. Average reference preservation does not imply every token unchanged.",
+          "scope": "requirement",
+          "uncertainty_resolution": "Original fixed64 mathematical and reference gates, plus stricter conditional loss gate, are met without changing data or decoder. Reported scope is mathematical preservation; repeated samples remain clustered. Average reference preservation"
+        },
+        "evidence": "Native check-2 plus conditional-retention regression pass: primary64 original5edited35,gain.46875,paired97.5%CI[.328125,.609375],0/5oldcorrectlost. Exact64order/inputtokens/nooverride audit frozen. Full-reference NLL+.0006813,tokenaccuracy+.0004533 pass original bounds. Fresh16 1to7; normal5/n4 9to1",
+        "execution_refs": [
+          {
+            "check_id": "check-2",
+            "evidence_id": "13422d66c58b553bb6b0cdf025daef3806e67cd4297f64354eb8c8c165bd43a3",
+            "job_id": "job-9539ac219694e934ec762f8b21401b13"
+          },
+          {
+            "check_id": "regression:conditional-normal-retention",
+            "evidence_id": "0fae3bbab8040c0c5ebd10739d50bc21250c7cb5f591170369d4ebacf02b8802",
+            "job_id": "job-9539ac219694e934ec762f8b21401b13"
+          }
+        ],
+        "requirement_id": "validation",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "impact_response": "Public-source provenance and locally derived strengths are disclosed; original-coordinate signed contributions and actual GPU changes support choice/execution. Counterexamples prevent upgrading the working direction hypothesis into a unique explanation; no blind loss fitting/sweep is used.",
+          "method": "source_inspection",
+          "reason": "Inspected actual operation/value provenance and failure/control consequences; claims are limited to evidence-dependent explicit local editing and observed nonlinear outcomes. No unique semantic neuron, new arithmetic knowledge or RSI-feedback causality is asserted.",
+          "reviewed_paths": [
+            "journal.json",
+            "analysis.py",
+            "report.md"
+          ],
+          "scope": "requirement",
+          "uncertainty_resolution": "Grounding and authorship of intervention choices are supported by actual reads, equations, source-bound operations, prospective readiness and feedback. A unique causal interpretation or target self-editing improvement is not part of the sup"
+        },
+        "evidence": "Actual parameter slices, Wdown computation, signed writer contrasts, prior failed target interventions and pre-write source L15/L19 readiness reports are retained in journal. Host Codex chose76/46columns and2.9/4.5from freshly measured public-prompt contrast geometry; published learned vectors were ",
+        "requirement_id": "reasoning",
+        "status": "pass"
+      },
+      {
+        "assessment": {
+          "impact_response": "Independent data was used only for post-freeze host evaluation/diagnosis, never for choosing this candidate. Actual nativeevaluation_freeze preceded57-filefreeze and bothMCPbatches; all57hashes remain unchanged. Gold correction was160secondsafterfirstdevelopmentbaseline submission but before its out",
+          "method": "source_inspection",
+          "reason": "Frozen candidate/protocol/route/data amendment and current workspace were inspected against retained actual independent-confirmation-receipt.json and confirmation-report.json. Every gain/significance/source/overall-loss gate passes, but the required conditional previously-correct preservation gate f",
+          "remaining_gaps": [
+            "Observed originally-correct loss1/18=5.5556% exceeds predeclared5%; normal-case preservation obligation unmet."
+          ],
+          "reviewed_paths": [
+            "selection.json",
+            "journal.json",
+            "report.md"
+          ],
+          "scope": "partial",
+          "uncertainty_resolution": "Independent execution is now observed and the mathematical accuracy gain is established. Full acceptance is disproved by the exact conditional loss count; retain fail rather than rounding, substituting1/192, changing the criterion, reselect"
+        },
+        "evidence": "Actual frozen host-only192MCPresults: original18/192=9.375%, edited103/192=53.6458%, gain44.2708pp;97.5%pairedCI[35.9375,52.6042]pp;exactone-sidedMcNemarp5.686866711302065e-25;GSM13to76/128,MATH5to27/64.86rescuesand1oldcorrectto-unparsed(gsm8k_test_548). Conditional loss1/18=.055556 exceeds frozen.0",
+        "requirement_id": "confirmation",
+        "status": "fail"
+      }
+    ],
+    "workspace_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf"
+  },
+  "instruction_delivery": {
+    "basis": "Composed packet identities only;exported files and hook suggestions do not automatically load skill bodies.",
+    "context": [
+      {
+        "bytes": 29527,
+        "path": "api.json",
+        "sha256": "c31990eca7e395078eed1c3300d3633dc75ee4dcba0da5d431d84b67aa764eae"
+      },
+      {
+        "bytes": 6705,
+        "path": "protocol.json",
+        "sha256": "4fd1f43496696687ff333ffdc69e3ad4c54014988e41a434559367da99c60c93"
+      },
+      {
+        "bytes": 4923,
+        "path": "skills/weight-space-engineer/SKILL.md",
+        "sha256": "ce0cc43bebbaa071d5772b32f94ac72f828b56ef937237532b9e3fbdb3090e6f"
+      },
+      {
+        "bytes": 4086,
+        "path": "skills/weight-space-engineer/references/research-tools.md",
+        "sha256": "d8c84d5d127a2e29831138cfacb40d130234914a2f08bb514c2658d6df6f83a4"
+      },
+      {
+        "bytes": 6592,
+        "path": "task.md",
+        "sha256": "48171de6691e35db0c52ac5e97b6bfeea7d51023692c4192690b572e9f910777"
+      },
+      {
+        "bytes": 7305,
+        "path": "verify.py",
+        "sha256": "dd11df2465875c7483dae80bdc8a8eea4bb281daa2da0d3287fbd92c29efb35b"
+      }
+    ],
+    "external_tool_contracts": [],
+    "guidance_modules": [],
+    "host_skills_inherited": false,
+    "packet_sha256": "0dcac2ce717f7315bb4b211681c43551095175b6971b0f4309263e044232baa1",
+    "prompt_scope": "Prepared input;consultation may append context. Inspect effective_worker_prompt_sha256 when present.",
+    "prompt_sha256": "1f6e107b142faadc7837f1b21344f0b0fffad74fbbe9d4e72b824eabad1e2844",
+    "semantic_application_verified": false,
+    "stage": "retained_worker_input_not_semantic_application"
+  },
+  "job_id": "job-9539ac219694e934ec762f8b21401b13",
+  "lifecycle_hooks": {
+    "limitations": "Observational records only: no command or model was run by hooks; acceptance, scope and budgets are unchanged. Candidates are unconfirmed observations with unknown causal status, not authored lessons or global policy. Skills are host guidance, not automatically invoked.",
+    "record_count": 3,
+    "records": [
+      {
+        "declared_checks": 3,
+        "declared_uncertainties": {
+          "count": 5,
+          "ids": [
+            "integrity",
+            "research",
+            "validation",
+            "reasoning",
+            "confirmation"
+          ],
+          "truncated": false
+        },
+        "declared_verifier_controls": 0,
+        "host_review_requirements": {
+          "count": 2,
+          "ids": [
+            "reasoning",
+            "confirmation"
+          ],
+          "truncated": false
+        },
+        "impact_review": {
+          "affected": {
+            "count": 5,
+            "ids": [
+              "integrity",
+              "research",
+              "validation",
+              "reasoning",
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "approval_requires": "Current scoped assessment and impact_response for every original requirement; unknown classifications are questions, not failures or passes.",
+          "classification_stage": "before_this_worker_not_final_verdicts",
+          "mechanism": "Reconcile late-completing source-informed direct-edit evidence with strict normal preservation and immutable evaluation boundary; do not infer broad semantic learning from fewer cutoffs.",
+          "pending_review": {
+            "count": 5,
+            "ids": [
+              "integrity",
+              "research",
+              "validation",
+              "reasoning",
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "requirements": 5,
+          "source": "host_declared_relationships_not_semantic_proof",
+          "unaffected": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          },
+          "unknown": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          }
+        },
+        "machine_verification_gaps": {
+          "count": 2,
+          "ids": [
+            "reasoning",
+            "confirmation"
+          ],
+          "truncated": false
+        },
+        "requirements": 5,
+        "sequence": 1,
+        "skills": [
+          {
+            "invocation": "host_guidance_not_automatic",
+            "name": "loop-verification-design",
+            "path": "skills/loop-verification-design/SKILL.md",
+            "path_resolution": "plugin_root_relative"
+          },
+          {
+            "invocation": "host_guidance_not_automatic",
+            "name": "loop-evidence-review",
+            "path": "skills/loop-evidence-review/SKILL.md",
+            "path_resolution": "plugin_root_relative"
+          }
+        ],
+        "source": "native_accepted_job_preflight",
+        "stage": "plan_preflight",
+        "unmapped_requirements": {
+          "count": 0,
+          "ids": [],
+          "truncated": false
+        },
+        "verification_basis": "Plan declarations, not executed coverage or semantic proof. A host-review requirement intentionally has no machine mapping; uncertainty does not remove existing checks."
+      },
+      {
+        "candidate_counts": {
+          "count": 0,
+          "retained": 0,
+          "truncated": false
+        },
+        "candidates": [],
+        "checks": {
+          "declared": 4,
+          "failed": 0,
+          "failed_ids": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          },
+          "malformed": 0,
+          "pass_basis": "bound_to_current_artifact_only",
+          "passed": 4,
+          "reported": 4,
+          "unbound": 0,
+          "unbound_reported_pass_unverified": 0
+        },
+        "execution_observation": {
+          "candidate_verification_complete": true,
+          "last_started_stage": "complete",
+          "scope_audit_error": false,
+          "scope_violation": false,
+          "source": "native_control_flow"
+        },
+        "impact_review": {
+          "affected": {
+            "count": 5,
+            "ids": [
+              "integrity",
+              "research",
+              "validation",
+              "reasoning",
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "approval_requires": "Current scoped assessment and impact_response for every original requirement; unknown classifications are questions, not failures or passes.",
+          "classification_stage": "before_this_worker_not_final_verdicts",
+          "mechanism": "Reconcile late-completing source-informed direct-edit evidence with strict normal preservation and immutable evaluation boundary; do not infer broad semantic learning from fewer cutoffs.",
+          "pending_review": {
+            "count": 5,
+            "ids": [
+              "integrity",
+              "research",
+              "validation",
+              "reasoning",
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "requirements": 5,
+          "source": "host_declared_relationships_not_semantic_proof",
+          "unaffected": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          },
+          "unknown": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          }
+        },
+        "quality": {
+          "affects_correctness_acceptance": false,
+          "status": "not_requested"
+        },
+        "sequence": 2,
+        "skills": [
+          {
+            "invocation": "host_guidance_not_automatic",
+            "name": "loop-evidence-review",
+            "path": "skills/loop-evidence-review/SKILL.md",
+            "path_resolution": "plugin_root_relative"
+          }
+        ],
+        "source": "native_run_completion",
+        "stage": "run_completion",
+        "state": "awaiting_review",
+        "successful_control_summary": {
+          "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+          "causal_credit": "not_established",
+          "passed_checks": 4,
+          "quality_status": "not_requested",
+          "scope": "functional_checks_only"
+        }
+      },
+      {
+        "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+        "candidate_counts": {
+          "count": 1,
+          "retained": 1,
+          "truncated": false
+        },
+        "candidates": [
+          {
+            "artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+            "candidate_id": "42e5e20a8e18607b",
+            "causal_status": "unknown",
+            "job_id": "job-9539ac219694e934ec762f8b21401b13",
+            "kind": "unconfirmed_lesson_candidate",
+            "observation": "accepted host verdict status=fail",
+            "requirement_id": "confirmation",
+            "source_stage": "host_review",
+            "subject": "requirement:confirmation"
+          }
+        ],
+        "impact_review": {
+          "affected": {
+            "count": 5,
+            "ids": [
+              "integrity",
+              "research",
+              "validation",
+              "reasoning",
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "approval_requires": "Current scoped assessment and impact_response for every original requirement; unknown classifications are questions, not failures or passes.",
+          "classification_stage": "before_this_worker_not_final_verdicts",
+          "mechanism": "Reconcile late-completing source-informed direct-edit evidence with strict normal preservation and immutable evaluation boundary; do not infer broad semantic learning from fewer cutoffs.",
+          "pending_review": {
+            "count": 1,
+            "ids": [
+              "confirmation"
+            ],
+            "truncated": false
+          },
+          "requirements": 5,
+          "source": "host_declared_relationships_not_semantic_proof",
+          "unaffected": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          },
+          "unknown": {
+            "count": 0,
+            "ids": [],
+            "truncated": false
+          }
+        },
+        "passed": false,
+        "sequence": 3,
+        "skills": [
+          {
+            "invocation": "host_guidance_not_automatic",
+            "name": "loop-evidence-review",
+            "path": "skills/loop-evidence-review/SKILL.md",
+            "path_resolution": "plugin_root_relative"
+          }
+        ],
+        "source": "accepted_host_review_assertion",
+        "stage": "host_review",
+        "verdicts": {
+          "fail": 1,
+          "partial_pass": 0,
+          "pass": 4,
+          "unknown": 0
+        }
+      }
+    ],
+    "suggested_skills": [
+      {
+        "invocation": "host_guidance_not_automatic",
+        "name": "loop-verification-design",
+        "path": "skills/loop-verification-design/SKILL.md",
+        "path_resolution": "plugin_root_relative"
+      },
+      {
+        "invocation": "host_guidance_not_automatic",
+        "name": "loop-evidence-review",
+        "path": "skills/loop-evidence-review/SKILL.md",
+        "path_resolution": "plugin_root_relative"
+      }
+    ]
+  },
+  "loop_id": "wsl-qwen-discovery-006-20261104",
+  "model_capacity_error": false,
+  "parent_job_id": "job-f2fffa396cd97b51e557ab57da999d31",
+  "plan": {
+    "assumptions": [
+      "Original752393024text parameters are official exact normalized values; original checkpoint immutable",
+      "Hardware controls are separate and consume none of research50",
+      "150turns are capacity, not fabricated actual analysis count or weight edits",
+      "Independent final test is unavailable to controller and intentionally pending until freeze"
+    ],
+    "decision_status": "ready",
+    "goal": "Demonstrate independent mathematical accuracy improvement through evidence-dependent LLM-authored Qwen3.5-0.8B weight edits, without training, within the frozen substantial research budget.",
+    "model_evidence": "Fresh ready CLI catalogs resolve opus to claude-opus-5-5 and sonnet to claude-sonnet-5-5; codex gpt-6.1-sol is ready metadata, not entitlement proof. Actual Opus prior study invocations/providerE completion are retained, but their failed acceptance is not model-quality evidence. Actual Codex tooling completion is from a different task. No controlled final-audit model comparison.",
+    "requirements": [
+      {
+        "counterexample": "Changes original weights/tokenizer, trains, or uses test data to choose an edit.",
+        "criterion": "integrity",
+        "description": "Original source, static model inputs, protocol and inference implementation remain bound; no forbidden target changes or hidden evaluation in development.",
+        "id": "integrity",
+        "verification": {
+          "case_ids": [
+            "source_protocol_and_inference_integrity"
+          ],
+          "inputs": [
+            "source-bound MCP research jobs",
+            "journal.json",
+            "selection.json"
+          ],
+          "invariant": "Original source, static model inputs, protocol and inference implementation remain bound; no forbidden target changes or hidden evaluation in development.",
+          "method": "machine",
+          "outputs": [
+            "protected verifier case source_protocol_and_inference_integrity"
+          ],
+          "sources": [
+            {
+              "claim": "Original source, static model inputs, protocol and inference implementation remain bound; no forbidden target changes or hidden evaluation in development.",
+              "path": "task.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Frozen concrete budgets, same decoder and quantitative preservation/performance gates.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ],
+          "uncertainty": "Result flags and a journal do not alone prove absence of forbidden computation or mechanistic causal interpretation; host source/evidence review is also required."
+        }
+      },
+      {
+        "counterexample": "Stopsafter3edits, counts failed/statuscalls as50, or presents a zeroeffectiveedit as improvement.",
+        "criterion": "research",
+        "description": "Complete50meaningfulsuccessful development forwards and source-bound LLM edits within stated caps; retain every failed attempt and feedback-dependent analysis.",
+        "id": "research",
+        "verification": {
+          "case_ids": [
+            "fifty_passes_real_edits_and_budget"
+          ],
+          "inputs": [
+            "source-bound MCP research jobs",
+            "journal.json",
+            "selection.json"
+          ],
+          "invariant": "Complete50meaningfulsuccessful development forwards and source-bound LLM edits within stated caps; retain every failed attempt and feedback-dependent analysis.",
+          "method": "machine",
+          "outputs": [
+            "protected verifier case fifty_passes_real_edits_and_budget"
+          ],
+          "sources": [
+            {
+              "claim": "Complete50meaningfulsuccessful development forwards and source-bound LLM edits within stated caps; retain every failed attempt and feedback-dependent analysis.",
+              "path": "task.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Frozen concrete budgets, same decoder and quantitative preservation/performance gates.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ],
+          "uncertainty": "Result flags and a journal do not alone prove absence of forbidden computation or mechanistic causal interpretation; host source/evidence review is also required."
+        }
+      },
+      {
+        "counterexample": "Improves only repetitions or loss, loses normal answers, or changes decoder/data to manufacture gain.",
+        "criterion": "validation",
+        "description": "Select one candidate passing fixed64paired mathaccuracy gain and reference/normal prediction preservation gates under unchanged decoder.",
+        "id": "validation",
+        "verification": {
+          "case_ids": [
+            "fixed_math_validation_and_preservation"
+          ],
+          "inputs": [
+            "source-bound MCP research jobs",
+            "journal.json",
+            "selection.json"
+          ],
+          "invariant": "Select one candidate passing fixed64paired mathaccuracy gain and reference/normal prediction preservation gates under unchanged decoder.",
+          "method": "machine",
+          "outputs": [
+            "protected verifier case fixed_math_validation_and_preservation"
+          ],
+          "sources": [
+            {
+              "claim": "Select one candidate passing fixed64paired mathaccuracy gain and reference/normal prediction preservation gates under unchanged decoder.",
+              "path": "task.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Frozen concrete budgets, same decoder and quantitative preservation/performance gates.",
+              "path": "protocol.json",
+              "role": "required_behavior"
+            }
+          ],
+          "uncertainty": "Result flags and a journal do not alone prove absence of forbidden computation or mechanistic causal interpretation; host source/evidence review is also required."
+        }
+      },
+      {
+        "counterexample": "Declares semantic roles from weight names/SVD alone, auto-fits loss or prewrites a variant grid without actual feedback.",
+        "criterion": "reasoning",
+        "description": "Actual LLM chose targets/direction/amount from exact parameters, module computation, failed and correct reasoning, prepared numerical evidence and prior intervention feedback; no blind fitting/sweep.",
+        "id": "reasoning",
+        "verification": {
+          "inputs": [
+            "native model transcript",
+            "MCP artifact provenance and reasoning journal",
+            "host-only frozen independent evaluation"
+          ],
+          "invariant": "Actual LLM chose targets/direction/amount from exact parameters, module computation, failed and correct reasoning, prepared numerical evidence and prior intervention feedback; no blind fitting/sweep.",
+          "method": "host_review",
+          "outputs": [
+            "host review with specific evidence and uncertainty"
+          ],
+          "sources": [
+            {
+              "claim": "Actual LLM chose targets/direction/amount from exact parameters, module computation, failed and correct reasoning, prepared numerical evidence and prior intervention feedback; no blind fitting/sweep.",
+              "path": "task.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Actual parameter reasoning without gradients and independent confirmation after freeze.",
+              "path": "AGENTS.md",
+              "role": "required_behavior"
+            }
+          ],
+          "uncertainty": "Mechanistic claims require read/observation/intervention inspection. Independent test deliberately unavailable to worker; host evaluates only after loop is frozen."
+        }
+      },
+      {
+        "counterexample": "Claims task success from development validation or sees heldout results and retunes the same candidate.",
+        "criterion": "confirmation",
+        "description": "Host freezes candidate/protocol before accessing192sealed independent official-source examples, then verifies preregistered paired accuracy improvement and normal-case preservation; no reselection.",
+        "id": "confirmation",
+        "verification": {
+          "inputs": [
+            "native model transcript",
+            "MCP artifact provenance and reasoning journal",
+            "host-only frozen independent evaluation"
+          ],
+          "invariant": "Host freezes candidate/protocol before accessing192sealed independent official-source examples, then verifies preregistered paired accuracy improvement and normal-case preservation; no reselection.",
+          "method": "host_review",
+          "outputs": [
+            "host review with specific evidence and uncertainty"
+          ],
+          "sources": [
+            {
+              "claim": "Host freezes candidate/protocol before accessing192sealed independent official-source examples, then verifies preregistered paired accuracy improvement and normal-case preservation; no reselection.",
+              "path": "task.md",
+              "role": "required_behavior"
+            },
+            {
+              "claim": "Actual parameter reasoning without gradients and independent confirmation after freeze.",
+              "path": "AGENTS.md",
+              "role": "required_behavior"
+            }
+          ],
+          "uncertainty": "Mechanistic claims require read/observation/intervention inspection. Independent test deliberately unavailable to worker; host evaluates only after loop is frozen."
+        }
+      }
+    ],
+    "risks": [
+      "Math improvement is not guaranteed by weight changes",
+      "Short cutoff or repetition metrics can mislead",
+      "Selected validation can overstate transfer; final independent test required",
+      "Unsupported packed runtime targets reject edits rather than silently ignore them"
+    ],
+    "routing": {
+      "candidates": [
+        {
+          "effort": "high",
+          "evidence": "Fresh ready catalog resolves opus to claude-opus-5-5; prior five same-study invocations retained, including E completed22actions but failed pending acceptance.",
+          "fit": "Provisional fit for mechanistic experimental controller and long reasoning diagnosis.",
+          "model": "opus",
+          "provider": "claude",
+          "tradeoff": "Prior native failures do not demonstrate superiority or inferiority. Final audit may still expose an unresolved obligation; time/cost advantage is not established."
+        },
+        {
+          "effort": "high",
+          "evidence": "Fresh ready catalog gpt-6.1-sol; actual earlier verified tooling worker job8c09652e, not a comparable mechanistic audit.",
+          "fit": "Genuine controller alternative with strongest current implementation context.",
+          "model": "gpt-6.1-sol",
+          "provider": "codex",
+          "tradeoff": "Native Codex does not enforce the unchanged25turn ceiling; do not silently clear the cap to select it. No measured same-audit advantage."
+        },
+        {
+          "effort": "high",
+          "evidence": "Fresh ready catalog resolves sonnet to claude-sonnet-5-5; metadata describes efficiency for simpler tasks, without comparable same-audit result.",
+          "fit": "More economical experimental-controller alternative.",
+          "model": "sonnet",
+          "provider": "claude",
+          "tradeoff": "Could audit at lower expected effort for simpler parts, but complex causal/scope reconciliation has no controlled same-task comparison or measured cost/latency advantage."
+        }
+      ],
+      "capabilities": [
+        "Transformer computation and signed activation analysis",
+        "Explicit source-bound weight intervention",
+        "Long reasoning failure diagnosis and opposing controls",
+        "Paired mathematical accuracy and preservation analysis"
+      ],
+      "confidence": "medium",
+      "constraints": [
+        "No gradients/optimizers/numerical gradients/automatic fitting/sweeps",
+        "Actual model execution only via MCP; edits only via reusable MCP skills",
+        "Six25turn invocations,50successful75attempt forward cap,150CPUanalysis actions,24candidates",
+        "Small native workspace; large MCP artifacts outside it; no sealed access"
+      ],
+      "core_challenge": "Audit source-informed explicit parameter editing, contradictory causal controls, strict mathematical preservation and stochastic language regressions; prepare an honest development artifact for a single frozen independent test.",
+      "failure_class": "context",
+      "failure_impact": "False improvement claims, normal-answer damage, forbidden gradient training or test leakage.",
+      "reconsider_when": "An observed capability or access gap, not mere weak empirical gain or slow inference.",
+      "required_tools": [
+        "read",
+        "edit",
+        "command"
+      ],
+      "retry_action": "repack_context",
+      "verification": "Protected ledger/source/hash and fixed-math statistical checks, plus host transcript/source review and sole host independent test after freeze."
+    },
+    "routing_reason": "Keep Claude Opus for the final causal/evidence audit with existing study context and enforced25turn ceiling; this is provisional fit, not a measured quality ranking. Fresh inventory compares Opus5.5, Sonnet5.5 and GPT6.1Sol. Codex is a genuine alternative and already implemented tooling; nativeCodex cannot enforce the unchanged25turn cap. Sonnet is a viable efficient alternative without same-audit evidence. No extra planner or model probe.",
+    "steps": [
+      "Baseline actual math/correct and wrong reasoning; inspect equation/values/activations",
+      "Derive and record selective direct edits with numeric rationale and finite causal controls",
+      "Iterate based on actual parent-child generated outcomes across50successful forward batches",
+      "Verify fixed validation/preservation, select and freeze one eligible candidate",
+      "Host-only independent official-source confirmation after freeze; no reselection"
+    ],
+    "user_request": "LLM must inspect real parameter roles and values, choose explicit edits without gradient/optimizer training, iterate based on inference outcomes, preserve normal predictions and prove performance improvement. User selected Qwen3.5-0.8B math after requesting150turn/50successfulforward scale."
+  },
+  "provider_elapsed_seconds": 309.999779983,
+  "provider_error": {},
+  "provider_ok": true,
+  "provider_status": "success",
+  "provider_wall_time_limit_reached": false,
+  "quality": {
+    "affects_correctness_acceptance": false,
+    "assessment_artifact_sha256": "2d4613f1578ce7473ff4bf0d1cdcab0cd064cdaff86f02ff2148676adcb4babf",
+    "assessment_source": "host_review_not_independent_proof",
+    "assessments": [
+      {
+        "dimension": "side_effects",
+        "status": "concern",
+        "summary": "One independent boxed-correct answer becomes unparsed; general-language n4also has6old-correct losses(null4). Accuracy gain does not imply universal preservation; sign/loop mechanism remains a hypothesis."
+      },
+      {
+        "dimension": "verification",
+        "status": "pass",
+        "summary": "Actual model runs, GPU changed values, paired input identity, frozen57hashes and exact statistical/retention gates were inspected. Strict failure is retained despite large gain; source/gold-timing correction is explicit. This advisory assessment does not approve unmet functional acceptance."
+      }
+    ],
+    "checks": [],
+    "source": null,
+    "status": "not_requested"
+  },
+  "reason": "host review: Reject whole-task completion: independent mathematical accuracy improves18to103/192 with strong paired significance, but1/18originally-correct answers is lost(5.56%>frozen5%). Retain the positive gain, exact failed gate and exposed-case diagnosis. Original development/integrity/research/reasoning checks pass; independent preservation requirement remains unmet. No post-test re-selection or change to frozen artifacts/thresholds.",
+  "requested_model": "opus",
+  "requirements_transport_usage": {
+    "accounting": "Requirement-section JSON bytes, not model tokens or cost",
+    "compacted": true,
+    "description_references": 10,
+    "full_section_bytes": 6703,
+    "requirements_count": 5,
+    "saved_bytes": 1552,
+    "shared_fields": [],
+    "worker_section_bytes": 5151
+  },
+  "runtime_version": "0.6.76",
+  "scope_violations": [],
+  "state": "failed",
+  "summary": "The development audit is done and the selected candidate passes every development gate. It is ready for the host to freeze. The 192-item independent test has not been run, so this is not a confirmed improvement yet.\n\n**Checks:** I ran the declared self-check plan twice, once before and once after my file updates. Both times the runner exited 0 with all 4 checks passing:\n- **Integrity:** the ledger shows 51 attempts: 50 succeeded, 1 failed (`0e6cf2aa…`), none still running. The failure was a GPU memory-profiling error during start-up, not a math result. It is kept in the record and was retried once with the identical spec.\n- **Budget:** exactly 50 successful runs. The CPU-analysis count is still 144 of 150; I added none. There are 11 candidate folders out of a cap of 24.\n- **Fixed 64-item validation:** passes.\n- **Conditional retention (the stricter regression check):** passes; none of the 5 originally correct answers were lost.\n\n**Selected candidate:** `candidates/source-informed-l15l19-001` (manifest `7f4a69e7…`). It edits the MLP down-projection weights in layers 15 and 19 (76 and 46 columns). 124,928 stored values changed, and 123,452 values actually changed on the GPU in BF16.\n",
+  "text_truncated": true,
+  "timing_source": "execution_finished",
+  "tool_execution": {
+    "claims_certified": false,
+    "completed_actions": 8,
+    "dropped_observations": 0,
+    "failed_actions": 1,
+    "limitation": "No arguments, outputs or model reasoning included. Missing events leave claims unconfirmed; counts are not quality or progress. Sandbox metadata is provider-reported, not a connectivity probe.",
+    "pending_actions": 0,
+    "recent_failures": [
+      {
+        "failed": true,
+        "id": "toolu_01HDxLqqyciharf7gKTbtfUt",
+        "kind": "tool",
+        "status": "failed",
+        "tool": "Bash"
+      }
+    ],
+    "recorded_actions": 8,
+    "reported_network_access": null,
+    "reported_sandbox_type": "",
+    "semantic_acceptance": false,
+    "source": "retained_public_provider_events"
+  },
+  "verification_index_usage": {
+    "accounting": "JSON bytes for the verification index only; not model tokens or total prompt/cost savings",
+    "declared_commands": 3,
+    "encoded_bytes": 1438,
+    "included_commands": 3,
+    "limit_bytes": 4096,
+    "omitted_commands": 0
+  },
+  "verified": false
+}

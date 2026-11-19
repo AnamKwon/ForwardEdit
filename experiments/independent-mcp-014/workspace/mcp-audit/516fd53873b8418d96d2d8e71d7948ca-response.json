@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.0698968768119812,
+  "utc": 1793853048.7957203,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/prepare_c1.json\",\n  \"sha256\": \"56bbfdf051e31130ee76080bc2fc100413a8b397897eb5c61ade89d5021a2edf\",\n  \"characters\": 264653,\n  \"offset\": 72000,\n  \"text\": \"g may reflect uncertainty so forced termination yields wrong answers; or the gate may not activate in later loop states.\\\",\\n    \\\"expected_behavior\\\": \\\"Teacher-forced lp(</think>) at 7251:1582 and 3643:2972 increases; reference NLL over 7 contexts changes <0.03; full generation shows fewer cutoffs and more correct boxed answers.\\\",\\n    \\\"disconfirming_result\\\": \\\"lp(</think>) does not increase at decision positions, reference NLL rises >0.03 or token accuracy drops >0.01, or full generation cutoff/accuracy unchanged or old-correct answers lost.\\\",\\n    \\\"controls\\\": [\\n      {\\n        \\\"kind\\\": \\\"reference_positions\\\",\\n        \\\"purpose\\\": \\\"ordinary newline positions (ctrl) of 7251 should change by <=0.72 along u\\\"\\n      },\\n      {\\n        \\\"kind\\\": \\\"teacher_forced_reference_nll\\\",\\n        \\\"purpose\\\": \\\"7 validation prefixes: NLL/token accuracy preservation edited vs original\\\"\\n      },\\n      {\\n        \\\"kind\\\": \\\"paired_generation\\\",\\n        \\\"purpose\\\": \\\"same 64 IDs, same seed, original vs edited full budget\\\"\\n      }\\n    ],\\n    \\\"max_reference_output_delta\\\": 2.6\\n  },\\n  \\\"observations\\\": [\\n    {\\n      \\\"role\\\": \\\"failure\\\",\\n      \\\"job_id\\\": \\\"9539a018ae434f6fa1a0204179846f2e\\\",\\n      \\\"artifact_path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/c6cf6bc1b84541698d9fbceed7514bef.npy\\\",\\n      \\\"artifact_sha256\\\": \\\"71af56f7538f82c445697a5d171d0d2fc7e3c4c5444627ab33ed2677c16f07b9\\\",\\n      \\\"id\\\": \\\"gsm8k_train_3643\\\",\\n      \\\"sample\\\": 0,\\n      \\\"row_index\\\": 0,\\n      \\\"module\\\": \\\"model.layers.23.mlp.down_proj\\\",\\n      \\\"recorded_positions\\\": [\\n        2949,\\n        2953,\\n        2963,\\n        2972\\n      ],\\n      \\\"mean_token_count\\\": 0,\\n      \\\"observed_model\\\": \\\"original\\\",\\n      \\\"inference_dtype\\\": \\\"bfloat16\\\",\\n      \\\"signed_selected_input\\\": [\\n        0.51171875,\\n        0.78515625,\\n        0.72265625\\n      ],\\n      \\\"current_selected_contribution\\\": [\\n        -0.03760838508605957,\\n        0.018154382705688477,\\n        -0.002551719546318054,\\n        0.006998896598815918,\\n        -0.012862205505371094,\\n        0.0029289722442626953,\\n        -0.00039993226528167725,\\n        -0.009147226810455322,\\n        -0.0031548738479614258,\\n        -0.0010064244270324707,\\n        0.0017799139022827148,\\n        0.017178162932395935,\\n        0.0036095082759857178,\\n        0.012542426586151123,\\n        -0.004637807607650757,\\n        0.004087\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

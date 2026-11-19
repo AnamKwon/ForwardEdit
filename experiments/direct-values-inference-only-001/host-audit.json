@@ -1,0 +1,104 @@
+{
+  "scope": "host independent direct-value and forward-only audit",
+  "passed": true,
+  "baseline": {
+    "discovery": {
+      "examples": 12,
+      "tokens": 319,
+      "nll": 2.4548630489040355,
+      "accuracy": 0.4169278996865204
+    },
+    "validation": {
+      "examples": 12,
+      "tokens": 306,
+      "nll": 2.9254278648124963,
+      "accuracy": 0.38562091503267976
+    }
+  },
+  "candidates": [
+    {
+      "candidate": "candidate-01",
+      "changed_parameters": 6,
+      "manual_patch_exact": true,
+      "actual_parameter_exact": true,
+      "unselected_parameters_unchanged": true,
+      "frozen": true,
+      "cpu_metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.4563614165607217,
+          "accuracy": 0.41379310344827586
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.926467628073225,
+          "accuracy": 0.4019607843137255
+        }
+      },
+      "cuda_metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.4563603035805857,
+          "accuracy": 0.41379310344827586
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.9264676724813268,
+          "accuracy": 0.4019607843137255
+        }
+      },
+      "worker_metrics_reproduced": true,
+      "newline_log_probability_before": -1.3361586332321167,
+      "newline_log_probability_after": -1.2499544620513916,
+      "source_hash": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1"
+    },
+    {
+      "candidate": "candidate-02",
+      "changed_parameters": 6,
+      "manual_patch_exact": true,
+      "actual_parameter_exact": true,
+      "unselected_parameters_unchanged": true,
+      "frozen": true,
+      "cpu_metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.4678198016889086,
+          "accuracy": 0.4231974921630094
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.938719861461947,
+          "accuracy": 0.3790849673202614
+        }
+      },
+      "cuda_metrics": {
+        "discovery": {
+          "examples": 12,
+          "tokens": 319,
+          "nll": 2.467819047840701,
+          "accuracy": 0.4231974921630094
+        },
+        "validation": {
+          "examples": 12,
+          "tokens": 306,
+          "nll": 2.9387196533622357,
+          "accuracy": 0.3790849673202614
+        }
+      },
+      "worker_metrics_reproduced": true,
+      "newline_log_probability_before": -1.3361586332321167,
+      "newline_log_probability_after": -1.3851301670074463,
+      "source_hash": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1"
+    }
+  ],
+  "mcp_server_backward_autograd_optimizer_tripwires": true,
+  "source_unchanged": true,
+  "heldout_evaluated": false,
+  "optimizer_steps": 0
+}

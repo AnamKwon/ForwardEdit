@@ -1,0 +1,40 @@
+{
+  "name": "create_candidate_from_arrays",
+  "arguments": {
+    "plan": {
+      "checkpoint": "model/model.safetensors",
+      "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+      "hypothesis": "Layer-23 down_proj columns 20/25/43 gate (high at concluded line breaks) writes alpha*s*u along the observed decision-minus-control direction, raising P(</think>) at conclusion-like states so looping generations terminate.",
+      "limits": {
+        "max_changed_fraction": 0.002,
+        "max_relative_l2": 0.15
+      },
+      "operations": [
+        {
+          "kind": "rank_one",
+          "tensor": "model.layers.23.mlp.down_proj.weight",
+          "axis": 1,
+          "indices": [
+            20,
+            25,
+            43
+          ],
+          "strength": 0.54,
+          "left": {
+            "$array": {
+              "path": "analysis/u_dx.npy",
+              "sha256": "fdc62bb1746ac891b0f818e3ffd7ea170d8acd7863d1a18ee9bb221f3b1b7fad"
+            }
+          },
+          "right": [
+            0.645,
+            0.583,
+            0.495
+          ]
+        }
+      ]
+    },
+    "output": "candidates/c1_L23_gate_u054"
+  },
+  "utc": 1793850852.8492644
+}

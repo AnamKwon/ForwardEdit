@@ -1,0 +1,17 @@
+{
+  "name": "inspect_module_computation",
+  "ok": true,
+  "elapsed_seconds": 6.972368352115154,
+  "utc": 1793850641.858943,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"modules\": [\n    {\n      \"name\": \"model.norm\",\n      \"class\": \"transformers.models.qwen3_5.modeling_qwen3_5.Qwen3_5RMSNorm\",\n      \"equation\": null,\n      \"equation_status\": \"read_actual_source\",\n      \"parameters\": {\n        \"weight\": {\n          \"shape\": [\n            1024\n          ],\n          \"dtype\": \"torch.float32\"\n        }\n      },\n      \"forward_source\": \"    def forward(self, x):\\n        output = self._norm(x.float())\\n        # Llama does x.to(float16) * w whilst Qwen3_5 is (x * w).to(float16)\\n        # See https://github.com/huggingface/transformers/pull/29402\\n        output = output * (1.0 + self.weight.float())\\n        return output.type_as(x)\\n\",\n      \"source_file\": \"/path/to/forwardedit/.venv-qwen/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\",\n      \"forward_source_sha256\": \"350041feaa40063352594579e212741fdff004594990c36162458d778dae1a9e\",\n      \"source_truncated\": false\n    },\n    {\n      \"name\": \"model.layers.23.mlp\",\n      \"class\": \"transformers.models.qwen3_5.modeling_qwen3_5.Qwen3_5MLP\",\n      \"equation\": null,\n      \"equation_status\": \"read_actual_source\",\n      \"parameters\": {},\n      \"forward_source\": \"    def forward(self, x):\\n        down_proj = self.down_proj(self.act_fn(self.gate_proj(x)) * self.up_proj(x))\\n        return down_proj\\n\",\n      \"source_file\": \"/path/to/forwardedit/.venv-qwen/lib/python3.12/site-packages/transformers/models/qwen3_5/modeling_qwen3_5.py\",\n      \"forward_source_sha256\": \"03df2d7685cf8446594448cbd33ef676a2b088779d99d9803abe3bed2ec7ad9b\",\n      \"source_truncated\": false\n    }\n  ],\n  \"candidate_dir\": null,\n  \"model_forward_calls\": 0,\n  \"interpretation\": \"Actual loaded module forward source and standard arithmetic, not inferred neuron semantics. Functional operations may live in parent methods/helpers.\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

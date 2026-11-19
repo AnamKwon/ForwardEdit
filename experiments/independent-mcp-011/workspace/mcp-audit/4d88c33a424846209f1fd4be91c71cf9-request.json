@@ -1,0 +1,8 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/ctx_base_A.json",
+    "max_chars": 600
+  },
+  "utc": 1793850696.9476647
+}

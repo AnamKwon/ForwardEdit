@@ -1,0 +1,17 @@
+{
+  "name": "research_read_array",
+  "ok": true,
+  "elapsed_seconds": 0.03464006632566452,
+  "utc": 1793850963.625312,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"shape\": [\n    3207\n  ],\n  \"dtype\": \"float32\",\n  \"sha256\": \"645f61fe0a8fcf78aef4a3d2f663cc50d6d22367ed85aef5afddc1e188f8fc03\",\n  \"entries\": [\n    {\n      \"coordinates\": [\n        2949\n      ],\n      \"value\": -0.001934051513671875\n    },\n    {\n      \"coordinates\": [\n        2953\n      ],\n      \"value\": -1.9073486328125e-6\n    },\n    {\n      \"coordinates\": [\n        2963\n      ],\n      \"value\": -0.6010684967041016\n    },\n    {\n      \"coordinates\": [\n        2964\n      ],\n      \"value\": -0.7069301605224609\n    },\n    {\n      \"coordinates\": [\n        2972\n      ],\n      \"value\": -0.34184837341308594\n    },\n    {\n      \"coordinates\": [\n        2973\n      ],\n      \"value\": -0.000011444091796875\n    }\n  ]\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

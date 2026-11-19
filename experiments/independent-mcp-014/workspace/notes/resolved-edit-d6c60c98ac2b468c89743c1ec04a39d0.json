@@ -1,0 +1,85 @@
+{
+  "plan_template": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "hypothesis": "Single feedback-dependent causal control: restore dominant residual coordinate0 of C1, retaining remaining decision-direction write.",
+    "limits": {
+      "max_changed_fraction": 0.002,
+      "max_relative_l2": 0.15
+    },
+    "operations": [
+      {
+        "kind": "set_values",
+        "tensor": "model.layers.23.mlp.down_proj.weight",
+        "rows": [
+          0
+        ],
+        "columns": [
+          20,
+          25,
+          43
+        ],
+        "expected_values": [
+          [
+            -0.11749039590358734,
+            -0.11620613187551498,
+            -0.14850884675979614
+          ]
+        ],
+        "values": [
+          [
+            0.006988525390625,
+            -0.003692626953125,
+            -0.052978515625
+          ]
+        ]
+      }
+    ]
+  },
+  "resolved_plan": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "hypothesis": "Single feedback-dependent causal control: restore dominant residual coordinate0 of C1, retaining remaining decision-direction write.",
+    "limits": {
+      "max_changed_fraction": 0.002,
+      "max_relative_l2": 0.15
+    },
+    "operations": [
+      {
+        "kind": "set_values",
+        "tensor": "model.layers.23.mlp.down_proj.weight",
+        "rows": [
+          0
+        ],
+        "columns": [
+          20,
+          25,
+          43
+        ],
+        "expected_values": [
+          [
+            -0.11749039590358734,
+            -0.11620613187551498,
+            -0.14850884675979614
+          ]
+        ],
+        "values": [
+          [
+            0.006988525390625,
+            -0.003692626953125,
+            -0.052978515625
+          ]
+        ]
+      }
+    ]
+  },
+  "parent_candidate_dir": "candidates/c1_L23_gate_u054",
+  "rationale": {
+    "observation": "C1 full64 gained5 but lost3 of5 original correct; all3 losses are cutoffs. Local teacher increase did not preserve trajectory.",
+    "hypothesis": "Dominant residual coordinate0 may contaminate decision-minus-control direction; one component removal isolates its contribution.",
+    "value_derivation": "Restore exactly source W[0,20/25/43] read through describe_parameter; preserve all other parent entries and original .54 coefficient. Prepared cumulative plan ready_for_causal_probe reasons[], reference delta .6687228965660034<.72, mean failure projection1.5446271771557274.",
+    "prediction": "Reduce dominant-coordinate disruption, retain local positive direction and recover correct outcomes.",
+    "disconfirming_result": "Any old correct lost, gain<.1, gold NLL increase>.03 or accuracy drop>.01 rejects qualified gain. No sweep follows."
+  },
+  "output": "candidates/c2_restore_row0"
+}

@@ -1,0 +1,29 @@
+{
+  "unit_test": {
+    "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 .venv/bin/python -B -m pytest -q -p no:cacheprovider",
+    "passed": 95,
+    "failed": 0,
+    "role": "host-observed test execution; no invented native receipt"
+  },
+  "native": {
+    "unique_cases": 8,
+    "worker_invocations": 2,
+    "actual_model": "claude-opus-5-5",
+    "first_job": "job-4e5a1dcc7b34710d003a2c2a9cd30295",
+    "final_job": "job-d0a6dd3bf728548200f0a2f0ca25e0a4",
+    "loop_closed": true,
+    "host_review": "bounded negative experiment completed; not model improvement approval",
+    "verified": false
+  },
+  "worker_forward_tool_requests": 42,
+  "worker_forward_cap": 65,
+  "candidates": 4,
+  "primary_edits": 3,
+  "opposing_controls": 1,
+  "host_confirmation_requests": 33,
+  "supplemental_postfreeze_original_identity_audit_forward_requests": 1,
+  "test_prompts": 128,
+  "test_reselection": false,
+  "adoption_passed": false,
+  "current_package_note": "Run snapshot predates additional context_evidence reporting field; root95tests validate that later additive field too. Fixed source/protocol/code snapshot is retained unchanged."
+}

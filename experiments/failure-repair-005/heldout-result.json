@@ -1,0 +1,3123 @@
+{
+  "kind": "heldout_repetition_confirmation",
+  "frozen_sha256": "99ded9a8280c0011c1507d5734af9e7aaf34d87918a68cefb2c180eb21e6f371",
+  "baseline": {
+    "ngram_size": 8,
+    "prompts": 128,
+    "per_prompt": [
+      {
+        "id": "tsval-21750",
+        "content_tokens": 110,
+        "ngrams": 103,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.019417475728155338,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00444",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-18241",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.05217391304347826,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-04528",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12150",
+        "content_tokens": 91,
+        "ngrams": 84,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-15772",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20933",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03424",
+        "content_tokens": 28,
+        "ngrams": 21,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00839",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.02608695652173913,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-20645",
+        "content_tokens": 116,
+        "ngrams": 109,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-13482",
+        "content_tokens": 111,
+        "ngrams": 104,
+        "repeated_ngrams": 5,
+        "repeat_fraction": 0.04807692307692308,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-06406",
+        "content_tokens": 126,
+        "ngrams": 119,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-11946",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06108",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07641",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-18084",
+        "content_tokens": 91,
+        "ngrams": 84,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-03568",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 36,
+        "repeat_fraction": 0.2975206611570248,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-01274",
+        "content_tokens": 95,
+        "ngrams": 88,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10448",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 31,
+        "repeat_fraction": 0.256198347107438,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10195",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00808",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10613",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21024",
+        "content_tokens": 112,
+        "ngrams": 105,
+        "repeated_ngrams": 14,
+        "repeat_fraction": 0.13333333333333333,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-04098",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 26,
+        "repeat_fraction": 0.21487603305785125,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05626",
+        "content_tokens": 125,
+        "ngrams": 118,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-09515",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 39,
+        "repeat_fraction": 0.32231404958677684,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20525",
+        "content_tokens": 74,
+        "ngrams": 67,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-12900",
+        "content_tokens": 125,
+        "ngrams": 118,
+        "repeated_ngrams": 5,
+        "repeat_fraction": 0.0423728813559322,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07754",
+        "content_tokens": 89,
+        "ngrams": 82,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.036585365853658534,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-14898",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-01552",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08895",
+        "content_tokens": 58,
+        "ngrams": 51,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.0784313725490196,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-05699",
+        "content_tokens": 113,
+        "ngrams": 106,
+        "repeated_ngrams": 12,
+        "repeat_fraction": 0.11320754716981132,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07545",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21529",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19631",
+        "content_tokens": 127,
+        "ngrams": 120,
+        "repeated_ngrams": 14,
+        "repeat_fraction": 0.11666666666666667,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-02410",
+        "content_tokens": 63,
+        "ngrams": 56,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07147",
+        "content_tokens": 97,
+        "ngrams": 90,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.022222222222222223,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19035",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 16,
+        "repeat_fraction": 0.1322314049586777,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07073",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21298",
+        "content_tokens": 105,
+        "ngrams": 98,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-03249",
+        "content_tokens": 118,
+        "ngrams": 111,
+        "repeated_ngrams": 20,
+        "repeat_fraction": 0.18018018018018017,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19681",
+        "content_tokens": 90,
+        "ngrams": 83,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-14061",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 14,
+        "repeat_fraction": 0.11570247933884298,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-17927",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-18115",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21790",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12314",
+        "content_tokens": 94,
+        "ngrams": 87,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-09603",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20213",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.0743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20957",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 12,
+        "repeat_fraction": 0.09917355371900827,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16093",
+        "content_tokens": 101,
+        "ngrams": 94,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.031914893617021274,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-05438",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07601",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-16908",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 33,
+        "repeat_fraction": 0.2727272727272727,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12878",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.08264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-01755",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12646",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 20,
+        "repeat_fraction": 0.1652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03146",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09306",
+        "content_tokens": 60,
+        "ngrams": 53,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-08403",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20512",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07793",
+        "content_tokens": 125,
+        "ngrams": 118,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.05084745762711865,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-16817",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 20,
+        "repeat_fraction": 0.1652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08666",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 26,
+        "repeat_fraction": 0.21487603305785125,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05680",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06969",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 18,
+        "repeat_fraction": 0.1487603305785124,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04862",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-15165",
+        "content_tokens": 127,
+        "ngrams": 120,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03333333333333333,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-20851",
+        "content_tokens": 79,
+        "ngrams": 72,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-21411",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06126",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21773",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19006",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14279",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-11915",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08728",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08411",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04870",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07681",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-13471",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14922",
+        "content_tokens": 90,
+        "ngrams": 83,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.03614457831325301,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10244",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05929",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04744",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03913",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-13505",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16065",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02301",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00668",
+        "content_tokens": 91,
+        "ngrams": 84,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10146",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19642",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12341",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12248",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00953",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10565",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16232",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08848",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12845",
+        "content_tokens": 105,
+        "ngrams": 98,
+        "repeated_ngrams": 16,
+        "repeat_fraction": 0.16326530612244897,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10746",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 16,
+        "repeat_fraction": 0.1322314049586777,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14819",
+        "content_tokens": 79,
+        "ngrams": 72,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.1388888888888889,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-11199",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 31,
+        "repeat_fraction": 0.256198347107438,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02631",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.0743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09771",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 11,
+        "repeat_fraction": 0.09090909090909091,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07329",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05314",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-17694",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06607",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19032",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03197",
+        "content_tokens": 120,
+        "ngrams": 113,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.017699115044247787,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-17115",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19497",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 22,
+        "repeat_fraction": 0.18181818181818182,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-15025",
+        "content_tokens": 79,
+        "ngrams": 72,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-01561",
+        "content_tokens": 114,
+        "ngrams": 107,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00962",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12147",
+        "content_tokens": 116,
+        "ngrams": 109,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.009174311926605505,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00598",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05712",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10482",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00722",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 17,
+        "repeat_fraction": 0.14049586776859505,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21880",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 14,
+        "repeat_fraction": 0.11570247933884298,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19678",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02376",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 29,
+        "repeat_fraction": 0.2396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21760",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 82,
+        "repeat_fraction": 0.6776859504132231,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09199",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 18,
+        "repeat_fraction": 0.1487603305785124,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03105",
+        "content_tokens": 112,
+        "ngrams": 105,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19595",
+        "content_tokens": 124,
+        "ngrams": 117,
+        "repeated_ngrams": 5,
+        "repeat_fraction": 0.042735042735042736,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-20943",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      }
+    ],
+    "mean_repeat_fraction": 0.06059682913238627,
+    "short_rate": 0.0,
+    "median_content_tokens": 128.0,
+    "mean_content_tokens": 119.609375,
+    "eos_rate": 0.3125,
+    "cutoff_rate": 0.6875
+  },
+  "candidate": {
+    "ngram_size": 8,
+    "prompts": 128,
+    "per_prompt": [
+      {
+        "id": "tsval-21750",
+        "content_tokens": 127,
+        "ngrams": 120,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00444",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-18241",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.05217391304347826,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-04528",
+        "content_tokens": 116,
+        "ngrams": 109,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-12150",
+        "content_tokens": 105,
+        "ngrams": 98,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.04081632653061224,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-15772",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20933",
+        "content_tokens": 120,
+        "ngrams": 113,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.017699115044247787,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-03424",
+        "content_tokens": 28,
+        "ngrams": 21,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00839",
+        "content_tokens": 103,
+        "ngrams": 96,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.03125,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-20645",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-13482",
+        "content_tokens": 115,
+        "ngrams": 108,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.06481481481481481,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-06406",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-11946",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06108",
+        "content_tokens": 108,
+        "ngrams": 101,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.019801980198019802,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07641",
+        "content_tokens": 101,
+        "ngrams": 94,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.09574468085106383,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-18084",
+        "content_tokens": 120,
+        "ngrams": 113,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.035398230088495575,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-03568",
+        "content_tokens": 97,
+        "ngrams": 90,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.06666666666666667,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-01274",
+        "content_tokens": 94,
+        "ngrams": 87,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.022988505747126436,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10448",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10195",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00808",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10613",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21024",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 5,
+        "repeat_fraction": 0.04132231404958678,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04098",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 22,
+        "repeat_fraction": 0.18181818181818182,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05626",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09515",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 44,
+        "repeat_fraction": 0.36363636363636365,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20525",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12900",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07754",
+        "content_tokens": 106,
+        "ngrams": 99,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-14898",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-01552",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08895",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 20,
+        "repeat_fraction": 0.1652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05699",
+        "content_tokens": 117,
+        "ngrams": 110,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07545",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21529",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 19,
+        "repeat_fraction": 0.15702479338842976,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19631",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 11,
+        "repeat_fraction": 0.09090909090909091,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02410",
+        "content_tokens": 54,
+        "ngrams": 47,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.0851063829787234,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07147",
+        "content_tokens": 102,
+        "ngrams": 95,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.042105263157894736,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19035",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 14,
+        "repeat_fraction": 0.11570247933884298,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07073",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21298",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.08264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03249",
+        "content_tokens": 93,
+        "ngrams": 86,
+        "repeated_ngrams": 17,
+        "repeat_fraction": 0.19767441860465115,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19681",
+        "content_tokens": 124,
+        "ngrams": 117,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.07692307692307693,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-14061",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.08264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-17927",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-18115",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21790",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12314",
+        "content_tokens": 113,
+        "ngrams": 106,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03773584905660377,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-09603",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20213",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20957",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 13,
+        "repeat_fraction": 0.10743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16093",
+        "content_tokens": 96,
+        "ngrams": 89,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-05438",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07601",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-16908",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12878",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 47,
+        "repeat_fraction": 0.3884297520661157,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-01755",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12646",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03146",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09306",
+        "content_tokens": 61,
+        "ngrams": 54,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-08403",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20512",
+        "content_tokens": 86,
+        "ngrams": 79,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.0759493670886076,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07793",
+        "content_tokens": 125,
+        "ngrams": 118,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.05084745762711865,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-16817",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 50,
+        "repeat_fraction": 0.4132231404958678,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08666",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 26,
+        "repeat_fraction": 0.21487603305785125,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05680",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06969",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04862",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-15165",
+        "content_tokens": 127,
+        "ngrams": 120,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03333333333333333,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-20851",
+        "content_tokens": 79,
+        "ngrams": 72,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-21411",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 12,
+        "repeat_fraction": 0.09917355371900827,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06126",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21773",
+        "content_tokens": 127,
+        "ngrams": 120,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.05,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19006",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14279",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-11915",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08728",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.024793388429752067,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08411",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04870",
+        "content_tokens": 105,
+        "ngrams": 98,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.030612244897959183,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-07681",
+        "content_tokens": 66,
+        "ngrams": 59,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.01694915254237288,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-13471",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 27,
+        "repeat_fraction": 0.2231404958677686,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14922",
+        "content_tokens": 91,
+        "ngrams": 84,
+        "repeated_ngrams": 3,
+        "repeat_fraction": 0.03571428571428571,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10244",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05929",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-04744",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03913",
+        "content_tokens": 122,
+        "ngrams": 115,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06956521739130435,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-13505",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16065",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.0743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02301",
+        "content_tokens": 126,
+        "ngrams": 119,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06722689075630252,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00668",
+        "content_tokens": 91,
+        "ngrams": 84,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-10146",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19642",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12341",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.08264462809917356,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12248",
+        "content_tokens": 102,
+        "ngrams": 95,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00953",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 11,
+        "repeat_fraction": 0.09090909090909091,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10565",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-16232",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-08848",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12845",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 7,
+        "repeat_fraction": 0.05785123966942149,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10746",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-14819",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 91,
+        "repeat_fraction": 0.7520661157024794,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-11199",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02631",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 9,
+        "repeat_fraction": 0.0743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09771",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 15,
+        "repeat_fraction": 0.12396694214876033,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-07329",
+        "content_tokens": 125,
+        "ngrams": 118,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.00847457627118644,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-05314",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 19,
+        "repeat_fraction": 0.15702479338842976,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-17694",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-06607",
+        "content_tokens": 117,
+        "ngrams": 110,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.00909090909090909,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19032",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-03197",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-17115",
+        "content_tokens": 120,
+        "ngrams": 113,
+        "repeated_ngrams": 1,
+        "repeat_fraction": 0.008849557522123894,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19497",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 17,
+        "repeat_fraction": 0.14049586776859505,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-15025",
+        "content_tokens": 107,
+        "ngrams": 100,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-01561",
+        "content_tokens": 100,
+        "ngrams": 93,
+        "repeated_ngrams": 10,
+        "repeat_fraction": 0.10752688172043011,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00962",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-12147",
+        "content_tokens": 120,
+        "ngrams": 113,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.017699115044247787,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-00598",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-05712",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 17,
+        "repeat_fraction": 0.14049586776859505,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-10482",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 8,
+        "repeat_fraction": 0.06611570247933884,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-00722",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 85,
+        "repeat_fraction": 0.7024793388429752,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21880",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 16,
+        "repeat_fraction": 0.1322314049586777,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-19678",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-02376",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 6,
+        "repeat_fraction": 0.049586776859504134,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-21760",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 2,
+        "repeat_fraction": 0.01652892561983471,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-09199",
+        "content_tokens": 117,
+        "ngrams": 110,
+        "repeated_ngrams": 0,
+        "repeat_fraction": 0.0,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-03105",
+        "content_tokens": 113,
+        "ngrams": 106,
+        "repeated_ngrams": 20,
+        "repeat_fraction": 0.18867924528301888,
+        "short": false,
+        "finished_eos": true,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "eos"
+      },
+      {
+        "id": "tsval-19595",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 13,
+        "repeat_fraction": 0.10743801652892562,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      },
+      {
+        "id": "tsval-20943",
+        "content_tokens": 128,
+        "ngrams": 121,
+        "repeated_ngrams": 4,
+        "repeat_fraction": 0.03305785123966942,
+        "short": false,
+        "finished_eos": false,
+        "ignored_post_eos_tokens": 0,
+        "finish_reason": "max_new_tokens"
+      }
+    ],
+    "mean_repeat_fraction": 0.06511799537813984,
+    "short_rate": 0.0,
+    "median_content_tokens": 128.0,
+    "mean_content_tokens": 120.234375,
+    "eos_rate": 0.3359375,
+    "cutoff_rate": 0.6640625
+  },
+  "comparison": {
+    "mean_repeat_gain": -0.0045211662457535565,
+    "gain_ci95": [
+      -0.025610529833965702,
+      0.016950436685633223
+    ],
+    "gain_without_largest_prompt": -0.009762726805116879,
+    "reference_nll_increase": 0.0026216424522322868,
+    "reference_accuracy_change": -0.0007427274602846978,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+      {
+        "id": "tsval-00444",
+        "repeat_increase": 0.024793388429752067
+      },
+      {
+        "id": "tsval-12150",
+        "repeat_increase": 0.04081632653061224
+      },
+      {
+        "id": "tsval-15772",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-20933",
+        "repeat_increase": 0.0011701894244130762
+      },
+      {
+        "id": "tsval-00839",
+        "repeat_increase": 0.005163043478260871
+      },
+      {
+        "id": "tsval-20645",
+        "repeat_increase": 0.03305785123966942
+      },
+      {
+        "id": "tsval-13482",
+        "repeat_increase": 0.01673789173789173
+      },
+      {
+        "id": "tsval-11946",
+        "repeat_increase": 0.03305785123966942
+      },
+      {
+        "id": "tsval-06108",
+        "repeat_increase": 0.019801980198019802
+      },
+      {
+        "id": "tsval-07641",
+        "repeat_increase": 0.029628978371724984
+      },
+      {
+        "id": "tsval-18084",
+        "repeat_increase": 0.035398230088495575
+      },
+      {
+        "id": "tsval-01274",
+        "repeat_increase": 0.022988505747126436
+      },
+      {
+        "id": "tsval-10195",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-09515",
+        "repeat_increase": 0.041322314049586806
+      },
+      {
+        "id": "tsval-12900",
+        "repeat_increase": 0.023742821123406643
+      },
+      {
+        "id": "tsval-01552",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-08895",
+        "repeat_increase": 0.0868578836493275
+      },
+      {
+        "id": "tsval-21529",
+        "repeat_increase": 0.12396694214876033
+      },
+      {
+        "id": "tsval-02410",
+        "repeat_increase": 0.0851063829787234
+      },
+      {
+        "id": "tsval-07147",
+        "repeat_increase": 0.019883040935672513
+      },
+      {
+        "id": "tsval-21298",
+        "repeat_increase": 0.08264462809917356
+      },
+      {
+        "id": "tsval-03249",
+        "repeat_increase": 0.01749423842447098
+      },
+      {
+        "id": "tsval-19681",
+        "repeat_increase": 0.07692307692307693
+      },
+      {
+        "id": "tsval-17927",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-21790",
+        "repeat_increase": 0.06611570247933884
+      },
+      {
+        "id": "tsval-12314",
+        "repeat_increase": 0.03773584905660377
+      },
+      {
+        "id": "tsval-20957",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-05438",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-12878",
+        "repeat_increase": 0.30578512396694213
+      },
+      {
+        "id": "tsval-20512",
+        "repeat_increase": 0.026362590229103464
+      },
+      {
+        "id": "tsval-16817",
+        "repeat_increase": 0.24793388429752067
+      },
+      {
+        "id": "tsval-21411",
+        "repeat_increase": 0.04132231404958678
+      },
+      {
+        "id": "tsval-21773",
+        "repeat_increase": 0.05
+      },
+      {
+        "id": "tsval-14279",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-04870",
+        "repeat_increase": 0.022347782088041827
+      },
+      {
+        "id": "tsval-07681",
+        "repeat_increase": 0.01694915254237288
+      },
+      {
+        "id": "tsval-13471",
+        "repeat_increase": 0.1652892561983471
+      },
+      {
+        "id": "tsval-03913",
+        "repeat_increase": 0.06956521739130435
+      },
+      {
+        "id": "tsval-16065",
+        "repeat_increase": 0.0743801652892562
+      },
+      {
+        "id": "tsval-02301",
+        "repeat_increase": 0.06722689075630252
+      },
+      {
+        "id": "tsval-12341",
+        "repeat_increase": 0.06611570247933884
+      },
+      {
+        "id": "tsval-14819",
+        "repeat_increase": 0.6131772268135904
+      },
+      {
+        "id": "tsval-09771",
+        "repeat_increase": 0.03305785123966942
+      },
+      {
+        "id": "tsval-05314",
+        "repeat_increase": 0.15702479338842976
+      },
+      {
+        "id": "tsval-17694",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-19032",
+        "repeat_increase": 0.06611570247933884
+      },
+      {
+        "id": "tsval-03197",
+        "repeat_increase": 0.015358736195421635
+      },
+      {
+        "id": "tsval-01561",
+        "repeat_increase": 0.10752688172043011
+      },
+      {
+        "id": "tsval-12147",
+        "repeat_increase": 0.008524803117642282
+      },
+      {
+        "id": "tsval-05712",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-10482",
+        "repeat_increase": 0.049586776859504134
+      },
+      {
+        "id": "tsval-00722",
+        "repeat_increase": 0.5619834710743802
+      },
+      {
+        "id": "tsval-21880",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-03105",
+        "repeat_increase": 0.18867924528301888
+      },
+      {
+        "id": "tsval-19595",
+        "repeat_increase": 0.06470297379388289
+      }
+    ],
+    "checks": {
+      "mean_repeat_gain": false,
+      "gain_ci_lower_positive": false,
+      "reference_nll_preserved": true,
+      "reference_accuracy_preserved": true,
+      "short_rate_preserved": true,
+      "median_length_preserved": true,
+      "largest_prompt_removed_gain_positive": false
+    },
+    "decision": "gate_failed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+  },
+  "reference_baseline": {
+    "examples": 128,
+    "tokens": 24235,
+    "nll": 2.285921742631424,
+    "accuracy": 0.4900763358778626
+  },
+  "reference_candidate": {
+    "examples": 128,
+    "tokens": 24235,
+    "nll": 2.2885433850836563,
+    "accuracy": 0.4893336084175779
+  },
+  "supplemental_nll_gate": {
+    "min_nll_gain": 1e-09,
+    "selection_split": "validation",
+    "heldout_split": "test",
+    "preserve_splits": [
+      "discovery"
+    ],
+    "max_nll_regression": 0.01,
+    "max_accuracy_drop": 0.01,
+    "checks": {
+      "selection_gain_exceeds_min": false,
+      "heldout_gain_exceeds_min": false,
+      "heldout_ci_lower_positive": false,
+      "heldout_accuracy_drop_ok": true,
+      "preserve_splits_ok": true,
+      "no_heldout_leakage": true
+    },
+    "passed": false
+  },
+  "no_reselection": true,
+  "validation_eligible": false,
+  "adoption_passed": false,
+  "interpretation": "Frozen narrow repetition and reference-preservation gate; not broad language ability or proof of scalable learning."
+}

@@ -1,0 +1,7 @@
+{
+  "all_bound_files_match": true,
+  "count": 57,
+  "post_test_cpu_analysis_upper_bound": 146,
+  "no_new_model_or_parameter_execution": true,
+  "scope": "Final loss diagnosis/feedback/new-study proposal only; frozen144development count unchanged."
+}

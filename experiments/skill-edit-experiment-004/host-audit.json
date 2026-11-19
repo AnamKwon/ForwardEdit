@@ -1,0 +1,664 @@
+{
+  "rules": {
+    "source_protocol_data_intact": true,
+    "bounded_frozen_inference_receipts": true
+  },
+  "model_forward_calls": 0,
+  "candidates": {
+    "candidate-01": {
+      "changed_parameters": 256,
+      "tensors": [
+        {
+          "tensor": "transformer.h.7.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.11986797061881838,
+          "max_absolute_delta": 0.02836555987596512
+        }
+      ],
+      "metrics": {
+        "repeat_fraction": 0.1026613833009919,
+        "reference_nll": 2.3077016750948904,
+        "reference_accuracy": 0.47958815028901736,
+        "comparison": {
+          "mean_repeat_gain": -0.03339647601118195,
+          "gain_ci95": [
+            -0.08515847258599138,
+            0.002805468896798307
+          ],
+          "reference_nll_increase": 0.003810092708967705,
+          "reference_accuracy_change": 0.0016257225433526368,
+          "minimum_median_length": 32.0,
+          "regressed_prompts": [
+            {
+              "id": "tsval-04217",
+              "repeat_increase": 0.01652892561983471
+            },
+            {
+              "id": "tsval-00910",
+              "repeat_increase": 0.01652892561983471
+            },
+            {
+              "id": "tsval-03377",
+              "repeat_increase": 0.7101787101787101
+            },
+            {
+              "id": "tsval-15235",
+              "repeat_increase": 0.12396694214876033
+            },
+            {
+              "id": "tsval-14731",
+              "repeat_increase": 0.008264462809917356
+            },
+            {
+              "id": "tsval-12148",
+              "repeat_increase": 0.007317073170731714
+            },
+            {
+              "id": "tsval-03695",
+              "repeat_increase": 0.24793388429752064
+            },
+            {
+              "id": "tsval-11346",
+              "repeat_increase": 0.07324998234089143
+            },
+            {
+              "id": "tsval-12624",
+              "repeat_increase": 0.024793388429752067
+            },
+            {
+              "id": "tsval-21311",
+              "repeat_increase": 0.03443526170798898
+            },
+            {
+              "id": "tsval-09037",
+              "repeat_increase": 0.04132231404958678
+            },
+            {
+              "id": "tsval-04360",
+              "repeat_increase": 0.01652892561983471
+            },
+            {
+              "id": "tsval-08278",
+              "repeat_increase": 0.12396694214876033
+            }
+          ],
+          "checks": {
+            "mean_repeat_gain": false,
+            "gain_ci_lower_positive": true,
+            "reference_nll_preserved": true,
+            "reference_accuracy_preserved": true,
+            "short_rate_preserved": true,
+            "median_length_preserved": true
+          },
+          "decision": "gate_failed",
+          "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+        }
+      },
+      "parent": null
+    },
+    "candidate-02": {
+      "changed_parameters": 256,
+      "tensors": [
+        {
+          "tensor": "transformer.h.7.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.11986797290785957,
+          "max_absolute_delta": 0.02836555987596512
+        }
+      ],
+      "metrics": {
+        "repeat_fraction": 0.08310659255001454,
+        "reference_nll": 2.306696709580527,
+        "reference_accuracy": 0.4785043352601156,
+        "comparison": {
+          "mean_repeat_gain": -0.013841685260204595,
+          "gain_ci95": [
+            -0.05089156265792012,
+            0.026237205100772806
+          ],
+          "reference_nll_increase": 0.002805127194604129,
+          "reference_accuracy_change": 0.0005419075144508789,
+          "minimum_median_length": 32.0,
+          "regressed_prompts": [
+            {
+              "id": "tsval-00910",
+              "repeat_increase": 0.05405405405405406
+            },
+            {
+              "id": "tsval-03377",
+              "repeat_increase": 0.05021367521367521
+            },
+            {
+              "id": "tsval-04741",
+              "repeat_increase": 0.024793388429752067
+            },
+            {
+              "id": "tsval-15235",
+              "repeat_increase": 0.20532777019979137
+            },
+            {
+              "id": "tsval-14731",
+              "repeat_increase": 0.256198347107438
+            },
+            {
+              "id": "tsval-10529",
+              "repeat_increase": 0.008264462809917356
+            },
+            {
+              "id": "tsval-15240",
+              "repeat_increase": 0.1322314049586777
+            },
+            {
+              "id": "tsval-14084",
+              "repeat_increase": 0.09090909090909091
+            },
+            {
+              "id": "tsval-11346",
+              "repeat_increase": 0.016659423439084456
+            },
+            {
+              "id": "tsval-12624",
+              "repeat_increase": 0.03305785123966942
+            },
+            {
+              "id": "tsval-21311",
+              "repeat_increase": 0.12534435261707988
+            },
+            {
+              "id": "tsval-05226",
+              "repeat_increase": 0.14567877444840543
+            },
+            {
+              "id": "tsval-08278",
+              "repeat_increase": 0.2231404958677686
+            },
+            {
+              "id": "tsval-12183",
+              "repeat_increase": 0.0008333912077227584
+            }
+          ],
+          "checks": {
+            "mean_repeat_gain": false,
+            "gain_ci_lower_positive": true,
+            "reference_nll_preserved": true,
+            "reference_accuracy_preserved": true,
+            "short_rate_preserved": true,
+            "median_length_preserved": true
+          },
+          "decision": "gate_failed",
+          "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+        }
+      },
+      "parent": "candidate-01",
+      "parent_numeric_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": "candidate-01",
+        "parent_patch_sha256": "bc73b7c04fa9eb91d9d43a8db6bd1e512765a3f5fe39b47684b5afea72cac835",
+        "candidate_dir": "candidate-02",
+        "patch_sha256": "c2df59b9ff7488bdb9e97c5f1a18846d50f98cc2dbdeecf64b0674eee7e99d80",
+        "incremental_changed": 256,
+        "net_changed": 256,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 256,
+        "restored_to_original": 0,
+        "new_changes": 0,
+        "tensors": {
+          "transformer.h.7.attn.attention.out_proj.weight": {
+            "incremental_changed": 256,
+            "net_changed": 256,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 256,
+            "restored_to_original": 0,
+            "new_changes": 0,
+            "incremental_l2": 0.28559392516803395,
+            "incremental_max_abs": 0.05673111975193024,
+            "examples": [
+              {
+                "row": 0,
+                "column": 60,
+                "original": -0.017846712842583656,
+                "parent": -0.01249269861727953,
+                "child": -0.02320072613656521
+              },
+              {
+                "row": 0,
+                "column": 61,
+                "original": 0.059044770896434784,
+                "parent": 0.04133133962750435,
+                "child": 0.07675820589065552
+              },
+              {
+                "row": 0,
+                "column": 62,
+                "original": 0.0184455756098032,
+                "parent": 0.012911902740597725,
+                "child": 0.023979248479008675
+              },
+              {
+                "row": 0,
+                "column": 63,
+                "original": 0.004223556257784367,
+                "parent": 0.002956489333882928,
+                "child": 0.005490622948855162
+              },
+              {
+                "row": 1,
+                "column": 60,
+                "original": -0.06924422085285187,
+                "parent": -0.04847095534205437,
+                "child": -0.09001749008893967
+              },
+              {
+                "row": 1,
+                "column": 61,
+                "original": 0.04312480613589287,
+                "parent": 0.030187364667654037,
+                "child": 0.0560622476041317
+              },
+              {
+                "row": 1,
+                "column": 62,
+                "original": -0.04867209121584892,
+                "parent": -0.0340704619884491,
+                "child": -0.06327372044324875
+              },
+              {
+                "row": 1,
+                "column": 63,
+                "original": -0.00812638271600008,
+                "parent": -0.0056884679943323135,
+                "child": -0.010564297437667847
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      }
+    },
+    "candidate-03": {
+      "changed_parameters": 256,
+      "tensors": [
+        {
+          "tensor": "transformer.h.7.attn.attention.out_proj.weight",
+          "changed_parameters": 0,
+          "relative_l2": 0.0,
+          "max_absolute_delta": 0.0
+        },
+        {
+          "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.14170792345731764,
+          "max_absolute_delta": 0.027046866714954376
+        }
+      ],
+      "metrics": {
+        "repeat_fraction": 0.046441070298907455,
+        "reference_nll": 2.3137178118803634,
+        "reference_accuracy": 0.47651734104046245,
+        "comparison": {
+          "mean_repeat_gain": 0.022823836990902496,
+          "gain_ci95": [
+            -0.012705441437372404,
+            0.06961686455819956
+          ],
+          "reference_nll_increase": 0.009826229494440675,
+          "reference_accuracy_change": -0.0014450867052022698,
+          "minimum_median_length": 32.0,
+          "regressed_prompts": [
+            {
+              "id": "tsval-00910",
+              "repeat_increase": 0.05217391304347826
+            },
+            {
+              "id": "tsval-03377",
+              "repeat_increase": 0.015963834145652327
+            },
+            {
+              "id": "tsval-02811",
+              "repeat_increase": 0.04132231404958678
+            },
+            {
+              "id": "tsval-04741",
+              "repeat_increase": 0.018488540512907894
+            },
+            {
+              "id": "tsval-11332",
+              "repeat_increase": 0.008264462809917356
+            },
+            {
+              "id": "tsval-16497",
+              "repeat_increase": 0.024793388429752067
+            },
+            {
+              "id": "tsval-15240",
+              "repeat_increase": 0.008264462809917356
+            },
+            {
+              "id": "tsval-11346",
+              "repeat_increase": 0.044759334233018436
+            },
+            {
+              "id": "tsval-21311",
+              "repeat_increase": 0.031002331002331004
+            },
+            {
+              "id": "tsval-05212",
+              "repeat_increase": 0.008264462809917356
+            },
+            {
+              "id": "tsval-05226",
+              "repeat_increase": 0.16089054617240622
+            },
+            {
+              "id": "tsval-08278",
+              "repeat_increase": 0.2231404958677686
+            }
+          ],
+          "checks": {
+            "mean_repeat_gain": true,
+            "gain_ci_lower_positive": true,
+            "reference_nll_preserved": true,
+            "reference_accuracy_preserved": true,
+            "short_rate_preserved": true,
+            "median_length_preserved": true
+          },
+          "decision": "gate_passed",
+          "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+        }
+      },
+      "parent": "candidate-02",
+      "parent_numeric_comparison": {
+        "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+        "parent_candidate_dir": "candidate-02",
+        "parent_patch_sha256": "c2df59b9ff7488bdb9e97c5f1a18846d50f98cc2dbdeecf64b0674eee7e99d80",
+        "candidate_dir": "candidate-03",
+        "patch_sha256": "0f4923a3c5d32bd0476f13614b5c24e7d8b8e10579505f8ef45e195ae3c84757",
+        "incremental_changed": 512,
+        "net_changed": 256,
+        "retained_parent_changes": 0,
+        "revised_parent_changes": 0,
+        "restored_to_original": 256,
+        "new_changes": 256,
+        "tensors": {
+          "transformer.h.5.attn.attention.out_proj.weight": {
+            "incremental_changed": 256,
+            "net_changed": 256,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 0,
+            "restored_to_original": 0,
+            "new_changes": 256,
+            "incremental_l2": 0.14549062720640446,
+            "incremental_max_abs": 0.027046866714954376,
+            "examples": [
+              {
+                "row": 0,
+                "column": 20,
+                "original": -0.033879537135362625,
+                "parent": -0.033879537135362625,
+                "child": -0.016939768567681313
+              },
+              {
+                "row": 0,
+                "column": 21,
+                "original": 0.006841794587671757,
+                "parent": 0.006841794587671757,
+                "child": 0.0034208972938358784
+              },
+              {
+                "row": 0,
+                "column": 22,
+                "original": 0.0033348111901432276,
+                "parent": 0.0033348111901432276,
+                "child": 0.0016674055950716138
+              },
+              {
+                "row": 0,
+                "column": 23,
+                "original": -0.0028326897881925106,
+                "parent": -0.0028326897881925106,
+                "child": -0.0014163448940962553
+              },
+              {
+                "row": 1,
+                "column": 20,
+                "original": 0.0040402947925031185,
+                "parent": 0.0040402947925031185,
+                "child": 0.0020201473962515593
+              },
+              {
+                "row": 1,
+                "column": 21,
+                "original": 0.007724743336439133,
+                "parent": 0.007724743336439133,
+                "child": 0.0038623716682195663
+              },
+              {
+                "row": 1,
+                "column": 22,
+                "original": -0.015888771042227745,
+                "parent": -0.015888771042227745,
+                "child": -0.007944385521113873
+              },
+              {
+                "row": 1,
+                "column": 23,
+                "original": -0.026790056377649307,
+                "parent": -0.026790056377649307,
+                "child": -0.013395028188824654
+              }
+            ]
+          },
+          "transformer.h.7.attn.attention.out_proj.weight": {
+            "incremental_changed": 256,
+            "net_changed": 0,
+            "retained_parent_changes": 0,
+            "revised_parent_changes": 0,
+            "restored_to_original": 256,
+            "new_changes": 0,
+            "incremental_l2": 0.14279696394746796,
+            "incremental_max_abs": 0.02836555987596512,
+            "examples": [
+              {
+                "row": 0,
+                "column": 60,
+                "original": -0.017846712842583656,
+                "parent": -0.02320072613656521,
+                "child": -0.017846712842583656
+              },
+              {
+                "row": 0,
+                "column": 61,
+                "original": 0.059044770896434784,
+                "parent": 0.07675820589065552,
+                "child": 0.059044770896434784
+              },
+              {
+                "row": 0,
+                "column": 62,
+                "original": 0.0184455756098032,
+                "parent": 0.023979248479008675,
+                "child": 0.0184455756098032
+              },
+              {
+                "row": 0,
+                "column": 63,
+                "original": 0.004223556257784367,
+                "parent": 0.005490622948855162,
+                "child": 0.004223556257784367
+              },
+              {
+                "row": 1,
+                "column": 60,
+                "original": -0.06924422085285187,
+                "parent": -0.09001749008893967,
+                "child": -0.06924422085285187
+              },
+              {
+                "row": 1,
+                "column": 61,
+                "original": 0.04312480613589287,
+                "parent": 0.0560622476041317,
+                "child": 0.04312480613589287
+              },
+              {
+                "row": 1,
+                "column": 62,
+                "original": -0.04867209121584892,
+                "parent": -0.06327372044324875,
+                "child": -0.04867209121584892
+              },
+              {
+                "row": 1,
+                "column": 63,
+                "original": -0.00812638271600008,
+                "parent": -0.010564297437667847,
+                "child": -0.00812638271600008
+              }
+            ]
+          }
+        },
+        "model_forward_calls": 0,
+        "interpretation": "Exact parameter lineage only; numeric differences do not prove feedback dependence, causality or learning."
+      }
+    },
+    "candidate-04": {
+      "changed_parameters": 256,
+      "tensors": [
+        {
+          "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+          "changed_parameters": 256,
+          "relative_l2": 0.12675355053556742,
+          "max_absolute_delta": 0.023753641173243523
+        }
+      ],
+      "metrics": {
+        "repeat_fraction": 0.07203583149306833,
+        "reference_nll": 2.322370380973764,
+        "reference_accuracy": 0.47597543352601157,
+        "comparison": {
+          "mean_repeat_gain": -0.0027709242032583964,
+          "gain_ci95": [
+            -0.04290120681289985,
+            0.031971887135462104
+          ],
+          "reference_nll_increase": 0.018478798587841183,
+          "reference_accuracy_change": -0.0019869942196531487,
+          "minimum_median_length": 32.0,
+          "regressed_prompts": [
+            {
+              "id": "tsval-04217",
+              "repeat_increase": 0.03305785123966942
+            },
+            {
+              "id": "tsval-00910",
+              "repeat_increase": 0.04132231404958678
+            },
+            {
+              "id": "tsval-04741",
+              "repeat_increase": 0.049586776859504134
+            },
+            {
+              "id": "tsval-12148",
+              "repeat_increase": 0.47591211449304577
+            },
+            {
+              "id": "tsval-02763",
+              "repeat_increase": 0.06611570247933884
+            },
+            {
+              "id": "tsval-16497",
+              "repeat_increase": 0.03305785123966942
+            },
+            {
+              "id": "tsval-04616",
+              "repeat_increase": 0.03305785123966942
+            },
+            {
+              "id": "tsval-15240",
+              "repeat_increase": 0.09917355371900827
+            },
+            {
+              "id": "tsval-11346",
+              "repeat_increase": 0.007478632478632473
+            },
+            {
+              "id": "tsval-12624",
+              "repeat_increase": 0.024793388429752067
+            },
+            {
+              "id": "tsval-04837",
+              "repeat_increase": 0.024793388429752067
+            },
+            {
+              "id": "tsval-21311",
+              "repeat_increase": 0.09011164274322168
+            },
+            {
+              "id": "tsval-11670",
+              "repeat_increase": 0.031140350877192982
+            },
+            {
+              "id": "tsval-08278",
+              "repeat_increase": 0.049586776859504134
+            },
+            {
+              "id": "tsval-12183",
+              "repeat_increase": 0.01652892561983471
+            }
+          ],
+          "checks": {
+            "mean_repeat_gain": false,
+            "gain_ci_lower_positive": true,
+            "reference_nll_preserved": true,
+            "reference_accuracy_preserved": true,
+            "short_rate_preserved": true,
+            "median_length_preserved": true
+          },
+          "decision": "gate_failed",
+          "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+        }
+      },
+      "parent": null
+    }
+  },
+  "native_physical_application": "check-1 freshly loaded selected model and compared values to patch; passed2/2",
+  "frozen_weight_examples": [
+    {
+      "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+      "row": 0,
+      "column": 20,
+      "original": -0.033879537135362625,
+      "candidate": -0.016939768567681313
+    },
+    {
+      "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+      "row": 0,
+      "column": 21,
+      "original": 0.006841794587671757,
+      "candidate": 0.0034208972938358784
+    },
+    {
+      "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+      "row": 0,
+      "column": 22,
+      "original": 0.0033348111901432276,
+      "candidate": 0.0016674055950716138
+    },
+    {
+      "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+      "row": 0,
+      "column": 23,
+      "original": -0.0028326897881925106,
+      "candidate": -0.0014163448940962553
+    },
+    {
+      "tensor": "transformer.h.5.attn.attention.out_proj.weight",
+      "row": 1,
+      "column": 20,
+      "original": 0.0040402947925031185,
+      "candidate": 0.0020201473962515593
+    }
+  ],
+  "frozen_patch_matches": true
+}

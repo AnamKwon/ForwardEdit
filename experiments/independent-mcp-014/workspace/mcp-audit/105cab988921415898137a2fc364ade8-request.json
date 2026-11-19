@@ -1,0 +1,18 @@
+{
+  "name": "describe_parameter",
+  "arguments": {
+    "model_dir": "model",
+    "tensor": "model.layers.23.mlp.down_proj.weight",
+    "rows": [
+      0,
+      1,
+      2
+    ],
+    "columns": [
+      20,
+      25,
+      43
+    ]
+  },
+  "utc": 1793852919.4533112
+}

@@ -1,0 +1,11 @@
+{
+  "name": "forward_and_wait",
+  "ok": false,
+  "elapsed_seconds": 0.033057697117328644,
+  "utc": 1793850859.8939912,
+  "error": "unknown research spec field",
+  "error_detail": {
+    "error_type": "ValueError",
+    "message": "unknown research spec field"
+  }
+}

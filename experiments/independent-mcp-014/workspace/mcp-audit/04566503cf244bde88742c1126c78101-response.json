@@ -1,0 +1,17 @@
+{
+  "name": "list_workspace_artifacts",
+  "ok": true,
+  "elapsed_seconds": 0.058948785066604614,
+  "utc": 1793852862.2590473,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"total\": 12,\n  \"offset\": 0,\n  \"files\": [\n    {\n      \"path\": \"notes/observation-3672141d8f024afe8da318a76a0f579c.json\",\n      \"bytes\": 2219\n    },\n    {\n      \"path\": \"notes/observation-72c57d48d5cf42c18f40441b74159f25.json\",\n      \"bytes\": 2665\n    },\n    {\n      \"path\": \"notes/observation-88fdb67bbd0242bf8e554f5ecc52b794.json\",\n      \"bytes\": 1189\n    },\n    {\n      \"path\": \"notes/resolved-edit-cad1a0bc95f346f39d279fbea72cfec1.json\",\n      \"bytes\": 34926\n    },\n    {\n      \"path\": \"notes/resolved-edit-d960908c3cdf4ed582ad704fe6e8a5d9.json\",\n      \"bytes\": 34774\n    },\n    {\n      \"path\": \"notes/resolved-proposal-5081cc6ac0a942cfa1e4e39a9dea373b.json\",\n      \"bytes\": 37441\n    },\n    {\n      \"path\": \"notes/resolved-proposal-77fc7b5913f64aa8bfeaf1af1c9475f4.json\",\n      \"bytes\": 37434\n    },\n    {\n      \"path\": \"notes/resolved-proposal-bdd75d56770a4157bc3a4b8bf679cd05.json\",\n      \"bytes\": 37441\n    },\n    {\n      \"path\": \"notes/submitted-forward-396a475e3719473b8a3ddf7a4fbedb65.json\",\n      \"bytes\": 2493\n    },\n    {\n      \"path\": \"notes/submitted-forward-40e08305fc8a4106bed4210d154a0e54.json\",\n      \"bytes\": 899\n    },\n    {\n      \"path\": \"notes/submitted-forward-7e03e24125ce47eb9efc9a19fd1a20a6.json\",\n      \"bytes\": 1071\n    },\n    {\n      \"path\": \"notes/submitted-forward-9501440f2f2843aaaa9a1e1aa83df8d3.json\",\n      \"bytes\": 2443\n    }\n  ],\n  \"next_offset\": null\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

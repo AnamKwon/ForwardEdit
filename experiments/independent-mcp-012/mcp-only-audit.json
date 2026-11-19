@@ -1,0 +1,28 @@
+{
+  "only_configured_mcp": [
+    "weightspace"
+  ],
+  "loop_engineering_registered": false,
+  "actual_mcp_calls_only_weightspace": true,
+  "other_native_execution_calls": [],
+  "actual_calls_use_only_project_mcp": false,
+  "editor_tool_events_vs_server_requests_match": true,
+  "actual_server_request_count": 0,
+  "successful_MCP_connection_proven": false,
+  "verified_MCP_only_server_workflow": false,
+  "tool_counts": {},
+  "server_errors": [],
+  "tool_calls": [],
+  "surface_catalog_names": [
+    "collaboration.followup_task",
+    "collaboration.interrupt_agent",
+    "collaboration.list_agents",
+    "collaboration.send_message",
+    "collaboration.spawn_agent",
+    "collaboration.wait_agent",
+    "functions.exec",
+    "functions.wait"
+  ],
+  "availability_scope": "Codex exposes a code orchestration wrapper and some native controls; only actual project MCP calls are claimed. Claude011 separately removed all built-in tools.",
+  "isolation_limits": "Fresh official CLI/cwd, user config ignored, one explicitly registered MCP, memory/host skills excluded, disabled shell and plugins. Not a new OS container."
+}

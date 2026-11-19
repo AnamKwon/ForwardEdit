@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.04110369831323624,
+  "utc": 1793850611.383531,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"notes/submitted-forward-40e08305fc8a4106bed4210d154a0e54.json\",\n  \"sha256\": \"dce752f808e78cb45dfb56c229b69f0457bfa4642f5e07c4aa90217535711699\",\n  \"characters\": 899,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"spec\\\": {\\n    \\\"type\\\": \\\"teacher_forced\\\",\\n    \\\"model\\\": \\\"original\\\",\\n    \\\"dataset_path\\\": \\\"analysis/ctx_base_A.json\\\",\\n    \\\"split\\\": \\\"validation\\\",\\n    \\\"ids\\\": [\\n      \\\"gsm8k_train_7251\\\",\\n      \\\"gsm8k_train_3643\\\",\\n      \\\"gsm8k_train_2558\\\"\\n    ],\\n    \\\"observations\\\": {\\n      \\\"layers\\\": [\\n        23\\n      ],\\n      \\\"mlp_layers\\\": [\\n        23\\n      ],\\n      \\\"positions\\\": {\\n        \\\"gsm8k_train_7251\\\": [\\n          1562,\\n          1574,\\n          1582\\n        ],\\n        \\\"gsm8k_train_3643\\\": [\\n          2949,\\n          2953,\\n          2963,\\n          2972\\n        ],\\n        \\\"gsm8k_train_2558\\\": [\\n          4031,\\n          4086,\\n          4092\\n        ]\\n      }\\n    }\\n  },\\n  \\\"submission\\\": {\\n    \\\"job_id\\\": \\\"9539a018ae434f6fa1a0204179846f2e\\\",\\n    \\\"status\\\": \\\"pending\\\",\\n    \\\"successful_completed\\\": 2,\\n    \\\"attempt_number\\\": 3,\\n    \\\"budget\\\": 50,\\n    \\\"job_path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e\\\"\\n  }\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

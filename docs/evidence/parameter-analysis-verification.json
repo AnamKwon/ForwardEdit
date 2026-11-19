@@ -1,0 +1,43 @@
+{
+  "kind": "retrospective_development_check",
+  "no_new_candidate_from_analysis": true,
+  "decision": "defer",
+  "reasons": [
+    "local check failed: failure_change_aligned"
+  ],
+  "causal_status": "unverified",
+  "labels_status": "caller_declared_not_verified",
+  "gpu": "CUDA inference only",
+  "training_tripwires_active": true,
+  "observations": [
+    {
+      "role": "reference",
+      "prediction": [
+        0.00884360674166923,
+        0.002930056911130155
+      ],
+      "actual_local_output_delta": [
+        0.00884360820055008,
+        0.002930060029029846
+      ],
+      "max_error": 3.1178996910338763e-09,
+      "target_log_probability_before": -1.1407436252315477,
+      "target_log_probability_after": -0.9764371479367359
+    },
+    {
+      "role": "failure",
+      "prediction": [
+        0.007629730951546246,
+        0.007788296459049136
+      ],
+      "actual_local_output_delta": [
+        0.007629731670022011,
+        0.007788296788930893
+      ],
+      "max_error": 7.184757649936202e-10,
+      "target_log_probability_before": -1.3361587382179039,
+      "target_log_probability_after": -1.249954548961122
+    }
+  ],
+  "note": "Existing failed edit replay, not a new or blind experiment. Newline direction is a local residual alignment proxy; labels are not verified success/failure."
+}

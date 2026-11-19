@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.06236373633146286,
+  "utc": 1793853004.2318516,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/H_L23_10.npy.json\",\n  \"sha256\": \"249083f30973bd04c0a69bc5d023954a8837b277232d13f6c611b18fc9dd5dbb\",\n  \"characters\": 1196,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"path\\\": \\\"analysis/H_L23_10.npy\\\",\\n  \\\"sha256\\\": \\\"74a16356c9e8c95c004d1acc861d4423a60681ea30e393705e8300756e97033d\\\",\\n  \\\"shape\\\": [\\n    10,\\n    3584\\n  ],\\n  \\\"dtype\\\": \\\"float64\\\",\\n  \\\"norm\\\": 59.91812085246402,\\n  \\\"min\\\": -3.890625,\\n  \\\"max\\\": 8.4375,\\n  \\\"preview\\\": [\\n    3.984375,\\n    -0.0289306640625,\\n    -2.640625,\\n    0.09521484375,\\n    -0.91796875,\\n    -0.3984375,\\n    1.1875,\\n    2.4375,\\n    -1.15625,\\n    2.71875,\\n    -0.0167236328125,\\n    3.21875,\\n    -1.5,\\n    3.21875,\\n    -0.5,\\n    1.640625\\n  ],\\n  \\\"model_forward_calls\\\": 0,\\n  \\\"operation\\\": \\\"concatenate\\\",\\n  \\\"inputs\\\": [\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/b9582efe30f146988bc7216cbda2b1b4.npy\\\",\\n      \\\"sha256\\\": \\\"10b39ae98f703bc2682978d64a4433db458fc0e235ae8fce6c4a7d7e2fe297b8\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/c6cf6bc1b84541698d9fbceed7514bef.npy\\\",\\n      \\\"sha256\\\": \\\"71af56f7538f82c445697a5d171d0d2fc7e3c4c5444627ab33ed2677c16f07b9\\\"\\n    },\\n    {\\n      \\\"path\\\": \\\"research_jobs/9539a018ae434f6fa1a0204179846f2e/7b9578f94132497c9fcd52729495915e.npy\\\",\\n      \\\"sha256\\\": \\\"1600efcfee4511156758f3940dc1f0ad2886f5c54d71cb9f4dbfd669f731b4b9\\\"\\n    }\\n  ],\\n  \\\"options\\\": {\\n    \\\"axis\\\": 0\\n  }\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

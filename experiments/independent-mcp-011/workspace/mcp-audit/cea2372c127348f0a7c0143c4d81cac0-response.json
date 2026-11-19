@@ -1,0 +1,11 @@
+{
+  "name": "list_workspace_artifacts",
+  "ok": false,
+  "elapsed_seconds": 0.03496195375919342,
+  "utc": 1793850584.7688859,
+  "error": "select a generated artifact prefix and bounded page",
+  "error_detail": {
+    "error_type": "ValueError",
+    "message": "select a generated artifact prefix and bounded page"
+  }
+}

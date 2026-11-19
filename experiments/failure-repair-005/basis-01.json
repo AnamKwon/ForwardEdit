@@ -1,0 +1,103 @@
+{
+ "basis": {
+  "failure_description": "Greedy loops in observed-contexts (8gram generated>=3, ref<=1) at same prompt/position; pairs tsval-12237,tsval-19392 (selecting), tsval-05900,tsval-01945 (not used for selection).",
+  "structural_role": "transformer.h.7.mlp.c_proj Linear W[64,256]; columns 113,157 write post-GELU hidden units into the last-block residual before ln_f/lm_head.",
+  "mechanism_hypothesis": "h7 hidden units 113/157 write a loop-continuation residual component in some recurrence loops; halving their writer columns reduces it.",
+  "pairing_justification": "Same prompt and same absolute prediction position, generated loop vs human reference; prefix content still differs (confound).",
+  "evidence_pairs": [
+   "tsval-12237",
+   "tsval-19392",
+   "tsval-05900",
+   "tsval-01945"
+  ],
+  "value_derivation": "new = 0.5*old for all 64 rows of columns 113,157 (attenuate fraction 0.5); a moderate first dose, not fitted.",
+  "value_rule": {
+   "kind": "attenuate",
+   "fraction": 0.5
+  },
+  "alternative_explanation": "Units may encode content of the specific loops (painting/tree) rather than recurrence; tsval-05900 failure activations are negative, contradicting generality; loops likely dominated by attention copy circuits.",
+  "expected_behavior": "Small reduction in loop token log-prob in 12237/19392; little reference change.",
+  "disconfirming_result": "No validation repeat gain, NLL increase >0.01, or loop target logprob unchanged in post-edit analysis.",
+  "controls": [
+   {
+    "kind": "identity",
+    "purpose": "source baselines already measured"
+   },
+   {
+    "kind": "opposing_edit",
+    "purpose": "amplify same columns to test direction if budget allows"
+   }
+  ],
+  "target_output_direction": [
+   -0.00596050526141747,
+   0.0048109430078179805,
+   -0.0032868775002892277,
+   -0.001341038527513593,
+   0.002487994911828321,
+   -0.0002430061322543094,
+   0.0007414064101575223,
+   0.00627641357128203,
+   0.00031666428323900547,
+   0.0008931781947412119,
+   -0.005128250207567597,
+   -0.004419946909435542,
+   -0.0007544042056270949,
+   0.002092639065545033,
+   0.00031619110865088235,
+   0.000634889675484076,
+   -0.004764083782950678,
+   0.004777315393357703,
+   -0.0015130169948422132,
+   0.0034287292853231086,
+   0.002183358712088641,
+   -0.0052943582146512454,
+   0.004138483020747259,
+   -0.0005119571871000378,
+   -0.003321353009523279,
+   -0.0009405874746460413,
+   0.004776748772306443,
+   0.003691798724230186,
+   -0.0007981104949018186,
+   -0.004562751734282631,
+   0.004213827115011601,
+   0.0001851439345157607,
+   -0.0012784030148863855,
+   0.00021027437779675323,
+   0.0011111694613522298,
+   -0.00023428681945534153,
+   0.0009571986860504483,
+   -0.003114053321441493,
+   0.0038054553441575333,
+   0.001419245676904215,
+   0.0011914888487127332,
+   0.002260158483625393,
+   -0.0012868068323671836,
+   -0.0006482731282058172,
+   0.0028776268907529036,
+   0.004382366439764144,
+   -9.72386905074744e-06,
+   0.004739958588990672,
+   -0.00176813359131745,
+   -0.0022727911930165217,
+   -0.0036575185047697735,
+   0.002676907853706244,
+   -0.0021291200712544337,
+   -0.0014933701453118061,
+   0.004847138960815773,
+   0.0016558729796643866,
+   0.002531637411027848,
+   0.0007940337320560703,
+   -0.0002347677405367595,
+   -0.0032179855467021744,
+   0.0038652905919324817,
+   -9.558404894406103e-05,
+   0.0011849703538744888,
+   -0.000902176939537886
+  ],
+  "max_reference_output_delta": 0.05
+ },
+ "limits": {
+  "max_changed_fraction": 0.02,
+  "max_relative_l2": 0.15
+ }
+}

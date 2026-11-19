@@ -1,0 +1,25 @@
+{
+  "name": "preview_edit",
+  "arguments": {
+    "plan": {
+      "checkpoint": "model/model.safetensors",
+      "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+      "hypothesis": "schema-only missing-field control",
+      "limits": {
+        "max_changed_fraction": 0.002,
+        "max_relative_l2": 0.15
+      },
+      "operations": [
+        {
+          "kind": "scale",
+          "tensor": "symbolic-not-a-real-neural-target",
+          "axis": 0,
+          "indices": [
+            0
+          ]
+        }
+      ]
+    }
+  },
+  "utc": 1793850282.4439337
+}

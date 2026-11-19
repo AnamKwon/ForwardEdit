@@ -1,0 +1,38 @@
+{
+  "plan": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "limits": {
+      "max_changed_fraction": 0.005,
+      "max_relative_l2": 0.25
+    },
+    "hypothesis": "Single observed strong L19writer-feature11 ablation; tests a localized-neuron explanation against distributed two-site directional suppression. Actual late failure feature11mean is NEGATIVE(-.4633), so interpret its SIGNED weight contribution, not activation magnitude.",
+    "operations": [
+      {
+        "kind": "scale",
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "axis": 1,
+        "indices": [
+          11
+        ],
+        "strength": 1.0
+      }
+    ]
+  },
+  "report": {
+    "source_sha256": "45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5",
+    "total_parameters": 752393024,
+    "changed_parameters": 1024,
+    "changed_fraction": 1.360990821733084e-06,
+    "tensors": [
+      {
+        "tensor": "model.layers.19.mlp.down_proj.weight",
+        "changed_parameters": 1024,
+        "relative_l2": 0.015993342273034113,
+        "max_absolute_delta": 0.09326171875
+      }
+    ],
+    "status": "unevaluated",
+    "patch_sha256": "ccbf5f1e9e83b534bb113a6b56e3d508396b956c052c770088b54d6356fd9db0"
+  }
+}

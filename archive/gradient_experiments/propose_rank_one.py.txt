@@ -1,0 +1,114 @@
+"""Optional projected-gradient baseline, NOT gradient-free weight-space reasoning.
+
+The host/LLM chooses 1..2 untied matrices and at most 6 explicit proposals. This
+script observes discovery gradients once and writes ordinary rank_one plans.
+There is no optimizer or parameter update during proposal construction, but the
+resulting direction IS gradient-based adaptation. Use run-experiment afterwards
+for validation selection and a separately managed, frozen heldout confirmation.
+"""
+import argparse
+import json
+import math
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from weight_space_lab import core, evaluation as ev
+
+
+def propose(root, model_dir, development, tensors, relatives, output):
+    import torch
+
+    if (not 1 <= len(tensors) <= 2 or len(set(tensors)) != len(tensors)
+            or not 1 <= len(relatives) or len(tensors) * len(relatives) > 6
+            or any(not math.isfinite(r) or not 0 < r <= .02 for r in relatives)):
+        raise ValueError("choose 1..2 distinct matrices, <=6 proposals, relative norms in (0,.02]")
+    root = Path(root).resolve()
+    ds = ev.load_dataset(root, development)
+    if set(ds["splits"]) - {"discovery", "validation"} or "discovery" not in ds["splits"]:
+        raise ValueError("proposal dataset must contain discovery/validation only; keep final data separate")
+    examples = ds["splits"]["discovery"]
+    if len(examples) > 32 or sum(len(e["tokens"]) for e in examples) > 8192:
+        raise ValueError("discovery exceeds 32-example/8192-token budget")
+    source_path = ev._model_dir(root, model_dir) / ev.MODEL_FILE
+    before = core.sha256(source_path)
+    model = ev.load_causal_lm(root, model_dir)
+    params, modules = dict(model.named_parameters()), dict(model.named_modules())
+    tied = ev._tied_names(model)
+    from transformers.pytorch_utils import Conv1D
+    for name in tensors:
+        owner, _, leaf = name.rpartition(".")
+        if (name not in params or name in tied or leaf != "weight"
+                or not isinstance(modules.get(owner), (torch.nn.Linear, Conv1D))
+                or params[name].ndim != 2 or params[name].numel() > 1_000_000):
+            raise ValueError("choose untied Linear/Conv1D matrices with <=1M entries")
+    # Validate context/token bounds with the same real inference interface.
+    discovery_metrics = ev.evaluate_model(model, ds, ["discovery"])
+    for name, param in model.named_parameters():
+        param.requires_grad_(name in tensors)
+    total = sum(len(e["tokens"]) - 1 for e in examples)
+    for example in examples:
+        ids = torch.tensor([example["tokens"]])
+        logits = model(input_ids=ids[:, :-1]).logits
+        loss = torch.nn.functional.cross_entropy(
+            logits.reshape(-1, logits.shape[-1]), ids[:, 1:].reshape(-1), reduction="sum") / total
+        loss.backward()
+    plans, observations = [], {}
+    for name in tensors:
+        param = params[name]
+        grad = param.grad.detach().double()
+        if not torch.isfinite(grad).all() or grad.norm() == 0:
+            raise ValueError("gradient must be finite and nonzero")
+        u, singular, vh = torch.linalg.svd(grad, full_matrices=False)
+        weight_norm = float(param.detach().double().norm())
+        observations[name] = {
+            "module_class": type(modules[name.rpartition('.')[0]]).__name__,
+            "shape": list(param.shape), "weight_norm": weight_norm,
+            "gradient_norm": float(grad.norm()), "leading_singular_value": float(singular[0]),
+            "rank_one_gradient_energy": float(singular[0].square() / singular.square().sum()),
+        }
+        for relative in relatives:
+            plan = {
+                "checkpoint": str(source_path.relative_to(root)), "source_sha256": before,
+                "hypothesis": f"Gradient-assisted projected-gradient baseline on {name}: one negative "
+                    f"rank-one discovery NLL direction with relative tensor norm {relative}. "
+                    "Validation must test transfer. This is gradient-based adaptation, not pure LLM weight understanding.",
+                "limits": {"max_changed_fraction": .02, "max_relative_l2": .021},
+                "operations": [{"tensor": name, "kind": "rank_one", "axis": 0,
+                    "indices": list(range(param.shape[0])), "strength": 1.0,
+                    "left": (-weight_norm * relative * u[:, 0]).tolist(), "right": vh[0].tolist()}],
+            }
+            core.prepare(root, plan)
+            plans.append(plan)
+    if core.sha256(source_path) != before:
+        raise ValueError("source changed during proposal construction")
+    destination = core.local(root, output)
+    destination.mkdir(parents=True, exist_ok=False)
+    evidence = {"mode": "gradient_assisted_edit", "source_sha256": before,
+        "dataset_sha256": ds["sha256"], "sampled_ids": [e["id"] for e in examples],
+        "predicted_tokens": total, "observations": observations,
+        "discovery_metrics": ev._strip(discovery_metrics), "optimizer_steps": 0,
+        "note": "Direction computed from gradients; low-rank gradient adaptation baseline, not a no-gradient result."}
+    (destination / "plans.json").write_text(json.dumps(plans, indent=2, allow_nan=False))
+    (destination / "evidence.json").write_text(json.dumps(evidence, indent=2, allow_nan=False))
+    return {"output": output, "plans": len(plans), "mode": evidence["mode"], "original_modified": False}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--workspace", type=Path, required=True)
+    parser.add_argument("--model-dir", default="model")
+    parser.add_argument("--development", default="development.json")
+    parser.add_argument("--tensors", nargs="+", required=True)
+    parser.add_argument("--relatives", nargs="+", type=float, default=[.001, .003, .01])
+    parser.add_argument("--output", default="gradient-proposals")
+    args = parser.parse_args()
+    import torch
+    torch.set_num_threads(1)
+    print(json.dumps(propose(args.workspace, args.model_dir, args.development, args.tensors,
+                             args.relatives, args.output), indent=2))
+
+
+if __name__ == "__main__":
+    main()

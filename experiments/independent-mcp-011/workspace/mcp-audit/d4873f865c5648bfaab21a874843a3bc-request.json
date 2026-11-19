@@ -1,0 +1,7 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/dx_top16abs.npy.json"
+  },
+  "utc": 1793850657.2386885
+}

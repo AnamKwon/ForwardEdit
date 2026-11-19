@@ -1,0 +1,11 @@
+attempt,job_id,status,type,split,model,candidate_dir,items,samples_per_item,max_new_tokens,wall_seconds,original_accuracy,edited_accuracy,original_nll,edited_nll,actual_changed,error
+1,88b62f7fa3754a0ab44bc71d59f20857,succeeded,generate,validation,original,,64,1,32768,3554.676830291748,0.03125,,,,"{""original"": 0}",
+2,506ee24abac0495a900a8527858d4475,succeeded,teacher_forced,discovery,original,,4,1,,21.186898723244667,0.6846275752773375,,1.4431702421886607,,"{""original"": 0}",
+3,b1b7645187e84137a0cc6a7107aaa14d,succeeded,teacher_forced,discovery,original,,4,1,,20.88254624605179,0.5752773375594294,,2.0337145936848056,,"{""original"": 0}",
+4,b159f74189184ba1b9c58c1116ca0ac3,succeeded,teacher_forced,validation,original,,5,1,,21.775524012744427,0.8483516483516483,,0.49457617949507904,,"{""original"": 0}",
+5,6e37cc473530433199b026e592e0b64e,succeeded,teacher_forced,validation,original,,5,1,,21.13448280841112,0.8483516483516483,,0.49457617949507904,,"{""original"": 0}",
+6,315071152ae54ad1a94b4201138f077b,succeeded,teacher_forced,validation,original,,2,1,,19.072740331292152,0.8641798182687709,,0.42180486092551484,,"{""original"": 0}",
+7,4c2bc0b131a0497395f1d47a234fe929,succeeded,generate,validation,both,candidates/host-l19-directional-001,6,1,8192,272.7712614312768,0.0,0.16666666666666666,,,"{""original"": 0, ""edited"": 15898}",
+8,207661e3eb714694b635a8a4383189a9,succeeded,teacher_forced,validation,edited,candidates/host-l19-directional-001,5,1,,22.7871650531888,,0.8483028083028084,,0.4954319316039592,"{""edited"": 15898}",
+9,d4f5cc8792614528818d87bc11f80755,succeeded,teacher_forced,validation,edited,candidates/host-l19-directional-001,2,1,,21.121575228869915,,0.8646580583452893,,0.4228701654583496,"{""edited"": 15898}",
+10,2efcba169a4c493bb4e2ede8d4bba81f,succeeded,generate,validation,both,candidates/math-identity-null-001,6,1,8192,273.7656754106283,0.0,0.0,,,"{""original"": 0, ""edited"": 0}",

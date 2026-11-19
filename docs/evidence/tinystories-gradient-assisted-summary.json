@@ -1,0 +1,213 @@
+{
+  "candidate-selected": {
+    "test": {
+      "nll_gain": 0.022982723881871572,
+      "gain_ci95": [
+        -0.00591104764826241,
+        0.05090570248470243
+      ],
+      "regressed_examples": 5,
+      "worst_regressions": [
+        {
+          "id": "final-10",
+          "nll_increase_per_token": 0.06683716550385081
+        },
+        {
+          "id": "final-01",
+          "nll_increase_per_token": 0.019599571400010125
+        },
+        {
+          "id": "final-04",
+          "nll_increase_per_token": 0.017740509869044747
+        },
+        {
+          "id": "final-03",
+          "nll_increase_per_token": 0.016148875450067247
+        },
+        {
+          "id": "final-02",
+          "nll_increase_per_token": 0.005208623113046711
+        }
+      ],
+      "accuracy_change": -0.0029761904761904656
+    },
+    "baseline_nll": 2.974533060574465,
+    "candidate_nll": 2.951550336692593,
+    "baseline_accuracy": 0.38095238095238093,
+    "candidate_accuracy": 0.37797619047619047,
+    "gate": {
+      "min_nll_gain": 0.0001,
+      "selection_split": "validation",
+      "heldout_split": "test",
+      "preserve_splits": [
+        "discovery"
+      ],
+      "max_nll_regression": 0.0,
+      "max_accuracy_drop": 0.01,
+      "checks": {
+        "selection_gain_exceeds_min": true,
+        "heldout_gain_exceeds_min": true,
+        "heldout_ci_lower_positive": false,
+        "heldout_accuracy_drop_ok": true,
+        "preserve_splits_ok": true,
+        "no_heldout_leakage": true
+      },
+      "passed": false
+    },
+    "changed_parameters": 16383,
+    "changed_fraction": 0.004373483709487281
+  },
+  "control-identity": {
+    "test": {
+      "nll_gain": 0.0,
+      "gain_ci95": [
+        0.0,
+        0.0
+      ],
+      "regressed_examples": 0,
+      "worst_regressions": [],
+      "accuracy_change": 0.0
+    },
+    "baseline_nll": 2.974533060574465,
+    "candidate_nll": 2.974533060574465,
+    "baseline_accuracy": 0.38095238095238093,
+    "candidate_accuracy": 0.38095238095238093,
+    "gate": {
+      "min_nll_gain": 0.0001,
+      "selection_split": "validation",
+      "heldout_split": "test",
+      "preserve_splits": [
+        "discovery"
+      ],
+      "max_nll_regression": 0.0,
+      "max_accuracy_drop": 0.01,
+      "checks": {
+        "selection_gain_exceeds_min": false,
+        "heldout_gain_exceeds_min": false,
+        "heldout_ci_lower_positive": false,
+        "heldout_accuracy_drop_ok": true,
+        "preserve_splits_ok": true,
+        "no_heldout_leakage": true
+      },
+      "passed": false
+    },
+    "changed_parameters": 0,
+    "changed_fraction": 0.0
+  },
+  "control-reversed": {
+    "test": {
+      "nll_gain": -0.23185365651127146,
+      "gain_ci95": [
+        -0.2709851305934609,
+        -0.18459176720488846
+      ],
+      "regressed_examples": 12,
+      "worst_regressions": [
+        {
+          "id": "final-07",
+          "nll_increase_per_token": 0.3248522590919232
+        },
+        {
+          "id": "final-11",
+          "nll_increase_per_token": 0.3019081823304821
+        },
+        {
+          "id": "final-09",
+          "nll_increase_per_token": 0.2989640837665206
+        },
+        {
+          "id": "final-05",
+          "nll_increase_per_token": 0.28795670796361605
+        },
+        {
+          "id": "final-00",
+          "nll_increase_per_token": 0.27983840276209077
+        }
+      ],
+      "accuracy_change": -0.05654761904761901
+    },
+    "baseline_nll": 2.974533060574465,
+    "candidate_nll": 3.2063867170857363,
+    "baseline_accuracy": 0.38095238095238093,
+    "candidate_accuracy": 0.3244047619047619,
+    "gate": {
+      "min_nll_gain": 0.0001,
+      "selection_split": "validation",
+      "heldout_split": "test",
+      "preserve_splits": [
+        "discovery"
+      ],
+      "max_nll_regression": 0.0,
+      "max_accuracy_drop": 0.01,
+      "checks": {
+        "selection_gain_exceeds_min": false,
+        "heldout_gain_exceeds_min": false,
+        "heldout_ci_lower_positive": false,
+        "heldout_accuracy_drop_ok": false,
+        "preserve_splits_ok": false,
+        "no_heldout_leakage": true
+      },
+      "passed": false
+    },
+    "changed_parameters": 16383,
+    "changed_fraction": 0.004373483709487281
+  },
+  "control-random": {
+    "test": {
+      "nll_gain": -0.0011278275177289067,
+      "gain_ci95": [
+        -0.005250404980530669,
+        0.002966847930907136
+      ],
+      "regressed_examples": 6,
+      "worst_regressions": [
+        {
+          "id": "final-06",
+          "nll_increase_per_token": 0.013516399539919632
+        },
+        {
+          "id": "final-08",
+          "nll_increase_per_token": 0.010953046196709474
+        },
+        {
+          "id": "final-05",
+          "nll_increase_per_token": 0.008401473494477476
+        },
+        {
+          "id": "final-09",
+          "nll_increase_per_token": 0.005907827987685315
+        },
+        {
+          "id": "final-11",
+          "nll_increase_per_token": 0.004920059224333783
+        }
+      ],
+      "accuracy_change": 0.0
+    },
+    "baseline_nll": 2.974533060574465,
+    "candidate_nll": 2.9756608880921944,
+    "baseline_accuracy": 0.38095238095238093,
+    "candidate_accuracy": 0.38095238095238093,
+    "gate": {
+      "min_nll_gain": 0.0001,
+      "selection_split": "validation",
+      "heldout_split": "test",
+      "preserve_splits": [
+        "discovery"
+      ],
+      "max_nll_regression": 0.0,
+      "max_accuracy_drop": 0.01,
+      "checks": {
+        "selection_gain_exceeds_min": false,
+        "heldout_gain_exceeds_min": false,
+        "heldout_ci_lower_positive": false,
+        "heldout_accuracy_drop_ok": true,
+        "preserve_splits_ok": false,
+        "no_heldout_leakage": true
+      },
+      "passed": false
+    },
+    "changed_parameters": 16384,
+    "changed_fraction": 0.004373750662042337
+  }
+}

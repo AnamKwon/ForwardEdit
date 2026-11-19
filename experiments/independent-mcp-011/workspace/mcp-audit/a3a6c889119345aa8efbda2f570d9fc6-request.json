@@ -1,0 +1,8 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "research_jobs/57a63774f7104b839326b573fca8d356/snapshot.json",
+    "max_chars": 2500
+  },
+  "utc": 1793850656.9559124
+}

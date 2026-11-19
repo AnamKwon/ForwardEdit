@@ -1,0 +1,6 @@
+{
+  "valid_original_source_control": "accepted",
+  "one_byte_frozen_data_mutation": "rejected by actual source-data assertion, not exception/setup failure",
+  "gate_self_test": "positive improvement accepted; identity,reference damage and short/EOS false improvement rejected",
+  "scope": "Local checker controls only, not learning evidence or native acceptance receipts."
+}

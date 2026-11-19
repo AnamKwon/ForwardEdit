@@ -1,0 +1,51 @@
+{
+  "kind": "initial_analysis",
+  "baseline_job": "fd481604f2834219944cb87aeeb8989f",
+  "baseline": {
+    "accuracy": "5/64",
+    "cutoff": "60/64 at 32768 tokens",
+    "correct_ids": [
+      "gsm8k_train_7251",
+      "gsm8k_train_3643",
+      "gsm8k_train_5859",
+      "math_train_algebra_943",
+      "math_train_algebra_164"
+    ]
+  },
+  "failure_observation": "Failing generations (e.g. gsm8k_train_2558 finds 11 within ~1500 tokens, gsm8k_train_1506) never emit </think> (token 248069); they loop in self-doubt ('Wait', 're-read') until the 32768 cutoff. Successful runs emit </think> after a concluding line ('Okay, ready to write.\\n', 'I will write the response now.\\n').",
+  "teacher_forced_job": "9539a018ae434f6fa1a0204179846f2e",
+  "positions": {
+    "gsm8k_train_7251": {
+      "1562": "ctrl newline",
+      "1574": "ctrl double newline",
+      "1582": "decision (next=</think>, lp=-2.49)"
+    },
+    "gsm8k_train_3643": {
+      "2949": "ctrl",
+      "2953": "ctrl",
+      "2963": "near-conclusion newline, continued (lp of continuation -0.033)",
+      "2972": "decision (next=</think>, lp=-2.18)"
+    },
+    "gsm8k_train_2558": {
+      "4031,4086,4092": "loop-phase newlines"
+    }
+  },
+  "numbers": {
+    "dx=x_dec_mean-x_ctrl_mean (layer23 output)": "norm 6.80, dominated by coord0 -2.43",
+    "dh top neurons (down_proj input)": {
+      "20": 2.29,
+      "25": 2.07,
+      "43": 1.76
+    },
+    "neuron 20/25/43 at dec rows": "2.70/3.08/2.41 and 2.66/3.00/2.30",
+    "gate s=rhat.h_J with rhat=(0.645,0.583,0.495)": "dec 4.73,4.60; within-ctrl 1.33,0.76,1.15,-0.50; near-conclusion 4.06; loop -0.71,2.50,0.26"
+  },
+  "hypothesis": "Neurons 20/25/43 of layer23 MLP carry a 'statement concluded' signal that is high when the model emits </think>. Writing an additional component along the observed decision-minus-control residual direction (u=unit(dx)) through these columns should raise P(</think>) at concluded line breaks, letting looping generations terminate and output their already-found answers.",
+  "alternatives": [
+    "dx partially encodes content specific to two success contexts (only 2 decision examples)",
+    "Termination may produce wrong answers if model loops because it is unsure; accuracy may not increase",
+    "Effect may also cause premature </think> before reasoning finishes",
+    "Loop states may never activate the gate (s low), giving no behavior change"
+  ],
+  "falsification": "Teacher-forced: lp(</think>) at decision positions does not increase, or reference NLL on validation gold references increases >0.03. Generation: cutoff count does not fall or accuracy does not rise, or originally-correct items are lost."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "array_compute",
+  "arguments": {
+    "operation": "take",
+    "inputs": [
+      {
+        "path": "analysis/H_L23_10.npy",
+        "sha256": ""
+      }
+    ],
+    "output": "analysis/H10_cols.npy",
+    "options": {
+      "indices": [
+        20,
+        25,
+        43
+      ],
+      "axis": 1
+    }
+  },
+  "utc": 1793850837.4933743
+}

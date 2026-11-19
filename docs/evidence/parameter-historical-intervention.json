@@ -1,0 +1,132 @@
+{
+  "kind": "parameter_context_analysis",
+  "schema_version": 1,
+  "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+  "config_sha256": "d858fe2b68aea5139e884523c559bdb55a4f8bd553f5dbd02b16868e6c367710",
+  "dataset_sha256": "cc647d385d2131989b1dacbdea6832656d84fcdd36119644f0f4f11cd6792fcf",
+  "model_dir": "model",
+  "dataset_path": "contexts.json",
+  "split": "discovery",
+  "candidate_dir": "historical-candidate-replay",
+  "patch_sha256": "557d3d55fc30b2201a1dd10d1df111c22e0e9591bf477539b539173d57b4d758",
+  "tensor": "transformer.h.7.mlp.c_proj.weight",
+  "owner": "transformer.h.7.mlp.c_proj",
+  "module_class": "Linear",
+  "layout": "out,in",
+  "input_feature_indices": [
+    4,
+    6,
+    16,
+    18,
+    21,
+    27
+  ],
+  "output_feature_indices": [
+    34,
+    18
+  ],
+  "rows": [
+    34,
+    18
+  ],
+  "columns": [
+    4,
+    6,
+    16,
+    18,
+    21,
+    27
+  ],
+  "original_values": [
+    [
+      0.0034798039123415947,
+      -0.019071510061621666,
+      0.0,
+      0.0,
+      0.013377838768064976,
+      -0.025114405900239944
+    ],
+    [
+      0.0,
+      0.0,
+      0.029698221012949944,
+      0.013792362995445728,
+      0.0,
+      0.0
+    ]
+  ],
+  "proposed_values": null,
+  "observations": [
+    {
+      "pair_id": "declared-comparison",
+      "reference": {
+        "example_id": "reference",
+        "position": 27,
+        "prefix_sha256": "725a1017b3d49a18d3399c0de6dae86b4fee5ee2f8f99c867fd798b8b4ffcfe0",
+        "input_token": 13,
+        "target_token": 198,
+        "target_log_probability": -0.9764371479367359,
+        "signed_input": [
+          -0.019466225057840347,
+          -0.0012531006941571832,
+          -0.055567048490047455,
+          -0.16713276505470276,
+          0.10764792561531067,
+          -0.05498659983277321
+        ],
+        "actual_module_output": [
+          0.03088851273059845,
+          -0.012555453926324844
+        ],
+        "selected_weight_contribution": [
+          0.0027772122562546592,
+          -0.003955398251161743
+        ]
+      },
+      "failure": {
+        "example_id": "comparison",
+        "position": 29,
+        "prefix_sha256": "228f01af68d8c57749958d44898743d7124bff3f5d516abc77fe25f4d6a2fe10",
+        "input_token": 13,
+        "target_token": 198,
+        "target_log_probability": -1.249954548961122,
+        "signed_input": [
+          0.014825691469013691,
+          -0.07944554835557938,
+          -0.019612586125731468,
+          -0.169009730219841,
+          0.22008009254932404,
+          -0.020338866859674454
+        ],
+        "actual_module_output": [
+          0.03345300629734993,
+          -0.029475461691617966
+        ],
+        "selected_weight_contribution": [
+          0.005021731626042004,
+          -0.0029135024663518895
+        ]
+      },
+      "shared_prefix_tokens": 0,
+      "identical_prefix": false,
+      "signed_input_contrast": [
+        0.03429191652685404,
+        -0.07819244766142219,
+        0.03595446236431599,
+        -0.0018769651651382446,
+        0.11243216693401337,
+        0.034647732973098755
+      ],
+      "contribution_contrast": [
+        0.0022445193697873443,
+        0.0010418957848098535
+      ]
+    }
+  ],
+  "device": "cuda",
+  "gradients_enabled": false,
+  "optimizer_steps": 0,
+  "evidence_status": "observational_only",
+  "labels_status": "caller_declared_not_verified",
+  "interpretation": "Contribution is x times selected weights only; bias and other features remain. Proposed delta is exact affine algebra at recorded original input, not a derivative, model-wide prediction or causal proof. Pair labels and semantic roles require independent evidence."
+}

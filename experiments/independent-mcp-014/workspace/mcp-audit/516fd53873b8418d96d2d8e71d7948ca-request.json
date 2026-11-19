@@ -1,0 +1,9 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/prepare_c1.json",
+    "offset": 72000,
+    "max_chars": 2300
+  },
+  "utc": 1793853048.7258458
+}

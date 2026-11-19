@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "forwardedit"
+version = "0.1.0"
+description = "Inference-only weight inspection and LLM-directed direct editing via MCP and CLI"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<3", "safetensors>=0.7,<1"]
+
+[project.optional-dependencies]
+mcp = ["mcp>=1.28,<3"]
+test = ["pytest>=7"]
+lm = ["torch>=2.2,<3", "transformers>=4.45,<5"]
+qwen = ["torch>=2.9,<3", "transformers>=5.22.1,<6", "mcp>=2.3,<3"]
+
+[project.scripts]
+forwardedit = "weight_space_lab.cli:main"
+forwardedit-mcp = "weight_space_lab.standalone:main"
+# Compatibility aliases for existing installations and MCP configurations.
+weight-space = "weight_space_lab.cli:main"
+weight-space-mcp = "weight_space_lab.standalone:main"
+
+[tool.setuptools.packages.find]
+include = ["weight_space_lab*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-04T16:42:23.986169+00:00",
+  "observed_job": "b3367c6481854ef0acca206b722261e2",
+  "observation": "Illustrativelanguage8 original2correct/edited3correct,2rescues1loss; originalbonjourgradedcorrectdespite2048cutoff,editedunparsed2048cutoff. Does not prove semantic forgetting; usable-answerlossretained.",
+  "decision": "Replace unstarted two incorrect-step teacher queries with predeclared same-weight-null and source language n4controls, fixed same8questions/2048limit. Keep correct-step original/edited teacher pair; no correct-vs-incorrect likelihood-ratio claim without missing counterfactual pair.",
+  "client_stopped_pid": 789174,
+  "stopped_client_only": "Existing detached normal-identity job22b3112e878645d2a63b96aacefe5ccf kept live; resume identical receipt, never resubmit completed/running job.",
+  "no_candidate_or_decoder_change": true,
+  "successful_budget_unchanged": 50
+}

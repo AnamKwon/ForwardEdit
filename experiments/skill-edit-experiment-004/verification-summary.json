@@ -1,0 +1,145 @@
+{
+  "parameter_updates_verified": true,
+  "fresh_model_values_match_patch": true,
+  "controller": "Claude Opus5.5; Codex host preparation and independent verification",
+  "primary_edits": 3,
+  "controls": 1,
+  "real_cumulative_revision_edges": 2,
+  "final_changed_parameters": 256,
+  "final_changed_fraction": 6.833985409441151e-05,
+  "native_cases_passed": 8,
+  "host_confirmation_tool_calls": 17,
+  "source_and_frozen_patch_intact_after_test": true,
+  "validation_eligible": true,
+  "independent_improvement_gate": {
+    "mean_repeat_gain": 0.00197937126059442,
+    "gain_ci95": [
+      -0.029103522841242596,
+      0.032061684080226444
+    ],
+    "reference_nll_increase": 0.006388526020371543,
+    "reference_accuracy_change": -0.0011820330969267712,
+    "minimum_median_length": 32.0,
+    "regressed_prompts": [
+      {
+        "id": "tsval-05012",
+        "repeat_increase": 0.04021739130434782
+      },
+      {
+        "id": "tsval-13375",
+        "repeat_increase": 0.10416072955257909
+      },
+      {
+        "id": "tsval-02585",
+        "repeat_increase": 0.08264462809917356
+      },
+      {
+        "id": "tsval-14117",
+        "repeat_increase": 0.03305785123966942
+      },
+      {
+        "id": "tsval-02690",
+        "repeat_increase": 0.000431189363995688
+      },
+      {
+        "id": "tsval-11401",
+        "repeat_increase": 0.35030303030303034
+      },
+      {
+        "id": "tsval-06019",
+        "repeat_increase": 0.1487603305785124
+      },
+      {
+        "id": "tsval-03904",
+        "repeat_increase": 0.0743801652892562
+      },
+      {
+        "id": "tsval-12824",
+        "repeat_increase": 0.024691358024691357
+      },
+      {
+        "id": "tsval-01351",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-08361",
+        "repeat_increase": 0.32914488109293305
+      },
+      {
+        "id": "tsval-05753",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-04148",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-00170",
+        "repeat_increase": 0.024793388429752067
+      },
+      {
+        "id": "tsval-21954",
+        "repeat_increase": 0.0603448275862069
+      },
+      {
+        "id": "tsval-08064",
+        "repeat_increase": 0.049586776859504134
+      },
+      {
+        "id": "tsval-16864",
+        "repeat_increase": 0.05785123966942149
+      },
+      {
+        "id": "tsval-02291",
+        "repeat_increase": 0.01652892561983471
+      },
+      {
+        "id": "tsval-04040",
+        "repeat_increase": 0.009259259259259259
+      },
+      {
+        "id": "tsval-08880",
+        "repeat_increase": 0.1301865894180796
+      },
+      {
+        "id": "tsval-04847",
+        "repeat_increase": 0.09776067870178554
+      },
+      {
+        "id": "tsval-00680",
+        "repeat_increase": 0.2231404958677686
+      },
+      {
+        "id": "tsval-15332",
+        "repeat_increase": 0.3405444822557122
+      },
+      {
+        "id": "tsval-17634",
+        "repeat_increase": 0.008264462809917356
+      },
+      {
+        "id": "tsval-13130",
+        "repeat_increase": 0.005912645432004579
+      },
+      {
+        "id": "tsval-02931",
+        "repeat_increase": 0.03160919540229885
+      }
+    ],
+    "checks": {
+      "mean_repeat_gain": false,
+      "gain_ci_lower_positive": false,
+      "reference_nll_preserved": true,
+      "reference_accuracy_preserved": true,
+      "short_rate_preserved": true,
+      "median_length_preserved": true
+    },
+    "decision": "gate_failed",
+    "interpretation": "Mechanical repetition gate only; not general language/math ability or narrative correctness."
+  },
+  "adopted": false,
+  "gradient_or_optimizer_training": false,
+  "heldout_repeat_improved": 25,
+  "heldout_repeat_regressed": 26,
+  "heldout_repeat_metric_unchanged": 13
+}

@@ -1,0 +1,9 @@
+{
+  "utc": 1793852782.553756,
+  "cloned_workspace": "/path/to/runs/independent-mcp-012",
+  "same_5_completed_jobs": true,
+  "neural_values_selected_by_host": false,
+  "setup_fix": "Enable native Codex code-mode host to expose registered MCP; exact same scientific configuration",
+  "remaining_responses": 37,
+  "remaining_api_equivalent_usd": 13.5042576
+}

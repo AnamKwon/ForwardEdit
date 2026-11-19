@@ -1,0 +1,177 @@
+{
+  "label": "SYNTHETIC tiny GPT-2-style LM, noisy first-order modular map task, controlled damage (MLP rows x4.0). Not a pretrained model; no general-improvement claim.",
+  "phases": {
+    "fixture": "gradient_training (AdamW), then deliberate damage",
+    "selection": "gradient_free_search (discovery split, in-memory scaling)",
+    "edit": "core scale operations, no optimizer"
+  },
+  "tensor": "transformer.h.1.mlp.c_proj.weight",
+  "damage_oracle_rows": [
+    6,
+    13,
+    15,
+    21,
+    22,
+    34,
+    37,
+    44,
+    47,
+    54,
+    62,
+    77,
+    87,
+    94,
+    96,
+    111
+  ],
+  "selected_rows": [
+    6,
+    15,
+    21,
+    22,
+    34,
+    37,
+    44,
+    54,
+    62,
+    69,
+    77,
+    79,
+    87,
+    94,
+    96,
+    111
+  ],
+  "selected_overlap_with_damage": 14,
+  "selected_strength_by_validation": 0.5,
+  "min_nll_gain_gate": 0.01,
+  "baseline_damaged": {
+    "validation": {
+      "examples": 96,
+      "tokens": 1440,
+      "nll": 0.8634888894217773,
+      "accuracy": 0.8402777777777778
+    },
+    "test": {
+      "examples": 192,
+      "tokens": 2880,
+      "nll": 0.8818858722235658,
+      "accuracy": 0.8392361111111111
+    },
+    "discovery": {
+      "examples": 96,
+      "tokens": 1440,
+      "nll": 0.7917234484285124,
+      "accuracy": 0.8513888888888889
+    }
+  },
+  "reference_clean_model": {
+    "discovery": {
+      "examples": 96,
+      "tokens": 1440,
+      "nll": 0.7725583457615588,
+      "accuracy": 0.8520833333333333
+    },
+    "validation": {
+      "examples": 96,
+      "tokens": 1440,
+      "nll": 0.8433474300327007,
+      "accuracy": 0.8409722222222222
+    },
+    "test": {
+      "examples": 192,
+      "tokens": 2880,
+      "nll": 0.8638371133640235,
+      "accuracy": 0.8395833333333333
+    }
+  },
+  "grid_validation_only": {
+    "0.0": {
+      "candidate_dir": "candidates/grid-0.0",
+      "validation_nll_gain": 0.0
+    },
+    "0.1": {
+      "candidate_dir": "candidates/grid-0.1",
+      "validation_nll_gain": 0.0049541695072922165
+    },
+    "0.25": {
+      "candidate_dir": "candidates/grid-0.25",
+      "validation_nll_gain": 0.011394957068770029
+    },
+    "0.5": {
+      "candidate_dir": "candidates/grid-0.5",
+      "validation_nll_gain": 0.019187260109663873
+    }
+  },
+  "selected": {
+    "edit": 512,
+    "val_gain": 0.01918726010966386,
+    "test_gain": 0.015836059655424763,
+    "test_ci95": [
+      0.012122156102575889,
+      0.019434315399293436
+    ],
+    "test_acc_change": 0.000694444444444442,
+    "test_regressed_examples": 47,
+    "gate_passed": true,
+    "adoption": "recommended_not_applied"
+  },
+  "controls": {
+    "identity_strength_0": {
+      "edit": 0,
+      "val_gain": 0.0,
+      "test_gain": 0.0,
+      "test_ci95": [
+        0.0,
+        0.0
+      ],
+      "test_acc_change": 0.0,
+      "test_regressed_examples": 0,
+      "gate_passed": false,
+      "adoption": "rejected"
+    },
+    "random_neurons": {
+      "edit": 512,
+      "val_gain": 0.0050251557653933476,
+      "test_gain": 0.006072572704380737,
+      "test_ci95": [
+        0.0027709467067768873,
+        0.009438387434464181
+      ],
+      "test_acc_change": 0.0003472222222222765,
+      "test_regressed_examples": 65,
+      "gate_passed": false,
+      "adoption": "rejected"
+    },
+    "opposite_selection": {
+      "edit": 512,
+      "val_gain": -0.00828494344216545,
+      "test_gain": -0.007648584158894146,
+      "test_ci95": [
+        -0.009122436231424046,
+        -0.006210098211253102
+      ],
+      "test_acc_change": -0.0003472222222221655,
+      "test_regressed_examples": 160,
+      "gate_passed": false,
+      "adoption": "rejected"
+    },
+    "overshoot_strength_1": {
+      "edit": 512,
+      "val_gain": 0.010670106248357866,
+      "test_gain": 0.010370645185311389,
+      "test_ci95": [
+        0.0030711483059831773,
+        0.018205809002394217
+      ],
+      "test_acc_change": -0.000694444444444442,
+      "test_regressed_examples": 65,
+      "gate_passed": false,
+      "adoption": "rejected"
+    }
+  },
+  "random_control_strength": 0.7578646401872472,
+  "random_control_norm_matched": true,
+  "heldout_policy": "winner and predeclared controls frozen before any heldout inference; no reselection",
+  "original_modified": false
+}

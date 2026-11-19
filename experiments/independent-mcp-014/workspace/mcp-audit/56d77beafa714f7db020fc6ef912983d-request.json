@@ -1,0 +1,8 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "candidates/c1_L23_gate_u054/manifest.json",
+    "max_chars": 5200
+  },
+  "utc": 1793852890.6473105
+}

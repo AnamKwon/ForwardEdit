@@ -1,0 +1,220 @@
+"""Offline synthetic tiny-LM experiment: damage recoverable by a legal core edit.
+
+Usage: python examples/tiny_lm_demo.py --workspace /new/empty/path [--seed 0]
+
+Phases (all offline, CPU, 1 thread):
+ 1. FIXTURE PREPARATION (gradient_training, AdamW): train a tiny GPT-2-style LM on a
+    synthetic noisy first-order modular map task, then deliberately DAMAGE it by multiplying
+    some MLP hidden-neuron output rows by DAMAGE_FACTOR. The damaged model is the "source".
+ 2. DISCOVERY (gradient_free_search): rank neurons by discovery-split NLL change under
+    in-memory 0.5 scaling. No optimizer, no gradients.
+ 3. DIRECT EDIT: only core.write_candidate with `scale` operations (no optimizer);
+    strength is chosen on the validation split; the test split is the sealed heldout.
+ Controls: identity (strength 0), random neurons with matched delta norm, opposite
+ selection (neurons whose ablation helps least), and overshoot (strength 1.0).
+Result is a measurement on a synthetic task - NOT evidence of general or pretrained-model
+improvement. The numbers are printed and saved to report.json; they may be negative.
+"""
+import argparse
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+import numpy as np
+import torch
+from transformers import GPT2Config, GPT2LMHeadModel
+
+from weight_space_lab import core, evaluation
+
+VOCAB, LENGTH, LAYER, K, DAMAGE_FACTOR = 24, 16, 1, 16, 4.0
+TENSOR = f"transformer.h.{LAYER}.mlp.c_proj.weight"  # Conv1D: [hidden(4*embd), embd]; axis 0 = hidden neurons
+GRID = [0.0, 0.1, 0.25, 0.5]
+MIN_GAIN = 0.01  # nats/token, declared before looking at the test split
+
+
+def make_sequences(rng, count, noise=0.1):
+    out = []
+    for _ in range(count):
+        seq = [int(rng.integers(VOCAB)), int(rng.integers(VOCAB))]
+        while len(seq) < LENGTH:
+            nxt = (5 * seq[-1] + 3) % VOCAB
+            seq.append(int(rng.integers(VOCAB)) if rng.random() < noise else nxt)
+        out.append(seq)
+    return out
+
+
+def unique_sets(seed, sizes, forbidden):
+    rng, seen, result = np.random.default_rng(seed), set(forbidden), {}
+    for name, size in sizes.items():
+        chosen = []
+        while len(chosen) < size:
+            for seq in make_sequences(rng, size - len(chosen)):
+                if tuple(seq) not in seen:
+                    seen.add(tuple(seq))
+                    chosen.append(seq)
+        result[name] = chosen
+    return result
+
+
+def train_fixture(seed, train):  # gradient_training: fixture preparation only
+    torch.manual_seed(seed)
+    config = GPT2Config(vocab_size=VOCAB, n_positions=LENGTH, n_embd=32, n_layer=2, n_head=2,
+                        resid_pdrop=0.0, embd_pdrop=0.0, attn_pdrop=0.0)
+    model = GPT2LMHeadModel(config)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=3e-3)
+    data = torch.tensor(train)
+    generator = torch.Generator().manual_seed(seed)
+    model.train()
+    for _ in range(400):
+        batch = data[torch.randint(len(data), (64,), generator=generator)]
+        loss = model(input_ids=batch, labels=batch).loss
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+    return model.eval()
+
+
+def plan_for(source_sha, tensor_rows, strength, hypothesis):
+    return {"checkpoint": "model/model.safetensors", "source_sha256": source_sha, "hypothesis": hypothesis,
+            "limits": {"max_changed_fraction": 0.05, "max_relative_l2": 0.9},
+            "operations": [{"tensor": TENSOR, "kind": "scale", "axis": 0,
+                            "indices": [int(i) for i in tensor_rows], "strength": float(strength)}]}
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--workspace", required=True, help="new (nonexistent or empty) directory")
+    parser.add_argument("--seed", type=int, default=0)
+    args = parser.parse_args()
+    root = Path(args.workspace).resolve()
+    if root.exists() and any(root.iterdir()):
+        sys.exit(f"refusing to reuse non-empty workspace {root}")
+    root.mkdir(parents=True, exist_ok=True)
+    torch.set_num_threads(1)
+    seed = args.seed
+
+    # ---- 1. fixture preparation (training allowed here only) -------------------------------
+    sets = unique_sets(seed + 1, {"discovery": 96, "validation": 96, "test": 192, "train": 2048}, [])
+    train = sets.pop("train")
+    dataset = {"name": "synthetic-noisy-modular-map", "version": f"seed{seed}", "splits": {
+        split: [{"id": f"{split}-{i}", "tokens": seq} for i, seq in enumerate(seqs)]
+        for split, seqs in sets.items()}}
+    (root / "data.json").write_text(json.dumps(dataset))
+    clean = train_fixture(seed, train)
+    clean.save_pretrained(root / "fixture_clean", safe_serialization=True)
+    # damage the neurons that matter most (fixture construction, location recorded as oracle)
+    rows = clean.state_dict()[TENSOR]
+    activations = []
+    hook = clean.transformer.h[LAYER].mlp.c_proj.register_forward_pre_hook(
+        lambda m, a: activations.append(a[0].abs().mean((0, 1))))
+    with torch.no_grad():
+        clean(input_ids=torch.tensor(train[:256]))
+    hook.remove()
+    importance = activations[0] * rows.norm(dim=1)
+    damaged_rows = torch.topk(importance, K).indices.tolist()
+    damaged = GPT2LMHeadModel(clean.config).eval()
+    damaged.load_state_dict(clean.state_dict())
+    with torch.no_grad():
+        damaged.state_dict()[TENSOR][damaged_rows] *= DAMAGE_FACTOR
+    damaged.save_pretrained(root / "model", safe_serialization=True)
+
+    # ---- 2. discovery (no optimizer): in-memory half-ablation of each hidden neuron -------------
+    data_ds = evaluation.load_dataset(root, "data.json")
+    model = evaluation.load_causal_lm(root, "model")
+    base_discovery = evaluation.evaluate_model(model, data_ds, ["discovery"])["discovery"]["nll"]
+    param, original = model.state_dict()[TENSOR], model.state_dict()[TENSOR].clone()
+    gains = []
+    with torch.no_grad():
+        for neuron in range(original.shape[0]):
+            param.copy_(original)
+            param[neuron] *= 0.5
+            gains.append(base_discovery - evaluation.evaluate_model(model, data_ds, ["discovery"])["discovery"]["nll"])
+    order = np.argsort(gains)
+    chosen, opposite = [int(i) for i in order[::-1][:K]], [int(i) for i in order[:K]]
+    rng = np.random.default_rng(seed + 7)
+
+    # ---- 3. direct edits via core only -------------------------------------------------------
+    source_sha = core.sha256(root / "model/model.safetensors")
+    weights = original.numpy().astype(np.float64)
+    validation_base = evaluation.evaluate_model(
+        evaluation.load_causal_lm(root, "model"), data_ds, ["validation"])["validation"]["nll"]
+
+    def create_and_select_score(name, neuron_rows, strength, hypothesis):
+        out = f"candidates/{name}"
+        core.write_candidate(root, plan_for(source_sha, neuron_rows, strength, hypothesis), out)
+        candidate_model, _ = evaluation.apply_candidate(root, "model", out)
+        metrics = evaluation.evaluate_model(candidate_model, data_ds, ["validation"])
+        return {"candidate_dir": out, "validation_nll_gain": validation_base - metrics["validation"]["nll"]}
+
+    h0 = "Selected MLP neurons' outputs are over-amplified; partial scaling restores NLL."
+    grid = {s: create_and_select_score(f"grid-{s}", chosen, s, h0) for s in GRID}
+    best = max((s for s in GRID if s > 0), key=lambda s: grid[s]["validation_nll_gain"])
+    # Rejection sampling conditions only on edit magnitude, never on loss.
+    # Overlap with hypothesis neurons is allowed; otherwise high-norm damaged
+    # neurons make an equal-magnitude random edit impossible under strength<=1.
+    for _ in range(512):
+        random_rows = [int(i) for i in rng.choice(len(gains), K, replace=False)]
+        ratio = np.linalg.norm(weights[chosen]) / np.linalg.norm(weights[random_rows])
+        if best * ratio <= 1.0 and set(random_rows) != set(chosen):
+            break
+    else:
+        raise RuntimeError("could not construct magnitude-matched random control within budget")
+    random_strength = best * ratio
+    control_candidates = {
+        "identity_strength_0": grid[0.0],
+        "random_neurons": create_and_select_score("random", random_rows, random_strength, "Control: random neurons."),
+        "opposite_selection": create_and_select_score("opposite", opposite, best, "Control: least-helpful neurons."),
+        "overshoot_strength_1": create_and_select_score("overshoot", chosen, 1.0, "Control: full ablation of chosen neurons."),
+    }
+
+    # Freeze choice and controls before the first heldout forward pass. This is
+    # procedural separation, not filesystem isolation of data.json.
+    frozen = {"selected_strength": best, "selected_candidate": grid[best]["candidate_dir"],
+              "min_nll_gain": MIN_GAIN, "selection_scores": grid,
+              "controls": control_candidates, "source_sha256": source_sha}
+    frozen["patch_sha256"] = core.sha256(root / grid[best]["candidate_dir"] / "replacements.safetensors")
+    (root / "frozen.json").write_text(json.dumps(frozen, indent=2))
+
+    def confirm(name, candidate):
+        report = evaluation.evaluate_candidate(root, "model", candidate["candidate_dir"], "data.json",
+                                               min_nll_gain=MIN_GAIN, mode="gradient_free_search")
+        evaluation.write_report(root, report, f"reports/{name}.json")
+        return report
+
+    selected = confirm("selected", grid[best])
+    controls = {name: confirm(name, candidate) for name, candidate in control_candidates.items()}
+
+    # reference only: the undamaged model (oracle upper bound, not a candidate)
+    clean_metrics = evaluation.evaluate_baseline(root, "fixture_clean", "data.json")["metrics"]
+
+    def row(report):
+        c, b = report["comparison"], report["baseline"]["test"]["nll"]
+        return {"edit": report["edit"]["changed_parameters"], "val_gain": c["validation"]["nll_gain"],
+                "test_gain": c["test"]["nll_gain"], "test_ci95": c["test"]["gain_ci95"],
+                "test_acc_change": c["test"]["accuracy_change"],
+                "test_regressed_examples": c["test"]["regressed_examples"],
+                "gate_passed": report["gate"]["passed"], "adoption": report["adoption"]}
+    summary = {
+        "label": "SYNTHETIC tiny GPT-2-style LM, noisy first-order modular map task, controlled damage "
+                 "(MLP rows x%.1f). Not a pretrained model; no general-improvement claim." % DAMAGE_FACTOR,
+        "phases": {"fixture": "gradient_training (AdamW), then deliberate damage",
+                   "selection": "gradient_free_search (discovery split, in-memory scaling)",
+                   "edit": "core scale operations, no optimizer"},
+        "tensor": TENSOR, "damage_oracle_rows": sorted(damaged_rows), "selected_rows": sorted(chosen),
+        "selected_overlap_with_damage": len(set(chosen) & set(damaged_rows)),
+        "selected_strength_by_validation": best, "min_nll_gain_gate": MIN_GAIN,
+        "baseline_damaged": selected["baseline"], "reference_clean_model": clean_metrics,
+        "grid_validation_only": {str(s): r for s, r in grid.items()}, "selected": row(selected),
+        "controls": {k: row(v) for k, v in controls.items()},
+        "random_control_strength": random_strength,
+        "random_control_norm_matched": bool(best * ratio <= 1.0),
+        "heldout_policy": "winner and predeclared controls frozen before any heldout inference; no reselection",
+        "original_modified": False}
+    (root / "report.json").write_text(json.dumps(summary, indent=2))
+    print(json.dumps(summary, indent=2))
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,81 @@
+{
+  "plan": {
+    "checkpoint": "model/model.safetensors",
+    "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "hypothesis": "Observation: baseline puts top-1 mass on newline token 198 after sentence-final periods (6+/8 discovery probes) though dev stories contain no newlines. Tied wte row 198 has +0.219 at residual dim 34 and -0.204 at dim 18. Structural role: h7.mlp.c_proj row d is the final-layer MLP write into residual dim d. Hypothesis (weak, semantic role unverified): neurons 16,18 (positive weights on dim 34) and 4,6,21,27 (strongly negative on dim 18) contribute to the newline logit; zeroing these specific entries should lower newline log-prob and raise in-sentence NLL slightly, at the risk of harming other tokens that use the same neurons.",
+    "limits": {
+      "max_changed_fraction": 0.002,
+      "max_relative_l2": 0.05
+    },
+    "operations": [
+      {
+        "kind": "set_values",
+        "tensor": "transformer.h.7.mlp.c_proj.weight",
+        "rows": [
+          34,
+          18
+        ],
+        "columns": [
+          4,
+          6,
+          16,
+          18,
+          21,
+          27
+        ],
+        "expected_values": [
+          [
+            0.0034798039123415947,
+            -0.019071510061621666,
+            0.035900674760341644,
+            0.04097767546772957,
+            0.013377838768064976,
+            -0.025114405900239944
+          ],
+          [
+            -0.052891526371240616,
+            -0.06069415062665939,
+            0.029698221012949944,
+            0.013792362995445728,
+            -0.05732343718409538,
+            -0.03882833197712898
+          ]
+        ],
+        "values": [
+          [
+            0.0034798039123415947,
+            -0.019071510061621666,
+            0.0,
+            0.0,
+            0.013377838768064976,
+            -0.025114405900239944
+          ],
+          [
+            0.0,
+            0.0,
+            0.029698221012949944,
+            0.013792362995445728,
+            0.0,
+            0.0
+          ]
+        ]
+      }
+    ]
+  },
+  "report": {
+    "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "total_parameters": 3745984,
+    "changed_parameters": 6,
+    "changed_fraction": 1.6017153303377698e-06,
+    "tensors": [
+      {
+        "tensor": "transformer.h.7.mlp.c_proj.weight",
+        "changed_parameters": 6,
+        "relative_l2": 0.04474694259449723,
+        "max_absolute_delta": 0.06069415062665939
+      }
+    ],
+    "status": "unevaluated",
+    "patch_sha256": "557d3d55fc30b2201a1dd10d1df111c22e0e9591bf477539b539173d57b4d758"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "scope": "Timing clarification only; no frozen file or model/data content changed.",
+  "baseline_job_id": "88b62f7fa3754a0ab44bc71d59f20857",
+  "baseline_accepted_snapshot_utc": "2026-11-04T09:51:29.386089+00:00",
+  "sealed_answer_correction_utc": "2026-11-04T09:54:09.367466+00:00",
+  "baseline_result_utc": "2026-11-04T10:50:46.252892+00:00",
+  "first_candidate_manifest": "candidates/host-l19-directional-001/manifest.json",
+  "first_candidate_utc": "2026-11-04T11:28:46.699884+00:00",
+  "correction": "Any earlier statement that the sealed-answer correction preceded baseline submission is inaccurate. It occurred about160seconds after baseline submission, while that unedited development baseline was still running, before its outcome, before any edited candidate and before any independent test inference. The amendment itself already states the narrower accurate timing.",
+  "scientific_boundary": "Development practice data/decoder/IDs were unchanged. Correct only64officialMATH500goldanswers in the still-sealed independent file, preserving192questions/IDs/order/source; originalbadfile/protocol retained. No test outcome or candidate performance was available to motivate the correction. Finalfreeze bound the corrected file and original explicit amendment before independent evaluation."
+}

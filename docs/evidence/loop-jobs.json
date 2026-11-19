@@ -1,0 +1,49 @@
+{
+  "runtime_version": "0.6.76",
+  "jobs": [
+    {
+      "loop_id": "wsl-eval-20261104",
+      "job_id": "job-c7dbbca50b5dcbdc29f86fda62a943ee",
+      "provider": "claude",
+      "requested_model": "sonnet",
+      "actual_model": null,
+      "rounds_used": 1,
+      "state": "cancelled",
+      "note": "Incomplete draft, cancelled after host found nonterminating fixture and premature heldout evaluation; locally repaired afterwards. No native checks completed."
+    },
+    {
+      "loop_id": "wsl-tools-20261104",
+      "job_id": "job-4c44ab32c4c92b09ac8a2285c99be7a0",
+      "provider": "codex",
+      "actual_model": "gpt-6.1-sol",
+      "rounds_used": 1,
+      "state": "succeeded",
+      "review_basis": "Native existing-core preservation plus host source review, focused28 tests and4 skill format checks."
+    },
+    {
+      "loop_id": "wsl-pretrained-edit-20261104",
+      "job_id": "job-718e7703b6797087b59b776d229bbd3e",
+      "provider": "claude",
+      "actual_model": "claude-sonnet-5-5",
+      "rounds_used": 1,
+      "state": "succeeded",
+      "performance": "no_gain",
+      "review_basis": "Host reproduced all12 validation effects. Successful experiment completion does not mean a successful weight edit."
+    },
+    {
+      "loop_id": "wsl-direct-values-20261104",
+      "job_id": "job-d51ea0a3a5b4eee21a7cde7ff497f42b",
+      "provider": "claude",
+      "actual_model": "claude-sonnet-5-5",
+      "rounds_used": 1,
+      "state": "succeeded",
+      "performance": "no_gain",
+      "mode": "strict_inference_only_direct_values",
+      "nonidentity_candidates": 2,
+      "mcp_calls": 12,
+      "review_basis": "Host array/actual parameter audit and CPU/CUDA MCP replay under no-training tripwires; role uncertainty retained."
+    }
+  ],
+  "all_model_loops_closed": true,
+  "notes": "Host-local integration repairs and gradient-assisted comparison are separate from native model job receipts. No measured model quality ranking or aggregate cost claim."
+}

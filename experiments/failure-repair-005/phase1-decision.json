@@ -1,0 +1,83 @@
+{
+ "confirmation_candidate": "candidate-03",
+ "validation_eligible": false,
+ "decision": "no_gain_diagnostic",
+ "candidates": {
+  "candidate-01": {
+   "mean_repeat_gain": 0.0006934633441221232,
+   "gain_ci95": [
+    -0.02836384050682857,
+    0.029438933186240406
+   ],
+   "gain_without_largest_prompt": -0.004149261427668673,
+   "reference_nll_increase": 0.020525127447545977,
+   "reference_accuracy_change": -0.004456180887935257,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": false,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": false
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 28
+  },
+  "candidate-02": {
+   "mean_repeat_gain": -0.004810590490199015,
+   "gain_ci95": [
+    -0.0370416901861127,
+    0.02528193340332679
+   ],
+   "gain_without_largest_prompt": -0.009949893787525655,
+   "reference_nll_increase": 0.00801184554676393,
+   "reference_accuracy_change": -0.0011553061561313527,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": true,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": false
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 23
+  },
+  "candidate-03": {
+   "mean_repeat_gain": 0.014476808396739552,
+   "gain_ci95": [
+    -0.006005769103556354,
+    0.035012149990433
+   ],
+   "gain_without_largest_prompt": 0.009984048829115978,
+   "reference_nll_increase": 0.0022001336031847174,
+   "reference_accuracy_change": -0.0006601749463607809,
+   "checks": {
+    "mean_repeat_gain": false,
+    "gain_ci_lower_positive": false,
+    "reference_nll_preserved": true,
+    "reference_accuracy_preserved": true,
+    "short_rate_preserved": true,
+    "median_length_preserved": true,
+    "largest_prompt_removed_gain_positive": true
+   },
+   "decision": "gate_failed",
+   "regressed_prompts": 13
+  }
+ },
+ "chain": "candidate-01 (create, cols113+157 *0.5) -> candidate-02 (restore col113) -> candidate-03 (col157 0.5->0.75*old)",
+ "reasons": [
+  "No candidate passed all frozen validation gates; candidate-03 chosen as DIAGNOSTIC_ONLY because it has the smallest reference damage (NLL +0.0022, acc -0.0007) and fewest regressed prompts (13), not because it repairs repetition.",
+  "candidate-03 repeat gain +0.0145 < 0.02 minimum, CI95 lower -0.006 <= 0.",
+  "Dose order is not monotonic (0.5 both cols: +0.0007; 0.5 col157: -0.0048; 0.75 col157: +0.0145): consistent with greedy-trajectory noise, not a supported loop mechanism.",
+  "h7 units 113/157 were selected on 2 pairs (selection bias); held-out pair tsval-05900 had negative activations; the selective-loop-writer hypothesis is disconfirmed at generation level."
+ ],
+ "limits": [
+  "Opposing/matched control (candidate-04) not run due to wall-time budget; the direction's specificity is untested.",
+  "Validation was used adaptively for 3 revisions; it is not independent.",
+  "Generated texts not qualitatively inspected beyond 8gram metric; no coherence claim.",
+  "Adoption requires validation eligibility AND host heldout; this is diagnostic only."
+ ]
+}

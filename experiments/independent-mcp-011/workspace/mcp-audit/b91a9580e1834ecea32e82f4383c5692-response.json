@@ -1,0 +1,17 @@
+{
+  "name": "prepare_edit_from_arrays",
+  "ok": true,
+  "elapsed_seconds": 0.7356983721256256,
+  "utc": 1793850827.9246147,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"analysis_path\": \"analysis/prepare_c1.json\",\n  \"analysis_sha256\": \"56bbfdf051e31130ee76080bc2fc100413a8b397897eb5c61ade89d5021a2edf\",\n  \"decision\": \"ready_for_causal_probe\",\n  \"reasons\": [],\n  \"distinct_problem_ids\": 3,\n  \"max_reference_delta_l2\": 0.7161225304174648,\n  \"mean_failure_delta_projection\": 0.11829040629584697,\n  \"model_forward_calls\": 0,\n  \"candidate_created\": false\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

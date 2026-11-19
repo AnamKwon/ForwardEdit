@@ -1,0 +1,17 @@
+{
+  "name": "array_compute",
+  "ok": true,
+  "elapsed_seconds": 1.1335639953613281,
+  "utc": 1793850668.486246,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"analysis/proj_X10_on_u.npy\",\n  \"sha256\": \"d53d760d113f8f5bb763d0c01fcfe6893f815b11e11bf2e761593c14cb3656af\",\n  \"shape\": [\n    10\n  ],\n  \"dtype\": \"float64\",\n  \"norm\": 11.66125282525085,\n  \"min\": -1.5619106955660156,\n  \"max\": 7.266336870101549,\n  \"preview\": [\n    -1.239037498414722,\n    -0.3167753727810355,\n    7.253939983182948,\n    0.40257808916735427,\n    0.09622451109692187,\n    5.042536741566123,\n    7.266336870101549,\n    -1.5619106955660156,\n    0.8152274322309092,\n    0.47675387159629157\n  ],\n  \"model_forward_calls\": 0,\n  \"operation\": \"matmul\",\n  \"inputs\": [\n    {\n      \"path\": \"analysis/X_L23_10.npy\",\n      \"sha256\": \"acbf2c10e9c2184e31e86e9e3a5d0624c11a2e49ab5b2f34757e786b62a3557e\"\n    },\n    {\n      \"path\": \"analysis/u_dx.npy\",\n      \"sha256\": \"fdc62bb1746ac891b0f818e3ffd7ea170d8acd7863d1a18ee9bb221f3b1b7fad\"\n    }\n  ],\n  \"options\": {}\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

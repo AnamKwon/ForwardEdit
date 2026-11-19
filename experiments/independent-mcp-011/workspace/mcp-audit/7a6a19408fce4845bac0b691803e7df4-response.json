@@ -1,0 +1,17 @@
+{
+  "name": "workspace_status",
+  "ok": true,
+  "elapsed_seconds": 0.032486140727996826,
+  "utc": 1793850282.4032295,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"successful_completed\": 3,\n  \"accepted_attempts\": 3,\n  \"successful_budget\": 50,\n  \"attempt_budget\": 74,\n  \"jobs\": [\n    {\n      \"job_id\": \"57a63774f7104b839326b573fca8d356\",\n      \"status\": \"succeeded\",\n      \"type\": \"teacher_forced\",\n      \"model\": \"original\",\n      \"split\": \"validation\",\n      \"items\": 7,\n      \"snapshot_path\": \"research_jobs/57a63774f7104b839326b573fca8d356/snapshot.json\"\n    },\n    {\n      \"job_id\": \"9539a018ae434f6fa1a0204179846f2e\",\n      \"status\": \"succeeded\",\n      \"type\": \"teacher_forced\",\n      \"model\": \"original\",\n      \"split\": \"validation\",\n      \"items\": 3,\n      \"snapshot_path\": \"research_jobs/9539a018ae434f6fa1a0204179846f2e/snapshot.json\"\n    },\n    {\n      \"job_id\": \"fd481604f2834219944cb87aeeb8989f\",\n      \"status\": \"succeeded\",\n      \"type\": \"generate\",\n      \"model\": \"original\",\n      \"split\": \"validation\",\n      \"items\": 64,\n      \"snapshot_path\": \"research_jobs/fd481604f2834219944cb87aeeb8989f/snapshot.json\"\n    }\n  ],\n  \"candidates\": [],\n  \"artifact_listing_tool\": \"list_workspace_artifacts\",\n  \"protocol_path\": \"protocol.json\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

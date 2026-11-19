@@ -1,0 +1,17 @@
+{
+  "name": "record_observation",
+  "ok": true,
+  "elapsed_seconds": 0.12658526003360748,
+  "utc": 1793853004.4326973,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"notes/observation-401513a6649a44d78c70050757790e2d.json\",\n  \"sha256\": \"31c56fa498718c47fb8b42a69ebf3151782cde5606a89f30692925c0cbf4ec67\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

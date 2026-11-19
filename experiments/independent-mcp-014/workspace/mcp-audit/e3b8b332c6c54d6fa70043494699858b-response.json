@@ -1,0 +1,17 @@
+{
+  "name": "read_artifact",
+  "ok": true,
+  "elapsed_seconds": 0.05046390742063522,
+  "utc": 1793852869.2250478,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"path\": \"notes/observation-3672141d8f024afe8da318a76a0f579c.json\",\n  \"sha256\": \"1ac7362ddc9d5d5b8be9393dc1717c8bad8b013385d8791189b22a44fb652cd0\",\n  \"characters\": 2219,\n  \"offset\": 0,\n  \"text\": \"{\\n  \\\"kind\\\": \\\"initial_analysis_session3\\\",\\n  \\\"baseline_job\\\": \\\"fd481604f2834219944cb87aeeb8989f\\\",\\n  \\\"baseline\\\": \\\"5/64 correct, 60/64 hit 32768 cutoff, mean length 31022; dominant failure = no </think> emission (looping)\\\",\\n  \\\"evidence_jobs\\\": [\\n    \\\"9539a018ae434f6fa1a0204179846f2e\\\",\\n    \\\"57a63774f7104b839326b573fca8d356\\\"\\n  ],\\n  \\\"computed\\\": {\\n    \\\"proj_X10_on_u (analysis/proj_X10_on_u.npy sha d53d760d...)\\\": {\\n      \\\"ctrl(7251:1562,1574;3643:2949,2953)\\\": [\\n        -1.24,\\n        -0.32,\\n        0.4,\\n        0.1\\n      ],\\n      \\\"dec(7251:1582;3643:2972)\\\": [\\n        7.25,\\n        7.27\\n      ],\\n      \\\"near_conclusion_continued(3643:2963)\\\": 5.04,\\n      \\\"loop(2558:4031,4086,4092)\\\": [\\n        -1.56,\\n        0.82,\\n        0.48\\n      ]\\n    },\\n    \\\"gate s=r.h_J (r=(0.645,0.583,0.495), unit)\\\": {\\n      \\\"ctrl\\\": [\\n        1.33,\\n        0.76,\\n        1.15,\\n        -0.5\\n      ],\\n      \\\"dec\\\": [\\n        4.73,\\n        4.6\\n      ],\\n      \\\"near\\\": 4.06,\\n      \\\"loop\\\": [\\n        -0.71,\\n        2.5,\\n        0.26\\n      ]\\n    }\\n  },\\n  \\\"hypothesis\\\": \\\"Layer-23 down_proj columns 20/25/43 act as a gate that is high at concluded line-breaks; adding alpha*u*r^T to those columns adds alpha*s*u to the final residual, moving conclusion-like states along the observed decision direction u=unit(x_dec-x_ctrl) and raising P(</think>).\\\",\\n  \\\"value_derivation\\\": \\\"alpha chosen so the near-conclusion state (s=4.06, proj 5.04) gains the gap to the decision level (7.26-5.04=2.22): alpha=2.22/4.06=0.547 -> 0.54. Predicted shifts: dec +2.5 (to ~9.8), ctrl <=+0.72 (stay <1.2), loop s=2.5 -> +1.35 (to ~2.2, still below near-conclusion). Delta Frobenius = 0.54; changed entries 3072/3.67M = 0.084%.\\\",\\n  \\\"alternatives\\\": [\\n    \\\"u encodes content of only 2 decision contexts\\\",\\n    \\\"termination may give wrong answers\\\",\\n    \\\"premature </think>\\\",\\n    \\\"loop states may have low gate so no behavior change\\\",\\n    \\\"logit sensitivity along u unknown; effect may be too small/large\\\"\\n  ],\\n  \\\"falsification\\\": \\\"Teacher-forced edited vs original on ctx_base_A: lp(</think>) at 7251:1582 and 3643:2972 not increased, or reference NLL on 7 contexts up >0.03 / token acc drop >0.01. Generation: cutoff not reduced or accuracy not improved, or >5% of old-correct lost.\\\"\\n}\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}

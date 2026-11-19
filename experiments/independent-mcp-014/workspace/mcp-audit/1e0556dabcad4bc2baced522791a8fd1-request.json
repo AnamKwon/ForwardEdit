@@ -1,0 +1,9 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "notes/resolved-proposal-5081cc6ac0a942cfa1e4e39a9dea373b.json",
+    "offset": 32000,
+    "max_chars": 5500
+  },
+  "utc": 1793852919.793444
+}

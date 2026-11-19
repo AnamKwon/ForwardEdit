@@ -1,0 +1,11 @@
+{
+  "name": "development_examples",
+  "arguments": {
+    "ids": [
+      "gsm8k_train_7251",
+      "math_train_algebra_943"
+    ],
+    "limit": 2
+  },
+  "utc": 1793853010.2984812
+}

@@ -1,0 +1,11 @@
+{
+  "name": "read_artifact",
+  "ok": false,
+  "elapsed_seconds": 0.03422348201274872,
+  "utc": 1793850456.1152914,
+  "error": "[Errno 2] No such file or directory: '/path/to/runs/independent-mcp-011/workspace/analysis/nonexistent-file.json'",
+  "error_detail": {
+    "error_type": "FileNotFoundError",
+    "message": "[Errno 2] No such file or directory: '/path/to/runs/independent-mcp-011/workspace/analysis/nonexistent-file.json'"
+  }
+}

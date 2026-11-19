@@ -1,0 +1,16 @@
+{
+  "name": "research_read_generations",
+  "arguments": {
+    "job_id": "b12c075924474a0787943091bad977bb",
+    "ids": [
+      "gsm8k_train_7251",
+      "gsm8k_train_3643",
+      "gsm8k_train_5859",
+      "math_train_algebra_943",
+      "math_train_algebra_164"
+    ],
+    "which": "edited",
+    "max_chars": 650
+  },
+  "utc": 1793852890.7671719
+}

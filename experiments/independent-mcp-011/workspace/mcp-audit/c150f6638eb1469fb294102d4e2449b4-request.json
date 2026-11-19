@@ -1,0 +1,8 @@
+{
+  "name": "read_artifact",
+  "arguments": {
+    "path": "analysis/H_L23_10.npy.json",
+    "max_chars": 400
+  },
+  "utc": 1793850839.9497883
+}

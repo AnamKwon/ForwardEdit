@@ -1,0 +1,8 @@
+{
+  "name": "list_workspace_artifacts",
+  "arguments": {
+    "prefix": "",
+    "limit": 80
+  },
+  "utc": 1793850584.733949
+}

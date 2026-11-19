@@ -1,0 +1,17 @@
+{
+  "name": "create_candidate_from_arrays",
+  "ok": true,
+  "elapsed_seconds": 0.6965664550662041,
+  "utc": 1793850853.5458086,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"output\": \"candidates/c1_L23_gate_u054\",\n  \"source_sha256\": \"45448c4dfc7e004242c8783f9617b68257ea89daa8a88d28ab81fa177dacabe5\",\n  \"total_parameters\": 752393024,\n  \"changed_parameters\": 3072,\n  \"changed_fraction\": 4.082972465199252e-6,\n  \"tensors\": [\n    {\n      \"tensor\": \"model.layers.23.mlp.down_proj.weight\",\n      \"changed_parameters\": 3072,\n      \"relative_l2\": 0.032908723260495945,\n      \"max_absolute_delta\": 0.12447892129421234\n    }\n  ],\n  \"status\": \"unevaluated\",\n  \"patch_sha256\": \"995192953439681c835e11f40715d7f432607eeaacc27b5b683db2e72a32f143\"\n}",
+        "annotations": null,
+        "_meta": null
+      }
+    ],
+    "structuredContent": null
+  }
+}
