@@ -7,6 +7,7 @@ The primary manuscript is in **English**. The Korean version follows the same ar
 - [Claim-to-evidence map](evidence-map.md)
 - [Extracted values and published-source hashes](evidence.json)
 - [References (BibTeX)](references.bib)
+- [Cross-task study draft (2026-11, artifacts not bundled)](cross-task/README.md)
 - [Figure 1 (SVG)](figures/recorded-effects.svg) · [PDF](figures/recorded-effects.pdf) · [PNG](figures/recorded-effects.png)
 
 **Working title:** *ForwardEdit: Auditing LLM-Directed Weight Interventions Without Gradient-Based Training*.
