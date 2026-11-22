@@ -2,7 +2,7 @@
 
 [한국어](manuscript.ko.md) · [Draft index](README.md) · [Study summary](../../docs/CROSS_TASK_STUDY_1122.md)
 
-**Status.** Working draft, 2026-11-23. The numbers come from host evaluation files of the 2026-11-08 to 11-22 series. **Those run artifacts are not bundled in this repository**; see *Artifact availability*. One study, qcf17_4b, is still running and is reported only as pre-registered.
+**Status.** Working draft, 2026-11-23. The numbers come from host evaluation files of the 2026-11-08 to 11-23 series. **Those run artifacts are not bundled in this repository**; see *Artifact availability*.
 
 ## Abstract
 
@@ -17,7 +17,7 @@ Four findings emerge:
 3. **The kind of gap predicts success: a stored association or a direct readout is editable; a missing computation is not.** This explains why skill edits do not scale from 0.8B to 4B while knowledge rewrites do. A cheap forward-only "writer-credit" prescreen predicts transfer before any editor run. It matched the outcome on 6 tasks post hoc and was correct on several prospective tasks. Multiple-choice letter formats are a known failure mode.
 4. **The editor logs make the black box concrete.** Successful edits reuse one shared component: an attention head for arithmetic, about 40 near-dead MLP neurons as subject-keyed gated memories for facts. Failed edits are low-rank writes at the last layers that only reweight output tokens.
 
-A LoRA trained on the same rows inserts knowledge more strongly and, given the facts in context, beats the edit (S .989 vs .922). The edit wins on persistence without context, locality and auditability.
+A LoRA trained on the same rows inserts knowledge more strongly. A third, pre-registered 4B run made no-context persistence the PRIMARY. The edit raised no-context S from .092 to .682 but missed the bar set by prompting (.763), and a LoRA trained on the same no-context rows reached .898. **The edit's remaining advantages are footprint (38 neurons in one layer), auditability and no training compute, not effect size.**
 
 ## 1. Introduction
 
@@ -86,6 +86,7 @@ Before an editor run, the host runs one forward pass over wrong development rows
 | | 120 facts, 2 relations (0.8B) | 15.4% | +55.0 (132/0) | ARC-C −0.85 (fail) | LoRA +80.4 (capital −6.5, GSM −5) |
 | Knowledge rewriting | CounterFact, 40 facts (4B), run 1 | best no-edit S .760 | S .922; PS +17.5 ± 4.3, NS +27.0 ± 3.3 | MMLU/ARC/GSM n.s. | override prompt below; LoRA S .989 |
 | | CounterFact, 40 new facts (4B), run 2 | best no-edit S .785 | S .894 | n.s. | LoRA S .987 |
+| | CounterFact, no-context design (4B), run 3 | best no-edit S .763 | no-context S .682 (PRIMARY 3/4, FAIL); all-ctx .939 | n.s. | LoRA no-context S .898 |
 | Format / persona | lowercase (0.8B) | 0% | 88.7% (133/0) | other formats −18.9 (fail) | — |
 | | no comma (0.8B) | 83% | +90.7 (r2) / +56.7 (r3) | other formats −10.0 / GSM −16.0 (fail) | — |
 | Domain | Medical MC (0.8B) | 48.6% | +3.0 / +1.9 (n.s.) | no loss | LoRA +4.4, equal off-domain (letter prior); GSM −37 |
@@ -126,7 +127,7 @@ Before an editor run, the host runs one forward pass over wrong development rows
 
 ### 5.3 H3: knowledge rewriting is the robust niche, and it scales
 
-**H3.** Writing a stored association into dedicated, otherwise idle MLP slots yields a persistent, local change that prompting cannot match. The model must still look up such a fact; it cannot be derived by reasoning.
+**H3.** Writing a stored association into dedicated, otherwise idle MLP slots yields a local change that reasoning cannot replace, because the model must look up such a fact; it cannot derive it. It also adds to prompting with the facts. Run 3 refines this hypothesis: alone, the change is weaker than prompting and weaker than a matched LoRA.
 
 **Evidence.**
 
@@ -135,15 +136,15 @@ Before an editor run, the host runs one forward pass over wrong development rows
   - With all 40 facts in the prompt, the unedited 4B model confuses neighbouring subjects (NS .54–.58). The edit's memories fire only on the edited subject, which restores NS to about .85.
   - An explicit override instruction is weaker than plain context (S .715).
   - MMLU, ARC and GSM are unchanged.
-- **Persistence without context:** S .173 → .679 in run 1, a route the edit was not designed for. qcf17_4b, now running, pre-registers this route as PRIMARY (bar: S > .763).
+- **Persistence without context (run 3, qcf17_4b, pre-registered PRIMARY).** On 40 new facts with no-context development rows, the frozen edit (38 L8 neurons) reached no-context S .682 (PS +51.25 ± 5.59, 41/0; NS −1.5 ± 0.86; regression clean). That is far above the original (.092) but **below the pre-registered bar of .763** set by the best prompting route. PRIMARY: **3/4, FAIL**. Designing for this route did not move it beyond run 1's incidental .679. The same edit stacks well with context (all-ctx S .939).
 
 **Comparison with LoRA (an honest boundary).**
 
 - Trained on the same rows, LoRA inserts more: past tense +84.5 vs +46.6; CounterFact with facts in context S .989 / .987 vs .922 / .894.
-- But LoRA learned to read the context, not the facts: without context its S is .055 / .087, against the edit's .679 / .408.
+- Runs 1–2 suggested a persistence advantage: LoRA trained on context-bearing rows scored .055 / .087 without context, against the edit's .679 / .408. **Run 3 shows that this was a comparison artifact.** A LoRA trained on the same no-context rows reached no-context S **.898** (ES 1.00, PS .79, NS .935; MMLU −0.25 ± 0.47, ARC 0.0), against the edit's .682.
 - LoRA also carries off-target costs in several tasks: GSM −32 and −37; capital −6.5.
 - The edit is 40 neurons with no measurable general-ability change.
-- **The edit is not stronger than fine-tuning. It is more local, more persistent without context, and auditable.**
+- **The edit is not stronger than fine-tuning, and not more persistent.** It is far more compact (38 neurons in one layer vs a dense delta on 96 matrices), fully auditable, and needs no training compute. It is also slower: about 3 h of editor time against about 50 min for LoRA.
 
 ### 5.4 H4: editor logs reveal two distinct edit types
 
@@ -180,7 +181,7 @@ Before an editor run, the host runs one forward pass over wrong development rows
 
 ## 8. Conclusion
 
-Beyond loop repair, LLM-written inference-only edits have a narrow but real niche: **writing stored associations**. There they beat strong prompting, scale to 4B, leave general ability intact, and remain inspectable down to individual neurons. Skill edits pass sealed tests but are erased by reasoning baselines. The gap-type view (H1) and a one-minute prescreen predict in advance which case applies.
+Beyond loop repair, LLM-written inference-only edits have a narrow but real niche: **writing stored associations**. There they add to strong prompting (S .89–.94 with facts in context, vs .75–.79 for prompting alone), scale to 4B, leave general ability intact, and remain inspectable down to individual neurons. Alone, without context, they do not yet match prompting, and a matched LoRA beats them. Skill edits pass sealed tests but are erased by reasoning baselines. The gap-type view (H1) and a one-minute prescreen predict in advance which case applies.
 
 ## Artifact availability
 

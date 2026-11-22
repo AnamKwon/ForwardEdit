@@ -36,6 +36,7 @@ There is an open criticism that the math gains reported for weight editing do no
 | BBH dyck_languages | 2B | 5% | +8.0 on the official wording, −3.0 on unseen wording | GSM −9.0 (fail) | — |
 | BBH salient translation | 4B | 56.4% | no freeze (a letter-preference shift) | — | CoT 65.2% |
 | **CounterFact, 40 rewritten facts** | **4B** | best no-edit S .760 / .785 | **S .922 / .894** (2 of 2 runs, all 4 pre-registered criteria) | MMLU/ARC/GSM unchanged | **LoRA S .989 / .987** with facts in context |
+| CounterFact, no-context design (run 3) | 4B | best no-edit S .763 | no-context S .682 (pre-registered PRIMARY 3/4, FAIL); with context .939 | unchanged | LoRA on the same no-context rows: S .898 |
 
 Negative results are kept on purpose. Several tasks produced no freeze: unseen irregular verbs, comparatives, spelling-change past tenses and the "Have a nice day" persona. Some persona and format edits passed on their target but failed preservation. The lowercase edit raised compliance from 0 to 88.7% but cost −18.9 on other formats. A no-comma edit cost −16 on GSM8K.
 
@@ -49,7 +50,7 @@ Negative results are kept on purpose. Several tasks produced no freeze: unseen i
    - Knowledge used about 40 nearly unused MLP neurons, keyed on the subject token. They act as gated memories that fire only for the edited subject.
    - Failed runs wrote low-rank changes at the last layers that reweight a few output tokens.
 5. **A cheap pre-screen predicts transfer.** It checks whether the best residual writer pushes toward the gold answer on at least 80% of wrong rows. The prediction matched the outcome on 6 tasks post hoc and on 2 prospective tasks. It gives false positives in multiple-choice letter formats.
-6. **LoRA beats the edit when the context holds the facts.** It learns a skill of reading the context, so it beats the edit on the pre-registered all-context route. The edit is ahead only on persistence without context (S .679 / .408 vs .055 / .087) and on footprint: 40 neurons, no general-ability change.
+6. **LoRA beats the edit in a fair comparison.** In runs 1–2 the edit seemed more persistent without context (.679 / .408 vs .055 / .087), but those LoRAs were trained on rows that carried the context. In run 3, both methods used the same no-context rows. LoRA reached .898 and the edit .682, which also missed the pre-registered prompting bar of .763. The edit's remaining advantages are footprint (38 neurons in one layer), auditability and no training compute.
 
 ## Cost
 
