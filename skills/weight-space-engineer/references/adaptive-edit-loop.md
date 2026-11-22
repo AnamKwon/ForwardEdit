@@ -5,6 +5,12 @@ research budget comparable to a multi-pass experiment. This is a workflow for th
 existing MCP tools, not an automatic parameter selector or a server-enforced
 research state machine. Follow the inference-only contract throughout.
 
+First apply [data separation](data-separation.md). Construct keys, directions,
+coefficients and feedback revisions from edit/train data only. Keep the case bank
+used for weight construction separate from selection validation and frozen final
+evaluation. Reading a validation error vector for a revision makes that case
+development evidence; its next score cannot be called independent validation.
+
 ## Declare what completion means
 
 Distinguish a budget ceiling from a requested research depth. If the user asks for

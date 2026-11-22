@@ -1,0 +1,192 @@
+{
+  "scope": "Retrospective figure extraction only; no new inference, training or selection.",
+  "qwen006": {
+    "independent": {
+      "official_subset_only": true,
+      "items": 192,
+      "original_correct": 18,
+      "edited_correct": 103,
+      "statistics": {
+        "items": 192,
+        "original_accuracy": 0.09375,
+        "edited_accuracy": 0.5364583333333334,
+        "gain": 0.4427083333333333,
+        "paired_bootstrap_interval": [
+          0.359375,
+          0.5260416666666666
+        ],
+        "confidence": 0.975,
+        "wrong_to_right": 86,
+        "right_to_wrong": 1,
+        "previously_correct_to_wrong_fraction": 0.005208333333333333,
+        "originally_correct_count": 18,
+        "fraction_of_originally_correct_lost": 0.05555555555555555,
+        "exact_one_sided_mcnemar_p": 5.686866711302065e-25,
+        "source_results": {
+          "gsm8k_test": {
+            "items": 128,
+            "original_accuracy": 0.1015625,
+            "edited_accuracy": 0.59375,
+            "gain": 0.4921875
+          },
+          "math500_test": {
+            "items": 64,
+            "original_accuracy": 0.078125,
+            "edited_accuracy": 0.421875,
+            "gain": 0.34375
+          }
+        },
+        "original_unparsed": 174,
+        "edited_unparsed": 73,
+        "gates": {
+          "gain": true,
+          "paired_interval_positive": true,
+          "mcnemar": true,
+          "normal_preservation": true,
+          "conditional_normal_preservation": false,
+          "both_sources_nonnegative": true
+        },
+        "demonstrated": false
+      },
+      "by_source_correct": {
+        "gsm8k_test": {
+          "items": 128,
+          "original": 13,
+          "edited": 76
+        },
+        "math500_test": {
+          "items": 64,
+          "original": 5,
+          "edited": 27
+        }
+      },
+      "rescued_unparsed": 86,
+      "rescued_parsed_wrong": 0,
+      "old_correct_lost": 1,
+      "all_inputs_order_and_tokens_matched": true,
+      "all_model_runs_inference_only": true,
+      "optimizer_steps": 0
+    },
+    "source_informed": true,
+    "stored_changed_values": 124928,
+    "actual_bf16_changed_values": 123452,
+    "stored_changed_fraction": 0.00016604088025143625,
+    "preservation_limit": 0.05,
+    "overall_status": "mathematical_accuracy_gain_confirmed_but_preservation_gate_failed"
+  },
+  "archival_trainability_check": {
+    "source_sha256": "fdb05ba2a15f0439691a37e2708b1a7f7560ee55b885b41a2fe65edb0c0c71d1",
+    "eligible_for_method_comparison": false,
+    "reason": "Only 12 training stories / 319 target tokens; untuned post-patch trainability check.",
+    "before": {
+      "discovery": {
+        "examples": 12,
+        "tokens": 319,
+        "nll": 2.454778398255685,
+        "accuracy": 0.4169278996865204
+      },
+      "validation": {
+        "examples": 12,
+        "tokens": 306,
+        "nll": 2.925349400779786,
+        "accuracy": 0.38562091503267976
+      }
+    },
+    "after": {
+      "discovery": {
+        "examples": 12,
+        "tokens": 319,
+        "nll": 0.4797080062506276,
+        "accuracy": 0.9310344827586207
+      },
+      "validation": {
+        "examples": 12,
+        "tokens": 306,
+        "nll": 4.549406124828604,
+        "accuracy": 0.24509803921568626
+      }
+    },
+    "optimizer_steps": 30,
+    "optimizer_updated_entries": 16384,
+    "preceding_rank_one_entries": 512
+  },
+  "direct_value_checks": {
+    "before": {
+      "discovery": {
+        "examples": 12,
+        "tokens": 319,
+        "nll": 2.4548630489040355,
+        "accuracy": 0.4169278996865204
+      },
+      "validation": {
+        "examples": 12,
+        "tokens": 306,
+        "nll": 2.9254278648124963,
+        "accuracy": 0.38562091503267976
+      }
+    },
+    "candidates": [
+      {
+        "id": "candidate-01",
+        "after": {
+          "discovery": {
+            "examples": 12,
+            "tokens": 319,
+            "nll": 2.4563614165607217,
+            "accuracy": 0.41379310344827586
+          },
+          "validation": {
+            "examples": 12,
+            "tokens": 306,
+            "nll": 2.926467628073225,
+            "accuracy": 0.4019607843137255
+          }
+        },
+        "stored_changed_entries": 6
+      },
+      {
+        "id": "candidate-02",
+        "after": {
+          "discovery": {
+            "examples": 12,
+            "tokens": 319,
+            "nll": 2.4678198016889086,
+            "accuracy": 0.4231974921630094
+          },
+          "validation": {
+            "examples": 12,
+            "tokens": 306,
+            "nll": 2.938719861461947,
+            "accuracy": 0.3790849673202614
+          }
+        },
+        "stored_changed_entries": 6
+      }
+    ]
+  },
+  "finetuning_comparison": {
+    "status": "not_measured",
+    "adequate_data_finetuning": "not_measured",
+    "common_test_and_retention": "not_measured",
+    "end_to_end_resources": "not_measured",
+    "design": "docs/FINETUNING_COMPARISON.md"
+  },
+  "sources": [
+    {
+      "path": "experiments/extended-discovery-006/study-outcome.json",
+      "sha256": "4394abad6f04581c31583a21bbc8593de604b58dcdfb1e1d8a926759e150c2fb"
+    },
+    {
+      "path": "experiments/extended-discovery-006/artifacts/protocol.json",
+      "sha256": "20f558d6b10cd1f7cff10572d09290ef8f99c9491fa50fd834d3fecf0e443fd1"
+    },
+    {
+      "path": "experiments/direct-values-inference-only-001/host-audit.json",
+      "sha256": "4d27197803f4341dcd7243793f4a2618ccb8a11148e7012c07919db195141727"
+    },
+    {
+      "path": "docs/evidence/mcp-training-verification.json",
+      "sha256": "dca8b2afcedc310a1e7106358a0c1403bf5130f2af74fc0baf59912692e599b3"
+    }
+  ]
+}

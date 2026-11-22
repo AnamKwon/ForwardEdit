@@ -35,7 +35,8 @@ def test_stdio_candidate_workflow(tmp_path):
                     "compare_candidate_parameters", "read_parameter_entries", "describe_model_structure",
                     "inspect_module_computation", "analyze_matrix_geometry", "trace_token_flow", "revise_candidate",
                     "build_repetition_contexts", "research_forward", "research_status", "research_result",
-                    "research_read_array", "research_read_generations", "research_prepare_edit", "research_make_contexts", "research_export_tensor"}
+                    "research_read_array", "research_read_generations", "research_prepare_edit", "research_make_contexts",
+                    "research_export_tensor", "research_compare_generations"}
                 result = await session.call_tool("inspect_checkpoint", {"checkpoint": "model.safetensors"})
                 assert not is_error(result)
                 info = json.loads(result.content[0].text)

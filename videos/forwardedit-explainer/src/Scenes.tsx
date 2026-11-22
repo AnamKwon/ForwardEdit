@@ -1037,7 +1037,7 @@ const RecapInner = () => {
   const { fps } = useVideoConfig();
   return (
     <>
-      <Header step="07 / WHAT THIS ESTABLISHES" dark />
+      <Header step="09 / WHAT THIS ESTABLISHES" dark />
       <Interactive.H1
         name="마무리 제목"
         style={{
@@ -1116,7 +1116,7 @@ const RecapInner = () => {
         ForwardEdit는 판단, 실행, 검증을 구분하고 그 근거를 남기는 도구입니다.
       </Caption>
       <Caption name="마무리 자막 2" from={5 * fps} durationInFrames={5 * fps}>
-        공개된 사례는 모두 하나 이상의 채택 기준을 통과하지 못했습니다.
+        관측한 성능 상승과 원래 규칙의 판정을 구분해서 함께 보고합니다.
       </Caption>
     </>
   );

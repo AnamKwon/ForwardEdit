@@ -158,10 +158,11 @@ def build_server(root: Path) -> FastMCP:
         return run(root, model_dir, dataset_path, selections, examples, output, split, candidate_dir, device)
 
     @server.tool()
-    def research_export_tensor(checkpoint: str, tensor: str, output: str) -> dict:
-        """Export a bounded exact parameter tensor as a hash-bound CPU analysis array; no edits or forward."""
+    def research_export_tensor(checkpoint: str, tensor: str, output: str,
+                               ranges: list[list[int]] | None = None) -> dict:
+        """Export exact stored weights to a hash-bound CPU array. Optional ranges are half-open [start, stop) per axis."""
         from .research_analysis import research_export_tensor as run
-        return run(root,checkpoint,tensor,output)
+        return run(root, checkpoint, tensor, output, ranges)
 
     @server.tool()
     def research_prepare_edit(plan: dict, tensor: str, rows: list[int], columns: list[int],
@@ -172,10 +173,11 @@ def build_server(root: Path) -> FastMCP:
 
     @server.tool()
     def research_make_contexts(job_id: str, ids: list[str], output: str, which: str = 'original',
-                               max_tokens: int = 8192) -> dict:
-        """Materialize actual generation prefixes for later teacher-forced observations; no inferred labels."""
+                               max_tokens: int = 8192, sample: int = 0,
+                               continuation_lengths: dict[str, int] | None = None) -> dict:
+        """Materialize actual generation prefixes. Explicit per-ID continuation lengths retain each full prompt."""
         from .research_analysis import research_make_contexts as run
-        return run(root, job_id, ids, output, which, max_tokens)
+        return run(root, job_id, ids, output, which, max_tokens, sample, continuation_lengths)
 
     @server.tool()
     def evaluate_candidate(model_dir: str, candidate_dir: str, dataset_path: str, options: dict) -> dict:
@@ -197,7 +199,7 @@ def build_server(root: Path) -> FastMCP:
 
     @server.tool()
     def research_status(job_id: str) -> dict:
-        """Reconcile terminal output or worker death and return compact counters."""
+        """Reconcile terminal output or worker death. Transformers generation includes advisory progress when available."""
         from .research import research_status as run
         return run(root, job_id)
 
@@ -219,6 +221,14 @@ def build_server(root: Path) -> FastMCP:
         """Read selected actual generation excerpts with bounded text and grades."""
         from .research import research_read_generations as run
         return run(root, job_id, ids, max_chars, which)
+
+    @server.tool()
+    def research_compare_generations(reference: dict, candidate: dict, output: str,
+                                     ids: list[str] | None = None, ngram_size: int = 16,
+                                     final_answer_envelope: list[str] | None = None) -> dict:
+        """Compare verified matched generations, first token divergence, repetition and terminal answers. Each run names job_id and model."""
+        from .trajectory import research_compare_generations as run
+        return run(root, reference, candidate, output, ids, ngram_size, final_answer_envelope)
 
     return server
 

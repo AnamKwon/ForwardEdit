@@ -32,6 +32,17 @@ Finish development selection, then freeze the candidate and evaluation settings.
 Check effect, preservation and uncertainty on independent data.
 A correct weight write does not establish an independent task improvement.
 
-07 Claims and limitations (94–104s)
+07 Retained Qwen results (94–110s)
+This subset gained 85 net correct answers: 86 rescued and one lost.
+Seventeen of 18 originally correct answers remained correct.
+The prespecified 5% rule allows zero losses when the denominator is 18.
+Missing that study rule does not erase the measured accuracy gain.
+
+08 Fine-tuning comparison with sufficient data (110–126s)
+Twelve training stories cannot represent properly tuned fine-tuning.
+Use substantial task data, validation selection and common quality and retention checks.
+Report the data and total costs. This comparison has not yet been run.
+
+07 Claims and limitations (126–136s)
 ForwardEdit separates judgment, execution and verification, and retains the evidence.
-Every published study failed at least one declared acceptance criterion.
+Report the observed gains and the original protocol decisions separately.

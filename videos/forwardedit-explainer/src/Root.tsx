@@ -3,6 +3,7 @@ import { EnglishFilm } from "./EnglishFilm";
 import { ForwardEditFilm } from "./ForwardEditFilm";
 import * as EN from "./EnglishScenes";
 import * as KO from "./Scenes";
+import * as Results from "./ResultsScenes";
 
 export const RemotionRoot = () => (
   <>
@@ -12,7 +13,7 @@ export const RemotionRoot = () => (
       width={1920}
       height={1080}
       fps={30}
-      durationInFrames={3120}
+      durationInFrames={4080}
     />
     <Composition
       id="ForwardEdit-Korean"
@@ -20,8 +21,54 @@ export const RemotionRoot = () => (
       width={1920}
       height={1080}
       fps={30}
-      durationInFrames={3120}
+      durationInFrames={4080}
     />
+    <Folder name="Recorded-Results">
+      <Composition
+        id="EN-Recorded-Results"
+        component={Results.EnglishResultsScene}
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={480}
+        defaultProps={{
+          style: { backgroundColor: "#F4F2ED", fontFamily: "NanumSquare" },
+        }}
+      />
+      <Composition
+        id="EN-Fine-Tuning-Comparison"
+        component={Results.EnglishComparisonScene}
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={480}
+        defaultProps={{
+          style: { backgroundColor: "#F4F2ED", fontFamily: "NanumSquare" },
+        }}
+      />
+      <Composition
+        id="KO-Recorded-Results"
+        component={Results.KoreanResultsScene}
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={480}
+        defaultProps={{
+          style: { backgroundColor: "#F4F2ED", fontFamily: "NanumSquare" },
+        }}
+      />
+      <Composition
+        id="KO-Fine-Tuning-Comparison"
+        component={Results.KoreanComparisonScene}
+        width={1920}
+        height={1080}
+        fps={30}
+        durationInFrames={480}
+        defaultProps={{
+          style: { backgroundColor: "#F4F2ED", fontFamily: "NanumSquare" },
+        }}
+      />
+    </Folder>
     <Folder name="EN-Scenes">
       <Composition
         id="EN-Intro"

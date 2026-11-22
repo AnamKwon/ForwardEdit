@@ -75,7 +75,9 @@ try {
       ["write-after", 62, "0.110", "0.110"],
       ["feedback", 77, "Revise or restore", "후보 B 또는 복원"],
       ["confirmation", 89, "Independent test", "독립 데이터"],
-      ["recap", 100, "Every published study", "공개된 사례는 모두"],
+      ["recorded-results", 101, "103/192", "103/192"],
+      ["fine-tuning-comparison-needed", 118, "Not measured", "미측정"],
+      ["recap", 132, "original protocol decisions", "원래 규칙의 판정"],
     ]) {
       const frame = second * 30;
       await page.evaluate(async (f) => {

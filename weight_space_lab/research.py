@@ -48,6 +48,11 @@ def config(root):
         raise ValueError('invalid inference device/dtype')
     if c.get('generation_backend', 'transformers') not in ('transformers','vllm'):
         raise ValueError('unsupported generation backend')
+    if type(c.get('native_precision_load', False)) is not bool:
+        raise ValueError('native_precision_load must be boolean')
+    if c.get('native_precision_load') and (c['inference_dtype'] != 'bfloat16'
+            or c.get('generation_backend', 'transformers') != 'transformers' or c.get('multimodal')):
+        raise ValueError('native_precision_load requires text-only BF16 Transformers inference')
     if c.get('generation_backend') == 'vllm':
         if c['device'] != 'cuda' or c['inference_dtype'] != 'bfloat16' or not Path(c.get('vllm_python','')).is_file():
             raise ValueError('vLLM requires pinned executable, CUDA and bfloat16')
@@ -56,6 +61,11 @@ def config(root):
     integer(c.get('batch_size', 8), 1, 64, 'batch_size')
     if 'prompt_suffix' in c and (not isinstance(c['prompt_suffix'], str) or len(c['prompt_suffix']) > 16384):
         raise ValueError('prompt_suffix must be a string of at most 16384 characters')
+    if 'multimodal' in c:
+        from .multimodal import validate_settings
+        validate_settings(root, c['multimodal'])
+        if c.get('generation_backend', 'transformers') != 'transformers':
+            raise ValueError('native multimodal inputs require the Transformers backend')
     s = c['sampling']
     integer(s['seed'], 0, 2**63-1, 'seed')
     integer(s['top_k'], 1, 20, 'top_k')
@@ -72,7 +82,8 @@ def dataset(root, path):
     if not splits or any(k not in ('discovery', 'validation') for k in splits):
         raise ValueError('research datasets permit discovery/validation only')
     seen = set()
-    for rows in splits.values():
+    input_owners, group_owners, image_hashes = {}, {}, {}
+    for split, rows in splits.items():
         if not isinstance(rows, list):
             raise ValueError('split must be a list')
         for row in rows:
@@ -86,6 +97,40 @@ def dataset(root, path):
                     raise ValueError('tokens must be >=2 nonnegative integers')
             elif not isinstance(row.get('prompt'), str) and not isinstance(row.get('reference'), str):
                 raise ValueError('prompt, reference or tokens required')
+            if 'images' in row:
+                if (not isinstance(row['images'], list) or len(row['images']) > 4
+                        or any(not isinstance(name, str) for name in row['images'])):
+                    raise ValueError('images must list up to four local image paths')
+                for name in row['images']:
+                    if not core.local(Path(root), name).is_file():
+                        raise ValueError('missing local image: ' + name)
+            # Different row IDs or labels must not disguise the same input as
+            # independent validation. Image identity uses bytes, not filenames.
+            images = []
+            for name in row.get('images', []):
+                path = core.local(Path(root), name)
+                if path not in image_hashes:
+                    image_hashes[path] = core.sha256(path)
+                images.append(image_hashes[path])
+            images = tuple(images)
+            keys = []
+            if 'tokens' in row:
+                keys.append(('tokens', tuple(row['tokens']), images))
+            if isinstance(row.get('prompt'), str):
+                keys.append(('prompt', row['prompt'].replace('\r\n', '\n').strip(), images))
+            elif 'tokens' not in row and isinstance(row.get('reference'), str):
+                keys.append(('reference', row['reference'].replace('\r\n', '\n').strip(), images))
+            for key in keys:
+                previous = input_owners.setdefault(key, split)
+                if previous != split:
+                    raise ValueError('cross-split input overlap between ' + previous + ' and ' + split)
+            if 'group_id' in row:
+                group = row['group_id']
+                if not isinstance(group, str) or not group.strip() or len(group) > 256:
+                    raise ValueError('group_id must be a nonempty bounded string')
+                previous = group_owners.setdefault(group.strip(), split)
+                if previous != split:
+                    raise ValueError('cross-split group overlap between ' + previous + ' and ' + split)
     return splits
 
 
@@ -105,6 +150,19 @@ def snapshot(root, c, spec):
     if spec.get('dataset_path'):
         p = core.local(root, spec['dataset_path'])
         paths[str(p)] = core.sha256(p)
+    data = dataset(root, spec.get('dataset_path', c['dataset_path']))
+    for row in data[spec['split']]:
+        if row['id'] in spec['ids']:
+            for name in row.get('images', []):
+                image = core.local(root, name)
+                paths[str(image)] = core.sha256(image)
+    if c.get('multimodal'):
+        for key in ('vision_checkpoint', 'config'):
+            p = core.local(root, c['multimodal'][key])
+            paths[str(p)] = core.sha256(p)
+        for p in core.local(root, c['multimodal']['processor_dir']).rglob('*'):
+            if p.is_file():
+                paths[str(core.local(root, str(p)))] = core.sha256(p)
     if spec.get('candidate_dir'):
         ev.verify_candidate(root, c['model_dir'], spec['candidate_dir'])
         for name in ('manifest.json', 'replacements.safetensors'):
@@ -123,7 +181,7 @@ def verify_hashes(root, hashes):
 
 def validate_spec(root, c, spec):
     spec = json.loads(json.dumps(spec, allow_nan=False))
-    if set(spec) - {'type', 'model', 'candidate_dir', 'split', 'ids', 'n', 'max_new_tokens', 'observations', 'dataset_path'}:
+    if set(spec) - {'type', 'model', 'candidate_dir', 'split', 'ids', 'n', 'max_new_tokens', 'observations', 'dataset_path', 'first_token_logit_bias'}:
         raise ValueError('unknown research spec field')
     if spec.get('type') not in ('generate', 'teacher_forced') or spec.get('model') not in ('original', 'edited', 'both'):
         raise ValueError('invalid research type/model')
@@ -146,16 +204,65 @@ def validate_spec(root, c, spec):
         raise ValueError('IDs must retain original development split provenance')
     if spec['type'] == 'generate' and any('tokens' not in by_id[i] and not isinstance(by_id[i].get('prompt'), str) for i in ids):
         raise ValueError('generation requires prompt or tokens')
+    if any(by_id[i].get('images') for i in ids):
+        if not c.get('multimodal') or spec['type'] != 'generate':
+            raise ValueError('image inputs require configured native multimodal generation')
+        if any(by_id[i].get('images') and not isinstance(by_id[i].get('prompt'), str) for i in ids):
+            raise ValueError('image inputs require their original prompt text')
     spec['n'] = integer(spec.get('n', 1), 1, 4, 'n')
     if spec['type'] == 'teacher_forced' and spec['n'] != 1:
         raise ValueError('teacher_forced n must be 1')
     if spec['type'] == 'generate':
         integer(spec.get('max_new_tokens'), 1, c['max_new_tokens'], 'max_new_tokens')
+    if 'first_token_logit_bias' in spec:
+        bias = spec['first_token_logit_bias']
+        if (spec['type'] != 'generate' or c.get('generation_backend', 'transformers') != 'transformers'
+                or not isinstance(bias, list) or not 1 <= len(bias) <= 32):
+            raise ValueError('first_token_logit_bias requires Transformers generation and 1..32 entries')
+        tokens = []
+        for entry in bias:
+            if (not isinstance(entry, dict) or set(entry) != {'token_id', 'bias'}
+                    or type(entry['token_id']) is not int or entry['token_id'] < 0
+                    or type(entry['bias']) not in (int, float)
+                    or not math.isfinite(entry['bias']) or abs(entry['bias']) > 100):
+                raise ValueError('first_token_logit_bias requires nonnegative token IDs and finite biases in [-100,100]')
+            tokens.append(entry['token_id'])
+        if len(tokens) != len(set(tokens)):
+            raise ValueError('first_token_logit_bias requires unique token IDs')
     obs = spec.get('observations', {})
     if c.get('generation_backend') == 'vllm' and spec['type'] == 'generate' and obs:
         raise ValueError('vLLM generation observations require a separate actual teacher-forced context pass')
-    if set(obs) - {'layers', 'mlp_layers', 'positions', 'mean_answer_tokens'}:
+    if set(obs) - {'layers', 'mlp_layers', 'module_inputs', 'positions', 'mean_answer_tokens', 'first_token_ids', 'generation_logits'}:
         raise ValueError('unknown observation field')
+    module_inputs = obs.get('module_inputs', [])
+    if (not isinstance(module_inputs, list) or len(module_inputs) > 8
+            or any(not isinstance(name, str) or not name for name in module_inputs)
+            or len(set(module_inputs)) != len(module_inputs)):
+        raise ValueError('module_inputs requires up to eight unique module names')
+    if 'first_token_ids' in obs:
+        token_ids = obs['first_token_ids']
+        if (spec['type'] != 'generate' or not isinstance(token_ids, list)
+                or not 1 <= len(token_ids) <= 32
+                or any(type(token) is not int or token < 0 for token in token_ids)
+                or len(set(token_ids)) != len(token_ids)):
+            raise ValueError('first_token_ids requires generation and 1..32 unique nonnegative IDs')
+    if 'generation_logits' in obs:
+        capture = obs['generation_logits']
+        if (spec['type'] != 'generate' or not isinstance(capture, dict)
+                or set(capture) != {'token_ids', 'positions'}):
+            raise ValueError('generation_logits requires generation, token_ids and positions')
+        token_ids, positions = capture['token_ids'], capture['positions']
+        if (not isinstance(token_ids, list) or not 1 <= len(token_ids) <= 32
+                or any(type(token) is not int or token < 0 for token in token_ids)
+                or len(set(token_ids)) != len(token_ids)):
+            raise ValueError('generation_logits requires 1..32 unique nonnegative token IDs')
+        if not isinstance(positions, dict) or not positions or not positions.keys() <= set(ids):
+            raise ValueError('generation_logits positions require selected IDs')
+        for offsets in positions.values():
+            if (not isinstance(offsets, list) or not 1 <= len(offsets) <= 16
+                    or any(type(offset) is not int or not 0 <= offset < spec['max_new_tokens'] for offset in offsets)
+                    or len(set(offsets)) != len(offsets)):
+                raise ValueError('generation_logits requires 1..16 unique offsets inside the decode limit')
     for key in ('layers', 'mlp_layers'):
         v = obs.get(key, [])
         if not isinstance(v, list) or len(v) > 128 or any(type(i) is not int or i < 0 for i in v) or len(set(v)) != len(v):
@@ -344,14 +451,26 @@ def research_forward(root, spec):
 
 
 def research_status(root, job_id):
-    jobdir(root, job_id)
+    directory = jobdir(root, job_id)
     c = config(root)
     with ledger(root) as db:
         reconcile(root, db, explicit=True)
         row = db.execute('SELECT * FROM jobs WHERE id=?', (job_id,)).fetchone()
         if row is None:
             raise ValueError('unknown job')
-        return {'job_id': job_id, 'status': row['status'], 'error': row['error'], **counters(db, c), 'queue': db.execute("SELECT count(*) FROM jobs WHERE status IN ('pending','running')").fetchone()[0]}
+        state = {'job_id': job_id, 'status': row['status'], 'error': row['error'], **counters(db, c), 'queue': db.execute("SELECT count(*) FROM jobs WHERE status IN ('pending','running')").fetchone()[0]}
+    try:
+        with core.local(Path(root), str(directory / 'progress.json')).open('rb') as stream:
+            progress = json.loads(stream.read(1025))
+        fields = ('completed_samples', 'total_samples', 'generated_tokens')
+        if (isinstance(progress, dict) and progress.get('model') in ('original', 'edited')
+                and all(type(progress.get(key)) is int and progress[key] >= 0 for key in fields)
+                and progress['completed_samples'] <= progress['total_samples'] <= c['max_items'] * 4
+                and progress['generated_tokens'] <= progress['total_samples'] * c['max_new_tokens']):
+            state['progress'] = {key: progress[key] for key in ('model', *fields)}
+    except (OSError, ValueError):
+        pass
+    return state
 
 
 def research_result(root, job_id):

@@ -8,7 +8,7 @@ ForwardEdit lets an external LLM inspect real weights and forward observations, 
 
 It is inspired by [Weight-Space Programming (WSP)](https://rikiyat.github.io/blog/weight-space-programming/). The contribution here is a reusable tool interface, editing workflow and inspectable evidence. A new editing algorithm or superiority over WSP has not been established.
 
-For a visual walkthrough, preview the [104-second English workflow explainer](videos/forwardedit-explainer/README.md). A [Korean edition](videos/forwardedit-explainer/README.ko.md) is also available. Both are editable Remotion compositions with matching captions; the examples are illustrative, not a recorded model experiment.
+For a visual walkthrough, preview the [136-second English workflow and results explainer](videos/forwardedit-explainer/README.md). A [Korean edition](videos/forwardedit-explainer/README.ko.md) is also available. Both are editable Remotion compositions with matching captions. Workflow examples are illustrative; the Qwen scene uses retained measurements, and the fine-tuning scene explains the comparison still needed. No new model experiment was run.
 
 ## What is included
 
@@ -20,6 +20,36 @@ For a visual walkthrough, preview the [104-second English workflow explainer](vi
 - Historical tool receipts, edit plans, failed hypotheses and both positive and negative score comparisons.
 
 The LLM chooses what to change and why. Tools calculate and record the specified operations. A plausible explanation, successful file write or passing software test does not establish a causal mechanism or a better model.
+
+## Separate edit data from evaluation
+
+Construct and revise edits using **edit/train data only**. Use separate validation metrics to select candidates, then evaluate the frozen choice on an untouched final test. Report all three scores separately: reevaluating examples used to derive an edit does not measure generalization. If validation examples feed new weight updates, disclose them as development data. The [data-separation protocol](docs/EDIT_EVALUATION_PROTOCOL.md) defines grouping, exposure, matched controls and the two-cohort alternative. Research preflights reject exact cross-split input overlap and repeated declared source groups; they do not guarantee semantic independence or isolate final data from an unrestricted client.
+
+## Measured results
+
+The clearest recorded score gain is the **source-informed Qwen 006** intervention: **18 → 103 correct out of 192** selected independent problems, a **+44.27 percentage-point** gain against its fixed original. Its 97.5% paired interval was **[+35.94, +52.60] points**. **Accuracy improved; the study's prespecified retention rule was missed.** The edit rescued 86 answers and lost one, for a net gain of 85; 17/18 originally correct answers remained correct. The frozen 5% loss limit was a study-specific decision rule, not a universal definition of model improvement. With only 18 originally correct answers, it effectively permitted zero losses. The original rejection is retained; it does not negate the score gain. These are subset results, not full-benchmark scores or evidence of new mathematical knowledge.
+
+![Qwen 006: accuracy rose from 18/192 to 103/192, with 86 rescues, one regression and 17/18 old-correct answers retained; its study-specific 5% rule was missed.](docs/assets/results/qwen-006.en.png)
+
+**Retention is a shared comparison axis.** Fine-tuning can also degrade prior capabilities; this has been observed in [continual fine-tuning](https://arxiv.org/abs/2308.08747v5) and [LoRA](https://arxiv.org/abs/2401.05605). The learning/retention balance also differs between [LoRA and full fine-tuning](https://arxiv.org/abs/2405.09673v2). A fair comparison applies the same target-quality and retention measurements to both fine-tuning and direct editing. We have not measured which retains more under matched conditions. The one lost Qwen answer is within-set regression, not a measurement of broad catastrophic forgetting. [Interpreting the gate and forgetting](docs/RESULTS.md#interpreting-adoption-and-forgetting).
+
+| Demonstrated outcome | Evidence | What it establishes |
+|---|---|---|
+| A large fixed-original accuracy gain | [Qwen 006 outcome](experiments/extended-discovery-006/study-outcome.json) | 86 wrong-to-right changes and one right-to-wrong change; all rescues started from unparsed answers; source-informed, with a failed preservation gate |
+| Exact edits reached loaded parameters | [Direct values 001 audit](experiments/direct-values-inference-only-001/host-audit.json) | Two six-value edits matched specified arithmetic and loaded values; CPU/CUDA observations agreed; both candidates were rejected |
+| A revision used actual parent feedback | [MCP 014 feedback audit](experiments/independent-mcp-014/feedback-flow-audit.json) | Three values were restored after reading parent results; development correct answers changed 7 → 10/64, while independent accuracy later changed 25 → 22/192 |
+
+The positive score and workflow results above have different scopes. **No currently bundled study passed every declared model-adoption criterion.** This does not mean that no task metric improved, or that fine-tuning would pass the same retention rule. The [results guide](docs/RESULTS.md) separates measured performance, retention and protocol decisions.
+
+## Fine-tuning versus LLM editing: comparison still needed
+
+**A representative fine-tuning comparison has not been measured.** The historical AdamW check used only 12 training stories / 319 target tokens and tested trainability after a prior patch. Its validation deterioration is not evidence against fine-tuning. We exclude that check from method-comparison tables and figures; its [measurements and limitations remain available](docs/RESULTS.md#fine-tuning-reference-comparison).
+
+A useful comparison needs a validation-selected fine-tuning baseline trained on a substantial task-relevant corpus, starting from the same original checkpoint as the LLM editor. Data volume alone does not establish a good baseline: report data quality, learning curves, tuning budget and checkpoint selection. Evaluate both methods on the same selection-unseen test, with target quality, answer retention, unrelated-task retention and total cost reported together.
+
+![Comparison requirements and measurement status. Adequate-data fine-tuning, common retention evaluation and matched costs remain unmeasured; no method ranking is shown.](docs/assets/results/finetuning-comparison-plan.en.png)
+
+The [comparison design](docs/FINETUNING_COMPARISON.md) separates a common-data experiment from a practical comparison against fine-tuning using a larger corpus. It specifies data provenance and evaluation requirements without inventing results. **No method, speed or cost advantage is established.**
 
 ## Read an actual experiment
 
@@ -61,6 +91,8 @@ python3 -m venv .venv
 If you already have a checkout, start with the virtual-environment command in that directory. These instructions install from GitHub and do not require a PyPI release.
 
 This installs the Transformers 4.x small-model path. The separate Qwen/research environment uses `pip install -e '.[qwen]'`; choose a PyTorch build compatible with the inference hardware. Optional vLLM generation requires its own compatible, explicitly pinned executable. Do not combine the `lm` and `qwen` Transformers constraints in one environment. See [runtime setup](docs/STANDALONE_MCP.md).
+
+Experimental native Gemma 3 image-and-text generation uses the research environment with Pillow installed, tested with Transformers 5.22.1. The original vision encoder and projector stay frozen, and candidate edits apply to the verified text component. See [image input configuration and observation provenance](skills/weight-space-engineer/references/research-tools.md).
 
 The distribution is `forwardedit`; the Python import/module path remains `weight_space_lab`. Existing `weight-space` and `weight-space-mcp` commands are compatibility aliases.
 

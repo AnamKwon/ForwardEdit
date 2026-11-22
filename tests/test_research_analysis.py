@@ -5,6 +5,23 @@ from safetensors.numpy import save_file
 from weight_space_lab import research_analysis as a, core
 
 
+def test_export_native_bfloat16(tmp_path):
+    torch = pytest.importorskip('torch')
+    from safetensors.torch import save_file as save_torch_file
+
+    source = torch.tensor([[0.125, -0.75, 1.5], [2.25, -3.5, 0.0]], dtype=torch.bfloat16)
+    save_torch_file({'weight': source}, tmp_path / 'native.safetensors')
+    complete = a.research_export_tensor(tmp_path, 'native.safetensors', 'weight', 'complete.npy')
+    subset = a.research_export_tensor(
+        tmp_path, 'native.safetensors', 'weight', 'subset.npy', [[1, 2], [0, 2]],
+    )
+    np.testing.assert_array_equal(np.load(tmp_path / 'complete.npy'), source.float().numpy())
+    np.testing.assert_array_equal(np.load(tmp_path / 'subset.npy'), source[1:2, :2].float().numpy())
+    assert complete['source_dtype'] == subset['source_dtype'] == 'bfloat16'
+    assert complete['dtype'] == subset['dtype'] == 'float32'
+    assert complete['model_forward_calls'] == subset['model_forward_calls'] == 0
+
+
 def world(root,monkeypatch):
     (root/'model').mkdir();(root/'model/config.json').write_text('{}')
     save_file({'writer.weight':np.tile(np.array([[.4,.2]],dtype=np.float32),(80,1))},root/'model/model.safetensors')
@@ -58,5 +75,18 @@ def test_parameter_export_is_exact_nonmutating_and_bound(tmp_path):
     assert result['array_sha256']==core.sha256(tmp_path/'arrays/cube.npy')
     assert result['source_sha256']==core.sha256(tmp_path/'source.safetensors')
     assert result['model_forward_calls']==0
+    ranges = [[1, 3], [0, 2], [2, 5]]
+    subset = a.research_export_tensor(
+        tmp_path, 'source.safetensors', 'cube', 'arrays/subset.npy', ranges,
+    )
+    np.testing.assert_array_equal(np.load(tmp_path / subset['array_path']), source[1:3, :2, 2:5])
+    assert subset['source_shape'] == [3, 4, 5]
+    assert subset['ranges'] == ranges
+    assert subset['source_sha256'] == result['source_sha256']
+    with pytest.raises(ValueError, match='invalid half-open export range on axis 2'):
+        a.research_export_tensor(
+            tmp_path, 'source.safetensors', 'cube', 'arrays/invalid.npy', [[1, 3], [0, 2], [2, 6]],
+        )
+    assert not (tmp_path / 'arrays/invalid.npy').exists()
     with pytest.raises(ValueError,match='inside workspace'):
         a.research_export_tensor(tmp_path,'source.safetensors','cube','../outside.npy')

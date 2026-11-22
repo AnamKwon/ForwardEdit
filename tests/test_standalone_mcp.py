@@ -32,3 +32,11 @@ def test_frozen_limits_and_protected_parameter_paths(tmp_path):
  with pytest.raises(ValueError):w.check_plan({**p,'limits':{**p['limits'],'max_changed_fraction':.01}})
  with pytest.raises(ValueError):w.check_plan({**p,'operations':[{'tensor':'lm_head.weight','kind':'scale'}]})
  with pytest.raises(ValueError):w.new('../outside.json','analysis')
+
+def test_missing_operation_fields_give_actionable_errors(tmp_path):
+ """A missing 'axis' or 'slices' used to surface as a bare KeyError; the message now names the required field."""
+ from weight_space_lab.core import _transform
+ with pytest.raises(ValueError,match='axis must be 0'):_transform(np.zeros((2,2)),{'kind':'scale'})
+ d=tmp_path/'exports';d.mkdir();p=d/'w.npy';np.save(p,np.zeros((3,3)))
+ app=helpers(Workspace(tmp_path))
+ with pytest.raises(Exception,match='slice requires "slices"'):asyncio.run(app.call_tool('array_compute',{'operation':'slice','inputs':[reference(p)],'output':'analysis/s.npy'}))
