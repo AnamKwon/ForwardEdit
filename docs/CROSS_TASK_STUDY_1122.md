@@ -52,6 +52,8 @@ Negative results are kept on purpose. Several tasks produced no freeze: unseen i
 5. **A cheap pre-screen predicts transfer.** It checks whether the best residual writer pushes toward the gold answer on at least 80% of wrong rows. The prediction matched the outcome on 6 tasks post hoc and on 2 prospective tasks. It gives false positives in multiple-choice letter formats.
 6. **LoRA beats the edit in a fair comparison.** In runs 1–2 the edit seemed more persistent without context (.679 / .408 vs .055 / .087), but those LoRAs were trained on rows that carried the context. In run 3, both methods used the same no-context rows. LoRA reached .898 and the edit .682, which also missed the pre-registered prompting bar of .763. The edit's remaining advantages are footprint (38 neurons in one layer), auditability and no training compute.
 
+7. **The LLM supplies the structure, not the values.** A host-only comparator trained only the editor's 38 neurons. Starting from the editor's values, it reaches no-context S .884, close to a dense LoRA. Starting from the original values, the same neurons reach .668. So the editor's choice of neurons and gating is what makes the edit work, and its hand-set values are the bottleneck.
+
 ## Cost
 
 | | LLM edit | LoRA |

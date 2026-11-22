@@ -17,7 +17,7 @@ Four findings emerge:
 3. **The kind of gap predicts success: a stored association or a direct readout is editable; a missing computation is not.** This explains why skill edits do not scale from 0.8B to 4B while knowledge rewrites do. A cheap forward-only "writer-credit" prescreen predicts transfer before any editor run. It matched the outcome on 6 tasks post hoc and was correct on several prospective tasks. Multiple-choice letter formats are a known failure mode.
 4. **The editor logs make the black box concrete.** Successful edits reuse one shared component: an attention head for arithmetic, about 40 near-dead MLP neurons as subject-keyed gated memories for facts. Failed edits are low-rank writes at the last layers that only reweight output tokens.
 
-A LoRA trained on the same rows inserts knowledge more strongly. A third, pre-registered 4B run made no-context persistence the PRIMARY. The edit raised no-context S from .092 to .682 but missed the bar set by prompting (.763), and a LoRA trained on the same no-context rows reached .898. **The edit's remaining advantages are footprint (38 neurons in one layer), auditability and no training compute, not effect size.**
+A LoRA trained on the same rows inserts knowledge more strongly. A third, pre-registered 4B run made no-context persistence the PRIMARY. The edit raised no-context S from .092 to .682 but missed the bar set by prompting (.763), and a LoRA trained on the same no-context rows reached .898. **The edit's remaining advantages are footprint (38 neurons in one layer), auditability and no training compute, not effect size.** A same-footprint comparator locates the shortfall. Training only the editor's 38 neurons from its values reaches .884; the same neurons trained from their original values reach .668. **The LLM supplies a structure that gradient training cannot rediscover in that budget, while its hand-set values realize about 70% of it.**
 
 ## 1. Introduction
 
@@ -159,6 +159,23 @@ Before an editor run, the host runs one forward pass over wrong development rows
 - When the answer is not linearly present upstream, such a write becomes a prior shift (BBH salient: letter D → E/C) or a rule bound to one wording (BBH dyck: +8 on the official wording, −3 on unseen wording).
 
 **This yields a practical, log-level diagnostic:** an edit concentrated in last-layer output reweighting predicts a non-transferring or prior-shift result.
+
+### 5.5 H5: the LLM supplies the structure, not the values
+
+**H5.** The editor's main contribution is the edit's *structure*: which neurons it uses, which keys open their gates, and which subject each memory serves. Its hand-designed write values are the weaker part.
+
+**Evidence (qcf17_4b, a host-only same-footprint comparator, pre-registered with its interpretation, sealed once).** Only the editor's 38 L8 neurons were trained by gradient (gate/up rows and down columns, ≈ 0.29M values), on the same no-context rows:
+
+| no-context sealed S | ES | PS | NS | S |
+|---|---|---|---|---|
+| LLM edit | .625 | .600 | .885 | .682 |
+| 38 neurons trained from the **editor's** values | 1.00 | .775 | .905 | **.884** |
+| the same 38 neurons trained from the **original** values | .975 | .425 | .90 | .668 |
+| dense LoRA on 96 matrices | 1.00 | .7875 | .935 | .898 |
+
+- **The editor's subspace is sufficient.** Trained from the editor's values, 38 neurons nearly match a dense LoRA, with no MMLU or ARC change.
+- **Training cannot rediscover that structure in the same budget.** Started from the original values, the same neurons reach only the edit's level, and paraphrase success falls to .425.
+- **Interpretation.** The LLM finds a good place and gating for each memory, and its write values realize about 70% of what that structure allows. This suggests a concrete research direction within the inference-only contract: better value design, for example per-fact write vectors derived from observed output errors. It is also an argument that LLM-written edits and gradient training are complementary rather than competing.
 
 ## 6. Process lessons (tools that changed outcomes)
 

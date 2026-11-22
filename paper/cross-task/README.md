@@ -12,5 +12,6 @@
 - **H2, baseline erasure:** skill edits lose once the model may reason.
 - **H3, knowledge rewriting:** writing stored associations is the robust niche.
 - **H4, log-level edit signatures:** successful and failed edits leave different traces in the editor logs.
+- **H5, structure vs values:** the LLM supplies the edit's structure; gradient training cannot rediscover that structure in the same budget, but it can improve the LLM's values.
 
 **Evidence status.** The run artifacts are **not bundled**. The numbers come from host evaluation files and cannot be verified from this repository yet. One study, qcf17_4b, is still running. ROME/MEMIT baselines are missing.
