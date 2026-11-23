@@ -38,6 +38,8 @@ Report incremental effects against the strongest measured applicable unedited ba
 
 Freeze selection on development/validation before independent test evaluation. Never retune or reselect on that test. Public excerpts must disclose omissions/redactions and retain original-source and published-byte hashes separately. Do not rewrite historical hashes to make redacted copies appear byte-identical to originals.
 
+Apply [data separation](docs/EDIT_EVALUATION_PROTOCOL.md) before task-error inspection: edit/train constructs weights, validation selects candidates, and final test evaluates the frozen choice. Report each role separately. Cases whose labels/activations guide a new edit are development data, regardless of API split name. Keep related source variants in one group; never retrospectively split exposed examples and call them unseen validation.
+
 Personal `.claude/`, `.codex/`, `.cursor/`, `.jindo/`, root `.mcp.json`, editor settings and local instruction overrides stay local. Share portable templates in `examples/mcp/`; do not commit credentials or machine-specific paths.
 
 ## Verification

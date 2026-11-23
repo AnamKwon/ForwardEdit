@@ -1,5 +1,6 @@
 """Offline affine evidence from verified forward artifacts; never fits or chooses weights."""
 import json
+from math import prod
 from pathlib import Path
 
 import numpy as np
@@ -8,16 +9,39 @@ from safetensors import safe_open
 from . import core, evaluation as ev
 
 
-def research_export_tensor(root, checkpoint, tensor, output):
+def research_export_tensor(root, checkpoint, tensor, output, ranges=None):
     """Save a bounded exact parameter array for CPU analysis, never an edited checkpoint."""
     root=Path(root)
     source=core.local(root,checkpoint)
     source_hash=core.sha256(source)
     with safe_open(source,framework='np') as handle:
-        shape=handle.get_slice(tensor).get_shape()
-        if int(np.prod(shape)) > 16_777_216:
-            raise ValueError('parameter export exceeds16Mentries; select smaller tensor or explicit slices')
-        array=handle.get_tensor(tensor)
+        view = handle.get_slice(tensor)
+        source_shape = view.get_shape()
+        source_dtype = view.get_dtype()
+        slices = None
+        if ranges is None:
+            if prod(source_shape) > 16_777_216:
+                raise ValueError('parameter export exceeds 16M entries; pass bounded per-axis ranges')
+        else:
+            if not isinstance(ranges, list) or not source_shape or len(ranges) != len(source_shape):
+                raise ValueError('ranges requires one [start, stop) pair per tensor axis')
+            slices = []
+            for axis, (bounds, size) in enumerate(zip(ranges, source_shape)):
+                if (not isinstance(bounds, list) or len(bounds) != 2
+                        or any(type(bound) is not int for bound in bounds)
+                        or not 0 <= bounds[0] < bounds[1] <= size):
+                    raise ValueError(f'invalid half-open export range on axis {axis} of length {size}')
+                slices.append(slice(*bounds))
+            if prod(s.stop - s.start for s in slices) > 16_777_216:
+                raise ValueError('parameter slice exceeds 16M entries')
+        if source_dtype == 'BF16':
+            # Widen exact BF16 values on CPU for NumPy analysis.
+            with safe_open(source, framework='pt', device='cpu') as torch_handle:
+                value = (torch_handle.get_tensor(tensor) if slices is None
+                         else torch_handle.get_slice(tensor)[tuple(slices)])
+                array = value.float().numpy()
+        else:
+            array = handle.get_tensor(tensor) if slices is None else view[tuple(slices)]
     if array.dtype.kind not in 'fiu' or not np.isfinite(array).all():
         raise ValueError('finite numeric parameter required')
     target=core.local(root,output)
@@ -30,6 +54,10 @@ def research_export_tensor(root, checkpoint, tensor, output):
     result={'array_path':output,'array_sha256':core.sha256(target),'source_sha256':source_hash,
             'tensor':tensor,'shape':list(array.shape),'dtype':str(array.dtype),'model_forward_calls':0,
             'interpretation':'Exact stored axes; inspect actual module equation before algebra. No edit or fitting.'}
+    if ranges is not None:
+        result.update(source_shape=source_shape, ranges=ranges)
+    if source_dtype == 'BF16':
+        result.update(source_dtype='bfloat16', representation='Exact BF16 values widened to float32 on CPU.')
     ev.write_report(root,result,output+'.json')
     return result
 
@@ -198,7 +226,8 @@ def research_prepare_edit(root, plan, tensor, rows, columns, contexts, direction
             'model_forward_calls': 0, 'candidate_created': False}
 
 
-def research_make_contexts(root, job_id, ids, output, which='original', max_tokens=8192):
+def research_make_contexts(root, job_id, ids, output, which='original', max_tokens=8192,
+                           sample=0, continuation_lengths=None):
     """Materialize actual generated prefixes as teacher-forced discovery contexts, never labels.
 
     Source example IDs/split are retained so the research forward tool enforces
@@ -212,6 +241,13 @@ def research_make_contexts(root, job_id, ids, output, which='original', max_toke
     result, snapshot, artifacts = _job(root, job_id)
     if snapshot['spec']['type'] != 'generate' or which not in ('original','edited'):
         raise ValueError('actual generation provenance required')
+    if type(sample) is not int or not 0 <= sample < snapshot['spec'].get('n', 1):
+        raise ValueError('sample is outside the recorded generation')
+    if continuation_lengths is not None and (
+        not isinstance(continuation_lengths, dict) or set(continuation_lengths) != set(ids)
+        or any(type(value) is not int or value < 0 for value in continuation_lengths.values())
+    ):
+        raise ValueError('continuation_lengths requires a nonnegative token count for every selected ID')
     a = [a for a in artifacts if a.get('kind') == 'generations' and a.get('model') == which]
     if len(a) != 1:
         raise ValueError('unique actual generation artifact required')
@@ -219,21 +255,29 @@ def research_make_contexts(root, job_id, ids, output, which='original', max_toke
     if core.sha256(p) != a[0]['sha256']:
         raise ValueError('generation artifact hash mismatch')
     generated = json.loads(p.read_text())
-    by_id = {r['id']: r for r in generated if r.get('sample', 0) == 0}
+    by_id = {r['id']: r for r in generated if r.get('sample', 0) == sample}
     if any(i not in by_id for i in ids):
         raise ValueError('requested source ID absent')
     rows = []
     for i in ids:
         r = by_id[i]
-        tokens = (r['input_ids'] + r['continuation_ids'])[:max_tokens]
+        if continuation_lengths is None:
+            tokens = (r['input_ids'] + r['continuation_ids'])[:max_tokens]
+        else:
+            length = continuation_lengths[i]
+            if length > len(r['continuation_ids']) or len(r['input_ids']) + length > max_tokens:
+                raise ValueError('requested exact prefix exceeds recorded tokens or context bound')
+            tokens = r['input_ids'] + r['continuation_ids'][:length]
         if len(tokens) < 2:
             raise ValueError('insufficient actual context tokens')
         rows.append({'id': i, 'tokens': tokens})
     split = snapshot['spec']['split']
     data = {'name': 'actual-generated-prefix-contexts', 'version': '1', 'splits': {split: rows},
             'provenance': {'job_id': job_id, 'model': which, 'generation_sha256': a[0]['sha256'],
-                           'max_tokens': max_tokens, 'sample': 0},
+                           'max_tokens': max_tokens, 'sample': sample},
             'labels_status': 'actual recorded prefixes only; no semantic failure labels inferred'}
+    if continuation_lengths is not None:
+        data['provenance']['continuation_lengths'] = continuation_lengths
     ev.write_report(root, data, output)
     return {'dataset_path': output, 'sha256': core.sha256(core.local(root, output)), 'examples': len(rows),
             'input_tokens': sum(len(r['tokens']) for r in rows), 'model_forward_calls': 0}

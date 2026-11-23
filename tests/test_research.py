@@ -76,6 +76,25 @@ def spec(**kwargs):
     return dict(type='generate', model='original', split='discovery', ids=['a', 'b'], n=1, max_new_tokens=4, **kwargs)
 
 
+def test_image_bytes_are_bound_to_forward_snapshot(tmp_path, monkeypatch):
+    c, _, _ = world(tmp_path, monkeypatch)
+    image = tmp_path / 'image.png'
+    image.write_bytes(b'original image fixture bytes')
+    data = json.loads((tmp_path / 'data.json').read_text())
+    data['splits']['discovery'][0]['images'] = ['image.png']
+    (tmp_path / 'data.json').write_text(json.dumps(data))
+    c['dataset_sha256'] = core.sha256(tmp_path / 'data.json')
+    c['multimodal'] = {'kind': 'gemma3', 'vision_checkpoint': 'model/model.safetensors',
+                       'config': 'model/config.json', 'processor_dir': 'model'}
+    (tmp_path / 'research.json').write_text(json.dumps(c))
+    r.validate_spec(tmp_path, c, spec())
+    hashes = r.snapshot(tmp_path, c, spec())
+    assert hashes['image.png'] == core.sha256(image)
+    image.write_bytes(b'changed image fixture bytes')
+    with pytest.raises(ValueError, match='provenance hash mismatch: image.png'):
+        r.verify_hashes(tmp_path, hashes)
+
+
 def reserve(root, monkeypatch, request):
     class Process:
         pid = os.getpid()
@@ -96,19 +115,32 @@ def finish(root, jid):
 
 def test_actual_generation_observations_and_provenance(tmp_path, monkeypatch):
     c, models, _ = world(tmp_path, monkeypatch)
-    jid = reserve(tmp_path, monkeypatch, spec(observations={'layers': [0], 'mlp_layers': [0], 'mean_answer_tokens': 3}))
+    jid = reserve(tmp_path, monkeypatch, spec(observations={
+        'layers': [0], 'mlp_layers': [0], 'mean_answer_tokens': 3, 'first_token_ids': [2, 0],
+    }))
     result = finish(tmp_path, jid)
     assert result['model_forward_invocations'] >= 2
     assert result['successful_samples'] == 2 and result['optimizer_steps'] == 0
     assert result['observed_modules']['original']['model.layers.0']['calls'] >= 2
     assert all(not m.model.layers[0]._forward_hooks and not m.model.layers[0].mlp.down_proj._forward_pre_hooks for m in models)
-    assert r.research_status(tmp_path, jid)['successful_completed'] == 1
+    state = r.research_status(tmp_path, jid)
+    assert state['successful_completed'] == 1
+    assert state['progress'] == {
+        'model': 'original', 'completed_samples': 2, 'total_samples': 2,
+        'generated_tokens': result['metrics']['original']['generated_tokens'],
+    }
     assert r.research_status(tmp_path, jid)['successful_completed'] == 1
     rows = r.research_read_generations(tmp_path, jid, ['a'], max_chars=4)['rows']
     assert len(rows) == 1 and len(rows[0]['text']) <= 4
     arrays = [a for a in result['artifacts'] if a['kind'] == 'observations']
     a = r.research_read_array(tmp_path, arrays[0]['path'], [[0, 1]])
     assert a['entries'][0]['value'] in (0., 2.)
+    first = next(a for a in result['artifacts'] if a['kind'] == 'first_token_logits')
+    assert first['token_ids'] == [2, 0] and first['model'] == 'original'
+    assert json.loads((tmp_path / first['path']).read_text()) == [
+        {'id': 'a', 'sample': 0, 'logits': [2.0, 0.0]},
+        {'id': 'b', 'sample': 0, 'logits': [2.0, 0.0]},
+    ]
     (tmp_path/'model/config.json').write_text('{"changed":true}')
     with pytest.raises(ValueError, match='hash mismatch'):
         r.research_result(tmp_path, jid)
@@ -155,7 +187,19 @@ def test_death_and_forged_success_fail(tmp_path, monkeypatch):
     assert r.research_status(tmp_path, jid)['status'] == 'failed'
 
 
-@pytest.mark.parametrize('change', [{'split': 'test'}, {'ids': ['a', 'a']}, {'ids': ['unknown']}, {'max_new_tokens': 100}, {'dataset_path': '../escape'}, {'model': 'edited'}, {'n': 5}, {'observations': {'mean_answer_tokens': 8193}}])
+@pytest.mark.parametrize('change', [
+    {'split': 'test'}, {'ids': ['a', 'a']}, {'ids': ['unknown']}, {'max_new_tokens': 100},
+    {'dataset_path': '../escape'}, {'model': 'edited'}, {'n': 5}, {'observations': {'mean_answer_tokens': 8193}},
+    {'observations': {'first_token_ids': [2, 2]}},
+    {'type': 'teacher_forced', 'observations': {'first_token_ids': [2]}},
+    {'observations': {'generation_logits': {'token_ids': [2], 'positions': {'a': [4]}}}},
+    {'first_token_logit_bias': []},
+    {'first_token_logit_bias': [{'token_id': 1, 'bias': 101}]},
+    {'first_token_logit_bias': [{'token_id': True, 'bias': 1}]},
+    {'first_token_logit_bias': [{'token_id': 1, 'bias': True}]},
+    {'first_token_logit_bias': [{'token_id': 1, 'bias': 1}, {'token_id': 1, 'bias': -1}]},
+    {'type': 'teacher_forced', 'first_token_logit_bias': [{'token_id': 1, 'bias': 1}]},
+])
 def test_reject_invalid_specs(tmp_path, monkeypatch, change):
     world(tmp_path, monkeypatch)
     request = spec()
@@ -579,7 +623,9 @@ def test_generation_mixed_eos_presence_and_observation_counts(tmp_path,monkeypat
     c, _, tokenizer=world(tmp_path,monkeypatch)
     model=w.inference.load_inference_model(tmp_path,'model')
     artifacts=w.Artifacts(tmp_path,tmp_path,2**20)
-    obs=w.Observations(model,{'layers':[0],'mean_answer_tokens':3},artifacts,'original')
+    obs=w.Observations(model,{'layers':[0],'mean_answer_tokens':3,
+                            'generation_logits': {'token_ids': [1, 0], 'positions': {'a': [0, 1], 'b': [1, 2]}}},
+                       artifacts,'original')
     seen_masks=[]
     def sample(logits,seen,random_values,sampling):
         seen_masks.append(seen.clone())
@@ -599,6 +645,58 @@ def test_generation_mixed_eos_presence_and_observation_counts(tmp_path,monkeypat
     assert [(a['id'],a['mean_token_count']) for a in means]==[('a',1),('b',2)]
     np.testing.assert_array_equal(np.load(tmp_path/means[0]['path']),[0.,2.,0.])
     assert model.seen_calls[2][1].tolist()==[[0,1,1,0],[1,1,1,1]]
+    scores = next(a for a in artifacts.manifest if a['kind'] == 'generation_logits')
+    assert scores['token_ids'] == [1, 0]
+    assert json.loads((tmp_path / scores['path']).read_text()) == [
+        {'id': 'a', 'sample': 0, 'continuation_offset': 0, 'chosen_token_id': 4, 'logits': [2.0, 0.0]},
+        {'id': 'b', 'sample': 0, 'continuation_offset': 1, 'chosen_token_id': 4, 'logits': [0.0, 2.0]},
+    ]
+
+
+def test_first_token_runtime_bias_preserves_raw_logits_weights_and_later_steps(tmp_path, monkeypatch):
+    import torch
+    c, _, tokenizer = world(tmp_path, monkeypatch)
+    c['batch_size'] = 1
+    c['sampling'].update(top_k=1, temperature=1., presence_penalty=0.)
+    model = w.inference.load_inference_model(tmp_path, 'model')
+    before = {name: value.clone() for name, value in model.state_dict().items()}
+
+    def forward(input_ids, attention_mask=None, position_ids=None, past_key_values=None, use_cache=False):
+        assert torch.is_inference_mode_enabled() and not torch.is_grad_enabled()
+        # Fixed two-step fixture, never trained. Persisting the bias would prevent EOS.
+        values = [0., 2., 1., 0., -1.] if past_key_values is None else [0., 0., 0., 0., 1.]
+        logits = torch.tensor(values).view(1, 1, 5).expand(input_ids.shape[0], input_ids.shape[1], 5)
+        return SimpleNamespace(logits=logits, past_key_values=1)
+
+    model.forward = forward
+    artifacts = w.Artifacts(tmp_path, tmp_path, 2**20)
+    obs = w.Observations(model, {'first_token_ids': [0, 1]}, artifacts, 'original')
+    request = {'n': 1, 'max_new_tokens': 2,
+               'first_token_logit_bias': [{'token_id': 0, 'bias': 10.}]}
+    rows, _, _ = w.generate(model, tokenizer, [{'id': 'a', 'tokens': [1]}], c, request, obs)
+    obs.close()
+    assert rows[0]['continuation_ids'] == [0, 4]
+    assert rows[0]['finish_reason'] == 'eos'
+    raw = next(a for a in artifacts.manifest if a['kind'] == 'first_token_logits')
+    assert json.loads((tmp_path / raw['path']).read_text())[0]['logits'] == [0., 2.]
+    for name, value in model.state_dict().items():
+        torch.testing.assert_close(value, before[name], rtol=0, atol=0)
+    plain = w.Observations(model, {}, None, 'original')
+    baseline, _, _ = w.generate(model, tokenizer, [{'id': 'a', 'tokens': [1]}], c,
+                                 {'n': 1, 'max_new_tokens': 2}, plain)
+    plain.close()
+    assert baseline[0]['continuation_ids'] == [1, 4]
+
+
+def test_first_token_runtime_bias_rejects_vllm_and_out_of_vocabulary(tmp_path, monkeypatch):
+    c, _, _ = world(tmp_path, monkeypatch)
+    request = spec(first_token_logit_bias=[{'token_id': 5, 'bias': .5}])
+    model = w.inference.load_inference_model(tmp_path, 'model')
+    with pytest.raises(ValueError, match='outside vocabulary'):
+        w.validate_tokens(model, [{'id': 'a', 'tokens': [1]}], c, request)
+    c['generation_backend'] = 'vllm'
+    with pytest.raises(ValueError, match='Transformers generation'):
+        r.validate_spec(tmp_path, c, spec(first_token_logit_bias=[{'token_id': 1, 'bias': .5}]))
 
 
 def test_paired_accuracy_includes_unparsed_failures():

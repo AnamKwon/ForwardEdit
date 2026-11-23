@@ -55,6 +55,13 @@ for (const name of [
   "docs/USAGE.md",
   "docs/INFERENCE_ONLY_CONTRACT.md",
   "docs/REVIEW_GUIDE.md",
+  "docs/RESULTS.md",
+  "docs/FINETUNING_COMPARISON.md",
+  "docs/FINETUNING_COMPARISON.ko.md",
+  "docs/assets/results/figure-data.json",
+  "experiments/extended-discovery-006/study-outcome.json",
+  "experiments/direct-values-inference-only-001/host-audit.json",
+  "docs/evidence/mcp-training-verification.json",
   "weight_space_lab/server.py",
   "weight_space_lab/standalone.py",
 ]) {
@@ -71,11 +78,12 @@ for (const [locale, film, sceneFile] of [
 ]) {
   const parent = await parse(`src/${film}.tsx`);
   const source = await parse(`src/${sceneFile}.tsx`);
+  const results = await parse("src/ResultsScenes.tsx");
   const declarations = new Map(
-    collect(source, ts.isVariableDeclaration).map((d) => [
-      d.name.getText(),
-      d.initializer,
-    ]),
+    [
+      ...collect(source, ts.isVariableDeclaration),
+      ...collect(results, ts.isVariableDeclaration),
+    ].map((d) => [d.name.getText(), d.initializer]),
   );
   const scenes = collect(
     parent,
@@ -157,7 +165,7 @@ for (const [locale, film, sceneFile] of [
         durationSeconds: durationInFrames / fps,
         audio: "Captions only; no recorded narration or music.",
         disclosure:
-          "Conceptual explanation with illustrative values and abbreviated mock calls; no model was run or edited.",
+          "Workflow demonstrations use illustrative values and abbreviated calls. The Qwen scene uses retained measurements. The fine-tuning scene states missing evidence and the comparison design; the 12-story trainability check is excluded from method comparisons. No new target-model run or training.",
         sources,
         scenes,
       },

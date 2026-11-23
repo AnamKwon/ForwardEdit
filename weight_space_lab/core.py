@@ -223,7 +223,7 @@ def _apply_operation(original: np.ndarray, operation: dict) -> np.ndarray:
 
 def _transform(original: np.ndarray, operation: dict) -> np.ndarray:
     """Explicit matrix transformations; no loss, gradients or optimizer."""
-    axis = operation["axis"]
+    axis = operation.get("axis")
     if type(axis) is not int or axis not in (0, 1):
         raise ValueError("axis must be 0 (rows) or 1 (columns)")
     ids = operation["indices"]

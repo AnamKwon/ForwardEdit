@@ -1081,7 +1081,7 @@ const RecapInner = () => {
   const { fps } = useVideoConfig();
   return (
     <>
-      <Header step="07 / WHAT THIS ESTABLISHES" dark />
+      <Header step="09 / WHAT THIS ESTABLISHES" dark />
       <Interactive.H1
         name="Closing title"
         style={{
@@ -1165,7 +1165,8 @@ const RecapInner = () => {
         from={5 * fps}
         durationInFrames={5 * fps}
       >
-        Every published study failed at least one declared acceptance criterion.
+        Report the observed gains and the original protocol decisions
+        separately.
       </Caption>
     </>
   );

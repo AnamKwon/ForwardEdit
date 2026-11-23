@@ -10,6 +10,7 @@ import {
   WriteScene,
 } from "./Scenes";
 import { Progress } from "./Visuals";
+import { KoreanResultsScene, KoreanComparisonScene } from "./ResultsScenes";
 
 export const ForwardEditFilm = () => {
   const { fps } = useVideoConfig();
@@ -63,9 +64,21 @@ export const ForwardEditFilm = () => {
           durationInFrames={12 * fps}
           style={{ backgroundColor: "#F4F2ED" }}
         />
+        <KoreanResultsScene
+          name="07 기록된 Qwen 결과"
+          from={94 * fps}
+          durationInFrames={16 * fps}
+          style={{ backgroundColor: "#F4F2ED" }}
+        />
+        <KoreanComparisonScene
+          name="08 충분한 데이터의 파인튜닝 비교 필요"
+          from={110 * fps}
+          durationInFrames={16 * fps}
+          style={{ backgroundColor: "#F4F2ED" }}
+        />
         <RecapScene
           name="07 판정과 한계"
-          from={94 * fps}
+          from={126 * fps}
           durationInFrames={10 * fps}
           style={{ backgroundColor: "#182638" }}
         />

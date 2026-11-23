@@ -11,6 +11,7 @@ Before a new protocol, report or improvement claim, check:
 5. **Failure type and controls.** State the proposed failure type in advance; retain identity/opposing or other bounded negative controls. Keep declared criteria unchanged when controls or final results disagree.
 6. **Predictions and feedback.** Record predictions before observing results. Establish that parent feedback was actually read before a claimed revision. Preset alternatives are not feedback-dependent revisions.
 7. **Claim scope.** Distinguish synthetic recovery, pretrained-model behavior changes, independent task improvements and generalization. Do not infer new capabilities, superhuman interpretation or recursive self-improvement from exact writes or narrow benchmark changes.
+8. **Data roles.** Apply [data separation](EDIT_EVALUATION_PROTOCOL.md) before observing errors. Separate edit/train construction, validation selection and selection-unseen final test. Report counts/groups, hashes, exposure and scores for each. A validation case used to derive an edit becomes development evidence. Two cohorts suffice only when the second is opened after one candidate is frozen and is never used for selection/revision. API split labels, new IDs or renamed files do not establish independence.
 
 Freeze selection before independent confirmation. Exposed test items cannot be reused as fresh evidence for the same selection problem. Do not relax thresholds, reset budgets or omit failed sessions to obtain a passing story.
 

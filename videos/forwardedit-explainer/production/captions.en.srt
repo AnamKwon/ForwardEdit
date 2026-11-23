@@ -79,9 +79,37 @@ Check effect, preservation and uncertainty on independent data.
 A correct weight write does not establish an independent task improvement.
 
 21
-00:01:34,000 --> 00:01:39,000
-ForwardEdit separates judgment, execution and verification, and retains the evidence.
+00:01:34,000 --> 00:01:38,000
+This subset gained 85 net correct answers: 86 rescued and one lost.
 
 22
-00:01:39,000 --> 00:01:44,000
-Every published study failed at least one declared acceptance criterion.
+00:01:38,000 --> 00:01:42,000
+Seventeen of 18 originally correct answers remained correct.
+
+23
+00:01:42,000 --> 00:01:46,000
+The prespecified 5% rule allows zero losses when the denominator is 18.
+
+24
+00:01:46,000 --> 00:01:50,000
+Missing that study rule does not erase the measured accuracy gain.
+
+25
+00:01:50,000 --> 00:01:55,000
+Twelve training stories cannot represent properly tuned fine-tuning.
+
+26
+00:01:55,000 --> 00:02:00,000
+Use substantial task data, validation selection and common quality and retention checks.
+
+27
+00:02:00,000 --> 00:02:06,000
+Report the data and total costs. This comparison has not yet been run.
+
+28
+00:02:06,000 --> 00:02:11,000
+ForwardEdit separates judgment, execution and verification, and retains the evidence.
+
+29
+00:02:11,000 --> 00:02:16,000
+Report the observed gains and the original protocol decisions separately.

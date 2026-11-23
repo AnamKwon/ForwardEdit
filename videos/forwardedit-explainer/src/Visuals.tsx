@@ -246,6 +246,7 @@ export const Matrix = Interactive.create({
 
 export const Progress = ({ locale = "en" }: { locale?: "en" | "ko" }) => {
   const frame = useCurrentFrame();
+  const { durationInFrames, fps } = useVideoConfig();
   return (
     <div
       style={{
@@ -267,17 +268,17 @@ export const Progress = ({ locale = "en" }: { locale?: "en" | "ko" }) => {
       >
         <span>
           {locale === "en"
-            ? "CONCEPTUAL DEMO · ILLUSTRATIVE VALUES · NO MODEL EXECUTION"
-            : "개념 설명 · 모의 호출 및 수치 예시 · 실제 모델 실행 아님"}
+            ? "WORKFLOW DEMO + RETAINED RESULTS · NO NEW TARGET-MODEL RUN"
+            : "설명용 시연과 과거 결과 · 새 대상 모델 실험 없음"}
         </span>
-        <span>INFERENCE ONLY / 104 SEC</span>
+        <span>FORWARDEDIT / {durationInFrames / fps} SEC</span>
       </div>
       <div style={{ height: 3, background: "#8793A329" }}>
         <div
           style={{
             height: 3,
             background: "#E77751",
-            width: `${Math.min(100, (frame / 3119) * 100)}%`,
+            width: `${Math.min(100, (frame / (durationInFrames - 1)) * 100)}%`,
           }}
         />
       </div>

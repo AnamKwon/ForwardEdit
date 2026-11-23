@@ -10,6 +10,7 @@ import {
   WriteScene,
 } from "./EnglishScenes";
 import { Progress } from "./Visuals";
+import { EnglishResultsScene, EnglishComparisonScene } from "./ResultsScenes";
 
 export const EnglishFilm = () => {
   const { fps } = useVideoConfig();
@@ -63,9 +64,21 @@ export const EnglishFilm = () => {
           durationInFrames={12 * fps}
           style={{ backgroundColor: "#F4F2ED" }}
         />
+        <EnglishResultsScene
+          name="07 Retained Qwen results"
+          from={94 * fps}
+          durationInFrames={16 * fps}
+          style={{ backgroundColor: "#F4F2ED" }}
+        />
+        <EnglishComparisonScene
+          name="08 Fine-tuning comparison with sufficient data"
+          from={110 * fps}
+          durationInFrames={16 * fps}
+          style={{ backgroundColor: "#F4F2ED" }}
+        />
         <RecapScene
           name="07 Claims and limitations"
-          from={94 * fps}
+          from={126 * fps}
           durationInFrames={10 * fps}
           style={{ backgroundColor: "#182638" }}
         />

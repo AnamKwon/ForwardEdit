@@ -1,0 +1,278 @@
+{
+  "direct_values_001": {
+    "candidates": [
+      {
+        "changed_values": 6,
+        "id": "candidate-01",
+        "loaded_values_exact": true,
+        "manual_patch_exact": true,
+        "validation_nll": 2.926467628073225
+      },
+      {
+        "changed_values": 6,
+        "id": "candidate-02",
+        "loaded_values_exact": true,
+        "manual_patch_exact": true,
+        "validation_nll": 2.938719861461947
+      }
+    ],
+    "heldout_evaluated": false,
+    "original_validation_nll": 2.9254278648124963,
+    "selected_candidate": null,
+    "validation_examples": 12
+  },
+  "evidence_snapshot_commit": "32f62aef193fb6cac4dc84db6128657ecfe2be4f",
+  "mathematics": [
+    {
+      "adoption_passed": false,
+      "case": "extended-discovery-006",
+      "confidence": 0.975,
+      "edited_correct": 103,
+      "edited_percent": 53.645833333333336,
+      "gain_interval_pp": [
+        35.9375,
+        52.604166666666664
+      ],
+      "gain_pp": 44.27083333333333,
+      "items": 192,
+      "original_correct": 18,
+      "original_correct_lost_percent": 5.555555555555555,
+      "original_percent": 9.375,
+      "right_to_wrong": 1,
+      "wrong_to_right": 86
+    },
+    {
+      "adoption_passed": false,
+      "case": "independent-mcp-009-014",
+      "confidence": 0.975,
+      "edited_correct": 22,
+      "edited_percent": 11.458333333333334,
+      "gain_interval_pp": [
+        -7.8125,
+        4.6875
+      ],
+      "gain_pp": -1.5625,
+      "items": 192,
+      "original_correct": 25,
+      "original_correct_lost_percent": 64.0,
+      "original_percent": 13.020833333333334,
+      "right_to_wrong": 16,
+      "wrong_to_right": 13
+    }
+  ],
+  "mcp009_014_details": {
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 17,
+    "feedback_revisions": 1,
+    "gpu_bf16_changes": 3067,
+    "independent_paired_jobs": 2,
+    "min_accuracy_gain": 0.1,
+    "old_correct_loss_limit": 0.05,
+    "reference_preservation_passed": true,
+    "stored_changes": 3069,
+    "successful_development_jobs": 8,
+    "validation": [
+      {
+        "conditional_old_correct_loss": 0.6,
+        "edited_correct": 7,
+        "items": 64,
+        "original_correct": 5
+      },
+      {
+        "conditional_old_correct_loss": 0.6,
+        "edited_correct": 10,
+        "items": 64,
+        "original_correct": 5
+      }
+    ]
+  },
+  "qwen006_details": {
+    "accounting": {
+      "causal_controls": 6,
+      "development_accepted_attempts": 51,
+      "development_environment_failures": 1,
+      "development_successful_logical_batches": 50,
+      "independent_accepted_attempts": 2,
+      "independent_successful_logical_batches": 2,
+      "learning_proposals": 4,
+      "native_claude_calls": 6,
+      "native_public_tool_actions": 122,
+      "native_turn_capacity": 150,
+      "not_a_strict_paper_budget_matched_comparison": true,
+      "not_epochs_or_internal_network_forwards": true,
+      "null_controls": 1,
+      "scientific_cpu_analysis_conservative_upper_bound_with_final_audit": 146
+    },
+    "confirmation_policy": {
+      "accuracy_gain_minimum": 0.1,
+      "bootstrap_draws": 10000,
+      "bootstrap_seed": 17,
+      "both_source_point_gains_nonnegative": true,
+      "first_final_alpha": 0.025,
+      "freeze_before_access": true,
+      "items": 192,
+      "max_previously_correct_to_wrong_fraction": 0.05,
+      "mcnemar_one_sided_p_maximum": 0.025,
+      "no_reselection": true,
+      "not_full_benchmark_scores": true,
+      "paired_bootstrap_confidence": 0.975,
+      "source_counts": {
+        "gsm8k_test": 128,
+        "math500_test": 64
+      }
+    },
+    "control_limitations": [
+      "Opposing edit also solves2/6, so directional suppression is not a unique demonstrated mechanism.",
+      "L15-only0/6, L19-only1/6, orthogonal0/6 are bounded observations, not statistical necessity proofs.",
+      "Short8192controls cannot measure source age rescue that required13851tokens in full32kprimary.",
+      "Fresh14teacher score includes supplied prefixes; it is not clean problem-solving accuracy.",
+      "Primary64development5to35pass; independent192confirmationpending.",
+      "Per-problem comparisons matter: some perturbed controls can rescue original normal cases under short cutoff; compare target IDs rather than only aggregate6case totals. Original branch differs across some runs."
+    ],
+    "decoding": {
+      "enable_thinking": true,
+      "inference_dtype": "bfloat16",
+      "max_new_tokens": 32768,
+      "paired_item_random_streams": true,
+      "presence_penalty": 1.5,
+      "prompt_suffix": "\nPlease reason step by step, and put your final answer within \\boxed{}.",
+      "seed": 4217,
+      "temperature": 0.6,
+      "top_k": 20,
+      "top_p": 0.95
+    },
+    "parameters": {
+      "actual_gpu_bf16_changed_values": 123452,
+      "layers": [
+        15,
+        19
+      ],
+      "llm_chosen_strengths": [
+        2.9,
+        4.5
+      ],
+      "no_gradient_or_optimizer_training": true,
+      "original_gpu_changed_values": 0,
+      "published_learned_vectors_imported": false,
+      "selected_columns": [
+        76,
+        46
+      ],
+      "source_informed_host_branch": true,
+      "stored_changed_fraction": 0.00016604088025143625,
+      "stored_changed_values": 124928,
+      "tensor_role": "MLP down projection",
+      "total_text_parameters": 752393024
+    },
+    "rescued_unparsed": 86,
+    "row_counts": {
+      "edited": {
+        "correct": 103,
+        "cutoff": 72,
+        "unparsed": 73
+      },
+      "original": {
+        "correct": 18,
+        "cutoff": 175,
+        "unparsed": 174
+      }
+    }
+  },
+  "repetition": [
+    {
+      "adoption_passed": false,
+      "bootstrap_draws": 2000,
+      "bootstrap_seed": 17,
+      "case": "skill-edit-experiment-004",
+      "confidence": 0.95,
+      "edited_cutoff_percent": 64.0625,
+      "edited_percent": 7.0811964501774725,
+      "gain_interval_pp": [
+        -2.9103522841242597,
+        3.2061684080226445
+      ],
+      "gain_pp": 0.197937126059442,
+      "items": 64,
+      "metric": "mean repeated generated 8-gram fraction",
+      "original_cutoff_percent": 71.875,
+      "original_percent": 7.279133576236915,
+      "reference_nll_increase": 0.006388526020371543,
+      "validation_eligible": true
+    },
+    {
+      "adoption_passed": false,
+      "bootstrap_draws": 2000,
+      "bootstrap_seed": 17,
+      "case": "failure-repair-005",
+      "confidence": 0.95,
+      "edited_cutoff_percent": 66.40625,
+      "edited_percent": 6.5117995378139835,
+      "gain_interval_pp": [
+        -2.56105298339657,
+        1.6950436685633223
+      ],
+      "gain_pp": -0.4521166245753556,
+      "items": 128,
+      "metric": "mean repeated generated 8-gram fraction",
+      "original_cutoff_percent": 68.75,
+      "original_percent": 6.059682913238627,
+      "reference_nll_increase": 0.0026216424522322868,
+      "validation_eligible": false
+    }
+  ],
+  "scope": "Retrospective extraction from published JSON; intervals copied, not newly estimated; no model replay.",
+  "sources": {
+    "experiments/direct-values-inference-only-001/decision.json": {
+      "bytes": 1876,
+      "published_sha256": "347ac32d6af675463673973e87fd128237ed6353bde6db0139652e8329d71d92"
+    },
+    "experiments/direct-values-inference-only-001/host-audit.json": {
+      "bytes": 2924,
+      "published_sha256": "4d27197803f4341dcd7243793f4a2618ccb8a11148e7012c07919db195141727"
+    },
+    "experiments/extended-discovery-006/artifacts/protocol.json": {
+      "bytes": 6489,
+      "published_sha256": "20f558d6b10cd1f7cff10572d09290ef8f99c9491fa50fd834d3fecf0e443fd1"
+    },
+    "experiments/extended-discovery-006/causal-and-transfer-interim-analysis.json": {
+      "bytes": 21710,
+      "published_sha256": "5b95712c8dc3a1105885222b1db4568ecd89345343af374bae4f5129616308c7"
+    },
+    "experiments/extended-discovery-006/host-confirmation/confirmation-report.json": {
+      "bytes": 42632,
+      "published_sha256": "0a5d3a4085a2ef7e3d51929e454169b8ae9719faf91ce3e2a2f201ffd55ec2b2"
+    },
+    "experiments/extended-discovery-006/study-outcome.json": {
+      "bytes": 6445,
+      "published_sha256": "4394abad6f04581c31583a21bbc8593de604b58dcdfb1e1d8a926759e150c2fb"
+    },
+    "experiments/failure-repair-005/heldout-result.json": {
+      "bytes": 85531,
+      "published_sha256": "ec592a2c93bf93ab24f0c2c858668bd91db9a22b5465aa06ea3eef21d8408a34"
+    },
+    "experiments/failure-repair-005/protocol.json": {
+      "bytes": 11501,
+      "published_sha256": "3aa1e3203e889c2aa512b612fcc994e16c428dbc7d21f5dd0b7c8d29e7f5aa40"
+    },
+    "experiments/independent-mcp-014/feedback-flow-audit.json": {
+      "bytes": 2407,
+      "published_sha256": "6caa3d612dc88257c0e08852ac6f8c66d169695169adf5dac0e80da3bd9ad874"
+    },
+    "experiments/independent-mcp-014/protocol.json": {
+      "bytes": 8072,
+      "published_sha256": "bc3c141f6aaac05df7cc3ef48949ac5bf33b4174e43725a19dacfcac59ed0d26"
+    },
+    "experiments/independent-mcp-014/study-report.json": {
+      "bytes": 44352,
+      "published_sha256": "05fa126da3e0da460e9ad8eb5d85e82bffbd9eb023adab9dc2af94bd6f29782c"
+    },
+    "experiments/skill-edit-experiment-004/heldout-result.json": {
+      "bytes": 43697,
+      "published_sha256": "fa38bf3c0cfe246a8fc6d211adf96e997f04a75f7b30615590ecd68d01ee6cdb"
+    },
+    "experiments/skill-edit-experiment-004/protocol.json": {
+      "bytes": 5936,
+      "published_sha256": "8874c43ae66333c3176c445d3634b645f0afd8c5265f868bbd11321bc6281586"
+    }
+  }
+}

@@ -1,6 +1,6 @@
 # CPU arrays without Python execution
 
-`research_export_tensor(checkpoint,tensor,output)` exports exact stored weights to `exports/*.npy`. Forward results bind observation `.npy` files to actual module, original/edited model, example ID, positions and source hashes. Read these identities before using an observation. An array reference is `{"path":"exports/weight.npy","sha256":"<returned hash>"}`. Supply only returned paths/hashes from this workspace.
+`research_export_tensor(checkpoint,tensor,output)` exports exact stored weights to `exports/*.npy`. For large tensors, pass `ranges` with one half-open `[start, stop]` pair per stored axis. A slice retains its source shape and coordinate ranges and must fit the same 16M-entry cap. Forward results bind observation `.npy` files to actual module, original/edited model, example ID, positions and source hashes. Read these identities before using an observation. An array reference is `{"path":"exports/weight.npy","sha256":"<returned hash>"}`. Supply only returned paths/hashes from this workspace.
 
 `array_compute(operation,inputs,output,options)` writes a new `analysis/*.npy` plus a provenance JSON. Every input is an array reference. It returns shape, hash, norm, min/max and a bounded preview. Computations are CPU algebra only, never network execution, fitting or weight selection.
 

@@ -15,7 +15,7 @@ from . import core,research
 from .edit_contract import edit_api_schema as contract_schema, enrich_catalog, error_detail
 
 PROJECT=Path(__file__).resolve().parents[1]
-CORE_TOOLS={'inspect_checkpoint','read_tensor_slice','describe_parameter','describe_model_structure','inspect_module_computation','read_parameter_entries','analyze_matrix_geometry','research_forward','research_status','research_result','research_read_generations','research_read_array','research_make_contexts','research_export_tensor','research_prepare_edit','create_candidate','revise_candidate','compare_candidate_parameters','preview_edit'}
+CORE_TOOLS={'inspect_checkpoint','read_tensor_slice','describe_parameter','describe_model_structure','inspect_module_computation','read_parameter_entries','analyze_matrix_geometry','research_forward','research_status','research_result','research_read_generations','research_compare_generations','research_read_array','research_make_contexts','research_export_tensor','research_prepare_edit','create_candidate','revise_candidate','compare_candidate_parameters','preview_edit'}
 
 def digest(p):
  h=hashlib.sha256()
@@ -146,6 +146,7 @@ def helpers(w):
    z=a[0]/n
   elif operation=='transpose':z=np.transpose(a[0],axes=o.get('axes'))
   elif operation=='slice':
+   if not isinstance(o.get('slices'),list):raise ValueError('slice requires "slices": a list with one entry per axis, each an integer or [start,stop,step]')
    ix=[]
    for v in o['slices']:
     if type(v) is int:ix.append(v)

@@ -172,7 +172,9 @@ class Observations:
         self.batch = []
         self.phase, self.step = 'teacher', 0
         self.active = None
-        modules = dict(model.named_modules())
+        observation_model = getattr(model, '_research_observation_model', model)
+        modules = dict(observation_model.named_modules())
+        actual_modules = dict(model.named_modules())
         try:
             for key, suffix in [('layers', ''), ('mlp_layers', '.mlp.down_proj')]:
                 for i in spec.get(key, []):
@@ -180,14 +182,35 @@ class Observations:
                     module = modules.get(name)
                     if module is None or (suffix and not isinstance(module, torch.nn.Linear)):
                         raise ValueError('unsupported observation module: ' + name)
-                    width = module.in_features if suffix else getattr(model.config, 'hidden_size', None)
+                    width = module.in_features if suffix else getattr(observation_model.config, 'hidden_size', None)
                     if type(width) is not int or width < 1:
                         raise ValueError('cannot bound observation width')
                     self.called[name] = {'class': type(module).__name__, 'width': width, 'calls': 0}
+                    if observation_model is not model:
+                        self.called[name]['actual_modules'] = [n for n, value in actual_modules.items() if value is module]
+                        if not self.called[name]['actual_modules']:
+                            raise ValueError('source observation module is absent from multimodal model')
                     if suffix:
                         self.handles.append(module.register_forward_pre_hook(lambda m, args, n=name: self.capture(n, args[0])))
                     else:
                         self.handles.append(module.register_forward_hook(lambda m, args, out, n=name: self.capture(n, out[0] if isinstance(out, tuple) else out)))
+            for name in spec.get('module_inputs', []):
+                if name in self.called or name not in modules:
+                    raise ValueError('duplicate or unknown input observation module: ' + name)
+                module = modules[name]
+                weight = getattr(module, 'weight', None)
+                width = (module.in_features if isinstance(module, torch.nn.Linear)
+                         else weight.numel() if weight is not None and weight.ndim == 1 else None)
+                if type(width) is not int or width < 1:
+                    raise ValueError('cannot bound module input width: ' + name)
+                self.called[name] = {'class': type(module).__name__, 'width': width, 'calls': 0,
+                                     'artifact_kind': 'module_inputs'}
+                if observation_model is not model:
+                    actual = [n for n, value in actual_modules.items() if value is module]
+                    if not actual:
+                        raise ValueError('input observation module absent from multimodal model')
+                    self.called[name]['actual_modules'] = actual
+                self.handles.append(module.register_forward_pre_hook(lambda m, args, n=name: self.capture(n, args[0])))
         except BaseException:
             self.close()
             raise
@@ -226,10 +249,12 @@ class Observations:
     def flush(self):
         for (name, identifier, sample), row in self.rows.items():
             meta = {'module': name, 'id': identifier, 'sample': sample, 'positions': row['positions'], 'mean_token_count': row['count']}
+            kind = self.called[name].get('artifact_kind', 'observations')
             if row['selected'] is not None:
-                self.artifacts.save(row['selected'].cpu().numpy(), 'observations', self.which, **meta)
+                self.artifacts.save(row['selected'].cpu().numpy(), kind, self.which, **meta)
             if row['count']:
-                self.artifacts.save((row['sum'] / row['count']).cpu().numpy(), 'observation_mean', self.which, **meta)
+                mean_kind = 'observation_mean' if kind == 'observations' else kind + '_mean'
+                self.artifacts.save((row['sum'] / row['count']).cpu().numpy(), mean_kind, self.which, **meta)
         self.rows.clear()
 
     def close(self):
@@ -238,9 +263,15 @@ class Observations:
         self.handles.clear()
 
 
-def tokenize(tokenizer, examples, mode, prompt_suffix="\nReturn the final answer in \\boxed{...}."):
+def tokenize(tokenizer, examples, mode, prompt_suffix="\nReturn the final answer in \\boxed{...}.", *, root=None, processor=None):
     result = []
     for row in examples:
+        if row.get('images'):
+            if root is None or processor is None or mode != 'generate':
+                raise ValueError('image tokenization requires native generation processor and workspace')
+            from .multimodal import image_row
+            result.append(image_row(root, processor, row, prompt_suffix))
+            continue
         if 'tokens' in row:
             ids = row['tokens']
         elif mode == 'teacher_forced':
@@ -255,23 +286,31 @@ def tokenize(tokenizer, examples, mode, prompt_suffix="\nReturn the final answer
 
 
 def validate_tokens(model, rows, c, spec):
-    context = ev._context_limit(model)
+    text_model = getattr(model, '_research_observation_model', model)
+    context = ev._context_limit(text_model)
+    vocabulary = text_model.config.vocab_size
+    observations = spec.get('observations', {})
+    capture_ids = observations.get('generation_logits', {}).get('token_ids', [])
+    bias_ids = [entry['token_id'] for entry in spec.get('first_token_logit_bias', [])]
+    if any(token >= vocabulary for token in observations.get('first_token_ids', []) + capture_ids + bias_ids):
+        raise ValueError('requested logit token outside vocabulary')
     total = 0
     for row in rows:
         tokens = row['tokens']
         extra = spec['max_new_tokens'] if spec['type'] == 'generate' else 0
         if len(tokens) < (2 if spec['type'] == 'teacher_forced' else 1) or len(tokens) > c['max_input_tokens'] or len(tokens) + extra > context:
             raise ValueError('sequence exceeds input/context budget')
-        if any(type(t) is not int or not 0 <= t < model.config.vocab_size for t in tokens):
+        if any(type(t) is not int or not 0 <= t < vocabulary for t in tokens):
             raise ValueError('token outside vocabulary')
         total += len(tokens) * spec['n']
     if total > c['max_total_input_tokens']:
         raise ValueError('total input token budget exceeded')
 
 
-def generate(model, tokenizer, examples, c, spec, obs):
+def generate(model, tokenizer, examples, c, spec, obs, report_progress=None):
     import torch
     device = next(model.parameters()).device
+    vocabulary = getattr(model, '_research_observation_model', model).config.vocab_size
     maximum = spec['max_new_tokens']
     rows = [{**e, 'sample': s} for e in examples for s in range(spec['n'])]
     eos = getattr(getattr(model, 'generation_config', None), 'eos_token_id', None)
@@ -281,11 +320,31 @@ def generate(model, tokenizer, examples, c, spec, obs):
     pad = getattr(tokenizer, 'pad_token_id', None)
     pad = pad if pad is not None else (next(iter(eos)) if eos else 0)
     output, calls, pending_bytes = [], 0, 0
+    first_token_ids = obs.spec.get('first_token_ids', [])
+    first_token_scores = []
+    capture = obs.spec.get('generation_logits')
+    captured_scores = []
     prefill_seconds, decode_seconds = 0., 0.
+    completed_tokens = 0
+    last_report = time.monotonic()
+
+    def progress(completed, tokens):
+        nonlocal last_report
+        if report_progress is not None:
+            report_progress({'completed_samples': completed, 'total_samples': len(rows),
+                             'generated_tokens': tokens})
+            last_report = time.monotonic()
+
+    progress(0, 0)
     keep = {'logits_to_keep': 1} if 'logits_to_keep' in inspect.signature(model.forward).parameters else {}
     with torch.inference_mode():
         for start in range(0, len(rows), c.get('batch_size', 8)):
             chunk = rows[start:start+c.get('batch_size', 8)]
+            capture_at = {}
+            if capture:
+                for i, row in enumerate(chunk):
+                    for offset in capture['positions'].get(row['id'], []):
+                        capture_at.setdefault(offset, []).append(i)
             width = max(len(e['tokens']) for e in chunk)
             if obs.artifacts is not None:
                 # Bound raw token/text output before creating this batch's streams.
@@ -294,7 +353,7 @@ def generate(model, tokenizer, examples, c, spec, obs):
             mask = torch.tensor([[0]*(width-len(e['tokens'])) + [1]*len(e['tokens']) for e in chunk], device=device)
             positions = (mask.cumsum(-1)-1).clamp_min(0)
             randoms = np.stack([uniforms(e['id'], e['sample'], c['sampling']['seed'], maximum) for e in chunk])
-            seen = torch.zeros((len(chunk), model.config.vocab_size), device=device, dtype=torch.bool)
+            seen = torch.zeros((len(chunk), vocabulary), device=device, dtype=torch.bool)
             active = torch.ones(len(chunk), device=device, dtype=torch.bool)
             sequences = [[] for _ in chunk]
             reasons = ['max_new_tokens'] * len(chunk)
@@ -302,7 +361,9 @@ def generate(model, tokenizer, examples, c, spec, obs):
             if device.type == 'cuda':
                 torch.cuda.synchronize(device)
             timing = time.monotonic()
-            out = model(input_ids=ids, attention_mask=mask, position_ids=positions, use_cache=True, **keep)
+            from .multimodal import batch_image_inputs
+            image_inputs = batch_image_inputs(chunk, width, device, next(model.parameters()).dtype)
+            out = model(input_ids=ids, attention_mask=mask, position_ids=positions, use_cache=True, **keep, **image_inputs)
             if device.type == 'cuda':
                 torch.cuda.synchronize(device)
             prefill_seconds += time.monotonic()-timing
@@ -313,8 +374,19 @@ def generate(model, tokenizer, examples, c, spec, obs):
                 raise ValueError('generation backend requires actual KV cache')
             logits = out.logits[:, -1]
             del out
+            if first_token_ids:
+                selected_logits = logits[:, first_token_ids].float().cpu().tolist()
+                first_token_scores.extend(
+                    {'id': row['id'], 'sample': row['sample'], 'logits': scores}
+                    for row, scores in zip(chunk, selected_logits)
+                )
             for step in range(maximum):
-                chosen = sample_tokens(logits, seen, randoms[:, step], c['sampling'])
+                sampling_logits = logits
+                if step == 0 and spec.get('first_token_logit_bias'):
+                    sampling_logits = logits.clone()
+                    for entry in spec['first_token_logit_bias']:
+                        sampling_logits[:, entry['token_id']] += entry['bias']
+                chosen = sample_tokens(sampling_logits, seen, randoms[:, step], c['sampling'])
                 was_active = active.clone()
                 chosen = torch.where(was_active, chosen, pad)
                 # One GPU status transfer per step, no per-row GPU scalar reads
@@ -325,6 +397,14 @@ def generate(model, tokenizer, examples, c, spec, obs):
                     is_eos |= chosen == eos_id
                 active = was_active & ~is_eos
                 status = torch.stack([chosen, was_active.long(), active.long()], -1).cpu().tolist()
+                if step in capture_at:
+                    selected = [i for i in capture_at[step] if status[i][1]]
+                    if selected:
+                        scores = logits[selected][:, capture['token_ids']].float().cpu().tolist()
+                        captured_scores.extend({
+                            'id': chunk[i]['id'], 'sample': chunk[i]['sample'],
+                            'continuation_offset': step, 'chosen_token_id': status[i][0], 'logits': values,
+                        } for i, values in zip(selected, scores))
                 any_active = False
                 active_before = []
                 for i, (token, was_live, live) in enumerate(status):
@@ -334,6 +414,9 @@ def generate(model, tokenizer, examples, c, spec, obs):
                         sequences[i].append(token)
                         if not live:
                             reasons[i] = 'eos'
+                if report_progress is not None and step % 64 == 0 and time.monotonic() - last_report >= 30:
+                    progress(len(output) + sum(not live for _, _, live in status),
+                             completed_tokens + sum(map(len, sequences)))
                 need_observe = bool(obs.called) and step < obs.spec.get('mean_answer_tokens', 0)
                 if (any_active and step + 1 < maximum) or need_observe:
                     mask = torch.cat([mask, was_active.long()[:, None]], -1)
@@ -352,7 +435,13 @@ def generate(model, tokenizer, examples, c, spec, obs):
                 extracted, correct = grade(text, e.get('answer', e.get('reference', '')))
                 output.append({'id': e['id'], 'sample': e['sample'], 'input_tokens': len(e['tokens']), 'input_ids': e['tokens'], 'continuation_ids': tokens, 'text': text, 'generated_tokens': len(tokens), 'finish_reason': reason, 'extracted_answer': extracted, 'grade': correct})
             pending_bytes = len(json.dumps(output, ensure_ascii=True).encode())
+            completed_tokens += sum(map(len, sequences))
+            progress(len(output), completed_tokens)
             obs.flush()
+    if first_token_scores:
+        obs.artifacts.save(first_token_scores, 'first_token_logits', obs.which, token_ids=first_token_ids)
+    if capture:
+        obs.artifacts.save(captured_scores, 'generation_logits', obs.which, token_ids=capture['token_ids'])
     count = len(output)
     return output, {'accuracy': sum(r['grade'] is True for r in output)/count, 'parse_failure': sum(r['grade'] is None for r in output), 'cutoff': sum(r['finish_reason'] == 'max_new_tokens' for r in output), 'input_tokens': sum(r['input_tokens'] for r in output), 'generated_tokens': sum(r['generated_tokens'] for r in output), 'samples': count, 'mean_length': sum(r['generated_tokens'] for r in output)/count,
                     'prefill_seconds':prefill_seconds,'decode_seconds':decode_seconds}, calls
@@ -378,7 +467,7 @@ def teacher(model, rows, artifacts, which, obs):
     # large unsupported models instead of silently approximating their forward.
     supported = getattr(model.config, 'model_type', '') == 'qwen3_5_text'
     chunked = chunked and supported
-    vocab = model.config.vocab_size
+    vocab = getattr(model, '_research_observation_model', model).config.vocab_size
     chunk_size = min(TEACHER_HEAD_TOKENS, TEACHER_HEAD_BYTES // (max(1, vocab) * 4 * 3))
     if chunk_size < 1:
         raise ValueError('vocabulary exceeds bounded teacher head memory')
@@ -467,14 +556,68 @@ def cast_for_inference(model, device, dtype, source_dtypes=None):
     return model
 
 
+def load_native_precision(root, c, candidate, source_dtypes):
+    """Opt-in Qwen text loading without a full transient FP32 parameter copy.
+
+    Restore published FP32 parameters from checkpoint bytes before ordinary
+    inference casting. Analysis-only FP32 widening is still cast to native BF16.
+    No model execution or weight selection occurs in this loader.
+    """
+    import torch
+    _, transformers = ev._torch()
+    directory = ev._model_dir(root, c['model_dir'])
+    configuration = api.read(root, directory / 'config.json')
+    if configuration.get('model_type') != 'qwen3_5_text' or configuration.get('rope_parameters', {}).get('rope_type') != 'default':
+        raise ValueError('native_precision_load currently validates Qwen3.5 text with default RoPE only')
+    if not source_dtypes:
+        raise ValueError('native_precision_load requires source_dtypes.json provenance')
+    model, loading = transformers.AutoModelForCausalLM.from_pretrained(
+        str(directory), local_files_only=True, trust_remote_code=False,
+        torch_dtype=torch.bfloat16, use_safetensors=True, output_loading_info=True)
+    if loading.get('missing_keys') or loading.get('mismatched_keys') or loading.get('error_msgs'):
+        raise ValueError('incomplete or incompatible native-precision checkpoint')
+    named = dict(model.named_parameters())
+    with torch.no_grad(), safe_open(directory / 'model.safetensors', framework='pt', device='cpu') as source:
+        for name, original in source_dtypes.items():
+            if original == 'torch.float32':
+                if name not in named:
+                    raise ValueError('source FP32 parameter mapping missing in loaded model')
+                named[name].data = source.get_tensor(name).float().clone()
+        # Qwen's default rotary constructors explicitly create these in FP32.
+        # Refuse an incompatible library implementation rather than silently
+        # retaining rounded positional buffers.
+        for name, buffer in model.named_buffers():
+            if buffer.is_floating_point() and buffer.dtype != torch.float32:
+                raise ValueError('native-precision loading changed a positional buffer dtype: ' + name)
+        if candidate:
+            _, patch = ev.verify_candidate(root, c['model_dir'], candidate)
+            state = model.state_dict()
+            for name, array in patch.items():
+                state[name].copy_(torch.from_numpy(array))
+    return model.eval().requires_grad_(False)
+
+
 def load_verified(root, c, spec, which):
     import torch
     candidate = spec.get('candidate_dir') if which == 'edited' else None
-    model = inference.load_inference_model(root, c['model_dir'], candidate, device='cpu')
-    dtype = getattr(torch, c['inference_dtype'])
     source_dtypes_path = core.local(root, str(Path(c['model_dir']) / 'source_dtypes.json'))
     source_dtypes = api.read(root, source_dtypes_path) if source_dtypes_path.exists() else {}
+    model = (load_native_precision(root, c, candidate, source_dtypes) if c.get('native_precision_load')
+             else inference.load_inference_model(root, c['model_dir'], candidate, device='cpu'))
+    module_name = type(model).__module__
+    if c['device'] == 'cpu' and module_name == 'transformers.models.qwen3_5.modeling_qwen3_5':
+        # Transformers can dispatch to installed CUDA-only extensions even with
+        # CPU inputs. This subprocess uses the upstream Torch reference bodies.
+        modeling_qwen3_5 = sys.modules[module_name]
+        for name in ('causal_conv1d_fn', 'causal_conv1d_update',
+                     'torch_chunk_gated_delta_rule', 'torch_recurrent_gated_delta_rule'):
+            function = getattr(modeling_qwen3_5, name, None)
+            if function is not None:
+                setattr(modeling_qwen3_5, name, inspect.unwrap(function))
+    dtype = getattr(torch, c['inference_dtype'])
     model = cast_for_inference(model, c['device'], dtype, source_dtypes)
+    if c.get('native_precision_load'):
+        model._research_precision_policy['checkpoint_load'] = 'native BF16 with exact source FP32 parameter restoration'
     actual = 0
     if candidate:
         manifest, patch = ev.verify_candidate(root, c['model_dir'], candidate)
@@ -488,6 +631,9 @@ def load_verified(root, c, spec, which):
                 actual += int((expected != original).sum())
         if manifest['report']['changed_parameters'] and actual == 0:
             raise ValueError('nonidentity edit disappears under inference dtype cast')
+    if c.get('multimodal'):
+        from .multimodal import attach_gemma3
+        model = attach_gemma3(root, model, c['multimodal'], c['device'], dtype, cast_for_inference)
     return model, actual
 
 
@@ -543,8 +689,28 @@ def execute(root, jid):
     # All tokenizer files were checked and bound before loading; no remote code/network.
     from transformers import AutoTokenizer
     tokenizer = AutoTokenizer.from_pretrained(str(core.local(root, c['model_dir'])), local_files_only=True, trust_remote_code=False)
-    rows = tokenize(tokenizer, examples, spec['type'], c.get('prompt_suffix', '\nReturn the final answer in \\boxed{...}.'))
+    processor = None
+    if c.get('multimodal'):
+        from .multimodal import load_processor
+        processor = load_processor(root, c['multimodal'])
+    rows = tokenize(tokenizer, examples, spec['type'], c.get('prompt_suffix', '\nReturn the final answer in \\boxed{...}.'),
+                    root=root, processor=processor)
     artifacts = Artifacts(root, d, c['max_artifact_bytes_per_job'])
+    image_metadata = []
+    for row in rows:
+        if '_image_inputs' in row:
+            pixels = row['_image_inputs']['pixel_values'].contiguous().numpy()
+            image_metadata.append({
+                'id': row['id'], 'images': row['images'],
+                'image_sha256': [core.sha256(core.local(root, name)) for name in row['images']],
+                'pixel_values_shape': list(pixels.shape), 'pixel_values_dtype': str(pixels.dtype),
+                'pixel_values_sha256': hashlib.sha256(pixels.tobytes()).hexdigest(),
+                'token_type_ids': row['_image_inputs']['token_type_ids'],
+                'processor_class': type(processor).__name__,
+                'image_processor_class': type(processor.image_processor).__name__,
+            })
+    if image_metadata:
+        artifacts.save(image_metadata, 'image_preprocessing', 'shared')
     metrics, outputs, changes, observations, precision_policies = {}, {}, {}, {}, {}
     calls = 0
     for which in (['original', 'edited'] if spec['model'] == 'both' else [spec['model']]):
@@ -566,7 +732,16 @@ def execute(root, jid):
         try:
             obs.estimate(rows, spec['n'], spec['type'] == 'generate')
             if spec['type'] == 'generate':
-                outputs[which], metrics[which], count = generate(model, tokenizer, rows, c, spec, obs)
+                def report_progress(progress):
+                    try:
+                        api.atomic(root, d / 'progress.json', {'model': which, **progress})
+                    except OSError:
+                        # Advisory progress must not change the inference outcome.
+                        pass
+
+                outputs[which], metrics[which], count = generate(
+                    model, tokenizer, rows, c, spec, obs, report_progress,
+                )
                 artifacts.save(outputs[which], 'generations', which)
             else:
                 metrics[which], count = teacher(model, rows, artifacts, which, obs)

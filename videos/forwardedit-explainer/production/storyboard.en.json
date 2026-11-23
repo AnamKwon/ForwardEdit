@@ -2,18 +2,18 @@
   "locale": "en",
   "primaryPublicVersion": true,
   "fps": 30,
-  "durationInFrames": 3120,
-  "durationSeconds": 104,
+  "durationInFrames": 4080,
+  "durationSeconds": 136,
   "audio": "Captions only; no recorded narration or music.",
-  "disclosure": "Conceptual explanation with illustrative values and abbreviated mock calls; no model was run or edited.",
+  "disclosure": "Workflow demonstrations use illustrative values and abbreviated calls. The Qwen scene uses retained measurements. The fine-tuning scene states missing evidence and the comparison design; the 12-story trainability check is excluded from method comparisons. No new target-model run or training.",
   "sources": [
     {
       "path": "README.md",
-      "sha256": "a5a9cb8b99fd6af7c3ac9210cd37bf6d8b31b2663d465fa28fc5e8285b233609"
+      "sha256": "73d2b7924b8b6b2467cc97fa37a9b3cd0a2453b1bb3caf3bc8d024e3076f549c"
     },
     {
       "path": "README.ko.md",
-      "sha256": "32a641b1648a5ccd12212015a40d7ae5eedee21af6cffafc782de4e625359325"
+      "sha256": "93a98c37049263c075a3ea424fa9ca0039c0cf9542645e2d4298b9569045c00a"
     },
     {
       "path": "DESIGN.md",
@@ -32,8 +32,36 @@
       "sha256": "27c7c78c48b03f9f8e43be4bb387b5f6d78ca18471fa97ce29e816dc8e9066c0"
     },
     {
+      "path": "docs/RESULTS.md",
+      "sha256": "b0cf6ea10b10de4d03b3c08b7d3508535071108067781a97539db176983e51ff"
+    },
+    {
+      "path": "docs/FINETUNING_COMPARISON.md",
+      "sha256": "9a272c95c83fb1a14323f06b32aee2c9bd1e908704296c808fbf9534c7c0e27e"
+    },
+    {
+      "path": "docs/FINETUNING_COMPARISON.ko.md",
+      "sha256": "ec33d94bce41b3575ebcf9bbfbd12fb9418e4e528a0b00492aa221b9e0efdf3c"
+    },
+    {
+      "path": "docs/assets/results/figure-data.json",
+      "sha256": "9fb499d4e1a6f4df7d7a2678ea3807a013a5010e3f8fd5979a08839909b968f8"
+    },
+    {
+      "path": "experiments/extended-discovery-006/study-outcome.json",
+      "sha256": "4394abad6f04581c31583a21bbc8593de604b58dcdfb1e1d8a926759e150c2fb"
+    },
+    {
+      "path": "experiments/direct-values-inference-only-001/host-audit.json",
+      "sha256": "4d27197803f4341dcd7243793f4a2618ccb8a11148e7012c07919db195141727"
+    },
+    {
+      "path": "docs/evidence/mcp-training-verification.json",
+      "sha256": "dca8b2afcedc310a1e7106358a0c1403bf5130f2af74fc0baf59912692e599b3"
+    },
+    {
       "path": "weight_space_lab/server.py",
-      "sha256": "7160a779b9398b6f5411064390a94f6bdf6d474eb35c4b49669f7e5436e9ddb5"
+      "sha256": "9220f856867dded952ad8d9c51d3e6a7705107494db405b0bb1b3d2e4255db31"
     },
     {
       "path": "weight_space_lab/standalone.py",
@@ -198,20 +226,71 @@
       ]
     },
     {
-      "id": "RecapScene",
-      "title": "07 Claims and limitations",
+      "id": "EnglishResultsScene",
+      "title": "07 Retained Qwen results",
       "startFrame": 2820,
-      "durationInFrames": 300,
+      "durationInFrames": 480,
       "captions": [
         {
           "startFrame": 2820,
-          "endFrame": 2970,
+          "endFrame": 2940,
+          "text": "This subset gained 85 net correct answers: 86 rescued and one lost."
+        },
+        {
+          "startFrame": 2940,
+          "endFrame": 3060,
+          "text": "Seventeen of 18 originally correct answers remained correct."
+        },
+        {
+          "startFrame": 3060,
+          "endFrame": 3180,
+          "text": "The prespecified 5% rule allows zero losses when the denominator is 18."
+        },
+        {
+          "startFrame": 3180,
+          "endFrame": 3300,
+          "text": "Missing that study rule does not erase the measured accuracy gain."
+        }
+      ]
+    },
+    {
+      "id": "EnglishComparisonScene",
+      "title": "08 Fine-tuning comparison with sufficient data",
+      "startFrame": 3300,
+      "durationInFrames": 480,
+      "captions": [
+        {
+          "startFrame": 3300,
+          "endFrame": 3450,
+          "text": "Twelve training stories cannot represent properly tuned fine-tuning."
+        },
+        {
+          "startFrame": 3450,
+          "endFrame": 3600,
+          "text": "Use substantial task data, validation selection and common quality and retention checks."
+        },
+        {
+          "startFrame": 3600,
+          "endFrame": 3780,
+          "text": "Report the data and total costs. This comparison has not yet been run."
+        }
+      ]
+    },
+    {
+      "id": "RecapScene",
+      "title": "07 Claims and limitations",
+      "startFrame": 3780,
+      "durationInFrames": 300,
+      "captions": [
+        {
+          "startFrame": 3780,
+          "endFrame": 3930,
           "text": "ForwardEdit separates judgment, execution and verification, and retains the evidence."
         },
         {
-          "startFrame": 2970,
-          "endFrame": 3120,
-          "text": "Every published study failed at least one declared acceptance criterion."
+          "startFrame": 3930,
+          "endFrame": 4080,
+          "text": "Report the observed gains and the original protocol decisions separately."
         }
       ]
     }

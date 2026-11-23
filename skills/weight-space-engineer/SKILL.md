@@ -7,7 +7,13 @@ description: Investigate neural-network computation and author feedback-dependen
 
 처음에는 [분석 도구 사용법](references/analysis-playbook.md)을 필요한 부분만 읽는다. 실제 parameter 의미를 이해했다고 선언하기 전에 구조, 계산식, 관측, 개입의 증거 수준을 구분한다. 가중치의 숫자나 SVD 성분만으로 ‘반복 뉴런’, ‘추론 회로’ 같은 의미를 확정하지 않는다.
 
+과제 오류를 처음 관찰하기 전에 [데이터 분리](references/data-separation.md)를 적용한다. 편집용 train(`discovery`)에서만 정답·활성·오류 벡터로 편집을 설계하고, 별도 validation은 고정 지표로 후보를 선택하는 데 사용한다. validation 사례를 다음 산식에 넣으면 개발 데이터로 전환한 사실을 기록한다. 최종 test는 선택 고정 후 평가하며 편집·재선택에 재사용하지 않는다. 세 집합의 개수·그룹·노출과 성능을 별도 보고하고, API split 이름을 독립성의 증거로 취급하지 않는다.
+
 사용자가 여러 회차의 수정이나 벡터 흐름 추적을 요청하면 [관측 축적과 적응적 편집](references/adaptive-edit-loop.md)을 읽는다. 정상·실패·새 손상 사례를 버전별로 축적하고, 편집 후 실제로 달라진 생성 prefix를 다시 관측한다. 실패한 가설의 판정과 다음에 확인할 질문을 기록하며, 사용자가 요청한 실험 깊이를 단순 예산 상한으로 바꿔 조기 종료하지 않는다. 이 절차는 스킬 지침이며 서버가 의미 가설이나 반복 깊이를 자동 보장하는 기능은 아니다.
+
+이전 실험 로그를 다음 수정에 활용하거나 중단된 편집을 재개하면 [로그를 수정 근거로 연결하기](references/log-feedback.md)를 읽는다. 출처·데이터 역할·현재 모델 일치를 확인한 작은 근거 묶음을 만들고, 관측과 가설의 판정 및 다음 반증 관측을 연결한다. 다른 모델의 성공 좌표·계수를 현재 모델의 수치 근거로 사용하지 않는다.
+
+국소 교정이 자유 생성에 이어지지 않거나 정답률·출력 길이·종료 기록이 어긋나면 [생성 비교와 원인 진단](references/generation-diagnosis.md)을 읽는다.
 
 1. **계산 구조를 읽는다.** `inspect_checkpoint`, `describe_model_structure`로 모듈·소유 parameter·공유 weight를 찾는다. `inspect_module_computation`으로 실제 로딩된 `forward`를 읽고 bias·normalization·gate·nonlinearity·residual 경로를 확인한다. 작은 행렬은 `describe_parameter`/`read_tensor_slice`, 벡터·고차 텐서의 명시적 항목은 `read_parameter_entries`로 읽는다. 이름이나 shape를 근거로 축을 추측하지 않는다.
 2. **가설에 필요한 관측을 선택한다.** weight-only geometry가 필요하면 `analyze_matrix_geometry`; 실제 토큰 흐름은 `trace_token_flow`; 위치별 writer 기여는 `analyze_parameter_contexts`; 평균·분포 관측은 `diagnose_model`을 사용한다. 모든 분석을 매번 실행하지 않는다. 실패와 정상의 실제 생성/예측을 확인하고, 위치·길이·내용 차이가 설명하는 대안도 둔다.

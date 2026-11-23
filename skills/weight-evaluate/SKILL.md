@@ -7,6 +7,8 @@ description: Evaluate LLM-authored direct edits through forward-only development
 
 시작 전에 model/data hash·split·생성 설정·후보/forward/token 예산·최소 개선·허용 회귀를 정한다. 탐색 때 score_candidate(splits=[discovery,validation])로 개발 데이터만 추론한다. probe_model로 실제 생성/next-token을, diagnose_model(candidate_dir=...)로 예측한 국소 activation 변화를 확인한다. 모델 실행은 MCP 도구를 사용하며 kernel에서 직접 forward로 예산을 우회하지 않는다.
 
+[데이터 분리 지침](../weight-space-engineer/references/data-separation.md)에 따라 오류를 읽기 전에 편집용 train(`discovery`), 후보 선택용 validation, 최종 test를 분리·해시 고정한다. 오류·정답·활성으로 편집을 구성하는 작업은 train에 한정하고 validation은 선택 지표로만 사용한다. validation 사례로 편집을 재설계했다면 그 문항은 개발 데이터이며 이후 점수를 독립 검증으로 보고하지 않는다. 두 집합만 쓰는 경우 두 번째는 후보 고정 후 한 번 여는 최종 holdout으로만 사용할 수 있다. train 재평가, validation 선택 성능, 선택 미사용 test 결과를 같은 개선 수치로 합치지 않는다.
+
 LLM이 관측을 해석하고 새 값을 명시한다. 자동 수치최적화/방향·좌표·strength sweep은 만들지 않는다. 반대·무수정·변경량을 맞춘 대조는 메커니즘 반증용이다. source와 실제 적용값도 대조한다.
 
 validation으로 후보·plan/patch/hash/기준을 고정한 뒤 evaluate_candidate로 독립 확인한다. 이 도구는 모든 split을 평가하므로 탐색 후보마다 호출하지 않는다. run_experiment는 미리 작성된 제한된 가설 plan의 비교 도구이며 값을 학습하지 않는다. 같은 test를 본 뒤 차점 후보로 재선택하지 않는다.
