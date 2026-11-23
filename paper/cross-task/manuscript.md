@@ -192,7 +192,7 @@ Before an editor run, the host runs one forward pass over wrong development rows
 - **One editor family and one prompt design.** Most results are single runs, and several sealed sets are small (40–80 cases).
 - **Models up to 4B only.** 7B, 9B and 27B were blocked by disk capacity and quantized-weight tooling.
 - **Host-selected tasks.** A 27-task BBH screen and pre-registered gates mitigate this; they do not remove it.
-- **The editor prompt carried earlier-session recipe notes** (e.g., the layer mapping for knowledge edits). The 4B knowledge result is recipe transfer, not blind discovery.
+- **The editor prompt carried earlier-session recipe notes** (e.g., the layer mapping for knowledge edits). The 4B knowledge result is recipe transfer, not blind discovery. A blind attempt (qcf18_4b) removed those notes. The editor then found a different structure on its own: a rank-40 subject-keyed low_rank write to L10 down_proj, keyed at the subject's context mention, instead of allocating near-dead neurons. Its best candidate raised unexposed paraphrase accuracy by +8.75 points (z 2.75). However, the tool refused to freeze it because too few unexposed GSM preserve items remained, so the blind attempt has no sealed result. A guard against that failure was added, and a repeat (qcf19_4b) is pending.
 - **Costs.** An editor run takes 45–90 minutes and 0.3–0.8M new input tokens, against 10–30 minutes for LoRA. No efficiency advantage is claimed.
 - **"Math gains are not real math ability."** Confirmed for our arithmetic edits (H2).
 - **Artifacts are not public** (see below), so readers cannot yet verify the numbers.
