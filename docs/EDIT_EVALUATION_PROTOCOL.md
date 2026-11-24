@@ -84,3 +84,27 @@ outcomes, exposure limitations, and **Unaddressed criticisms / 미대응 비판*
 reports. A result cannot move to another row merely because its filename changed.
 This is a prospective protocol; it does not retrofit historical experiments or
 create new model measurements.
+
+## Comparison tiers (adopted 2026-11-24, prospective)
+
+A weight edit changes the model; an inference-time method (prompting, few-shot,
+CoT, decoding settings, budget forcing) changes how the model is called. Reports
+keep these apart and state each tier separately:
+
+1. **Model level (primary).** Original vs edited model under the same deployment
+   settings. "Default settings" means the model vendor's recommended decoding for
+   the mode being used (for Qwen thinking: T 0.6, top-p 0.95, top-k 20, presence
+   penalty 1.5), not greedy decoding chosen to make the original look weak. Also
+   compare against other weight-modification methods on the same data (LoRA,
+   MEMIT/ROME; host-only comparators) and check every supported usage mode
+   (e.g. thinking on and off) for losses.
+2. **Combination.** Edited model + the strongest inference-time method vs the
+   original model + the same method, at every declared setting of that method.
+   A positive combination result is the strongest evidence that the edit adds
+   something inference-time methods cannot.
+3. **Reference.** Inference-time-only scores, reported for context. An edit that
+   matches but does not exceed them is described as moving that behaviour into
+   the weights (no serving change needed), not as a capability gain.
+
+Verdicts already pre-registered under earlier rules are not re-judged; papers may
+re-read old results through these tiers but must quote the original verdict.

@@ -1,0 +1,316 @@
+% New entries for the 2026-11-24 Related Work revision.
+% Do not merge blindly: keys already present in ../references.bib
+% (takehi2026wsp, meng2022rome, meng2023memit, cobbe2021gsm8k, hendrycks2021math,
+% qwen35modelcard) are not repeated here.
+% Every arXiv id, title, author list and date below was checked against the arXiv
+% abstract page (citation_* metadata) on 2026-11-24. Venues were checked against the
+% arXiv comments/journal-ref field, ACL Anthology BibTeX or PMLR, except where a
+% "note" says otherwise. Community sources (blogs, forum threads) were opened
+% directly on 2026-11-24.
+
+% ---------------------------------------------------------------------------
+% WSP follow-ups and critiques
+% ---------------------------------------------------------------------------
+
+@misc{hu2026wspscope,
+  author = {Hu, Junru and Tang, Cheng and Li, Wei and Zhu, Hongze and Feng, Chun-Mei and Zhang, Qi and Chen, Yirong and Hu, Ming},
+  title = {Exploring {Weight-Space Programming}: Capabilities, Generalization, and Limitations},
+  year = {2026},
+  eprint = {2611.09382},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2611.09382},
+  note = {Title page lists Shanghai Artificial Intelligence Laboratory, Tongji University and Fudan University}
+}
+
+@misc{ok2026wspnotransformer,
+  author = {Ok, Hyunjong and Lee, Jaeho},
+  title = {{Weight-Space Programming} Doesn't Need Transformers},
+  year = {2026},
+  eprint = {2611.22055},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2611.22055},
+  note = {POSTECH. Preprint (work in progress)}
+}
+
+@misc{ahmed2026wspaudit,
+  author = {Ahmed, Nazmus Sakib},
+  title = {Can an {LLM} Actually Reason and Program about Neural Network's Weights or is it just memorization on steroids? Exploring ``{Weight-Space Programming}''},
+  year = {2026},
+  eprint = {2611.08070},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2611.08070}
+}
+
+@misc{barry2026lp,
+  author = {Barry, Nathan},
+  title = {Can a Linear Program Do {Weight-Space Programming}?},
+  year = {2026},
+  month = nov,
+  howpublished = {Blog post},
+  url = {https://nathan.rs/posts/weight-space-lp/},
+  note = {Posted November 9, 2026; accessed November 24, 2026}
+}
+
+@misc{wang2026closerlook,
+  author = {Wang, Zhi and Hsu, Brandon and Wang, Tianhao and Belkin, Mikhail},
+  title = {A closer look at ``{Sparks of Weight-Space Programming}''},
+  year = {2026},
+  month = nov,
+  howpublished = {LessWrong},
+  url = {https://www.lesswrong.com/posts/PD8Hmzro4N3piJSMP/a-closer-look-at-sparks-of-weight-space-programming},
+  note = {UC San Diego. Posted November 17, 2026; accessed November 24, 2026}
+}
+
+@misc{honnibal2026misleading,
+  author = {Honnibal, Matthew},
+  title = {The `{Astra} can read and write weights to improve {Qwen}' post is misleading},
+  year = {2026},
+  month = nov,
+  howpublished = {Blog post},
+  url = {https://honnibal.dev/blog/astra-read-write-misleading},
+  note = {Dated November 3, 2026; accessed November 24, 2026}
+}
+
+@misc{hn2026wspthread,
+  author = {{Hacker News}},
+  title = {Discussion thread: ``{Astra} can read and write weights to improve {Qwen}''},
+  year = {2026},
+  month = nov,
+  url = {https://news.ycombinator.com/item?id=50341174},
+  note = {Submitted November 2, 2026; 2971 points and 902 comments when checked on November 24, 2026. Related threads: https://news.ycombinator.com/item?id=50351111 (on Honnibal's post) and https://news.ycombinator.com/item?id=50452655 (on Barry's post)}
+}
+
+% ---------------------------------------------------------------------------
+% Knowledge editing and its evaluation
+% ---------------------------------------------------------------------------
+
+@inproceedings{mitchell2022mend,
+  author = {Mitchell, Eric and Lin, Charles and Bosselut, Antoine and Finn, Chelsea and Manning, Christopher D.},
+  title = {Fast Model Editing at Scale},
+  booktitle = {International Conference on Learning Representations},
+  year = {2022},
+  eprint = {2110.11309},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2110.11309}
+}
+
+@inproceedings{fang2025alphaedit,
+  author = {Fang, Junfeng and Jiang, Houcheng and Wang, Kun and Ma, Yunshan and Jie, Shi and Wang, Xiang and He, Xiangnan and Chua, Tat-Seng},
+  title = {{AlphaEdit}: Null-Space Constrained Knowledge Editing for Language Models},
+  booktitle = {International Conference on Learning Representations},
+  year = {2025},
+  eprint = {2410.02355},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2410.02355},
+  note = {Oral}
+}
+
+@inproceedings{yang2025mirage,
+  author = {Yang, Wanli and Sun, Fei and Tan, Jiajun and Ma, Xinyu and Cao, Qi and Yin, Dawei and Shen, Huawei and Cheng, Xueqi},
+  title = {The Mirage of Model Editing: Revisiting Evaluation in the Wild},
+  booktitle = {Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year = {2025},
+  pages = {15336--15354},
+  doi = {10.18653/v1/2025.acl-long.745},
+  url = {https://aclanthology.org/2025.acl-long.745/},
+  eprint = {2502.11177},
+  archivePrefix = {arXiv}
+}
+
+% ---------------------------------------------------------------------------
+% Activation steering, directional ablation, steering-to-weights
+% ---------------------------------------------------------------------------
+
+@misc{turner2023actadd,
+  author = {Turner, Alexander Matt and Thiergart, Lisa and Leech, Gavin and Udell, David and Vazquez, Juan J. and Mini, Ulisse and MacDiarmid, Monte},
+  title = {Steering Language Models With Activation Engineering},
+  year = {2023},
+  eprint = {2308.10248},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2308.10248}
+}
+
+@misc{zou2023repe,
+  author = {Zou, Andy and Phan, Long and Chen, Sarah and Campbell, James and Guo, Phillip and Ren, Richard and Pan, Alexander and Yin, Xuwang and Mazeika, Mantas and Dombrowski, Ann-Kathrin and Goel, Shashwat and Li, Nathaniel and Byun, Michael J. and Wang, Zifan and Mallen, Alex and Basart, Steven and Koyejo, Sanmi and Song, Dawn and Fredrikson, Matt and Kolter, J. Zico and Hendrycks, Dan},
+  title = {Representation Engineering: A Top-Down Approach to {AI} Transparency},
+  year = {2023},
+  eprint = {2310.01405},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2310.01405}
+}
+
+@inproceedings{rimsky2024caa,
+  author = {Rimsky, Nina and Gabrieli, Nick and Schulz, Julian and Tong, Meg and Hubinger, Evan and Turner, Alexander},
+  title = {Steering {Llama} 2 via Contrastive Activation Addition},
+  booktitle = {Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  year = {2024},
+  pages = {15504--15522},
+  doi = {10.18653/v1/2024.acl-long.828},
+  url = {https://aclanthology.org/2024.acl-long.828/},
+  eprint = {2312.06681},
+  archivePrefix = {arXiv},
+  note = {arXiv lists the first author as Nina Panickssery}
+}
+
+@inproceedings{arditi2024refusal,
+  author = {Arditi, Andy and Obeso, Oscar and Syed, Aaquib and Paleka, Daniel and Panickssery, Nina and Gurnee, Wes and Nanda, Neel},
+  title = {Refusal in Language Models Is Mediated by a Single Direction},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2024},
+  eprint = {2406.11717},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2406.11717},
+  note = {Venue not shown on the arXiv page; confirm against the NeurIPS 2024 proceedings before camera-ready}
+}
+
+@inproceedings{sun2026steer2edit,
+  author = {Sun, Chung-En and Yan, Ge and Wang, Zimo and Weng, Tsui-Wei},
+  title = {{Steer2Edit}: From Activation Steering to Component-Level Editing},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year = {2026},
+  eprint = {2602.09870},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2602.09870},
+  note = {arXiv comment: accepted to NeurIPS 2026}
+}
+
+@inproceedings{xu2026whysteering,
+  author = {Xu, Ziwen and Wu, Chenyan and Sun, Hengyu and Hong, Haiwen and Wang, Mengru and Yao, Yunzhi and Huang, Longtao and Xue, Hui and Deng, Shumin and Chu, Zhixuan and Chen, Huajun and Zhang, Ningyu},
+  title = {Why Steering Works: Toward a Unified View of Language Model Parameter Dynamics},
+  booktitle = {Proceedings of the Annual Meeting of the Association for Computational Linguistics},
+  year = {2026},
+  eprint = {2602.02343},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2602.02343},
+  note = {arXiv comment: ACL 2026}
+}
+
+@misc{adila2026activationshifts,
+  author = {Adila, Dyah and Cooper, John and Yun, Alexander and Trost, Avi and Sala, Frederic},
+  title = {Weight Updates as Activation Shifts: A Principled Framework for Steering},
+  year = {2026},
+  eprint = {2603.00425},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2603.00425}
+}
+
+% ---------------------------------------------------------------------------
+% Parameter-efficient fine-tuning
+% ---------------------------------------------------------------------------
+
+@inproceedings{hu2022lora,
+  author = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  title = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  booktitle = {International Conference on Learning Representations},
+  year = {2022},
+  eprint = {2106.09685},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2106.09685}
+}
+
+% ---------------------------------------------------------------------------
+% Reasoning-model looping, overthinking and token efficiency
+% ---------------------------------------------------------------------------
+
+@misc{chen2024overthinking,
+  author = {Chen, Xingyu and Xu, Jiahao and Liang, Tian and He, Zhiwei and Pang, Jianhui and Yu, Dian and Song, Linfeng and Liu, Qiuzhi and Zhou, Mengfei and Zhang, Zhuosheng and Wang, Rui and Tu, Zhaopeng and Mi, Haitao and Yu, Dong},
+  title = {Do {NOT} Think That Much for 2+3=? On the Overthinking of o1-Like {LLMs}},
+  year = {2024},
+  eprint = {2412.21187},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2412.21187}
+}
+
+@inproceedings{muennighoff2025s1,
+  author = {Muennighoff, Niklas and Yang, Zitong and Shi, Weijia and Li, Xiang Lisa and Fei-Fei, Li and Hajishirzi, Hannaneh and Zettlemoyer, Luke and Liang, Percy and Cand{\`e}s, Emmanuel and Hashimoto, Tatsunori},
+  title = {s1: Simple test-time scaling},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  year = {2025},
+  pages = {20275--20321},
+  doi = {10.18653/v1/2025.emnlp-main.1025},
+  url = {https://aclanthology.org/2025.emnlp-main.1025/},
+  eprint = {2501.19393},
+  archivePrefix = {arXiv}
+}
+
+@misc{wang2025nowait,
+  author = {Wang, Chenlong and Feng, Yuanning and Chen, Dongping and Chu, Zhaoyang and Krishna, Ranjay and Zhou, Tianyi},
+  title = {Wait, We Don't Need to ``Wait''! Removing Thinking Tokens Improves Reasoning Efficiency},
+  year = {2025},
+  eprint = {2506.08343},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2506.08343}
+}
+
+@misc{chen2025seal,
+  author = {Chen, Runjin and Zhang, Zhenyu and Hong, Junyuan and Kundu, Souvik and Wang, Zhangyang},
+  title = {{SEAL}: Steerable Reasoning Calibration of Large Language Models for Free},
+  year = {2025},
+  eprint = {2504.07986},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2504.07986}
+}
+
+@inproceedings{sun2025thinkedit,
+  author = {Sun, Chung-En and Yan, Ge and Weng, Tsui-Wei},
+  title = {{ThinkEdit}: Interpretable Weight Editing to Mitigate Overly Short Thinking in Reasoning Models},
+  booktitle = {Proceedings of the 2025 Conference on Empirical Methods in Natural Language Processing},
+  year = {2025},
+  eprint = {2503.22048},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2503.22048},
+  note = {arXiv comment: accepted to EMNLP 2025 (main/findings track not stated); add pages/DOI from the ACL Anthology before camera-ready}
+}
+
+@inproceedings{pipis2026loops,
+  author = {Pipis, Charilaos and Garg, Shivam and Kontonis, Vasilis and Shrivastava, Vaishnavi and Krishnamurthy, Akshay and Papailiopoulos, Dimitris},
+  title = {Wait, Wait, Wait... Why Do Reasoning Models Loop?},
+  booktitle = {Proceedings of the International Conference on Machine Learning},
+  series = {Proceedings of Machine Learning Research},
+  volume = {306},
+  year = {2026},
+  eprint = {2512.12895},
+  archivePrefix = {arXiv},
+  url = {https://proceedings.mlr.press/v306/pipis26a.html}
+}
+
+% ---------------------------------------------------------------------------
+% Benchmarks cited in the manuscript but missing from references.bib
+% ---------------------------------------------------------------------------
+
+@misc{suzgun2022bbh,
+  author = {Suzgun, Mirac and Scales, Nathan and Sch{\"a}rli, Nathanael and Gehrmann, Sebastian and Tay, Yi and Chung, Hyung Won and Chowdhery, Aakanksha and Le, Quoc V. and Chi, Ed H. and Zhou, Denny and Wei, Jason},
+  title = {Challenging {BIG-Bench} Tasks and Whether Chain-of-Thought Can Solve Them},
+  year = {2022},
+  eprint = {2210.09261},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2210.09261}
+}
+
+@misc{zhou2023ifeval,
+  author = {Zhou, Jeffrey and Lu, Tianjian and Mishra, Swaroop and Brahma, Siddhartha and Basu, Sujoy and Luan, Yi and Zhou, Denny and Hou, Le},
+  title = {Instruction-Following Evaluation for Large Language Models},
+  year = {2023},
+  eprint = {2311.07911},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2311.07911}
+}
+
+@inproceedings{hendrycks2021mmlu,
+  author = {Hendrycks, Dan and Burns, Collin and Basart, Steven and Zou, Andy and Mazeika, Mantas and Song, Dawn and Steinhardt, Jacob},
+  title = {Measuring Massive Multitask Language Understanding},
+  booktitle = {International Conference on Learning Representations},
+  year = {2021},
+  eprint = {2009.03300},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/2009.03300}
+}
+
+@misc{clark2018arc,
+  author = {Clark, Peter and Cowhey, Isaac and Etzioni, Oren and Khot, Tushar and Sabharwal, Ashish and Schoenick, Carissa and Tafjord, Oyvind},
+  title = {Think you have Solved Question Answering? Try {ARC}, the {AI2} Reasoning Challenge},
+  year = {2018},
+  eprint = {1803.05457},
+  archivePrefix = {arXiv},
+  url = {https://arxiv.org/abs/1803.05457}
+}

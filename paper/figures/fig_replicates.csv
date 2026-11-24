@@ -1,0 +1,6 @@
+run,layers,status,sealed_allctx_S,PS_gain_pts,PS_se_pts,primary
+0.8B Fact-Edit (2% cap),L8,frozen,0.8484,13.75,4.24,PASS
+0.8B Fact-Edit (no cap; never bound),L12+L8,frozen,0.8127,6.25,3.23,FAIL
+0.8B Fact-Edit (2% cap) replicate 1,L9,frozen,0.8627,17.5,4.6,PASS
+0.8B Fact-Edit (2% cap) replicate 2,L4,frozen,0.7837,0.0,3.06,FAIL
+0.8B Fact-Edit (2% cap) replicate 3,L10,no freeze,,,,

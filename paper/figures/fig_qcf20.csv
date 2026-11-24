@@ -1,0 +1,9 @@
+panel,item,noedit_or_orig,edit,diff_pts,se_pts
+sealed_S,none,0.037,0.0587,,
+sealed_S,all,0.784,0.8358,,
+sealed_S,all_x2,0.8231,0.8517,,
+sealed_S,oracle,0.7473,0.7873,,
+sealed_S,override,0.7544,0.8511,,
+regression,mmlu,0.7585,0.751,-0.75,0.46
+regression,arc,0.9386,0.93,-0.85,0.38
+regression,gsm8k,0.745,0.725,-2.0,3.08

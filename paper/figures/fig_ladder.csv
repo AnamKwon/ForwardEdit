@@ -1,0 +1,41 @@
+task,arm,component,score,mmlu200
+4B Fact-Edit A,No edit,rewrite_generation_nll,0.5875,0.75
+4B Fact-Edit A,No edit,preserve_neighborhood_nll,0.625,0.75
+4B Fact-Edit A,No edit,preserve_neighborhood_plain_nll,0.875,0.75
+4B Fact-Edit A,No edit,S,0.6749,0.75
+4B Fact-Edit A,"Best logit bias, LB(1.0)",rewrite_generation_nll,0.7125,0.75
+4B Fact-Edit A,"Best logit bias, LB(1.0)",preserve_neighborhood_nll,0.35,0.75
+4B Fact-Edit A,"Best logit bias, LB(1.0)",preserve_neighborhood_plain_nll,0.75,0.75
+4B Fact-Edit A,"Best logit bias, LB(1.0)",S,0.5363,0.75
+4B Fact-Edit A,"Best always-on steering, ST(1.0)",rewrite_generation_nll,0.6625,0.735
+4B Fact-Edit A,"Best always-on steering, ST(1.0)",preserve_neighborhood_nll,0.6,0.735
+4B Fact-Edit A,"Best always-on steering, ST(1.0)",preserve_neighborhood_plain_nll,0.825,0.735
+4B Fact-Edit A,"Best always-on steering, ST(1.0)",S,0.6836,0.735
+4B Fact-Edit A,Oracle per-fact steering (OR),rewrite_generation_nll,0.825,0.75
+4B Fact-Edit A,Oracle per-fact steering (OR),preserve_neighborhood_nll,0.625,0.75
+4B Fact-Edit A,Oracle per-fact steering (OR),preserve_neighborhood_plain_nll,0.875,0.75
+4B Fact-Edit A,Oracle per-fact steering (OR),S,0.7585,0.75
+4B Fact-Edit A,LLM edit (E),rewrite_generation_nll,0.9375,0.765
+4B Fact-Edit A,LLM edit (E),preserve_neighborhood_nll,0.925,0.765
+4B Fact-Edit A,LLM edit (E),preserve_neighborhood_plain_nll,0.85,0.765
+4B Fact-Edit A,LLM edit (E),S,0.9025,0.765
+4B Fact-Edit B,No edit,rewrite_generation_nll,0.6375,0.715
+4B Fact-Edit B,No edit,preserve_neighborhood_nll,0.5875,0.715
+4B Fact-Edit B,No edit,preserve_neighborhood_plain_nll,0.875,0.715
+4B Fact-Edit B,No edit,S,0.6797,0.715
+4B Fact-Edit B,"Best logit bias, LB(1.0)",rewrite_generation_nll,0.9125,0.715
+4B Fact-Edit B,"Best logit bias, LB(1.0)",preserve_neighborhood_nll,0.2125,0.715
+4B Fact-Edit B,"Best logit bias, LB(1.0)",preserve_neighborhood_plain_nll,0.775,0.715
+4B Fact-Edit B,"Best logit bias, LB(1.0)",S,0.423,0.715
+4B Fact-Edit B,"Best always-on steering, ST(1.0)",rewrite_generation_nll,0.6375,0.7
+4B Fact-Edit B,"Best always-on steering, ST(1.0)",preserve_neighborhood_nll,0.575,0.7
+4B Fact-Edit B,"Best always-on steering, ST(1.0)",preserve_neighborhood_plain_nll,0.875,0.7
+4B Fact-Edit B,"Best always-on steering, ST(1.0)",S,0.6741,0.7
+4B Fact-Edit B,Oracle per-fact steering (OR),rewrite_generation_nll,0.7875,0.715
+4B Fact-Edit B,Oracle per-fact steering (OR),preserve_neighborhood_nll,0.5875,0.715
+4B Fact-Edit B,Oracle per-fact steering (OR),preserve_neighborhood_plain_nll,0.875,0.715
+4B Fact-Edit B,Oracle per-fact steering (OR),S,0.7291,0.715
+4B Fact-Edit B,LLM edit (E),rewrite_generation_nll,0.9125,0.73
+4B Fact-Edit B,LLM edit (E),preserve_neighborhood_nll,0.8,0.73
+4B Fact-Edit B,LLM edit (E),preserve_neighborhood_plain_nll,0.875,0.73
+4B Fact-Edit B,LLM edit (E),S,0.8599,0.73
