@@ -1,0 +1,17 @@
+panel,bar,value,kind
+"A. Fact edit, fact given in context",No edit (best route),0.758,baseline
+"A. Fact edit, fact given in context",Logit bias (best),0.756,baseline
+"A. Fact edit, fact given in context",Steering (best),0.747,baseline
+"A. Fact edit, fact given in context",Oracle steering*,0.918,oracle
+"A. Fact edit, fact given in context",LLM weight edit,0.92,edit
+"B. Fact edit, no context",No edit,0.092,baseline
+"B. Fact edit, no context",LLM weight edit,0.682,edit
+"B. Fact edit, no context",ROME,0.806,baseline
+"B. Fact edit, no context",MEMIT,0.897,baseline
+"B. Fact edit, no context",LoRA,0.898,baseline
+"C. IFEval, thinking mode",Original,20.8,baseline
+"C. IFEval, thinking mode",LLM weight edit,65.6,edit
+"C. IFEval, thinking mode",Budget forcing 4k,70.1,baseline
+"C. IFEval, thinking mode",Edit + budget forcing 4k,65.6,edit
+"D. 4B defect audit, decoding only (no edit)",Greedy (default),77.5,baseline
+"D. 4B defect audit, decoding only (no edit)",Greedy + repetition suppression (Qwen rec.),86.2,baseline
