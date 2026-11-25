@@ -16,6 +16,9 @@ Readable names for internal experiment identifiers. Papers and reports use the r
 | 4B Blind Fact-Edit 1 | 4B 블라인드 사실 편집 1 | `qcf18_4b` | Qwen3.5-4B | All-context rewrite with recipe notes removed; found an L10 low-rank write; failed to freeze (preserve reserve exhausted). |
 | 4B Blind Fact-Edit 2 | 4B 블라인드 사실 편집 2 | `qcf19_4b` | Qwen3.5-4B | Second blind attempt with the reserve guard; erasure writes at L6/L10/L14; failed to freeze (unexposed items consumed). |
 | 9B Blind Fact-Edit | 9B 블라인드 사실 편집 | `qcf20_9b` | Qwen3.5-9B (nf4, edited linears bf16) | Blind all-context rewrite under the four-role split and dose cap; froze; failed the regression criterion. |
+| 9B Fact-Edit, 40 rows (LLM edit-40) | LLM 편집-40 | `qcf21_9b` | Qwen3.5-9B (nf4) | Editor sees only the 40 new-fact rows (data-matched to LoRA-40); froze; sealed S .737, failed. |
+| 9B Fact-Edit, 200 rows (LLM edit-200) | LLM 편집-200 | `qcf23_9b` | Qwen3.5-9B (nf4) | Editor sees the 200 LoRA-200 rows; did not freeze (GSM −5 over the 3-point limit). |
+| 9B LoRA-40 / 200 / 620 | LoRA-40 / 200 / 620 | `qcf20_9b` (L-ft / L-ed / L-all) | Qwen3.5-9B (QLoRA nf4, r 8) | Host comparator on the same rows as the matching editor arm; sealed S .743 / .994 / .996. |
 | 0.8B cap study | 0.8B 상한 연구 | `qcap_08b` | Qwen3.5-0.8B | Umbrella for the five blind four-role CounterFact runs below (cap ablation plus replicates); one shared sealed set. |
 | 0.8B Fact-Edit (2% cap) | 0.8B 사실 편집 (2% 상한) | `qcap_on` | Qwen3.5-0.8B | Changed-parameter cap 2%; blind, all-context, four roles; sealed PRIMARY pass. |
 | 0.8B Fact-Edit (no cap) | 0.8B 사실 편집 (상한 없음) | `qcap_off` | Qwen3.5-0.8B | Same as the 2% cap arm with the cap removed (the cap never bound); sealed FAIL. |

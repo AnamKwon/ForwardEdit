@@ -12,7 +12,7 @@
 |---|---|---|
 | ✅ Fact edit, fact in context (4B) | Sealed S **.920** vs .758 for the best no-edit setting. The margin holds after removing overlapping items: +.17 / +.13 (95% CI > 0). | Holds under pre-registered controls |
 | ⚠️ Fact edit, no context (4B) | .682, below ROME .806, MEMIT .897 and LoRA .898. | Fitted methods win |
-| ❌ 9B blind fact edit | Sealed S .836 vs .823, but ARC −0.85 (2.2 SE). | Fails regression |
+| ❌ 9B fact edit vs LoRA, same data | 40 rows: LoRA .743, edit .737 (both neighbours −12.5). 200: LoRA **.994**, edit did not freeze. 620: LoRA **.996**, edit .836 (ARC −0.85). | LoRA equal or better at every data size |
 | ⚠️ IFEval loop repair (0.8B, thinking) | 20.8 → 65.6%, but budget forcing alone reaches 70.1%. | Error repair, not a capability gain |
 | ℹ️ 4B defect audit | Qwen's recommended repetition suppression alone raises accuracy from .775 to .862. | Remaining targets: long MATH reasoning, IFEval loops |
 
@@ -23,11 +23,12 @@ Claims follow three tiers ([protocol](docs/EDIT_EVALUATION_PROTOCOL.md#compariso
 
 ## What does not work yet
 - No edit beats the best inference-time method on a real benchmark (budget forcing, recommended decoding).
-- Without context, LLM-chosen values lose to fitted editors (LoRA, MEMIT).
+- Without context, LLM-chosen values lose to fitted editors (LoRA, MEMIT). At 9B, LoRA wins even with matched data.
 - High run-to-run variance: 2 of 5 sealed passes at 0.8B, with a different layer each run.
 - The "fires on almost no tokens" claim is withdrawn: the edit changes ~99% of tokens by more than 1%, and ~2% by more than 5%.
 
 ## Next
+- Weak benchmarks (IFBench, BFCL): 4B baselines running → failure analysis → LoRA/editor preregs. Then MedXpertQA-MM (vision), Multi-IF (multi-turn).
 - 4B: edit for efficiency (same MATH answers in fewer tokens) or for the remaining IFEval loops, tested on top of the recommended decoding.
 - Re-score the remaining arms (no-context, 9B, 0.8B) without overlapping items; run 0.8B specificity controls.
 - Paper: a focused workshop paper is feasible; main track is not yet. See the [readiness review (KO)](docs/PAPER_READINESS_1125.ko.md).
@@ -35,7 +36,7 @@ Claims follow three tiers ([protocol](docs/EDIT_EVALUATION_PROTOCOL.md#compariso
 ## Daily log
 | Date | One line |
 |---|---|
-| 11-25 | Controls pass for in-context fact edits; "sparse" claim withdrawn; decoding alone fixes most 4B defects (.775 → .862). [log](docs/daily/2026-11-25.ko.md) |
+| 11-25 | Controls pass for in-context fact edits; "sparse" claim withdrawn; 9B data-matched (40/200/620 rows): LoRA equal or better at every size. [log](docs/daily/2026-11-25.ko.md) |
 | 11-24 | 9B blind fact edit froze but failed regression; MoVA-36B runs on one 24 GB GPU; three-tier comparison adopted. [log](docs/daily/2026-11-24.ko.md) |
 | 11-23 | Edit beats logit bias and steering on validation; LoRA/MEMIT beat the edit without context; 2/5 replicate passes. [log](docs/daily/2026-11-23.ko.md) |
 | 11-22 | Cross-task study: 15+ tasks, edits help knowledge, not computation. [summary](docs/CROSS_TASK_STUDY_1122.ko.md) |
