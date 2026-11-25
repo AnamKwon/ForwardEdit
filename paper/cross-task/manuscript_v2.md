@@ -1,14 +1,14 @@
 # Where LLM-Written Weight Edits Stand: Pre-Registered Comparisons with Prompting, Steering and Fitted Editors
 
-**Status.** Revised working draft (v2.1), 2026-11-24, after an independent review (`review_v2.md`; the change log is at the end of that file). The pre-review text is kept unchanged as `manuscript_v2_pre_review.md`, and the cross-task draft of 2026-11-23 (`manuscript.md`) is also kept unchanged. Numbers come from a host-held evidence ledger that traces each value to a raw result file. **The run artifacts are not bundled in this repository** (Section 9). Values marked † come from the 2026-11-23 draft, where they were taken from host evaluation files, and were not re-traced in the 2026-11-24 ledger. Values marked ‡ appear only in a host summary or analysis document, or in an editor notebook record, and have no raw JSON result. Results marked ◊ are **pending** one of the planned controls in Section 3.8 (sealed re-scoring without overlapping items, or the extended-grid ladder). They are reported as measured, and their interpretation may change. Experiments are referred to by readable names; Appendix C maps each name to the internal identifier used in the evidence ledger (glossary: `docs/EXPERIMENT_NAMES.md`).
+**Status.** Revised working draft (v2.2), 2026-11-25; v2.1 (2026-11-24) followed an independent review (`review_v2.md`; the change log is at the end of that file). The pre-review text is kept unchanged as `manuscript_v2_pre_review.md`, and the cross-task draft of 2026-11-23 (`manuscript.md`) is also kept unchanged. Numbers come from a host-held evidence ledger that traces each value to a raw result file. **The run artifacts are not bundled in this repository** (Section 9). Values marked † come from the 2026-11-23 draft, where they were taken from host evaluation files, and were not re-traced in the 2026-11-24 ledger. Values marked ‡ appear only in a host summary or analysis document, or in an editor notebook record, and have no raw JSON result. Results marked ◊ are **pending** a control declared in Section 3.8. The controls for 4B Fact-Edit A and 4B Fact-Edit B ran on 2026-11-25 (extended-grid ladder, specificity controls, E_qonly, oracle-position controls, a one-shot sealed ladder and an overlap-free re-scoring), and their markers are resolved in this revision. The 4B defect-audit decoding comparison is now final. ◊ remains on: (i) sealed values of 4B Fact-Edit (no-context design), 9B Blind Fact-Edit and the 0.8B cap study, which have not been re-scored without overlapping items; (ii) the oracle-route sealed values of 4B Fact-Edit A and 4B Fact-Edit B, which the re-scoring summary does not report; and (iii) the specificity controls on the 0.8B patches, which have not been run. These results are reported as measured, and their interpretation may change. Experiments are referred to by readable names; Appendix C maps each name to the internal identifier used in the evidence ledger (glossary: `docs/EXPERIMENT_NAMES.md`).
 
 ## Abstract
 
 Weight-Space Programming (WSP) lets a frontier LLM write another network's weights; critics argue its gains amount to removing decoding pathologies or to steering. Under an inference-only contract (no backward pass, optimizer or solver), an LLM editor (Claude Opus) edited Qwen3.5 models. We ask how such edits compare with the alternatives, and what kind of change they are. We read results at three tiers. The primary tier compares the original and edited model under the same deployment settings, and the edit with other weight-modification methods (LoRA, ROME, MEMIT). The second tier compares edit plus the strongest inference-time method with that method alone. Inference-time-only methods (prompting, steering, budget forcing) are a third, reference tier. The tiers were adopted after most results were known; pre-registered verdicts are quoted unchanged.
 
-We contribute a pre-registration protocol with four data roles: discovery, validation, confirmation and sealed. On two 4B CounterFact arms run with recipe notes from earlier sessions, and with facts in context, a post-hoc host analysis on the validation split (on which the edits were also selected) found that the frozen edits change the residual stream at the edited layer almost only at subject tokens: they are active on 0.0% and 0.68% of generic-text tokens, at a threshold of 10% of the median subject-write norm. Their validation S (.903 and .860) exceeded every tested strength of a global logit bias (best .536 and .423) and of an always-on steering vector equal to the mean of the 40 per-fact writes (best .684 and .674). The tested grids started at strength 1, and no tested strength improved on the unedited model (.675 and .680), so this comparison holds only under the tested grid◊. At the primary tier the edit loses: without context, it (sealed S .682◊) scores below host-only ROME (.806), MEMIT (.897, from a log) and LoRA (.898), and below the strongest prompt (.763). In greedy 8-token generation on the validation split with no context, the no-context edit began with the new object on 2.5% of prompts, against 26% for MEMIT and 29% for ROME. Under this prefix-match metric, the unedited model begins with its own true object on only 6–9% of prompts.
+We contribute a pre-registration protocol with four data roles: discovery, validation, confirmation and sealed. On two 4B CounterFact arms run with recipe notes from earlier sessions, and with facts in context, a post-hoc host analysis on the validation split (on which the edits were also selected) found that the frozen edits make large writes at the edited layer mainly at subject tokens. They are not sparse. On 1,000 generic MMLU questions, the edit changes the layer output by more than 1% at 99% of tokens, and by more than 5% at only 2.1% and 1.5% of tokens. It makes a small change almost everywhere and a large change rarely. Their validation S (.903 and .860) exceeded every strength of a global logit bias and of always-on steering, on a grid extended down to 0.0625. No baseline beat the unedited model (.675 and .680) by more than .01. Random, permuted and sign-flipped values on the same neurons scored far below the edit in S. By the pre-declared rule the edit is only partially specific: the strongest control reached 36–39% of the edit's PS gain. Controls declared before running then compared the edit with oracle steering that writes each fact's vector at every subject mention. The two were statistically indistinguishable (sealed S .920 vs .918 and .897 vs .908). The edit thus moves per-fact writes at subject mentions into the weights without position labels; it does not exceed that oracle. With the 40 efficacy prompts removed, the sealed criterion-1 margins of the all-context route stayed above zero: +.173 [.111, .240] and +.125 [.067, .182]. The no-context route of the same edits was not robust. At the primary tier the edit loses: without context, it (sealed S .682◊) scores below host-only ROME (.806), MEMIT (.897, from a log) and LoRA (.898), and below the strongest prompt (.763). In greedy 8-token generation on the validation split with no context, the no-context edit began with the new object on 2.5% of prompts, against 26% for MEMIT and 29% for ROME. Under this prefix-match metric, the unedited model begins with its own true object on only 6–9% of prompts.
 
-The two 4B edits that passed were made with recipe notes from earlier sessions. Blind runs produced no sealed result at 4B (0/2 froze) and passed 2 of 5 at 0.8B (2 of 4 in the strictly pre-registered capped condition), each on a different layer, with criterion-1 margins below one standard error. At 9B (nf4, with edited linears in bf16), the first 9B freeze passed three sealed criteria but failed regression (ARC −0.85 ± 0.38). By CounterFact design the sealed efficacy prompts are also edit-construction prompts, and a few sealed neighbourhood prompts overlap development splits; sealed numbers are pending re-scoring without these items. A defect audit of the 4B model under greedy thinking-mode decoding, which the model card advises against, found that 162 of 201 truncations are repetition loops; interim selection-split data show that most of this defect disappears under the recommended sampling with presence penalty. On sealed IFEval at 0.8B, a rank-1 loop-repair edit raised thinking-mode accuracy under the recommended sampling from 20.8% to 65.6% (+44.8 ± 3.9). It scored 52.5% with thinking off, against 57.9% for the original. Alone it approaches budget forcing on the original (66.1–70.1%), and combined with budget forcing it scored 4–6 points below budget forcing alone. It moves loop-stopping into the weights; it is error repair, not a capability gain. We report every failed gate. The edit's possible value lies in its small footprint, not in its accuracy; we have not measured whether it is easier to audit.
+The two 4B edits that passed were made with recipe notes from earlier sessions. Blind runs produced no sealed result at 4B (0/2 froze) and passed 2 of 5 at 0.8B (2 of 4 in the strictly pre-registered capped condition), each on a different layer, with criterion-1 margins below one standard error. At 9B (nf4, with edited linears in bf16), the first 9B freeze passed three sealed criteria but failed regression (ARC −0.85 ± 0.38). By CounterFact design the sealed efficacy prompts are also edit-construction prompts, and a few sealed neighbourhood prompts overlap development splits. Only the two 4B recipe-informed arms have been re-scored without these items. A defect audit of the 4B model under greedy thinking-mode decoding, which the model card advises against, found that 162 of 201 truncations are repetition loops. In a pre-declared comparison, greedy decoding with presence penalty 1.5 was chosen on one half of the items and run once on the other half. Accuracy rose from .775 to .862 and truncation fell from 18.5% to 8.0%. This decoding is the tier-1 baseline for any 4B loop edit. On sealed IFEval at 0.8B, a rank-1 loop-repair edit raised thinking-mode accuracy under the recommended sampling from 20.8% to 65.6% (+44.8 ± 3.9). It scored 52.5% with thinking off, against 57.9% for the original. Alone it approaches budget forcing on the original (66.1–70.1%), and combined with budget forcing it scored 4–6 points below budget forcing alone. It moves loop-stopping into the weights; it is error repair, not a capability gain. We report every failed gate. The edit's possible value lies in its small footprint, not in its accuracy; we have not measured whether it is easier to audit.
 
 ## 1. Introduction
 
@@ -28,11 +28,11 @@ That question placed prompting and steering beside fitted editors as equal compa
 **Contributions.**
 
 1. **Protocol.** We describe a pre-registration protocol for inference-only LLM weight editing with four data roles: *discovery*, *validation*, *confirmation* and *sealed*. Tool-side guards enforce it: a reserve guard, a one-shot confirmation gate, a cap on dose variants, and quantized loading that keeps edited tensors exact (Section 3).
-2. **Locality of the edits (validation only, post hoc).** For two recipe-informed 4B CounterFact arms, the frozen edits change the edited layer's output almost only at subject tokens, and they outscored every tested strength of a global logit bias and of a single always-on steering vector (the mean of the 40 per-fact writes). The tested grids started at strength 1, no tested baseline strength beat the unedited model, and both the edits (blind validation) and the baseline strengths were selected on this split. No sealed ladder exists. The comparison is pending an extended-grid rerun with specificity controls (Sections 3.8 and 4.2).
+2. **Locality of the edits (post hoc, with pre-declared controls).** For two recipe-informed 4B CounterFact arms, the frozen edits are subject-selective in their large writes but not sparse: they change the edited layer's output slightly at almost every token (Section 4.2). They outscored logit bias and always-on steering at every strength of a grid extended down to 0.0625. Random, permuted and sign-flipped values fell far below the edit in S, though the strongest control reached 36–39% of the edit's PS gain (partially specific). The edit matched, but did not exceed, oracle steering that writes each fact's vector at every subject mention, including mentions in the context. Removing the edit's effect at context positions cut validation S from .903 to .741 and from .860 to .715. A sealed ladder was run once. It is post hoc relative to the original arms but was declared before it ran (Sections 3.8 and 4.2).
 3. **Honest comparison with training- and solver-based editors (tier 1).** On no-context insertion, host-only MEMIT, ROME and LoRA comparators beat the LLM edit. Generation-based evaluation widens the gap (Section 4.3).
 4. **Run-to-run variance.** Five blind editor runs at 0.8B passed 2 of 5, each on a different layer. Strictly, four of them share the pre-registered condition, and 2 of those 4 passed; pooling the fifth was decided after the results. Both passes cleared criterion 1 by less than one standard error. Results of this kind must be reported as pass rates and distributions (Section 4.4).
 5. **Scale.** At Qwen3.5-9B (nf4, with edited linears patched in bf16), the first 9B freeze, under the four-role split, passed sealed criteria 1–3 and failed the regression criterion. We also report a quantization survival check, and feasibility (not edits) for a 27B dense model and a 36B MoE model on one 24 GB GPU (Section 4.5).
-6. **Defect discovery and one loop repair.** We confirm the model card's warning: under greedy thinking-mode decoding with an 8,192-token cap, the dominant defect of the 4B model is repetition looping. Interim selection-split results of a pre-declared comparison of cheap decoding fixes show that most of the defect disappears under the recommended sampling with presence penalty. At 0.8B, a rank-1 loop-repair edit passes tier 1 in thinking mode on sealed IFEval (+44.8 ± 3.9), but loses accuracy with thinking off and fails tier 2 against budget forcing (Section 4.6).
+6. **Defect discovery and one loop repair.** We confirm the model card's warning: under greedy thinking-mode decoding with an 8,192-token cap, the dominant defect of the 4B model is repetition looping. In a pre-declared comparison of cheap decoding fixes, the frozen choice (greedy + presence penalty 1.5) raised accuracy on the report half from .775 to .862 and cut truncation from 18.5% to 8.0%. Residual truncation remains on MATH (38%) and IFEval (28%). At 0.8B, a rank-1 loop-repair edit passes tier 1 in thinking mode on sealed IFEval (+44.8 ± 3.9), but loses accuracy with thinking off and fails tier 2 against budget forcing (Section 4.6).
 7. **Gradient audit.** No autograd was used. However, the editor's value directions are analytically a first-order output-gradient direction, and candidate revision included small dose searches. In response, we capped dose variants at two (Section 4.7).
 8. **Small-network reproduction.** We reproduce the Sparks weight-reading experiments on tiny networks with a no-tool Claude. Reading works (4/4, 3/3) and collapses to 1/4 under a row-permutation control (Section 4.8).
 
@@ -78,7 +78,7 @@ We take these critiques as design requirements: strongest-baseline comparison, s
 
 **How we compare.**
 
-- Our successful knowledge edits also sit in mid-layer MLPs, but they are written differently. The LLM allocates subject-gated MLP slots or subject-keyed low-rank writes and sets their values by explicit arithmetic, with no covariance solve.
+- Our successful knowledge edits also sit in mid-layer MLPs, but they are written differently. The LLM allocates subject-keyed MLP slots or subject-keyed low-rank writes and sets their values by explicit arithmetic, with no covariance solve.
 - In effect size, these edits are weaker. We ran ROME and MEMIT as host-only comparators. They are our own reimplementations, use GPT-J default hyperparameters and a single seed, and were run in a single setting (Section 4.3).
 
 ### 2.3 Activation steering, directional ablation and logit bias
@@ -92,7 +92,7 @@ We take these critiques as design requirements: strongest-baseline comparison, s
 
 **Logit bias.** Decode-time logit bias is the simplest output-side baseline. NoWait [@wang2025nowait] applies it to reasoning.
 
-**Implication for us.** Together, these results imply that any *always-on* rank-1 write is close to a steering vector, and the WSP loop fix appears to be one [@barry2026lp]. One measurable difference between an edit and steering is therefore *when* the edit is active. We measure gate activity for knowledge edits (Section 4.2), but we have not yet separated the contribution of gating from that of the written direction and its size (Section 3.8). We have not measured gate activity for skill or format edits.
+**Implication for us.** Together, these results imply that any *always-on* rank-1 write is close to a steering vector, and the WSP loop fix appears to be one [@barry2026lp]. One measurable difference between an edit and steering is therefore *when* the edit is active. We measure gate activity for knowledge edits (Section 4.2). For two 4B knowledge edits, controls separate firing position from the written values: both matter. The edits are not sparse; their large writes are subject-selective (Section 4.2). We have not measured gate activity for skill or format edits.
 
 ### 2.4 Parameter-efficient fine-tuning
 
@@ -153,7 +153,7 @@ The editor (Claude Opus, run as an agent) accesses the target model only through
 
 **Sealed set sizes.** At 4B the sealed sets contain 40 ES, 80 PS and 200 NS prompts. The 0.8B cap study arms and 9B Blind Fact-Edit have 160 NS prompts.
 
-**What is unseen in the sealed set.** ES uses the requested rewrite prompt, which is also an edit-construction (discovery) row: in every CounterFact arm, all 40 sealed ES prompts appear verbatim in discovery. Only PS and NS are unseen wordings, and all sealed items concern the same 40 edited facts. Between 0 and 11 sealed neighbourhood prompts per arm also appear in a development split, and one 4B Fact-Edit (no-context design) neighbour targets an edited subject (Section 3.7). Sealed S therefore averages one edit-construction component with two mostly held-out components. A re-scoring of the PRIMARY criteria with the overlapping items removed is planned as a sensitivity analysis on the frozen candidates, not a reselection (Section 3.8); until then, sealed S values are marked ◊ where a conclusion depends on them.
+**What is unseen in the sealed set.** ES uses the requested rewrite prompt, which is also an edit-construction (discovery) row: in every CounterFact arm, all 40 sealed ES prompts appear verbatim in discovery. Only PS and NS are unseen wordings, and all sealed items concern the same 40 edited facts. Between 0 and 11 sealed neighbourhood prompts per arm also appear in a development split, and one 4B Fact-Edit (no-context design) neighbour targets an edited subject (Section 3.7). Sealed S therefore averages one edit-construction component with two mostly held-out components. A re-scoring of the PRIMARY criteria with the overlapping items removed is a sensitivity analysis on the frozen candidates, not a reselection (Section 3.8). It has been run for 4B Fact-Edit A and 4B Fact-Edit B only. For the other arms, sealed S values are marked ◊ where a conclusion depends on them.
 
 **Context routes.** A route is the text placed before each prompt:
 
@@ -174,7 +174,7 @@ The strongest no-edit route on the sealed set is the bar for any improvement cla
 
 The no-context arm, 4B Fact-Edit (no-context design), used the same criteria on the none route. Paired differences are reported in points ± SE, with wrong→right/right→wrong counts where available.
 
-**Statistical structure of the rule.** Criterion 1 compares point estimates of S without uncertainty. A delta-method approximation gives an unpaired SE of about .02 for each sealed S at these sample sizes, so about .03 for the difference of two S values; no bootstrap interval has been computed yet (Section 3.8). The evaluation harness itself is not perfectly reproducible: the same no-edit route on the same items scored .7629 and .7598 for 4B Fact-Edit (no-context design) all_x2, and .7221 and .7285 for 4B Fact-Edit B all, in two evaluation passes, and the bf16 4B Fact-Edit A edit scored validation S .9025 and .9064 in two scripts. Run-to-run drift of up to about .006 S is therefore expected. Criterion 4 applies three uncorrected 2 SE tests, so an edit with no true effect fails it by chance more often than a single 2 SE test would suggest. Criterion 3 is a non-significance condition with limited power (NS SE 1.0–3.0 points). We keep the pre-registered verdicts. Where a correction would change a verdict, we report it only to show how sensitive the verdict is to the rule (Section 4.5).
+**Statistical structure of the rule.** Criterion 1 compares point estimates of S without uncertainty. A delta-method approximation gives an unpaired SE of about .02 for each sealed S at these sample sizes, so about .03 for the difference of two S values. Paired case-cluster bootstrap intervals exist only for 4B Fact-Edit A and 4B Fact-Edit B (Section 3.8). The evaluation harness itself is not perfectly reproducible: the same no-edit route on the same items scored .7629 and .7598 for 4B Fact-Edit (no-context design) all_x2, and .7221 and .7285 for 4B Fact-Edit B all, in two evaluation passes, and the bf16 4B Fact-Edit A edit scored validation S .9025 and .9064 in two scripts. Run-to-run drift of up to about .006 S is therefore expected. Criterion 4 applies three uncorrected 2 SE tests, so an edit with no true effect fails it by chance more often than a single 2 SE test would suggest. Criterion 3 is a non-significance condition with limited power (NS SE 1.0–3.0 points). We keep the pre-registered verdicts. Where a correction would change a verdict, we report it only to show how sensitive the verdict is to the rule (Section 4.5).
 
 ### 3.3 Four-role data protocol
 
@@ -210,15 +210,15 @@ Let w_i be the change that the edit makes to the edited layer's (L8) output at f
 - **Global logit bias LB(b):** +b on the first token of every edited fact's new object and −b on every old object, at every position (subject-agnostic). Grid: b ∈ {1, 2, 4, 8}.
 - **Always-on steering ST(s):** s · mean_i w_i added to the L8 output at every position. This is the **mean, over the 40 facts, of the edit's per-fact write at the subject token**, not any single fact's write. The 40 per-fact writes are nearly orthogonal (mean pairwise cosine −0.023 for 4B Fact-Edit A and −0.014 for 4B Fact-Edit B), so at s = 1 each fact's own component is roughly 1/40 of its write. ST therefore tests one global vector for 40 different facts. Grid: s ∈ {1, 4, 16, 40}.
 - **Oracle per-fact steering (OR):** w_i added at L8 only at the subject token of fact i **in the queried prompt**. The host supplies the subject position, which a real system would not know. OR does not inject at subject mentions inside the context, where the edit also fires.
-- **Gate activity:** a token counts as active when the edit changes the L8 block output by more than 10% of the median subject-token write norm (threshold 2.245 for 4B Fact-Edit A and 0.544 for 4B Fact-Edit B). Generic text is 100 MMLU test questions (seeded sample), each truncated to 256 tokens. "Non-subject" tokens are the rewrite-prompt tokens outside a mask that covers only the last 4 tokens of the subject span. Only this one threshold was computed.
+- **Gate activity:** a token counts as active when the edit changes the L8 block output by more than 10% of the median subject-token write norm (threshold 2.245 for 4B Fact-Edit A and 0.544 for 4B Fact-Edit B). Generic text is 100 MMLU test questions (seeded sample), each truncated to 256 tokens. "Non-subject" tokens are the rewrite-prompt tokens outside a mask that covers only the last 4 tokens of the subject span. Only this one threshold was computed in the original ladder. The controls later reported a curve across thresholds (Section 4.2), which withdraws the sparsity reading.
 
-Selection rule: "best" means the highest validation S among grid values with MMLU-200 within 2 points of the unedited model. For both families and both arms, S was highest at the smallest tested strength (1) and fell from there, and no tested strength beat the unedited model by more than .01 S. The best of each family on this grid is therefore indistinguishable from no edit, and strengths below 1 were not tested. Both the edits (blind validation) and the baseline strengths were selected on this split. **No sealed-set ladder exists.** An extended grid (strengths below 1), an oracle that also fires at context mentions, specificity controls and a one-shot sealed ladder are planned (Section 3.8).
+Selection rule: "best" means the highest validation S among grid values with MMLU-200 within 2 points of the unedited model. For both families and both arms, S was highest at the smallest tested strength (1) and fell from there, and no tested strength beat the unedited model by more than .01 S. The best of each family on this grid is therefore indistinguishable from no edit. Both the edits (blind validation) and the baseline strengths were selected on this split. The extended grid (strengths down to 0.0625), an oracle that also fires at context mentions, specificity controls and a one-shot sealed ladder were declared on 2026-11-24 and run on 2026-11-25 (Section 3.8).
 
 ### 3.6 Arms and protocol versions
 
 | Arm | Model | Design | Protocol | Editor prompt | Sealed ES = edit prompt? | Ladder run? |
 |---|---|---|---|---|---|---|
-| 4B Fact-Edit A, 4B Fact-Edit B | Qwen3.5-4B | all-ctx | 3 roles | contained recipe notes from earlier sessions | yes (40/40) | yes (validation, post hoc) |
+| 4B Fact-Edit A, 4B Fact-Edit B | Qwen3.5-4B | all-ctx | 3 roles | contained recipe notes from earlier sessions | yes (40/40) | yes (validation, post hoc; extended controls and sealed once, 11-25) |
 | 4B Fact-Edit (no-context design) | 4B | no-ctx PRIMARY | 3 roles | recipe notes | yes (40/40) | no |
 | 4B Blind Fact-Edit 1, 4B Blind Fact-Edit 2 | 4B | all-ctx, blind | 3 roles + unexposed-evidence rule | no recipe | sealed not opened | no |
 | 0.8B Fact-Edit (2% cap), 0.8B Fact-Edit (no cap), 0.8B Fact-Edit (2% cap) replicates 1–3 | Qwen3.5-0.8B | all-ctx | **4 roles** | no recipe | yes (40/40) | no |
@@ -238,11 +238,11 @@ The sealed sets were not filtered against development prompts or against edited 
 | 9B Blind Fact-Edit | 40/40 | 2/160 (discovery 1, confirmation 1) | 2 | none |
 | 0.8B cap study (all five runs) | 40/40 | 11/160 (across discovery, validation and confirmation) | 4 | none |
 
-The ES overlap is a property of the CounterFact design (the requested rewrite prompt is both the edit target and the efficacy item). The neighbour overlaps conflict with the repository's data-separation protocol, and the 4B Fact-Edit (no-context design) conflict is an item that a working edit cannot satisfy. The PRIMARY verdicts reported below are the pre-registered ones. They have not yet been re-scored with these items removed (Section 3.8).
+The ES overlap is a property of the CounterFact design (the requested rewrite prompt is both the edit target and the efficacy item). The neighbour overlaps conflict with the repository's data-separation protocol, and the 4B Fact-Edit (no-context design) conflict is an item that a working edit cannot satisfy. The PRIMARY verdicts reported below are the pre-registered ones. Only 4B Fact-Edit A and 4B Fact-Edit B have been re-scored with these items removed (Section 3.8).
 
-### 3.8 Planned controls (pre-declared before running)
+### 3.8 Controls (pre-declared before running)
 
-The following controls were declared on 2026-11-24, in response to the independent review, **before any of them was run**. None has been run at the time of writing. Each is a fixed analysis of already frozen candidates; none selects or revises an edit, and none reopens a sealed set for selection.
+The following controls were declared on 2026-11-24, in response to the independent review, **before any of them was run**. The 4B parts ran on 2026-11-25 under a separate pre-registration addendum (`bench/CONTROLS_PREREG.md`), with no re-tuning. Each is a fixed analysis of already frozen candidates; none selects or revises an edit, and none reopens a sealed set for selection.
 
 1. **Extended baseline ladder (validation).** LB(b) and ST(s) with b, s ∈ {0.125, 0.25, 0.5} added to the existing grid; per-fact steering without a gate at matched norm (the sum of the per-fact writes, not their mean); and the oracle per-fact write injected also at subject mentions inside the context, not only at the queried subject. The edit with its effect zeroed at context positions (query positions kept) will separate context-side firing from query-side firing.
 2. **Specificity controls (validation)** on the frozen 4B Fact-Edit A and 4B Fact-Edit B patches and the 0.8B Fact-Edit (2% cap) and 0.8B Fact-Edit (2% cap) replicate 1 patches: (a) sign-flipped values; (b) random value directions at matched norm on the same neurons and keys; (c) permuted key/value pairing across facts (fact i's value at fact j's key), a label-permutation control in the sense of Ahmed [@ahmed2026wspaudit].
@@ -250,7 +250,14 @@ The following controls were declared on 2026-11-24, in response to the independe
 4. **Gate activity across thresholds.** Active fractions at 1%, 5%, 10% and 20% of the median subject-write norm, on the existing generic text and on a larger generic corpus.
 5. **Sealed re-scoring.** Per-item re-scoring of 4B Fact-Edit A, 4B Fact-Edit B, 4B Fact-Edit (no-context design), 9B Blind Fact-Edit, 0.8B Fact-Edit (2% cap), 0.8B Fact-Edit (no cap), 0.8B Fact-Edit (2% cap) replicate 1 and 0.8B Fact-Edit (2% cap) replicate 2 with the overlapping or contradictory neighbour items of Section 3.7 removed, reported both with and without ES, with paired bootstrap confidence intervals for every criterion-1 margin and for S. This is a sensitivity analysis on the frozen candidates; the pre-registered verdicts stand regardless of its outcome.
 
-Results that depend on these controls are marked ◊.
+**What ran (2026-11-25).** For 4B Fact-Edit A and 4B Fact-Edit B only:
+
+- Item 1, on validation. The addendum fixed the grids at 0.0625–4 for logit bias (LB), steering with the mean write (ST) and steering with the sum of writes (ST_sum). It added oracle steering at the queried subject only (ORq) and at every subject mention, context included (ORctx), at strengths 0.5, 1 and 2. It also added E_qonly: the edit is on, but at context positions the layer-8 MLP output is replaced by the original output.
+- Item 2, on validation: sign-flipped values (SF_value; SF_all also negates keys), random values on the same keys (RND_value), random low-rank deltas of matched spectrum (RND_lowrank) and value permutation across facts (PERM_value), with three seeds for each random or permuted control.
+- Item 3: the sealed ladder, run once. The validation-frozen best LB, ST, ST_sum, ORq and ORctx were scored with the original and the edit. This is post hoc relative to the original arms, but it was declared before it ran.
+- Item 5: re-scoring without overlapping items. F1 drops sealed items whose prompt equals a development prompt (all 40 ES items, plus 7 NS items in 4B Fact-Edit A). F2 also drops neighbours that name an edited subject; it gave the same result. With ES removed, S is the harmonic mean of PS and NS. Margins carry paired case-cluster bootstrap 95% intervals.
+
+**Not yet available.** Item 2 on the 0.8B patches and item 5 for the other arms have not been run. Item 4 (the gate-activity curve) ran with a different threshold set than listed above (Table 1d). Results that depend on the missing items are marked ◊.
 
 ### 3.9 Comparison tiers
 
@@ -286,14 +293,14 @@ The series supported one main conclusion: **skill edits are erased by reasoning 
 
 **Hypothesis (stated in the analysis script before it was run, 2026-11-23; not pre-registered).** If the edit were equivalent to logit bias or constant steering, it could not tell subjects apart. It would then raise PS only by damaging neighbours (NS). A subject-gated write would raise PS while keeping NS.
 
-**Table 1.** Baseline ladder, validation split, 4B (n = 80 / 80 / 40 / 200). S here is validation S, the harmonic mean of PS, NS and plain NS (no ES; Section 3.2). A token is counted active when the edit changes the layer-8 block output by more than 10% of the median subject-token write norm (2.245 for 4B Fact-Edit A, 0.544 for 4B Fact-Edit B). Generic text is 100 MMLU questions (≤ 256 tokens each). The subject mask covers only the last 4 subject tokens.
+**Table 1.** Baseline ladder, validation split, 4B (n = 80 / 80 / 40 / 200). S here is validation S, the harmonic mean of PS, NS and plain NS (no ES; Section 3.2). A token is counted active when the edit changes the layer-8 block output by more than 10% of the median subject-token write norm (2.245 for 4B Fact-Edit A, 0.544 for 4B Fact-Edit B). Generic text is 100 MMLU questions (≤ 256 tokens each). The subject mask covers only the last 4 subject tokens. The activity rows hold at this one threshold only; across thresholds the edit is not sparse (Table 1d).
 
 | Arm | 4B Fact-Edit A: S (PS / NS / plain NS / MMLU-200) | 4B Fact-Edit B: S (PS / NS / plain NS / MMLU-200) |
 |---|---|---|
 | No edit | .675 (.588 / .625 / .875 / .750) | .680 (.638 / .588 / .875 / .715) |
-| Logit bias, smallest tested b = 1 (S falls monotonically with b; no tested b beats no edit)◊ | .536 (.713 / .350 / .750 / .750) | .423 (.913 / .213 / .775 / .715) |
+| Logit bias, b = 1 (original grid; S falls monotonically with b) | .536 (.713 / .350 / .750 / .750) | .423 (.913 / .213 / .775 / .715) |
 | Logit bias LB(8) | .190 (NS .125) | .055 (NS .025) |
-| Steering with the mean of the 40 per-fact writes, smallest tested s = 1 (within .01 of no edit)◊ | .684 (.663 / .600 / .825 / .735) | .674 (.638 / .575 / .875 / .700) |
+| Steering with the mean of the 40 per-fact writes, s = 1 (original grid; within .01 of no edit) | .684 (.663 / .600 / .825 / .735) | .674 (.638 / .575 / .875 / .700) |
 | Oracle per-fact steering (queried subject only) | .759 (.825 / .625 / .875 / .750) | .729 (.788 / .588 / .875 / .715) |
 | **LLM edit** | **.903** (.938 / .925 / .850 / .765) | **.860** (.913 / .800 / .875 / .730) |
 | Edit active, generic MMLU text | **0.0%** | **0.68%** |
@@ -301,11 +308,26 @@ The series supported one main conclusion: **skill edits are erased by reasoning 
 
 ![Baseline ladder on the validation split of two 4B CounterFact arms.](../figures/fig_ladder.png)
 
-*Figure 1. Baseline ladder (validation split). "Best" in the figure legend means the highest S on the tested grid, which was the smallest tested strength (1) for both families; strengths below 1 were not tested◊. The steering arm is the mean of the 40 per-fact writes. Both the edits and the baseline strengths were selected on this split.*
+*Figure 1. Baseline ladder (validation split, original grid). "Best" in the figure legend means the highest S on the original grid, which was the smallest strength (1) for both families. The figure does not show the extended grid of Table 1b. The steering arm is the mean of the 40 per-fact writes. Both the edits and the baseline strengths were selected on this split.*
 
-**Logit bias.** On 4B Fact-Edit B, logit bias at b = 1 matches the edit on new-fact adoption (PS .913 for both). It does so by pushing the new object everywhere, which drops in-context NS to .213 (4B Fact-Edit A: .350). S falls monotonically as b rises (4B Fact-Edit A: .536, .355, .306, .190 for b = 1, 2, 4, 8), and even b = 1 scores below no edit. Whether a smaller bias can match the edit's PS without this NS cost is untested◊.
+**Table 1b.** Pre-declared controls, 2026-11-25 (validation S; 4B Fact-Edit A / 4B Fact-Edit B). Grids for LB, ST and ST_sum are 0.0625–4. Ranges cover three seeds. The edit is .903 / .860; no edit is .675 / .680.
 
-**Always-on steering (mean of the 40 writes).** Raising the steering strength (Table 2, Figure 2) moves PS only modestly. On 4B Fact-Edit A, PS rises from .588 to .775 at strength 40, still well below the edit's .938. On 4B Fact-Edit B it stays between .600 and .650. Meanwhile NS and MMLU collapse: MMLU-200 falls to .215 and .195 at strength 16. Because the steering vector averages 40 nearly orthogonal per-fact writes, this family cannot carry 40 different facts by construction; its failure says little about steering with per-fact vectors.
+| Control | 4B Fact-Edit A | 4B Fact-Edit B |
+|---|---|---|
+| Best logit bias (LB) | .665 | .656 |
+| Best steering, mean of writes (ST) | .684 | .680 |
+| Best steering, sum of writes, no gate (ST_sum) | ≤ .670 | ≤ .670 |
+| Sign-flipped values (SF_value) | .641 | .610 |
+| Sign-flipped keys and values (SF_all; MMLU about .21–.24) | .438 | .561 |
+| Random values on the edit's keys (RND_value) | .728–.763 | .687–.712 |
+| Random low-rank delta, matched spectrum (RND_lowrank) | .680–.691 | .662–.674 |
+| Values permuted across facts (PERM_value) | .698–.731 | .679–.716 |
+| Edit active only at query positions (E_qonly) | .741 | .715 |
+| Oracle per-fact write at every subject mention (ORctx) | .928 | .871 |
+
+**Logit bias.** On 4B Fact-Edit B, logit bias at b = 1 matches the edit on new-fact adoption (PS .913 for both). It does so by pushing the new object everywhere, which drops in-context NS to .213 (4B Fact-Edit A: .350). S falls monotonically as b rises (4B Fact-Edit A: .536, .355, .306, .190 for b = 1, 2, 4, 8), and even b = 1 scores below no edit. Smaller biases do not help. Down to b = 0.0625, the best logit bias scores .665 and .656, still below no edit (Table 1b).
+
+**Always-on steering (mean of the 40 writes).** Raising the steering strength (Table 2, Figure 2) moves PS only modestly. On 4B Fact-Edit A, PS rises from .588 to .775 at strength 40, still well below the edit's .938. On 4B Fact-Edit B it stays between .600 and .650. Meanwhile NS and MMLU collapse: MMLU-200 falls to .215 and .195 at strength 16. Because the steering vector averages 40 nearly orthogonal per-fact writes, this family cannot carry 40 different facts by construction. The controls therefore added ST_sum, which adds every fact's full write at every position with no gate. Its best S was at most .670 on both arms, and the extended grid did not lift ST above .684 (Table 1b).
 
 **Table 2.** Always-on steering dose (validation).
 
@@ -322,18 +344,46 @@ The series supported one main conclusion: **skill edits are erased by reasoning 
 
 *Figure 2. Always-on steering with the mean, over the 40 facts, of the edit's per-fact write at the subject token. Rewrite adoption rises modestly on 4B Fact-Edit A (to .775 at strength 40) but stays below the edit, while neighbours and MMLU collapse.*
 
-**Oracle steering.** Oracle per-fact steering writes each fact's own direction at the queried subject token, yet it reaches only .759 and .729. The edit differs from this oracle in at least two ways: it also fires at subject mentions inside the context, which the oracle does not, and the size and shape of its write differ (Table 1). These have not been separated◊.
+**Oracle steering.** Oracle per-fact steering writes each fact's own direction at the queried subject token, yet it reaches only .759 and .729. The edit differs from this oracle in two ways: it also fires at subject mentions inside the context, and the size and shape of its write differ. The controls separate these.
 
-**Interpretation.** On two sets of 40 facts, the frozen edits change the edited layer's output almost only at subject tokens at the one threshold measured: near-silent on generic text (0.0% and 0.68%), though 4B Fact-Edit B is active on 7.9% of non-subject rewrite-prompt tokens. They outscored subject-agnostic logit bias and a single always-on vector at every tested strength, and they outscored the same per-fact write injected only at the queried subject. For contrast, Barry reports that the LP loop edit he reproduced was active on 89% of tokens [@barry2026lp].[^barry] We describe the edits as **sparse and subject-selective**. Whether their advantage comes from *when* they fire, from firing at context mentions, or from *what* they write is a hypothesis pending the controls in Section 3.8.
+- **Firing at context mentions carries most of the effect (H2: SUPPORTED).** ORctx writes the per-fact vector at every subject mention, context included. It reaches .928 and .871 on validation, at or above the edit. E_qonly keeps the edit but removes its effect at context positions. It falls to .741 and .715, a drop of .162 and .145 from the edit. By the pre-declared rule, a drop of at least .05 means context-position firing contributes. ORctx exceeds ORq by .169 and .131. On validation the oracle is slightly above the edit: −.025 [−.052, −.004] (A) and −.011 [−.030, .007] (B).
+- **The specific values matter, but only partly.** Random, permuted and sign-flipped values on the same neurons fall far below the edit in S (Table 1b). Random values on the edit's keys still score above no edit on 4B Fact-Edit A (.728–.763 vs .675), so the keys and support carry some effect alone. The pre-declared specificity verdict (H3) is **partially specific** for both arms. The strongest control, a value permutation, reached .39 (A) and .36 (B) of the edit's PS gain. None reached .5. "Subject-gated memory" is therefore not fully distinguished from "a write of this norm on these neurons".
+
+**Extended ladder (H1: PASS).** On validation the edit beats the best extended-grid baseline by +.219 [.154, .283] (A) and +.180 [.127, .237] (B). The best logit bias sits at the grid edge (0.0625), so it is indistinguishable from no edit.
+
+**Sealed ladder, run once (H5: PASS).** Baseline strengths were frozen on validation and scored once on the sealed set, all-context route (Table 1c). The edit scored .920 and .897. These agree with the pre-registered sealed values (.922 and .894) within the harness drift of Section 3.2. The edit beats the best no-edit and ladder arms with intervals above zero, on the full set and on F1.
+
+**Gate activity across thresholds (H4: FAIL).** The pre-declared rule kept the claim "the edit fires on almost no generic tokens" only if the active fraction on MMLU-1000 was at most 5% at 0.01 × the median write norm and at most 1% at ‖Δy‖/‖y‖ > 0.01. Both conditions fail, so the claim is **withdrawn** (Table 1d). The edit makes a small change at almost every token and a large change rarely. The 0.0% and 0.68% of Table 1 hold only at the ladder threshold.
+
+**Table 1d.** Active fraction of generic tokens (MMLU-1000, ≤ 256 tokens each) at the layer-8 output, 4B Fact-Edit A / 4B Fact-Edit B.
+
+| Threshold | 4B Fact-Edit A | 4B Fact-Edit B |
+|---|---|---|
+| ‖Δy‖ > 0.01 × median subject-write norm | 52.8% | 100% |
+| ‖Δy‖/‖y‖ > 0.01 | 99.2% | 99.0% |
+| ‖Δy‖/‖y‖ > 0.05 | 2.1% | 1.5% |
+| ‖Δy‖ > 0.1 × median subject-write norm (ladder threshold) | 0.07% | 0.5% |
+
+**Table 1c.** Sealed ladder, all-context route, run once (S with ES). Ranges cover the families or strengths shown.
+
+| Arm | 4B Fact-Edit A | 4B Fact-Edit B |
+|---|---|---|
+| Best LB, ST, ST_sum | .736–.749 | .716–.749 |
+| ORq (queried subject only; not deployable) | .773–.813 | .766–.838 |
+| ORctx (every subject mention; not deployable) | .918 | .908 |
+| **LLM edit** | **.920** | **.897** |
+
+**Overlap-free re-scoring.** Filter F1 removes the 40 ES discovery prompts and the overlapping neighbours (Section 3.8). On F1, the all-context edit beats the best no-edit route (PRIMARY criterion 1) by +.173 [.111, .240] on 4B Fact-Edit A and +.125 [.067, .182] on 4B Fact-Edit B. Both intervals exclude zero, so the criterion-1 margin is robust by the addendum's rule. Against the best oracle steering arm, the margins are −.002 [−.036, .017] and −.016 [−.044, .000]. The edit is statistically indistinguishable from the oracle that writes each per-fact vector at every subject mention. The no-context route is not robust: on F1 its margin is +.026 [−.074, .118] on 4B Fact-Edit A, and on the full set 4B Fact-Edit B's no-context margin is −.38.
+
+**Interpretation.** On two sets of 40 facts, the frozen edits are not sparse. They change the edited layer's output by more than 1% at about 99% of generic tokens, and by more than 5% at only 2.1% and 1.5%. Barry reports that the LP loop edit he reproduced was active on 89% of tokens [@barry2026lp];[^barry] his threshold differs from ours, so the figures are not comparable. We describe the edits as **subject-selective in their large writes**, not as sparse. The controls support "the edits win because of *when* they fire", with a condition: they must also write the right per-fact values. The edit puts per-fact writes at subject mentions into the weights. It needs no position labels, while the oracle does. It does not exceed that oracle.
 
 **Limits of this result.**
 
-- The ladder exists only on validation data, on which the edits were also selected, and it was added after the sealed results were known.
-- The baseline grids start at strength 1 and S is highest there; the comparison holds only under the tested grid◊.
-- The steering family is the mean of 40 per-fact writes, which no critic proposed; per-fact ungated steering has not been run◊.
-- No sign-flip, random-direction or key/value-permutation control has been run, so "subject-selective memory" is not yet distinguished from "any sparse write at L8 with this norm"◊.
-- Gate activity was measured at one relative threshold; the curve across thresholds is planned◊.
-- 4B Fact-Edit B is less sparse than 4B Fact-Edit A: 7.9% of non-subject tokens in rewrite prompts are active.
+- The validation ladder and controls use the split on which the edits were also selected. The original ladder was added after the sealed results were known.
+- The sealed ladder ran once. It is post hoc relative to the original arms, though it was declared in the controls addendum before it ran.
+- The baseline vectors are the edit's own measured writes, so the steering and oracle arms are edit-informed. This favours the baselines.
+- The earlier sparsity claim is withdrawn (H4 FAIL). Activity fractions depend strongly on the threshold and are reported per threshold only.
+- 4B Fact-Edit B writes large changes more often than 4B Fact-Edit A on rewrite prompts: 7.9% of non-subject tokens are active at the ladder threshold.
 - Both arms used recipe notes; the four-role arms (0.8B cap study, 9B Blind Fact-Edit) have no ladder.
 - This is a functional description, not a circuit account. None of it transfers to skill or format edits, where we have no ladder.
 
@@ -456,7 +506,7 @@ Both blind runs found structures on their own that differ from the recipe: a low
 
 **Delta survival.**
 
-- The sparse 4B Fact-Edit A L8 row deltas survive quantization: cosine with the bf16 delta is ≥ .9845 under nf4 and ≥ .996 under int8 (3 tensors).
+- The 4B Fact-Edit A L8 row deltas (40 neurons) survive quantization: cosine with the bf16 delta is ≥ .9845 under nf4 and ≥ .996 under int8 (3 tensors).
 - A **dense small delta** (4B Blind Fact-Edit 1's low-rank candidate, relative norm .14) does **not** survive nf4: cosine .751, norm ×1.326. Under int8 its cosine is .9945.
 - This finding is why the tool keeps every edited linear in exact bf16 on both sides (Section 3.4).
 
@@ -558,7 +608,7 @@ With thinking on, the BBH tasks score: date .85, logical deduction .975, navigat
 - This is the same family of defect as the WSP and Barry loop fixes. Qwen's model card recommends sampling and a presence penalty for thinking mode [@qwen35modelcard], so these cheap fixes must come first.
 - **No capability-defect edit target has been identified yet.**
 
-**Stage 2: cheap-fix comparison (in progress).** The following was declared before any run.
+**Stage 2: cheap-fix comparison (final).** The following was declared before any run.
 
 - **Variants** (`thinking_decode` family):
   1. Qwen-recommended sampling: T 0.6, top-p 0.95, top-k 20, seed 0.
@@ -570,9 +620,9 @@ With thinking on, the BBH tasks score: date .85, logical deduction .975, navigat
 - **Decision rule.** If a cheap fix removes most of the loop cost with no task dropping more than 2 SE, looping is *not* an edit target at the recommended decoding. The remaining candidates are then the residual errors (last-step arithmetic, distractor copying) and the accuracy-versus-token-budget curve under the recommended decoding.
 - **Not yet measured.** The token-budget curves: MATH + GSM8K, 300 items, budgets 512–8,192, thinking off and on.
 
-**Stage 2 interim results (SELECT half only; REPORT half pending).** These numbers are interim. They come from the SELECT half alone (550 items), Qwen3.5-4B, thinking on, 8,192 tokens. They are development data. No variant has been chosen and REPORT has not been run.
+**Stage 2 selection (SELECT half).** The rows below are the SELECT-half values first reported as interim. The greedy + presence row was then partial. Greedy + presence 1.5 was frozen on SELECT on 2026-11-24 at 23:17, before REPORT ran. These are development data.
 
-**Table 10a.** Stage 2 interim, SELECT split (550 items), Qwen3.5-4B, thinking on, 8,192 tokens.
+**Table 10a.** Stage 2 selection, SELECT split (550 items), Qwen3.5-4B, thinking on, 8,192 tokens.
 
 | Decoding | Accuracy | Truncated | IFEval | MATH |
 |---|---|---|---|---|
@@ -581,7 +631,25 @@ With thinking on, the BBH tasks score: date .85, logical deduction .975, navigat
 | Recommended sampling + presence penalty 1.5 (the model card's recommended thinking setting) | **.885** | **6%** | **.86** | .66 |
 | Greedy + presence penalty 1.5 (partial: 256 of 550 items) | .898 | 6% | .78 | .78 |
 
-**Interim reading.** Most of the 4B loop defect disappears under the vendor-recommended decoding. Under tier 1, any 4B loop edit must therefore be measured against the original at that setting, not against greedy decoding. The remaining candidate target is residual MATH truncation (19–34%). The greedy + presence row is partial and is not comparable item for item with the other rows.
+The greedy + presence row is partial and is not comparable item for item with the other rows.
+
+**Stage 2 final result (REPORT half, run once).** The frozen choice and the no-fix arm ran once on the REPORT half (550 items).
+
+**Table 10a-R.** Stage 2 final, REPORT split (550 items), Qwen3.5-4B, thinking on, 8,192 tokens. Greedy (no fix) against the frozen choice, greedy + presence penalty 1.5.
+
+| Measure | Greedy (no fix) | Greedy + presence 1.5 |
+|---|---|---|
+| Overall accuracy | .775 | **.862** |
+| Items wrong → right / right → wrong | — | 56 / 8 |
+| Truncated | 18.5% | **8.0%** |
+| IFEval: acc (truncated) | .40 (.60) | **.70** (.28) |
+| MATH: acc (truncated) | .42 (.54) | **.58** (.38) |
+| MMLU | .75 | **.85** |
+| GSM8K | .86 | **.89** |
+| ARC-C | .94 | **.97** |
+| BBH tasks | — | each ≥ no fix |
+
+**Reading.** Presence-penalty repetition suppression removes much of the 4B loop defect. Truncation fell by more than half, and no task fell. This decoding is the **tier-1 baseline for any 4B loop edit**: an edit must beat the original at this setting, not under plain greedy decoding. The remaining edit-target candidates are the residual truncation (38% on MATH, 28% on IFEval), the residual finished-answer errors and the token-budget curve. The frozen choice uses greedy decoding with the card's presence penalty, not the card's sampling.
 
 #### 4.6.1 0.8B Thinking IFEval Loop Repair
 
@@ -658,7 +726,7 @@ We also checked two public Sparks claims against their released logs. In the exp
 
 ## 5. Negative results and failed gates
 
-The following table is complete with respect to the evidence ledger and the issues raised by the independent review (rows 22–25 were added after that review; rows 26–28 were added with the comparison tiers of Section 3.9). Pass rates elsewhere in this paper are computed with these failures in the denominator.
+The following table is complete with respect to the evidence ledger and the issues raised by the independent review (rows 22–25 were added after that review; rows 26–28 were added with the comparison tiers of Section 3.9; rows 29–30 were added with the 11-25 controls). Pass rates elsewhere in this paper are computed with these failures in the denominator.
 
 **Table 13.** Negative results and failed gates.
 
@@ -667,7 +735,7 @@ The following table is complete with respect to the evidence ledger and the issu
 | 1 | 4B Fact-Edit (no-context design) PRIMARY **FAIL** (no-context) | edit S .682 < strongest no-edit .763 |
 | 2 | LLM-chosen values lose to learned or solved values without context | edit .682 < ROME .806 < MEMIT .897 (log only) ≈ LoRA .898; N-edit .884 |
 | 3 | Generation evaluation: NLL gains largely do not appear as generated answers | 4B Fact-Edit (no-context design) edit 2.5% vs MEMIT 26%, ROME 29% (prefix match; unedited model starts with its true object on only 6–9%); with context, 4B Fact-Edit A and 4B Fact-Edit B edits 40–43% |
-| 4 | The edit is less sparse in 4B Fact-Edit B than in 4B Fact-Edit A | 7.9% of non-subject rewrite-prompt tokens active (4B Fact-Edit A 0.6%) |
+| 4 | 4B Fact-Edit B writes large changes on more non-subject tokens than 4B Fact-Edit A | 7.9% of non-subject rewrite-prompt tokens active at the ladder threshold (4B Fact-Edit A 0.6%) |
 | 5 | 4B Blind Fact-Edit 1 **failure to freeze** (GSM reserve exhausted; login-expiry interruption) | best unexposed +8.75 ± 3.2; sealed unopened |
 | 6 | 4B Blind Fact-Edit 2 **failure to freeze** (unexposed items consumed by later ablations); 1 job lost to host GPU contention | best unexposed +22.5 ± 5.9; sealed unopened |
 | 7 | Blind-recipe discovery has **no sealed evidence at 4B** | 0/2 sealed |
@@ -685,13 +753,15 @@ The following table is complete with respect to the evidence ledger and the issu
 | 19 | 4B with thinking on (greedy, 8,192-token cap; the model card recommends sampling instead) scores **lower** than thinking off | .777 vs .842; IFEval .40 vs .82; 162/201 truncations are loops; no capability-defect edit target yet |
 | 20 | Comparator-side regressions | 4B Fact-Edit B LoRA MMLU −1.55 ± 0.77; ROME MMLU −2.4 (unpaired) |
 | 21 | Protocol deviations | 0.8B cap study arms ran in parallel; 9B Blind Fact-Edit amendment allowing a concurrent host job (not exercised); MEMIT run crashed with OOM and ROME was rerun; first 0.8B cap study sealed evaluation crashed with OOM and was rerun (no numbers seen) |
-| 22 | Sealed ES prompts are edit-construction (discovery) prompts; some sealed neighbours overlap development splits | ES 40/40 in every arm; NS overlap 0–11 per arm; one 4B Fact-Edit (no-context design) neighbour contradicts another case's edit (Section 3.7); re-scoring pending◊ |
+| 22 | Sealed ES prompts are edit-construction (discovery) prompts; some sealed neighbours overlap development splits | ES 40/40 in every arm; NS overlap 0–11 per arm; one 4B Fact-Edit (no-context design) neighbour contradicts another case's edit (Section 3.7). Re-scored for 4B Fact-Edit A and B only: all-ctx criterion-1 margins +.173 [.111, .240] and +.125 [.067, .182] (robust); no-context route not robust (+.026 [−.074, .118]; B −.38). Other arms pending◊ |
 | 23 | Off-route neighbour losses of PASS or near-PASS edits | 0.8B Fact-Edit (2% cap) on all_x2: S .834 < .836, NS −5.0 ± 1.94; 4B Fact-Edit (no-context design) on oracle: NS −4.0 ± 2.1; 9B Blind Fact-Edit on all_x2: NS −3.75 ± 2.32; 0.8B Fact-Edit (2% cap) replicate 2 on all_x2: NS −13.75 ± 2.72 |
-| 24 | Baseline ladder grids truncated at strength 1; steering arm is the mean of 40 per-fact writes | S highest at the smallest tested strength; no tested baseline strength beats no edit (Section 3.5)◊ |
+| 24 | Original baseline ladder truncated at strength 1; steering arm was the mean of 40 per-fact writes | Extended grid (0.0625–4) and ungated sum steering did not help: best LB .665 / .656, ST .684 / .680, ST_sum ≤ .670 (Section 4.2). The edit does not exceed oracle steering at every subject mention (sealed .920 vs .918; .897 vs .908) |
 | 25 | Number errors in the pre-review draft | Table 3 "Original" mixed harnesses (now .7245 / .7255; ARC .9121); 0.8B Fact-Edit (2% cap) replicate 1 margin .027 → .026; 4B regression bound statement omitted 4B Fact-Edit A and 4B Fact-Edit B; 9B Blind Fact-Edit called the first four-role freeze (the 0.8B cap study froze first) |
 | 26 | 0.8B Thinking IFEval Loop Repair loses in another usage mode (tier 1) | thinking off: edited 52.5% vs original 57.9% (IFEval, sealed) |
 | 27 | 0.8B Thinking IFEval Loop Repair **fails tier 2** against budget forcing (declared post hoc) | edit + forcing vs forcing alone: −5.9 ± 3.6, −5.0 ± 3.3, −4.1 ± 3.3, −5.0 ± 3.3 at 1,024–8,192 tokens |
-| 28 | The 4B loop defect is largely a decoding artifact (interim, SELECT only) | recommended sampling + presence 1.5: accuracy .885 vs greedy .780; truncated 6% vs 18% |
+| 28 | The 4B loop defect is largely a decoding artifact (final, REPORT half, run once) | greedy + presence 1.5: accuracy .862 vs greedy .775; truncated 8.0% vs 18.5%; residual truncation MATH 38%, IFEval 28% |
+| 29 | **Withdrawn claim:** the 4B knowledge edits "fire on almost no generic tokens" (H4 FAIL) | MMLU-1000 active fraction at ‖Δy‖/‖y‖ > 0.01: 99.2% / 99.0%; at 0.01 × median write norm: 52.8% / 100%; at ‖Δy‖/‖y‖ > 0.05: 2.1% / 1.5%. The earlier 0.0% / 0.68% hold at the ladder threshold only |
+| 30 | 4B knowledge edits only partially specific (H3) | strongest control (value permutation) reached .39 / .36 of the edit's PS gain |
 
 **Earlier summaries corrected in this revision.**
 
@@ -709,7 +779,14 @@ The following table is complete with respect to the evidence ledger and the issu
 
 ### 6.1 What the edit is
 
-Across two recipe-informed 4B fact sets, and on validation data only, the evidence supports a modest functional claim: the LLM-written knowledge edits are **sparse and subject-selective**. At the one threshold measured, they change the edited layer's output at the edited subject and are nearly silent elsewhere. They outscored subject-agnostic logit bias and a single always-on vector at every tested strength (grids starting at strength 1)◊. They also outscored the same per-fact write injected only at the queried subject. The edit's advantage over that oracle may come from firing at subject mentions inside the context, or from the size and shape of its write. We have not separated these, and "the edits win because of *when* they fire" remains a hypothesis pending the controls in Section 3.8. This bears on critique (A) for knowledge edits only, on validation data only, and the steering family we tested (one vector for 40 facts) is not the form in which critique (A) was posed. It does not answer it for skill, format or loop edits. There, Barry's evidence and our own earlier results suggest that edits often *are* steering or defect removal.
+Across two recipe-informed 4B fact sets, the evidence supports a modest functional claim: the LLM-written knowledge edits are **subject-selective in their large writes**. They are not sparse: they change the edited layer's output slightly at almost every token, and by more than 5% at only 2.1% and 1.5% of generic tokens. The earlier "near-silent" claim is withdrawn (H4 FAIL). The pre-declared controls (Section 4.2) separate what was open before:
+
+- **Global baselines fail.** Logit bias, mean steering and ungated sum steering did not beat no edit on a grid extended down to 0.0625.
+- **The values matter, partly.** Random, permuted and sign-flipped values fall far below the edit in S, but the strongest control reached 36–39% of its PS gain (partially specific).
+- **The firing position matters.** Removing the edit's effect at context mentions cuts validation S by .162 and .145.
+- **The edit equals a strong oracle, not more.** Oracle steering that writes each fact's vector at every subject mention is statistically indistinguishable from the edit on the sealed set (.918 vs .920; .908 vs .897; overlap-free margins −.002 [−.036, .017] and −.016 [−.044, .000]).
+
+So "the edits win because of *when* they fire" is supported, together with *what* they write. The edit moves per-fact writes at subject mentions into the weights, without the position labels the oracle needs. It does not exceed that oracle. At the tiers of Section 3.9, this is a tier-2 result for the all-context route: its overlap-free criterion-1 margins are +.173 [.111, .240] and +.125 [.067, .182]. The no-context route of the same edits is not robust, and at tier 1 fitted editors win (Section 4.3). The sealed ladder was run once and is post hoc relative to the original arms, though declared before running. This bears on critique (A) for knowledge edits only. It does not answer it for skill, format or loop edits. There, Barry's evidence and our own earlier results suggest that edits often *are* steering or defect removal.
 
 ### 6.2 When is editing worth it?
 
@@ -717,9 +794,9 @@ We answer by tier (Section 3.9). The tiers were adopted after these results were
 
 **Tier 1 (model level): not for accuracy.** Whenever a training- or solver-based comparator was run under matched conditions (so far only on one 4B arm, 4B Fact-Edit (no-context design)), it inserted knowledge more strongly. The examples are LoRA (.898), MEMIT (.897) and ROME (.806), against the edit's .682 with no context (pre-registered verdict: FAIL). The generation gap is larger still. The 0.8B Thinking IFEval Loop Repair passes tier 1 in thinking mode (+44.8 ± 3.9 under the recommended sampling) but loses with thinking off (52.5% vs 57.9%), and no weight-modification comparator was run for it.
 
-**Tier 2 (combination): only for knowledge edits.** The CounterFact PRIMARY criterion 1 is a combination test: edit plus facts in context against the strongest context route alone. 4B Fact-Edit A and 4B Fact-Edit B passed it on the sealed set (recipe-informed, PASS)◊. At 9B the frozen edit raised sealed all-ctx S from .784 to .836 and beat the strongest route (.823) by .013, below one SE, and failed regression (FAIL)◊. In the earlier series, the 0.8B past-tense insertion scored 74.1% with 3-shot prompting, against 33.6% for 3-shot alone†. Elsewhere the combination fails: the 0.8B arithmetic edit lost 8.25 and 11.0 points under CoT†, and the 0.8B loop repair lost 4–6 points under budget forcing.
+**Tier 2 (combination): only for knowledge edits.** The CounterFact PRIMARY criterion 1 is a combination test: edit plus facts in context against the strongest context route alone. 4B Fact-Edit A and 4B Fact-Edit B passed it on the sealed set (recipe-informed, PASS). With overlapping items removed, their margins stay above zero: +.173 [.111, .240] and +.125 [.067, .182]. They do not exceed oracle steering at every subject mention (Section 4.2). At 9B the frozen edit raised sealed all-ctx S from .784 to .836 and beat the strongest route (.823) by .013, below one SE, and failed regression (FAIL)◊. In the earlier series, the 0.8B past-tense insertion scored 74.1% with 3-shot prompting, against 33.6% for 3-shot alone†. Elsewhere the combination fails: the 0.8B arithmetic edit lost 8.25 and 11.0 points under CoT†, and the 0.8B loop repair lost 4–6 points under budget forcing.
 
-**Tier 3 (reference): edits that move behaviour into the weights.** Skill edits were erased by reasoning prompts in the earlier series. The 0.8B loop repair alone approaches budget forcing (65.6% vs 66.1–70.1%) without exceeding it. Its value, if any, is that loop-stopping no longer needs a serving change. At 4B, the recommended decoding already removes most of the loop defect (interim), so a 4B loop edit has little room at tier 1.
+**Tier 3 (reference): edits that move behaviour into the weights.** Skill edits were erased by reasoning prompts in the earlier series. The 0.8B loop repair alone approaches budget forcing (65.6% vs 66.1–70.1%) without exceeding it. Its value, if any, is that loop-stopping no longer needs a serving change. At 4B, greedy + presence 1.5 already raises accuracy from .775 to .862 (final, REPORT half), so a 4B loop edit has little room at tier 1. Its room is the residual truncation (MATH 38%, IFEval 28%).
 
 **Possibly for footprint and audit.** A frozen edit:
 
@@ -741,30 +818,31 @@ The four-role split fixed the freeze failures that the unexposed-pool bookkeepin
 - confirmation preserve sets must be large enough to detect the size of loss that regression tests for;
 - sealed sets need automatic overlap checks against all development splits, including neighbour prompts that target edited subjects, and every sealed evaluation should store per-item results so that bootstrap intervals can be computed.
 
-Finally, reporting the three levels separately clarifies claims. Every frozen edit achieved its *exact write*. Most achieved their *predicted behaviour* on development data. Among the knowledge arms in Sections 4.2–4.5, only 4B Fact-Edit A, 4B Fact-Edit B, 0.8B Fact-Edit (2% cap) and 0.8B Fact-Edit (2% cap) replicate 1 met all pre-registered criteria on a sealed set (two of the four by margins below one SE)◊. Each was either narrow (0.8B Fact-Edit (2% cap) and 0.8B Fact-Edit (2% cap) replicate 1, margins .012 and .026) or beaten by a host LoRA (4B Fact-Edit A and 4B Fact-Edit B), and the sealed ES component of every one of them is an edit-construction prompt (Section 3.7). 9B Blind Fact-Edit met criterion 1 but failed regression.
+Finally, reporting the three levels separately clarifies claims. Every frozen edit achieved its *exact write*. Most achieved their *predicted behaviour* on development data. Among the knowledge arms in Sections 4.2–4.5, only 4B Fact-Edit A, 4B Fact-Edit B, 0.8B Fact-Edit (2% cap) and 0.8B Fact-Edit (2% cap) replicate 1 met all pre-registered criteria on a sealed set. The two 4B passes survive overlap removal with intervals above zero. The two 0.8B passes have margins below one SE and have not been re-scored◊. Each was either narrow (0.8B Fact-Edit (2% cap) and 0.8B Fact-Edit (2% cap) replicate 1, margins .012 and .026) or beaten by a host LoRA (4B Fact-Edit A and 4B Fact-Edit B), and the sealed ES component of every one of them is an edit-construction prompt (Section 3.7). 9B Blind Fact-Edit met criterion 1 but failed regression.
 
 ## 7. Limitations
 
 - **Single runs at 4B and 9B.** Replicates exist only at 0.8B (n = 5, or 4 strictly in one pre-registered condition).
-- **Margins within noise.** The criterion-1 margins of 0.8B Fact-Edit (2% cap) (.012), 0.8B Fact-Edit (2% cap) replicate 1 (.026) and 9B Blind Fact-Edit (.013) are below one SE of the S difference, and the harness drifts by up to about .006 S between evaluation passes. No bootstrap intervals have been computed (Section 3.8).
-- **Sealed/development overlap.** Sealed ES prompts are discovery rows in every arm, and 0–11 sealed neighbour prompts per arm overlap development splits (Section 3.7). Sealed numbers are pending re-scoring.
+- **Margins within noise.** The criterion-1 margins of 0.8B Fact-Edit (2% cap) (.012), 0.8B Fact-Edit (2% cap) replicate 1 (.026) and 9B Blind Fact-Edit (.013) are below one SE of the S difference, and the harness drifts by up to about .006 S between evaluation passes. Bootstrap intervals exist only for 4B Fact-Edit A and 4B Fact-Edit B (Section 3.8).
+- **Sealed/development overlap.** Sealed ES prompts are discovery rows in every arm, and 0–11 sealed neighbour prompts per arm overlap development splits (Section 3.7). Only 4B Fact-Edit A and 4B Fact-Edit B have been re-scored without these items; the other arms are pending◊.
 - **Multiple comparisons.** Criterion 4 uses three uncorrected 2 SE tests, and criterion 3 is a low-power non-significance condition. Under Holm, 9B Blind Fact-Edit would pass criterion 4; the pre-registered verdict (FAIL) stands.
 - **Tokenizer warning.** Every 4B log prints a transformers warning about an incorrect regex pattern that may cause incorrect tokenization. It is likely a false positive for Qwen, but we have not separately verified tokenization for this draft.
 - **One editor family and one prompt lineage.** The 4B PASS results (4B Fact-Edit A and 4B Fact-Edit B) were obtained with recipe notes from earlier sessions. They are recipe transfer, not blind discovery. Blind runs at 4B produced no sealed evidence.
-- **Validation-only, post-hoc ladder and generation evaluation.** Both the edits and the baseline strengths were selected on that split, the grids start at strength 1, the steering arm averages 40 writes, and the generation metric is a near-floor prefix match. No sealed ladder exists, and none was run for 9B Blind Fact-Edit or the 0.8B cap study arms.
+- **Post-hoc ladder and validation-only generation evaluation.** The ladder controls were selected on the validation split on which the edits were also selected. The sealed ladder ran once, for 4B Fact-Edit A and 4B Fact-Edit B only. It is post hoc relative to those arms, though declared before running. Its baseline vectors are the edit's own writes. The edit matches but does not exceed oracle steering at every subject mention. No ladder or specificity control was run for 9B Blind Fact-Edit or the 0.8B cap study arms◊. The generation metric is a near-floor prefix match.
+- **Context-dependent result.** The robust 4B margin is for the all-context route. Without context, the same edits are not robust (4B Fact-Edit A F1 margin +.026 [−.074, .118]; 4B Fact-Edit B −.38 on the full set).
 - **Comparator quality.** ROME and MEMIT are reimplementations with GPT-J defaults and one seed. The MEMIT sealed result exists only as a log line, and its covariance used 124,537 tokens rather than the pre-registered ~200k. ROME and MEMIT general-ability numbers are unpaired and have no SE.
 - **Small sealed sets.** The sealed sets are 40–80 cases for ES and PS. Confirmation preserve sources are small.
 - **Fixed-point freeze bound.** A fixed 3.0-point GSM bound, not an SE-based bound, decided two freezes.
 - **Earlier series not re-traced.** Values marked † were not re-traced for this revision. Values marked ‡ have no raw JSON.
 - **Host task selection.** Pre-registered gates mitigate this but do not remove it.
-- **Defect audit incomplete.** Stage 2 has interim results on the SELECT half only; the REPORT half and the token-budget curves are pending. The audit covers one 4B model on development data.
+- **Defect audit partial.** The Stage 2 decoding comparison is final (REPORT half, run once), but the token-budget curves are pending. The audit covers one 4B model, and its items are development data for any future edit.
 - **Loop repair evidence is thin.** The 0.8B Thinking IFEval Loop Repair is one run on one model, with no LoRA or other weight-modification comparator, and its combination test was declared post hoc.
 - **Tiers adopted late.** The comparison tiers (Section 3.9) were adopted after most results were known.
 
 ## 8. Unaddressed criticisms / 미대응 비판
 
-1. **"It is just steering."** No logit-bias or steering ladder has been run for skill, format or loop edits. For knowledge edits, the ladder is validation-only and post hoc, its grids start at strength 1, and its steering arm is one vector for 40 facts, which does not test critique (A) as posed. Per-fact ungated steering and an oracle that fires at context mentions have not been run◊.
-2. **Missing random-direction, sign-flip and label-permutation controls.** None of the new arms includes them, including the permutation control proposed by Ahmed [@ahmed2026wspaudit]. They are declared in Section 3.8 but not yet run.
+1. **"It is just steering."** No logit-bias or steering ladder has been run for skill, format or loop edits. For the two 4B knowledge edits, the extended grid, ungated per-fact sum steering and a context-mention oracle have now been run. Global baselines fail, but the edit is statistically indistinguishable from oracle steering at every subject mention. Critique (A) is therefore partly right: the edit is per-fact steering at subject positions, moved into the weights without position labels. It is not more than that oracle, and it is not sparse (H4 FAIL).
+2. **Missing random-direction, sign-flip and label-permutation controls.** For 4B Fact-Edit A and 4B Fact-Edit B, sign-flipped, random and permuted values (the permutation control proposed by Ahmed [@ahmed2026wspaudit]) all fall far below the edit. The addendum's PS-gain classification is not summarized here. The controls have not been run on the 0.8B patches or at 9B◊.
 3. **Single trajectories and selection.** Pass rates exist only at 0.8B. At 4B and 9B every result is one trajectory. Selection included dose search (28% of candidates), and in 6 of 14 freezes the frozen candidate was not the discovery argmax.
 4. **Prior knowledge and prompt leakage.** The 4B PASS edits were made with recipe notes in the prompt. The blind runs found other structures but never froze at 4B. "Blind" means no recipe text; the tools themselves (`errors` returning E_new − E_true, neuron-allocation helpers, `low_rank`) were built during recipe development and carry recipe-shaped priors.
 5. **"LLMs do not understand weights."** Weight reading worked on tiny networks with a permutation control, but it did not transfer to LLM-scale reading in the public Sparks logs. Our editors rely on forward observations and tools, not raw weight reading.
@@ -774,12 +852,13 @@ Finally, reporting the three levels separately clarifies claims. Every frozen ed
 9. **Reproducibility.** Artifacts are not public (Section 9).
 10. **Protocol deviations.** The 0.8B cap study arms ran in parallel against their pre-registration. One 4B Blind Fact-Edit 2 job failed during host GPU contention.
 11. **Resource argument untested against QLoRA.** The 27B result is load and forward feasibility only.
-12. **Data-role blur in the sealed sets.** ES prompts are edit-construction prompts, and a few sealed neighbours overlap development splits (Section 3.7). Re-scoring is declared but not yet run.
-13. **Criterion-1 passes within noise.** No pass margin of a four-role arm exceeds one SE, and no bootstrap intervals exist yet.
+12. **Data-role blur in the sealed sets.** ES prompts are edit-construction prompts, and a few sealed neighbours overlap development splits (Section 3.7). Re-scoring has been run for 4B Fact-Edit A and 4B Fact-Edit B only. The all-context margins survive; the no-context route does not. The other arms are pending◊.
+13. **Criterion-1 passes within noise.** No pass margin of a four-role arm exceeds one SE, and these arms have no bootstrap intervals yet◊. Only the two three-role 4B arms have robust intervals.
 14. **Fitted comparators only at 4B no-context.** "Fitted editors win" rests on one arm (4B Fact-Edit (no-context design)) with single-seed comparators; none was run for the four-role arms.
 15. **Post-hoc framing.** The three comparison tiers (Section 3.9) were adopted on 2026-11-24, after most results were known. A framing chosen with the results in view can flatter them. We keep every pre-registered verdict unchanged and quote it beside the tier reading, but the tier reading itself was not pre-registered.
-16. **No tier-2 pass outside knowledge edits.** Outside knowledge insertion, no edit in this paper has passed tier 2. The only tier-2 positives are the knowledge-edit context routes: CounterFact with facts in context (4B recipe-informed passes◊; the 9B sealed margin of .013 is below one SE, and the 9B edit failed regression) and the earlier 0.8B past-tense insertion with 3-shot prompting†. The one real-benchmark combination test, the 0.8B Thinking IFEval Loop Repair under budget forcing, failed.
+16. **No tier-2 pass outside knowledge edits.** Outside knowledge insertion, no edit in this paper has passed tier 2. The only tier-2 positives are the knowledge-edit context routes: CounterFact with facts in context (4B recipe-informed passes, robust to overlap removal but not above oracle steering at every subject mention; the 9B sealed margin of .013 is below one SE, and the 9B edit failed regression) and the earlier 0.8B past-tense insertion with 3-shot prompting†. The one real-benchmark combination test, the 0.8B Thinking IFEval Loop Repair under budget forcing, failed.
 17. **0.8B Thinking IFEval Loop Repair.** The budget-forcing levels were selected with the sealed split in view. The result is one run on one model. The combination test was declared after the sealed thinking-on result was known.
+18. **Withdrawn sparsity claim.** Earlier drafts called the 4B knowledge edits sparse and near-silent on generic text (0.0% and 0.68%). Those figures held at one threshold only. Across pre-declared thresholds the claim failed (H4) and is withdrawn: a small change at almost every token, a large change rarely (Section 4.2). Specificity is partial (H3), so "subject-gated memory" is a cautious description, not an established mechanism.
 
 ## 9. Reproducibility and artifact availability
 
