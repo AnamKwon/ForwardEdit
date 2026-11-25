@@ -10,6 +10,20 @@ It is inspired by [Weight-Space Programming (WSP)](https://rikiyat.github.io/blo
 
 For a visual walkthrough, preview the [136-second English workflow and results explainer](videos/forwardedit-explainer/README.md). A [Korean edition](videos/forwardedit-explainer/README.ko.md) is also available. Both are editable Remotion compositions with matching captions. Workflow examples are illustrative; the Qwen scene uses retained measurements, and the fine-tuning scene explains the comparison still needed. No new model experiment was run.
 
+## Latest results (updated 2026-11-25)
+
+> Running summary of the ongoing research series; it is replaced on every results push. Full status: [docs/STATUS_1125.ko.md](docs/STATUS_1125.ko.md) (Korean) · daily logs: [docs/daily/](docs/daily/) · manuscript draft: [paper/cross-task/manuscript_v2.md](paper/cross-task/manuscript_v2.md) · experiment names: [docs/EXPERIMENT_NAMES.md](docs/EXPERIMENT_NAMES.md). Numbers come from host evaluation files; run artifacts are **not bundled**.
+
+Claims are reported in three tiers ([protocol](docs/EDIT_EVALUATION_PROTOCOL.md#comparison-tiers-adopted-2026-11-24-prospective)). Tier 1 compares the edited model with the original under the vendor-recommended settings, and with LoRA/MEMIT. Tier 2 compares edit + the best inference-time method against that method alone. Tier 3 reports inference-time methods as a reference.
+
+| Area | Current finding |
+|---|---|
+| Knowledge edits, fact in context (4B Fact-Edit A/B) | **Effect holds** under pre-registered controls and on sealed data. The margin over the best no-edit route is +.173 / +.125 with overlapping items removed (95% CI above 0). The edit beats logit bias and steering at every strength, and behaves like oracle steering that writes the per-fact vector at every subject mention. The "fires on almost no generic tokens" claim is **withdrawn**: it changes ~99% of tokens by more than 1% and ~2% by more than 5%. |
+| Knowledge edits, no context | Below LoRA/MEMIT (sealed S .682 vs .898/.897). 9B blind run: sealed S .836 vs .823, but it **failed** regression (ARC −0.85, 2.2 SE). |
+| Real benchmarks | No edit yet beats the best inference-time method. 0.8B thinking IFEval loop repair: 20.8 → 65.6%, but 4–6 points below budget forcing, and a loss with thinking off. |
+| 4B defect audit (thinking on, 8k) | Qwen's recommended repetition suppression alone raises accuracy from .775 to .862 (held-out half, once). The remaining defects are long MATH reasoning (efficiency) and residual IFEval loops. |
+| Scale | 9B (nf4 with bf16 edited layers), 27B and MoVA-36B-A4B (CPU offload) run on a single 24 GB GPU. |
+
 ## What is included
 
 - Actual parameter values, module ownership/axes, loaded forward source and selected token activations.
@@ -42,6 +56,8 @@ The clearest recorded score gain is the **source-informed Qwen 006** interventio
 The positive score and workflow results above have different scopes. **No currently bundled study passed every declared model-adoption criterion.** This does not mean that no task metric improved, or that fine-tuning would pass the same retention rule. The [results guide](docs/RESULTS.md) separates measured performance, retention and protocol decisions.
 
 ## Fine-tuning versus LLM editing: comparison still needed
+
+> **Update (2026-11-23/25):** the cross-task series has since measured host-only LoRA, ROME and MEMIT comparisons on CounterFact. LoRA/MEMIT beat the LLM edit without context (sealed S .898/.897 vs .682), so this section's statement applies only to the bundled historical studies. See [Latest results](#latest-results-updated-2026-11-25).
 
 **A representative fine-tuning comparison has not been measured.** The historical AdamW check used only 12 training stories / 319 target tokens and tested trainability after a prior patch. Its validation deterioration is not evidence against fine-tuning. We exclude that check from method-comparison tables and figures; its [measurements and limitations remain available](docs/RESULTS.md#fine-tuning-reference-comparison).
 
