@@ -6,7 +6,7 @@
 
 ![Summary of results: fact edits with context beat logit bias and steering on sealed data; without context, LoRA/MEMIT win; on IFEval thinking mode the edit is below budget forcing; decoding alone fixes most 4B defects.](docs/assets/summary/results_summary.png)
 
-## Results at a glance (updated 2026-11-27)
+## Results at a glance (updated 2026-11-28)
 
 | | Result | Verdict |
 |---|---|---|
@@ -39,6 +39,7 @@ Claims follow three tiers ([protocol](docs/EDIT_EVALUATION_PROTOCOL.md#compariso
 ## Daily log
 | Date | One line |
 |---|---|
+| 11-28 | 9B SimpleVQA base reproduced at 51.06% (published 51.2). LLM edit with full-parameter atlas (effort max, no caps) was at noise on unexposed items (−0.3±0.66): no freeze, so no SimpleVQA eval. Editing did not help a missing-knowledge task. [log](docs/daily/2026-11-28.ko.md) |
 | 11-27 | BFCL real test: LLM edit +2.1, beats LoRA (+0.1) but not the prompt instruction (+2.8). 0.8B: full-parameter atlas helps the editor; full fine-tuning wins in context. IFBench: ~54% of validation failures are not model errors. [log](docs/daily/2026-11-27.ko.md) |
 | 11-26 | Weak-benchmark 4B baselines; BFCL irrelevance labels found mostly wrong; with clean labels LoRA passes all 4 criteria; LLM edit passes confirmation (freeze pending). [log](docs/daily/2026-11-26.ko.md) |
 | 11-25 | Controls pass for in-context fact edits; "sparse" claim withdrawn; 9B data-matched (40/200/620 rows): LoRA equal or better at every size. [log](docs/daily/2026-11-25.ko.md) |
